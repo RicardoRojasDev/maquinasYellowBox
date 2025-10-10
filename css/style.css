@@ -9713,7 +9713,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* Site logo sizing */
 .site-logo {
-  max-height: 64px; /* default for mobile and small screens */
+  max-height: 48px; /* default for mobile and small screens */
 }
 
 @media (min-width: 992px) {
