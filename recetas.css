@@ -1,0 +1,91 @@
+/*
+  estilos para recetas.html
+  - móvil primero
+  - variables de paleta
+  - clases BEM-like
+*/
+
+:root{
+  --color-primario: #fbe505;
+  --color-secundario: #c39e46;
+  --color-texto: #333333;
+  --bg: #ffffff;
+  --radio: 10px;
+  --sombra: 0 6px 18px rgba(96, 101, 7, 0.08);
+}
+
+/* Reset ligero */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Open Sans',system-ui,Arial,sans-serif;
+  color:var(--color-texto);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{width:92%;max-width:1200px;margin:0 auto}
+
+/* Header */
+.recetas-header{padding:2.25rem 0;background:linear-gradient(180deg,var(--bg) 0,#ebff11 100%);}
+.recetas-title{font-family:'Montserrat',sans-serif;color:var(--color-primario);font-size:1.75rem;margin:0}
+.recetas-subtitle{margin:.5rem 0 0;color:#666;font-size:0.95rem}
+
+/* Controles búsqueda y filtro */
+.recetas-controls{padding:.75rem 0;border-bottom:1px solid #eee}
+.controls-row{display:flex;gap:.75rem;flex-direction:column}
+.control input[type="search"],.control select{
+  width:100%;padding:.6rem .75rem;border:1px solid #e6e6e6;border-radius:8px;font-size:1rem;background:#fff;color:var(--color-texto)
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* Grid de recetas - móvil primero */
+.recetas-grid{display:grid;grid-template-columns:1fr;gap:1rem;padding:1rem 0}
+
+.receta-card{
+  display:flex;flex-direction:row;gap:0.75rem;background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);padding:.9rem;align-items:flex-start;transition:transform .18s ease,box-shadow .18s ease;outline: none;
+}
+.receta-card:focus{box-shadow:0 0 0 3px rgba(229, 226, 12, 0.581));transform:translateY(-3px)}
+.receta-card:hover{transform:translateY(-4px)}
+
+.receta-card__media{flex:0 0 56px;display:flex;align-items:center;justify-content:center;color:var(--color-primario)}
+.receta-icon{display:block}
+
+.receta-card__body{flex:1}
+.receta-card__titulo{font-family:'Montserrat',sans-serif;margin:.1rem 0;font-size:1.05rem;color:var(--color-primario)}
+.receta-card__descripcion{margin:.25rem 0;color:#555}
+.receta-card__ingredientes{font-size:.9rem;color:#444;margin:.25rem 0}
+.receta-card__volumen{font-size:.9rem;color:#444;margin:.25rem 0}
+
+.receta-card__actions{margin-top:.5rem}
+.btn-toggle{background:rgba(0, 0, 0, 0.459);border:1px solid var(--color-primario);color:var(--color-primario);padding:.45rem .6rem;border-radius:8px;cursor:pointer}
+.btn-toggle:hover,.btn-toggle:focus{background:var(--color-primario);color:#fff;outline:none}
+
+/* Panel colapsable - animacion altura con max-height */
+.receta-card__panel{overflow:hidden;max-height:0;transition:max-height .28s ease,opacity .2s ease;padding:0 .2rem;opacity:0}
+.receta-card__panel[aria-hidden="false"]{opacity:1;padding-top:.5rem}
+
+.muted{color:#777;font-size:.9rem}
+
+/* CTA inferior */
+.recetas-footer-cta{display:flex;flex-direction:column;align-items:center;margin:1.25rem 0 2rem;text-align:center}
+.btn-qr{display:inline-block;background:var(--color-secundario);color:#fff;padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:600}
+.btn-qr:hover,.btn-qr:focus{filter:brightness(.95);outline:none}
+
+/* Footer */
+.recetas-footer{padding:1.5rem 0;border-top:1px solid #f3f3f3}
+
+/* Media queries: tablet y desktop */
+@media(min-width:640px){
+  .controls-row{flex-direction:row;align-items:center}
+  .recetas-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:1024px){
+  .recetas-grid{grid-template-columns:repeat(3,1fr)}
+  .receta-card{flex-direction:column;align-items:stretch}
+  .receta-card__media{flex:0 0 auto}
+}
+
+/* Asegurar contraste para botones y enlaces */
+button, .btn-qr, .btn-toggle{font-family:inherit}

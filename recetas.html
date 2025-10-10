@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recetas - Yellow Box</title>
+  <meta name="description" content="Recetas servidas en vaso de 200 ml - Yellow Box">
+
+  <!-- Fuentes: Montserrat para títulos y Open Sans para cuerpo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos específicos para la pestaña 'Recetas' -->
+  <!DOCTYPE html>
+  <html lang="es">
+
+  <head>
+      <meta charset="utf-8">
+      <title>Recetas - Yellow Box</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="Recetas" name="keywords">
+      <meta content="Recetas" name="description">
+
+      <!-- Favicon -->
+      <link href="img/favicon.ico" rel="icon">
+
+      <!-- Google Web Fonts (mantenemos Roboto como en el sitio) -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+      <!-- Font Awesome -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+      <!-- Libraries Stylesheet -->
+      <link href="lib/animate/animate.min.css" rel="stylesheet">
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+      <!-- Customized Bootstrap Stylesheet -->
+      <link href="css/style.css" rel="stylesheet">
+
+      <!-- Estilos específicos para Recetas (paleta y ajustes propios) -->
+      <link href="recetas.css" rel="stylesheet">
+  </head>
+
+  <body>
+      <!-- Topbar Start (copiado de index.html para coherencia visual) -->
+      <div class="container-fluid">
+          <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+              <div class="col-lg-4">
+                  <a href="index.html" class="text-decoration-none">
+                      <span class="h1 text-uppercase text-primary bg-dark px-2">Yellow</span>
+                      <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Box</span>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-6 text-left">
+                  <form action="">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Buscar productos">
+                          <div class="input-group-append">
+                              <span class="input-group-text bg-transparent text-primary">
+                                  <i class="fa fa-search"></i>
+                              </span>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="col-lg-4 col-6 text-right">
+                  <p class="m-0">Atención al cliente</p>
+                  <h5 class="m-0">+012 345 6789</h5>
+              </div>
+          </div>
+      </div>
+      <!-- Topbar End -->
+
+
+      <!-- Navbar Start (copiado de index.html) -->
+      <div class="container-fluid bg-dark mb-30">
+          <div class="row px-xl-5">
+              <div class="col-lg-9">
+                  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                      <a href="index.html" class="text-decoration-none d-block d-lg-none">
+                          <span class="h1 text-uppercase text-dark bg-light px-2">Yellow</span>
+                          <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Box</span>
+                      </a>
+                      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                          <div class="navbar-nav mr-auto py-0">
+                              <a href="index.html" class="nav-item nav-link">Home</a>
+                              <a href="politicasEmpresa.html" class="nav-item nav-link">Políticas de Empresa</a>
+                              <a href="intrucciones.html" class="nav-item nav-link">Instrucciones</a>
+                              <a href="recetas.html" class="nav-item nav-link active">Recetas</a>
+
+                              <div class="nav-item dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
+                                  <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                      <a href="cart.html" class="dropdown-item">Carrito de Compras</a>
+                                      <a href="checkout.html" class="dropdown-item">Finalizar Compra</a>
+                                  </div>
+                              </div>
+                              <a href="contact.html" class="nav-item nav-link">Contactanos</a>
+                          </div>
+                          <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                              <a href="" class="btn px-0">
+                                  <i class="fas fa-heart text-primary"></i>
+                                  <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                              </a>
+                              <a href="" class="btn px-0 ml-3">
+                                  <i class="fas fa-shopping-cart text-primary"></i>
+                                  <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                              </a>
+                          </div>
+                      </div>
+                  </nav>
+              </div>
+          </div>
+      </div>
+      <!-- Navbar End -->
+
+
+      <!-- Main Content Start -->
+      <div class="container-fluid pt-5 pb-3">
+          <div class="row px-xl-5">
+              <div class="col-12">
+                  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recetas</span></h2>
+
+                  <!-- CONTROLES: búsqueda y filtro por categoría -->
+                  <section class="recetas-controls" aria-label="Controles de búsqueda y filtro">
+                    <div class="container controls-row">
+                      <div class="control search" style="flex:1;">
+                        <label for="buscar" class="sr-only">Buscar recetas por nombre</label>
+                        <input id="buscar" type="search" placeholder="Buscar recetas..." aria-label="Buscar recetas por nombre">
+                      </div>
+                      <div class="control filter" style="width:220px;">
+                        <label for="filtroCategoria" class="sr-only">Filtrar por categoría</label>
+                        <select id="filtroCategoria" aria-label="Filtrar por categoría">
+                          <option value="all">Todas las categorías</option>
+                        </select>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Lista de recetas (renderizada por JS) -->
+                  <section id="listaRecetas" class="recetas-grid" aria-live="polite" aria-label="Listado de recetas" style="margin-top:1rem"></section>
+
+                  <!-- Sección inferior con botón para ver recetario completo (QR) -->
+                  <aside class="recetas-footer-cta" aria-label="Recetario completo" style="margin-top:1.5rem">
+                    <p>¿Quieres ver el recetario completo?</p>
+                    <a class="btn-qr" href="#" role="button">Ver recetario completo</a>
+                  </aside>
+
+              </div>
+          </div>
+      </div>
+      <!-- Main Content End -->
+
+
+      <!-- Footer Start (copiado de index.html) -->
+      <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+          <div class="row px-xl-5 pt-5">
+              <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                  <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                  <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
+                  <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                  <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                  <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+              </div>
+              <div class="col-lg-8 col-md-12">
+                  <div class="row">
+                      <div class="col-md-4 mb-5">
+                          <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                          <div class="d-flex flex-column justify-content-start">
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                              <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                          </div>
+                      </div>
+                      <div class="col-md-4 mb-5">
+                          <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                          <div class="d-flex flex-column justify-content-start">
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                              <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                              <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                          </div>
+                      </div>
+                      <div class="col-md-4 mb-5">
+                          <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                          <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                          <form action="">
+                              <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Your Email Address">
+                                  <div class="input-group-append">
+                                      <button class="btn btn-primary">Sign Up</button>
+                                  </div>
+                              </div>
+                          </form>
+                          <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                          <div class="d-flex">
+                              <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                              <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                              <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                              <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+              <div class="col-md-6 px-xl-0">
+                  <p class="mb-md-0 text-center text-md-left text-secondary">
+                      &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                      by
+                      <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+                  </p>
+              </div>
+              <div class="col-md-6 px-xl-0 text-center text-md-right">
+                  <img class="img-fluid" src="img/payments.png" alt="">
+              </div>
+          </div>
+      </div>
+      <!-- Footer End -->
+
+
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+      <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+      <!-- Contact Javascript File -->
+      <script src="mail/jqBootstrapValidation.min.js"></script>
+      <script src="mail/contact.js"></script>
+
+      <!-- Template Javascript -->
+      <script src="js/main.js"></script>
+
+      <!-- Script de recetas: datos, render y accesibilidad (vanilla JS) -->
+      <script>
+      (function () {
+        'use strict';
+        const RECETAS = [
+          { id:1, nombre: 'CAFÉ AMERICANO', descripcion: 'Carga fuerte de café en grano, molido al instante; mezcla con 90-100 ml de agua, ideal para mañanas difíciles.', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:2, nombre: 'CAFÉ GRANO CORTO', descripcion: 'Carga fuerte de café en grano, molido al instante; preparado habitualmente con 50-60 ml de agua (servido en vaso de 200 ml).', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:3, nombre: 'CAFÉ GRANO LARGO', descripcion: 'Moderada carga de café en grano, molido al instante en 180 ml de agua.', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:4, nombre: 'CAFÉ GRANO CORTADO', descripcion: 'Carga de café en grano, molido al instante y cortado con una dosis de leche descremada.', ingredientes: 'Café en grano;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:5, nombre: 'CAPUCHINO', descripcion: 'Carga de café en grano, molido al instante con leche descremada y espuma ligera.', ingredientes: 'Café en grano;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:6, nombre: 'CAFÉ GRANO CON CHOCOLATE', descripcion: 'Carga de café en grano, molido al instante combinado con chocolate para un sabor dulce y robusto.', ingredientes: 'Café en grano;Chocolate', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Puede contener trazas de leche' },
+          { id:7, nombre: 'MOKACCINO', descripcion: 'Carga de café en grano, molido al instante con leche descremada y chocolate.', ingredientes: 'Café en grano;Leche descremada;Chocolate', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Leche' },
+          { id:8, nombre: 'CHOCOLATE', descripcion: 'Carga fuerte de chocolate en polvo; bebida caliente y reconfortante.', ingredientes: 'Chocolate en polvo;Agua', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Puede contener trazas de leche' },
+          { id:9, nombre: 'CHOCOLATE CON LECHE', descripcion: 'Carga fuerte de chocolate con leche descremada; sabor cremoso.', ingredientes: 'Chocolate en polvo;Leche descremada', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Leche' },
+          { id:10, nombre: 'TE PURO', descripcion: 'Carga de té soluble; infusión simple y clásica.', ingredientes: 'Té soluble;Agua', categoria: 'Té', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:11, nombre: 'TE CON LECHE', descripcion: 'Carga de té soluble combinado con leche descremada.', ingredientes: 'Té soluble;Leche descremada', categoria: 'Té', volumen: '200 ml', alergenos: 'Leche' },
+          { id:12, nombre: 'CEBADA', descripcion: 'Carga moderada de cebada tostada; sabor tostado y suave.', ingredientes: 'Cebada tostada;Agua', categoria: 'Cebada', volumen: '200 ml', alergenos: 'Gluten' },
+          { id:13, nombre: 'CEBADA CON LECHE', descripcion: 'Carga moderada de cebada tostada servida con leche descremada.', ingredientes: 'Cebada tostada;Leche descremada', categoria: 'Cebada', volumen: '200 ml', alergenos: 'Gluten;Leche' },
+          { id:14, nombre: 'CAFÉ INSTANTÁNEO LARGO', descripcion: 'Carga moderada de café soluble; opción práctica y rápida.', ingredientes: 'Café soluble;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:15, nombre: 'CAFÉ INSTANTÁNEO CON LECHE', descripcion: 'Carga moderada de café soluble combinado con leche descremada.', ingredientes: 'Café soluble;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:16, nombre: 'CAPUCHINO CARAMELO', descripcion: 'Capuchino con sabor a caramelo; carga moderada y dulzor marcado.', ingredientes: 'Café;Leche descremada;Sabor caramelo', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:17, nombre: 'CAPUCHINO VAINILLA', descripcion: 'Capuchino con sabor a vainilla; aroma y textura cremosa.', ingredientes: 'Café;Leche descremada;Vainilla', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:18, nombre: 'CAPUCHINO VAINILLA CON LECHE', descripcion: 'Capuchino vainilla mezclado con leche descremada para mayor cremosidad.', ingredientes: 'Café;Leche descremada;Vainilla', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:19, nombre: 'LECHE', descripcion: 'Carga de leche descremada; opción simple y natural.', ingredientes: 'Leche descremada', categoria: 'Leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:20, nombre: 'LECHE MACCIATO', descripcion: 'Carga de leche descremada con un toque de café en grano recién molido.', ingredientes: 'Leche descremada;Café en grano', categoria: 'Leche', volumen: '200 ml', alergenos: 'Leche' }
+        ];
+
+        const $lista = document.getElementById('listaRecetas');
+        const $buscar = document.getElementById('buscar');
+        const $filtro = document.getElementById('filtroCategoria');
+
+        const categorias = Array.from(new Set(RECETAS.map(r => r.categoria)));
+        categorias.forEach(cat => {
+          const opt = document.createElement('option');
+          opt.value = cat;
+          opt.textContent = cat;
+          $filtro.appendChild(opt);
+        });
+
+        function crearTarjeta(receta) {
+          const article = document.createElement('article');
+          article.className = 'receta-card';
+          article.tabIndex = 0;
+          article.setAttribute('role', 'article');
+          article.setAttribute('aria-labelledby', `titulo-${receta.id}`);
+
+          article.innerHTML = `
+            <div class="receta-card__media" aria-hidden="true">
+              <svg class="receta-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 3h12v2H6z" fill="currentColor" opacity="0.2"></path>
+                <path d="M8 5h8v10a4 4 0 1 1-8 0V5z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div class="receta-card__body">
+              <h3 id="titulo-${receta.id}" class="receta-card__titulo">${receta.nombre}</h3>
+              <p class="receta-card__descripcion">${receta.descripcion}</p>
+              <p class="receta-card__ingredientes"><strong>Ingredientes:</strong> ${receta.ingredientes}</p>
+              <p class="receta-card__volumen">Volumen: <strong>${receta.volumen}</strong></p>
+
+              <div class="receta-card__actions">
+                <button class="btn-toggle" aria-expanded="false" aria-controls="panel-${receta.id}" data-id="${receta.id}">Ver Info nutricional</button>
+              </div>
+
+              <div id="panel-${receta.id}" class="receta-card__panel" role="region" aria-hidden="true">
+                <p><strong>Alérgenos:</strong> ${receta.alergenos}</p>
+                <p class="muted">Más información nutricional disponible bajo solicitud.</p>
+              </div>
+            </div>
+          `;
+
+          article.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              const btn = article.querySelector('.btn-toggle');
+              if (btn) btn.click();
+              e.preventDefault();
+            }
+          });
+
+          return article;
+        }
+
+        function renderizar(lista) {
+          $lista.innerHTML = '';
+          if (!lista.length) {
+            $lista.innerHTML = '<p class="muted">No se encontraron recetas que coincidan.</p>';
+            return;
+          }
+          const fragment = document.createDocumentFragment();
+          lista.forEach(r => fragment.appendChild(crearTarjeta(r)));
+          $lista.appendChild(fragment);
+        }
+
+        function filtrar() {
+          const q = $buscar.value.trim().toLowerCase();
+          const cat = $filtro.value;
+          const resultado = RECETAS.filter(r => {
+            const matchNombre = r.nombre.toLowerCase().includes(q);
+            const matchCat = (cat === 'all') ? true : r.categoria === cat;
+            return matchNombre && matchCat;
+          });
+          renderizar(resultado);
+        }
+
+        document.body.addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-toggle');
+          if (!btn) return;
+          const id = btn.dataset.id;
+          const panel = document.getElementById(`panel-${id}`);
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            cerrarPanel(btn, panel);
+          } else {
+            abrirPanel(btn, panel);
+          }
+        });
+
+        function abrirPanel(btn, panel) {
+          btn.setAttribute('aria-expanded', 'true');
+          panel.setAttribute('aria-hidden', 'false');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          panel.setAttribute('tabindex', '-1');
+          panel.focus();
+          document.addEventListener('keydown', handleEsc);
+        }
+
+        function cerrarPanel(btn, panel) {
+          btn.setAttribute('aria-expanded', 'false');
+          panel.setAttribute('aria-hidden', 'true');
+          panel.style.maxHeight = null;
+          btn.focus();
+          document.removeEventListener('keydown', handleEsc);
+        }
+
+        function handleEsc(e) {
+          if (e.key === 'Escape' || e.key === 'Esc') {
+            const openBtn = document.querySelector('.btn-toggle[aria-expanded="true"]');
+            if (openBtn) {
+              const id = openBtn.dataset.id;
+              const panel = document.getElementById(`panel-${id}`);
+              cerrarPanel(openBtn, panel);
+            }
+          }
+        }
+
+        $buscar.addEventListener('input', filtrar);
+        $filtro.addEventListener('change', filtrar);
+
+        renderizar(RECETAS);
+      })();
+      </script>
+
+  </body>
+
+  </html>
