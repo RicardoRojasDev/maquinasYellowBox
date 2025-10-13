@@ -4049,6 +4049,7 @@ input[type="button"].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  border: #000 solid 10px;
 }
 
 .navbar .container,
@@ -4138,6 +4139,7 @@ input[type="button"].btn-block {
   .navbar-expand-sm {
     flex-flow: row nowrap;
     justify-content: flex-start;
+    border-bottom: #000 solid 1px;
   }
   .navbar-expand-sm .navbar-nav {
     flex-direction: row;

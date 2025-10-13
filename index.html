@@ -24,31 +24,26 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 
 <body>
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid bg-dark mb-30">
+    <div class="container-fluid ">
         <div class="row px-xl-5">
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+            <div class="col-lg-9 bg-primary">
+                <nav class="navbar navbar-expand-lg  py-3 py-lg-0 px-0">
+                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
                     <a href="" class="text-decoration-none d-block d-lg-none">
                             <img src="img/logo.png" alt="Yellow Box" class="img-fluid site-logo">
                     </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                            <a href="politicasEmpresa.html" class="nav-item nav-link">Políticas de Empresa</a>
-                            <a href="intrucciones.html" class="nav-item nav-link">Instrucciones</a>
-                            <a href="recetas.html" class="nav-item nav-link">Recetas</a>
-
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Formularios <i class="fa fa-angle-down mt-1"></i></a>
+                    <di
+                    v class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Formularios </a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                     <a href="cart.html" class="dropdown-item">Sugerencias</a>
                                     <a href="checkout.html" class="dropdown-item">Reclamos</a>
@@ -56,6 +51,18 @@
                                     <a href="felicitaciones.html" class="dropdown-item">Felicitaciones</a>
                                 </div>
                             </div>
+                    
+                    <!-- <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+
+                            <a href="politicasEmpresa.html" class="nav-item nav-link">Políticas de Empresa</a>
+                            <a href="intrucciones.html" class="nav-item nav-link">Instrucciones</a>
+                            <a href="recetas.html" class="nav-item nav-link">Recetas</a>
+
+                            
                             <a href="contact.html" class="nav-item nav-link">Contactanos</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
@@ -72,83 +79,69 @@
                 </nav>
             </div>
         </div>
-    </div>
     <!-- Navbar End -->
 
+    <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide"><img src="img/Slide1.1.png" alt=""></div>
+    <div class="swiper-slide"><img src="img/Slide 2.png" alt=""></div>
+    <div class="swiper-slide"><img src="img/slide5.png" alt=""></div>
+    <div class="swiper-slide"><img src="img/Slide4.png" alt=""></div>
+    <div class="swiper-slide"><img src="img/Slide5.png" alt=""></div>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+<hr>
     <!-- Carousel Start -->
-    <div class="container-fluid mb-3">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#header-carousel" data-slide-to="1"></li>
-                        <li data-target="#header-carousel" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/Cafesnack.png" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Maquinas Vending Cafes , Snacks y Aguas</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Cotiza Ya !</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Todo El Diseño Y Tecnologia </h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Ver Mas !</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/operatouch2.webp" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Maquinas Vending Cafes , Snacks y Aguas</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 offers-col">
-                <div class="product-offer mb-30" style="height: 200px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-sm-6 col-lg-6 mb-4">
+                <div class="product-offer" style="height: 150px;">
                     <img class="img-fluid" src="img/carousel-3.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Sugerencias</h6>
-                        <h3 class="text-white mb-3">Dejanos tu opinion</h3>
+                    <div class="offer-text text-center">
+                        <p class="text-white mt-1">Dejanos tu opinion </p>
+                        <h5 class="text-white text-uppercase mb-3 ">Sugerencias</h5>
                         <a href="" class="btn btn-primary">Te Esperamos !</a>
                     </div>
                 </div>
-                <div class="product-offer mb-30" style="height: 200px;">
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6 mb-4">
+                <div class="product-offer" style="height: 150px;">
                     <img class="img-fluid" src="img/offer-2.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Contrataciones</h6>
-                        <h3 class="text-white mb-3">Maquinas Snacks , Cafes O Mixtas !</h3>
+                    <div class="offer-text text-center">
+                        <p class="text-white mt-1">Snacks , Cafes O Mixtas !</p>
+                        <h5 class="text-white text-uppercase mb-3">Contrata</h5>
                         <a href="" class="btn btn-primary">Comprar</a>
                     </div>
-                </div> fc
-                <div class="product-offer mb-30" style="height: 200px;">
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6 mb-4">
+                <div class="product-offer" style="height: 150px;">
                     <img class="img-fluid" src="img/offer-2.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Dejanos tu opinion</h6>
-                        <h3 class="text-white mb-3">Reclamos</h3>
+                    <div class="offer-text text-center">
+                        <p class="text-white  mt-1">Dejanos tu opinion</p>
+                        <h5 class="text-white text-uppercase mb-3">Reclamos</h5>
                         <a href="" class="btn btn-primary">Ir A Reclamos</a>
                     </div>
                 </div>
-                <div class="product-offer mb-30" style="height: 200px;">
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6 mb-4">
+                <div class="product-offer text-center" style="height: 150px;">
                     <img class="img-fluid" src="img/offer-2.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Contrataciones</h6>
-                        <h3 class="text-white mb-3">Maquinas Snacks , Cafes O Mixtas !</h3>
+                    <div class="offer-text text-center">
+                        <p class="text-white mt-1">Tu Opinion Nos Importa</p>
+                        <h5 class="text-white text-uppercase mb-3">Felicitaciones</h5>
                         <a href="" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
@@ -263,7 +256,7 @@
         </div>
         <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
             <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-secondary">&copy; 2025 Yellow Box. Todos los derechos reservados. <br>Diseñado por Yellow Box Dev.</p>
+                <p class="mb-md-0 text-center text-md-left text-secondary">&copy; 2025 Yellow Box. Todos los derechos reservados. <br>Diseñado por Küpan.</p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
                 <img class="img-fluid" src="img/payments.png" alt="Métodos de pago aceptados">
@@ -289,6 +282,34 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    
+    <script>
+    const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+  effect: 'fade',
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+
+  // If we need pagination
+ 
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});</script>
 </body>
 
 </html>
