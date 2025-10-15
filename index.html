@@ -24,6 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/formularios.css" rel="stylesheet">
     <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
@@ -81,23 +82,23 @@
     <!-- Slides -->
     <div class="swiper-slide">
         <img src="img/Slide1.1.png" class="img-mobile" alt="">
-        <img src="img/slidedesktop1.svg" class="img-desktop" alt="Desktop">
-    </div>
-    <div class="swiper-slide">
-        <img src="img/Slide 2.png" class="img-mobile" alt="">
         <img src="img/slidedesktop2.svg" class="img-desktop" alt="Desktop">
     </div>
     <div class="swiper-slide">
+        <img src="img/Slide 2.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop1.svg" class="img-desktop" alt="Desktop">
+    </div>
+    <div class="swiper-slide">
         <img src="img/slide5.png" class="img-mobile" alt="">
-        <img src="img/slidedesktop5.svg" class="img-desktop" alt="Desktop">
+        <img src="img/slidedesktop3.svg" class="img-desktop" alt="Desktop">
     </div>
-    <div class="swiper-slide">
+    <div class="swiper-slide d-lg-none">
         <img src="img/Slide4.png" class="img-mobile" alt="">
-        <img src="img/slidedesktop4.svg" class="img-desktop" alt="Desktop">
+        <img src="" class="img-desktop" alt="Desktop">
     </div>
-    <div class="swiper-slide">
+    <div class="swiper-slide d-lg-none">
         <img src="img/slide7.png" class="img-mobile" alt="">
-        <img src="img/slidedesktop7.svg" class="img-desktop" alt="Desktop">
+        <img src="" class="img-desktop" alt="Desktop">
     </div>
   </div>
   <!-- If we need pagination -->
@@ -110,7 +111,6 @@
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
 </div>
-<hr>
 <!-- Modal general -->
 <div id="modalFormulario" class="modal" hidden>
   <div class="modal__contenido">
@@ -134,44 +134,44 @@
 </div>
     <!-- Carousel Start -->
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-sm-6 col-lg-6 mb-4">
+        <div class="row p-3">
+            <div class="col-6 col-lg-3 mb-4">
                 <div class="product-offer">
                     <img class="img-fluid" src="img/carousel-3.jpg" alt="">
-                    <div class="accion offer-text text-center" data-tipo="sugerencia">
-                        <p class="text-white mt-1">Reclamos , Sugerencias y Felicitaciones </p>
-                        <h5 class="text-white text-uppercase mb-3 ">Sugerencias</h5>
-                        <a href="" data-tipo="sugerencia" class="btn-primary">Te Esperamos !</a>
+                    <div class="offer-text text-center">
+                        <p class="text-white pt-xl-4">Reclamos, Sugerencias y Felicitaciones</p>
+                        <h5 class="text-white text-uppercase mb-xl-1">Sugerencias</h5>
+                        <a href="" class="rounded btn btn-primary">Ir Al Formulario</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6 ">
+            <div class="col-6 col-sm-6 col-lg-3 ">
                 <div class="product-offer">
-                    <img class="" src="img/offer-2.jpg" alt="">
+                    <img class="" src="img/twist2.webp" alt="">
                     <div class="offer-text text-center">
-                        <p class="text-white mt-1">Snacks , Cafes O Mixtas !</p>
+                        <p class="text-white mt-1">Maquinas Snacks , Cafes O Mixtas !</p>
                         <h5 class="text-white text-uppercase mb-3">Contrata En Linea</h5>
-                        <a href="" class="btn btn-primary">Contratar</a>
+                        <a href="" class="rounded btn btn-primary">Contratar</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6">
+            <div class="col-6 col-lg-3">
                 <div class="product-offer">
-                    <img class="img-fluid" style="height: 150px;" src="img/offer-2.jpg" alt="">
+                    <img class="img-fluid" style="height: 150px;" src="img/carousel-3.jpg" alt="">
                     <div class="offer-text text-center">
-                        <p class="text-white  mt-1">Devoluciones Y Compras</p>
-                        <h5 class="text-white text-uppercase mb-3">Politicas Empresa</h5>
-                        <a href="" class="btn btn-primary">Ver</a>
+                        <p class="text-white">Devoluciones Y Compras</p>
+                        <h5 class="text-white text-uppercase">Politicas Empresa</h5>
+                        <a href="" class="rounded btn btn-primary">Ver</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6">
-                <div class="product-offer text-center">
-                    <img class="img-fluid" style="height: 150px;" src="img/offer-2.jpg" alt="">
-                    <div class="offer-text text-center">
-                        <p class="text-white mt-1">Informate Facil</p>
-                        <h5 class="text-white text-uppercase mb-3">Recetas</h5>
-                        <a href="" class="btn btn-primary">Ver Mas</a>
+            <div class="col-6 col-lg-3">
+                <div class="col product-offer text-center">
+                    <img class="img-fluid" style="height: 150px;" src="img/Vendingcafe.webp" alt="">
+                    <div class=" offer-text text-center">
+                        <p class=" text-white mt-1">Informate Facil</p>
+                        <h5 class=" text-white text-uppercase mb-3">Recetas</h5>
+                        <a href="" class="rounded btn btn-primary">Ver Mas</a>
                     </div>
                 </div>
             </div>
@@ -321,7 +321,8 @@
   effect: 'fade',
   autoplay: {
     delay: 3000,
-    disableOnInteraction: false,
+    disableOnInteraction: true,
+
   },
 
 
