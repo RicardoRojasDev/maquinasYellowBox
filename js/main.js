@@ -102,12 +102,6 @@
     
 })(jQuery);
 
-const botones = document.querySelectorAll('.accion');
-const modal = document.getElementById('modalFormulario');
-const cerrar = document.querySelector('.modal__cerrar');
-const titulo = document.getElementById('modalTitulo');
-const camposDinamicos = document.getElementById('camposDinamicos');
-const formulario = document.getElementById('formularioGeneral');
 
 // Estructura de campos por tipo
 const formularios = {
@@ -199,4 +193,18 @@ function crearCampo(campo) {
 // Cerrar modal
 cerrar.addEventListener('click', () => {
   modal.hidden = true;
+});
+
+const asuntoSelect = document.getElementById('asunto');
+const modalReclamo = document.getElementById('modal-reclamo');
+const cerrarModal = document.querySelector('.modal__cerrar');
+
+asuntoSelect.addEventListener('change', () => {
+  if (asuntoSelect.value === 'reclamo') {
+    modalReclamo.hidden = false;
+  }
+});
+
+cerrarModal.addEventListener('click', () => {
+  modalReclamo.hidden = true;
 });

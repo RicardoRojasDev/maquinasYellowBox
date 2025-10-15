@@ -76,9 +76,321 @@
     <div class="container-fluid">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary">Contáctanos</span></h2>
         <div class="row px-xl-5">
-            <div class="col-lg-7 mb-5">
-                <div class="contact-form bg-light p-30">
+            <div class="col-lg-7 ">
+                <div class="contact-form bg-light form-control-sm p-3">
                     <div id="success"></div>
+
+<form id="contactForm" name="sentMessage" novalidate>
+                            <!-- Sección de información básica -->
+                            <div class="row ">
+                                <div class="col-6 mb-3">
+                                    <label for="name" class="form-label required-field">Nombre</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">Por favor ingresa tu nombre</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label required-field">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">Por favor ingresa un correo electrónico válido</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label required-field">Asunto</label>
+                                <select class="form-select" id="asunto" name="asunto" required>
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="reclamo">Reclamo</option>
+                                    <option value="sugerencia">Sugerencia</option>
+                                    <option value="felicitacion">Felicitación</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona un asunto</div>
+                            </div>
+
+                            <!-- Sección dinámica para reclamos -->
+                            <div id="reclamo-section" class="dynamic-section d-lg-none">
+                                <h3 class="form-section-title">Detalles del Reclamo</h3>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="apellido" class="form-label required-field">Apellido</label>
+                                        <input type="text" class="form-control" id="apellido" name="apellido">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="rut" class="form-label required-field">RUT</label>
+                                        <input type="text" class="form-control" id="rut" name="rut" placeholder="12.345.678-9">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="telefono" class="form-label required-field">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label required-field">Medio de pago</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="billete" name="medio-pago" value="billete">
+                                                <label class="form-check-label" for="billete">Billete</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="moneda" name="medio-pago" value="moneda">
+                                                <label class="form-check-label" for="moneda">Moneda</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="tarjeta" name="medio-pago" value="tarjeta">
+                                                <label class="form-check-label" for="tarjeta">Tarjeta</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tarjeta-details" class="sub-section" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="digitos-tarjeta" class="form-label">Últimos 4 dígitos de la tarjeta</label>
+                                            <input type="text" class="form-control" id="digitos-tarjeta" name="digitos-tarjeta" maxlength="4">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Tipo de tarjeta</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="debito" name="tipo-tarjeta" value="debito">
+                                                    <label class="form-check-label" for="debito">Débito</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="credito" name="tipo-tarjeta" value="credito">
+                                                    <label class="form-check-label" for="credito">Crédito</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="hora-compra" class="form-label">Hora de la compra</label>
+                                        <input type="time" class="form-control" id="hora-compra" name="hora-compra">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="fecha-compra" class="form-label">Fecha de la compra</label>
+                                        <input type="date" class="form-control" id="fecha-compra" name="fecha-compra">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ciudad" class="form-label">Ciudad</label>
+                                        <select class="form-select" id="ciudad" name="ciudad">
+                                            <option value="">Selecciona una ciudad</option>
+                                            <option value="los-angeles">Los Ángeles</option>
+                                            <option value="angol">Angol</option>
+                                            <option value="santa-barbara">Santa Bárbara</option>
+                                            <option value="huepil">Huepil</option>
+                                            <option value="mulchen">Mulchén</option>
+                                            <option value="nacimiento">Nacimiento</option>
+                                            <option value="laja">Laja</option>
+                                            <option value="concepcion">Concepción</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="recinto" class="form-label">Recinto</label>
+                                        <input type="text" class="form-control" id="recinto" name="recinto">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="numero-maquina" class="form-label">Número de máquina</label>
+                                    <input type="text" class="form-control" id="numero-maquina" name="numero-maquina">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label required-field">Tipo de máquina</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="snack" name="tipo-maquina" value="snack">
+                                            <label class="form-check-label" for="snack">Snack</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="cafe" name="tipo-maquina" value="cafe">
+                                            <label class="form-check-label" for="cafe">Café</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Problemas específicos para máquinas snack -->
+                                <div id="snack-problems" class="sub-section" style="display: none;">
+                                    <label class="form-label required-field">Problema específico</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-moneda-atrapada" name="snack-problema" value="moneda-atrapada">
+                                                <label class="form-check-label" for="snack-moneda-atrapada">Ingresé monedas y estas quedaron atrapadas</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-dinero-pantalla" name="snack-problema" value="dinero-pantalla">
+                                                <label class="form-check-label" for="snack-dinero-pantalla">Ingresé dinero y presioné la pantalla touch</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-billete-rojo" name="snack-problema" value="billete-rojo">
+                                                <label class="form-check-label" for="snack-billete-rojo">Ingresé billete y el lector quedó de color rojo o se apagó</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-billete-atrapado" name="snack-problema" value="billete-atrapado">
+                                                <label class="form-check-label" for="snack-billete-atrapado">Ingresé billete y este quedó atrapado</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-producto-colgado" name="snack-problema" value="producto-colgado">
+                                                <label class="form-check-label" for="snack-producto-colgado">Producto no cayó correctamente y quedó colgando en máquina</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-espiral" name="snack-problema" value="espiral">
+                                                <label class="form-check-label" for="snack-espiral">Espiral no disponible</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-producto-mal-estado" name="snack-problema" value="producto-mal-estado">
+                                                <label class="form-check-label" for="snack-producto-mal-estado">Producto en mal estado</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="snack-otro" name="snack-problema" value="otro">
+                                                <label class="form-check-label" for="snack-otro">Otro</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Problemas específicos para máquinas de café -->
+                                <div id="cafe-problems" class="sub-section" style="display: none;">
+                                    <label class="form-label required-field">Problema específico</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-moneda-atrapada" name="cafe-problema" value="moneda-atrapada">
+                                                <label class="form-check-label" for="cafe-moneda-atrapada">Ingresé monedas y estas quedaron atrapadas</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-dinero-pantalla" name="cafe-problema" value="dinero-pantalla">
+                                                <label class="form-check-label" for="cafe-dinero-pantalla">Ingresé dinero y presioné la pantalla touch</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-billete-rojo" name="cafe-problema" value="billete-rojo">
+                                                <label class="form-check-label" for="cafe-billete-rojo">Ingresé billete y el lector quedó de color rojo</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-billete-atrapado" name="cafe-problema" value="billete-atrapado">
+                                                <label class="form-check-label" for="cafe-billete-atrapado">Ingresé billete y este quedó atrapado</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-cafe-no-corresponde" name="cafe-problema" value="cafe-no-corresponde">
+                                                <label class="form-check-label" for="cafe-cafe-no-corresponde">Café no salió como corresponde</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-vaso-vacio" name="cafe-problema" value="vaso-vacio">
+                                                <label class="form-check-label" for="cafe-vaso-vacio">Salió vaso vacío</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-no-cayo-vaso" name="cafe-problema" value="no-cayo-vaso">
+                                                <label class="form-check-label" for="cafe-no-cayo-vaso">No cayó el vaso</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="cafe-otro" name="cafe-problema" value="otro">
+                                                <label class="form-check-label" for="cafe-otro">Otro</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label required-field">Explique brevemente el relato de lo ocurrido</label>
+                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="4"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imagen" class="form-label">Adjuntar imagen</label>
+                                    <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+                                </div>
+
+                                <!-- Sección de datos bancarios para devolución -->
+                                <div class="sub-section">
+                                    <h4 class="form-section-title">Datos para devolución (en caso necesario)</h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="nombre-banco" class="form-label">Nombre completo</label>
+                                            <input type="text" class="form-control" id="nombre-banco" name="nombre-banco">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="rut-banco" class="form-label">RUT</label>
+                                            <input type="text" class="form-control" id="rut-banco" name="rut-banco" placeholder="12.345.678-9">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="banco" class="form-label">Banco</label>
+                                            <input type="text" class="form-control" id="banco" name="banco">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="numero-cuenta" class="form-label">Número de cuenta</label>
+                                            <input type="text" class="form-control" id="numero-cuenta" name="numero-cuenta">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Tipo de cuenta</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="cta-vista" name="tipo-cuenta" value="cta-vista">
+                                                <label class="form-check-label" for="cta-vista">Cta Vista</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="cta-corriente" name="tipo-cuenta" value="cta-corriente">
+                                                <label class="form-check-label" for="cta-corriente">Cta Corriente</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="cta-rut" name="tipo-cuenta" value="cta-rut">
+                                                <label class="form-check-label" for="cta-rut">Cta Rut</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="chequera-electronica" name="tipo-cuenta" value="chequera-electronica">
+                                                <label class="form-check-label" for="chequera-electronica">Chequera Electrónica</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="correo-devolucion" class="form-label">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="correo-devolucion" name="correo-devolucion">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Campo de mensaje general -->
+                            <div class="mb-4">
+                                <label for="message" class="form-label required-field">Mensaje</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                <div class="invalid-feedback">Por favor ingresa tu mensaje</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                            </div>
+                        </form>
+
+                        <div id="success-message" class="alert alert-success mt-4" style="display: none;">
+                            <h4 class="alert-heading">¡Gracias por contactarnos!</h4>
+                            <p class="mb-0">Hemos recibido tu mensaje. Uno de nuestros ejecutivos analizará tu caso y entregará una respuesta dentro de las 72 horas hábiles siguientes.</p>
+                            <hr>
+                            <p class="mb-0">Estamos un paso más cerca de ti.</p>
+                        </div>
+
+
+
+
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
                             <input type="text" class="form-control" id="name" placeholder="Tu nombre"
@@ -93,7 +405,10 @@
                         <div class="control-group">
                             <select class="form-control" required="required" name="Asunto" id="asunto">
                                 <option value="" disabled selected>Selecciona un asunto</option>
-                                <option value="Reclamo">Reclamo</option>
+                        <div class="control-group">
+                            <select class="form-control" id="asunto" required="required" data-validation-required-message="Por favor selecciona un asunto">
+                                <option value="">Selecciona un asunto</option>
+                                <option value="reclamo">Reclamo</option>
                                 <option value="Sugerencia">Sugerencia</option>
                                 <option value="Felicitación">Felicitación</option>
                             </select>
@@ -109,6 +424,10 @@
                             <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Enviar Mensaje</button>
                         </div>
                     </form>
+
+                    
+
+                    
                 </div>
             </div>
             <div class="col-lg-5 mb-5">
@@ -198,8 +517,57 @@
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
 
+    <!-- Modal de Reclamo -->
+
+
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        // Control de visibilidad para la sección de reclamos en la misma página
+        (function() {
+            const asuntoSelect = document.getElementById('asunto');
+            const reclamoSection = document.getElementById('reclamo-section');
+            // Si existen elementos, agregamos listener
+            if (!asuntoSelect || !reclamoSection) return;
+
+            function updateReclamoVisibility() {
+                if (asuntoSelect.value === 'reclamo') {
+                    // mostrar la sección para pantallas grandes y pequeñas
+                    reclamoSection.classList.remove('d-lg-none');
+                    // opcional: forzar display block en pantallas pequeñas
+                    reclamoSection.classList.add('d-block');
+                    // hacer scroll suave hasta la sección (mejora UX)
+                    setTimeout(() => reclamoSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+                } else {
+                    // ocultar la sección para dispositivos grandes (restaurar estado)
+                    reclamoSection.classList.add('d-lg-none');
+                    reclamoSection.classList.remove('d-block');
+                }
+            }
+
+            // inicializar según el valor actual (útil si el formulario se mantiene entre cargas)
+            updateReclamoVisibility();
+
+            asuntoSelect.addEventListener('change', updateReclamoVisibility);
+
+            // Si acaso hay un modal añadido en el DOM, lo dejamos funcionando pero no lo activamos aquí
+            const modalReclamo = document.getElementById('modalReclamo');
+            if (modalReclamo) {
+                const cerrarModal = document.querySelector('.cerrar-modal');
+                if (cerrarModal) {
+                    cerrarModal.addEventListener('click', function() {
+                        modalReclamo.style.display = 'none';
+                    });
+                }
+                // cerrar al hacer clic fuera
+                window.addEventListener('click', function(event) {
+                    if (event.target === modalReclamo) {
+                        modalReclamo.style.display = 'none';
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
