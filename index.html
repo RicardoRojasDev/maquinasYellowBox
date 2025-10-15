@@ -34,46 +34,39 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid ">
-        <div class="row px-xl-5">
-            <div class="col-lg-9 bg-primary">
-                <nav class="navbar navbar-expand-lg  py-3 py-lg-0 px-0">
-                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                            <img src="img/logo.png" alt="Yellow Box" class="img-fluid site-logo">
+        <div class="row">
+            <div class="col-lg-12 bg-primary">
+                <nav class="navbar  navbar-expand-lg">
+                    <a href="index.html" class="nav-item nav-link active m-xl-5">Inicio</a>
+                    <a href="" class="text-decoration-none d-block m-xl-5">
+                            <img src="img/logo.png" alt="Yellow Box" class=" site-logo mr-xl-5">
                     </a>
-                    <di
-                    v class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Formularios </a>
+                    <div class="nav-item dropdown ">
+                                <a href="#" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas ! </a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Sugerencias</a>
-                                    <a href="checkout.html" class="dropdown-item">Reclamos</a>
+                                    <a href="sugerencias.html" class="dropdown-item">Sugerencias</a>
+                                    <a href="reclamos.html" class="dropdown-item">Reclamos</a>
                                     <a href="faq.html" class="dropdown-item">Preguntas Frecuentes</a>
-                                    <a href="felicitaciones.html" class="dropdown-item">Felicitaciones</a>
+                                    <a href="instrucciones.html" class="dropdown-item">Intrucciones</a>
+                                <div class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="">Formularios</a>
+                                    <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                        <a href="contratacion.html" class="dropdown-item">Contratación</a>
+                                        <a href="felicitacion.html" class="dropdown-item">Felicitación</a>
+                                    </div>
                                 </div>
-                            </div>
+                                </div>
+                    </div>
                     
-                    <!-- <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button> -->
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
 
-                            <a href="politicasEmpresa.html" class="nav-item nav-link">Políticas de Empresa</a>
-                            <a href="intrucciones.html" class="nav-item nav-link">Instrucciones</a>
-                            <a href="recetas.html" class="nav-item nav-link">Recetas</a>
-
-                            
-                            <a href="contact.html" class="nav-item nav-link">Contactanos</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                         <a href="index.html" class="text-decoration-none">
+                       </a>
+                        <div class="navbar-nav">
+                      
+                            <a href="intrucciones.html" class="nav-item nav-link mx-xl-4">Instrucciones</a>
+                            <a href="recetas.html" class="nav-item nav-link mx-xl-4">Recetas</a>
+                            <a href="contact.html" class="nav-item nav-link mx-xl-4">Contactanos</a>
                         </div>
                     </div>
                 </nav>
@@ -86,11 +79,26 @@
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <div class="swiper-slide"><img src="img/Slide1.1.png" alt=""></div>
-    <div class="swiper-slide"><img src="img/Slide 2.png" alt=""></div>
-    <div class="swiper-slide"><img src="img/slide5.png" alt=""></div>
-    <div class="swiper-slide"><img src="img/Slide4.png" alt=""></div>
-    <div class="swiper-slide"><img src="img/Slide5.png" alt=""></div>
+    <div class="swiper-slide">
+        <img src="img/Slide1.1.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop1.png" class="img-desktop" alt="Desktop">
+    </div>
+    <div class="swiper-slide">
+        <img src="img/Slide 2.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop2.png" class="img-desktop" alt="Desktop">
+    </div>
+    <div class="swiper-slide">
+        <img src="img/slide5.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop5.png" class="img-desktop" alt="Desktop">
+    </div>
+    <div class="swiper-slide">
+        <img src="img/Slide4.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop4.png" class="img-desktop" alt="Desktop">
+    </div>
+    <div class="swiper-slide">
+        <img src="img/slide7.png" class="img-mobile" alt="">
+        <img src="img/slidedesktop7.png" class="img-desktop" alt="Desktop">
+    </div>
   </div>
   <!-- If we need pagination -->
   <div class="swiper-pagination"></div>
@@ -103,46 +111,78 @@
   <div class="swiper-scrollbar"></div>
 </div>
 <hr>
+<!-- Sección de botones -->
+<section class="acciones-usuario">
+  <h2>¿Cómo podemos ayudarte?</h2>
+  <div class="botones-acciones">
+    <div class="accion" data-tipo="reclamo">Reclamo</div>
+    <div class="accion" data-tipo="sugerencia">Sugerencia</div>
+    <div class="accion" data-tipo="felicitacion">Felicitación</div>
+    <div class="accion" data-tipo="contratacion">Contratación</div>
+  </div>
+</section>
+
+<!-- Modal general -->
+<div id="modalFormulario" class="modal" hidden>
+  <div class="modal__contenido">
+    <button class="modal__cerrar" aria-label="Cerrar">×</button>
+    <h3 id="modalTitulo">Formulario</h3>
+    <form id="formularioGeneral">
+      <!-- Campos comunes -->
+      <div id="camposComunes">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required />
+        <label>Correo electrónico</label>
+        <input type="email" name="correo" required />
+      </div>
+
+      <!-- Campos dinámicos según tipo -->
+      <div id="camposDinamicos"></div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
     <!-- Carousel Start -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-6 col-sm-6 col-lg-6 mb-4">
-                <div class="product-offer" style="height: 150px;">
+                <div class="product-offer">
                     <img class="img-fluid" src="img/carousel-3.jpg" alt="">
                     <div class="offer-text text-center">
-                        <p class="text-white mt-1">Dejanos tu opinion </p>
+                        <p class="text-white mt-1">Reclamos , Sugerencias y Felicitaciones </p>
                         <h5 class="text-white text-uppercase mb-3 ">Sugerencias</h5>
                         <a href="" class="btn btn-primary">Te Esperamos !</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6 mb-4">
-                <div class="product-offer" style="height: 150px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
+            <div class="col-6 col-sm-6 col-lg-6 ">
+                <div class="product-offer">
+                    <img class="" src="img/offer-2.jpg" alt="">
                     <div class="offer-text text-center">
                         <p class="text-white mt-1">Snacks , Cafes O Mixtas !</p>
-                        <h5 class="text-white text-uppercase mb-3">Contrata</h5>
-                        <a href="" class="btn btn-primary">Comprar</a>
+                        <h5 class="text-white text-uppercase mb-3">Contrata En Linea</h5>
+                        <a href="" class="btn btn-primary">Contratar</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6 mb-4">
-                <div class="product-offer" style="height: 150px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
+            <div class="col-6 col-sm-6 col-lg-6">
+                <div class="product-offer">
+                    <img class="img-fluid" style="height: 150px;" src="img/offer-2.jpg" alt="">
                     <div class="offer-text text-center">
-                        <p class="text-white  mt-1">Dejanos tu opinion</p>
-                        <h5 class="text-white text-uppercase mb-3">Reclamos</h5>
-                        <a href="" class="btn btn-primary">Ir A Reclamos</a>
+                        <p class="text-white  mt-1">Devoluciones Y Compras</p>
+                        <h5 class="text-white text-uppercase mb-3">Politicas Empresa</h5>
+                        <a href="" class="btn btn-primary">Ver</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-6 mb-4">
-                <div class="product-offer text-center" style="height: 150px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
+            <div class="col-6 col-sm-6 col-lg-6">
+                <div class="product-offer text-center">
+                    <img class="img-fluid" style="height: 150px;" src="img/offer-2.jpg" alt="">
                     <div class="offer-text text-center">
-                        <p class="text-white mt-1">Tu Opinion Nos Importa</p>
-                        <h5 class="text-white text-uppercase mb-3">Felicitaciones</h5>
-                        <a href="" class="btn btn-primary">Comprar</a>
+                        <p class="text-white mt-1">Informate Facil</p>
+                        <h5 class="text-white text-uppercase mb-3">Recetas</h5>
+                        <a href="" class="btn btn-primary">Ver Mas</a>
                     </div>
                 </div>
             </div>

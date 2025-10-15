@@ -102,3 +102,101 @@
     
 })(jQuery);
 
+const botones = document.querySelectorAll('.accion');
+const modal = document.getElementById('modalFormulario');
+const cerrar = document.querySelector('.modal__cerrar');
+const titulo = document.getElementById('modalTitulo');
+const camposDinamicos = document.getElementById('camposDinamicos');
+const formulario = document.getElementById('formularioGeneral');
+
+// Estructura de campos por tipo
+const formularios = {
+  reclamo: [
+    { label: "Apellido", name: "apellido" },
+    { label: "RUT", name: "rut" },
+    { label: "Teléfono", name: "telefono" },
+    { label: "Medio de pago", name: "medio_pago", type: "select", options: ["Billete", "Moneda", "Tarjeta"] },
+    { label: "Últimos 4 dígitos de tarjeta", name: "digitos_tarjeta" },
+    { label: "Tipo de tarjeta", name: "tipo_tarjeta", type: "select", options: ["Débito", "Crédito"] },
+    { label: "Hora de compra", name: "hora", type: "time" },
+    { label: "Fecha de compra", name: "fecha", type: "date" },
+    { label: "Ciudad", name: "ciudad", type: "select", options: ["Los Ángeles", "Angol", "Santa Bárbara", "Huepil", "Mulchén", "Nacimiento", "Laja", "Concepción"] },
+    { label: "Recinto", name: "recinto" },
+    { label: "Número de máquina", name: "numero_maquina" },
+    { label: "Relato de lo ocurrido", name: "relato", type: "textarea" },
+    { label: "Adjuntar imagen", name: "imagen", type: "file" },
+    { label: "Datos para devolución", name: "devolucion", type: "group", fields: [
+      { label: "Nombre", name: "nombre_transferencia" },
+      { label: "RUT", name: "rut_transferencia" },
+      { label: "Banco", name: "banco" },
+      { label: "Número de cuenta", name: "cuenta" },
+      { label: "Tipo de cuenta", name: "tipo_cuenta", type: "select", options: ["Cta Vista", "Cta Corriente", "Cta Rut", "Chequera Electrónica"] },
+      { label: "Correo electrónico", name: "correo_transferencia" }
+    ]}
+  ],
+  sugerencia: [
+    { label: "Tu sugerencia", name: "sugerencia", type: "textarea" }
+  ],
+  felicitacion: [
+    { label: "¿A quién va dirigida?", name: "destinatario" },
+    { label: "Mensaje", name: "mensaje", type: "textarea" }
+  ],
+  contratacion: [
+    { label: "Empresa o contacto", name: "empresa" },
+    { label: "Propuesta", name: "propuesta", type: "textarea" }
+  ]
+};
+
+// Abrir modal y cargar campos
+botones.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tipo = btn.dataset.tipo;
+    titulo.textContent = `Formulario de ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`;
+    camposDinamicos.innerHTML = '';
+    const campos = formularios[tipo];
+    campos.forEach(campo => {
+      if (campo.type === "group") {
+        const groupTitle = document.createElement('h4');
+        groupTitle.textContent = campo.label;
+        camposDinamicos.appendChild(groupTitle);
+        campo.fields.forEach(sub => crearCampo(sub));
+      } else {
+        crearCampo(campo);
+      }
+    });
+    modal.hidden = false;
+  });
+});
+
+function crearCampo(campo) {
+  const label = document.createElement('label');
+  label.textContent = campo.label;
+  let input;
+  if (campo.type === "textarea") {
+    input = document.createElement('textarea');
+  } else if (campo.type === "select") {
+    input = document.createElement('select');
+    campo.options.forEach(opt => {
+      const option = document.createElement('option');
+      option.value = opt.toLowerCase();
+      option.textContent = opt;
+      input.appendChild(option);
+    });
+  } else if (campo.type === "file") {
+    input = document.createElement('input');
+    input.type = "file";
+    input.accept = "image/*";
+  } else {
+    input = document.createElement('input');
+    input.type = campo.type || "text";
+  }
+  input.name = campo.name;
+  input.required = true;
+  camposDinamicos.appendChild(label);
+  camposDinamicos.appendChild(input);
+}
+
+// Cerrar modal
+cerrar.addEventListener('click', () => {
+  modal.hidden = true;
+});
