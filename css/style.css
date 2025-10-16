@@ -8153,3 +8153,67 @@ a.text-dark:hover, a.text-dark:focus {
   margin: 0;
   text-align: center;
 }
+.contact-desktop {
+            display: block;
+        }
+        .contact-mobile {
+            display: none;
+        }
+        
+        /* Centrar el logo */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 991.98px) {
+            .contact-desktop {
+                display: none;
+            }
+            .contact-mobile {
+                display: block;
+            }
+            
+            /* Ajustes para móviles */
+            .navbar {
+                flex-wrap: nowrap;
+            }
+            
+            .logo-container {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .nav-left,
+            .nav-right {
+                flex: 1;
+            }
+            
+            .nav-right {
+                justify-content: flex-end;
+            }
+        }
+        .logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
