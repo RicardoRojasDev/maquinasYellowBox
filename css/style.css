@@ -8139,35 +8139,35 @@ a.text-dark:hover, a.text-dark:focus {
 .contact-desktop {
             display: block;
         }
-        .contact-mobile {
+.contact-mobile {
             display: none;
         }
         
         /* Centrar el logo */
-        .navbar {
+.navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: relative;
         }
         
-        .logo-container {
+.logo-container {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
         }
         
-        .nav-left {
+.nav-left {
             display: flex;
             align-items: center;
         }
         
-        .nav-right {
+.nav-right {
             display: flex;
             align-items: center;
         }
         
-        @media (max-width: 991.98px) {
+@media (max-width: 991.98px) {
             .contact-desktop {
                 display: none;
             }
@@ -8195,7 +8195,7 @@ a.text-dark:hover, a.text-dark:focus {
                 justify-content: flex-end;
             }
         }
-        .logo-container {
+.logo-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -8216,12 +8216,6 @@ a.text-dark:hover, a.text-dark:focus {
             position: relative;
         }
         
-        .logo-container {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
         .nav-left {
             display: flex;
             align-items: center;
@@ -8239,11 +8233,11 @@ a.text-dark:hover, a.text-dark:focus {
             padding: 20px;
             background-color: #f8f9fa;
             border-radius: 5px;
-            border-left: 4px solid #0d6efd;
-        }
+            border-top: 2px outset #FFD333;
+            border-right: 2px outset #FFD333;
+            border-bottom: 4px solid #FFD333;
+            border-left: 4px inset var(--dark);}
         .sub-section {
-            margin-top: 15px;
-            padding: 15px;
             background-color: white;
             border-radius: 5px;
             border: 1px solid #dee2e6;
@@ -8253,10 +8247,10 @@ a.text-dark:hover, a.text-dark:focus {
             color: #dc3545;
         }
         .form-section-title {
-            border-bottom: 2px solid #0d6efd;
+            border-bottom: 2px solid var(--dark);
             padding-bottom: 10px;
             margin-bottom: 20px;
-            color: #0d6efd;
+            color: var(--dark) ;
         }
         .checkbox-group, .radio-group {
             display: flex;
