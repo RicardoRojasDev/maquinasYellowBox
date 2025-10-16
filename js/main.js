@@ -103,43 +103,6 @@
 })(jQuery);
 
 
-// Estructura de campos por tipo
-const formularios = {
-  reclamo: [
-    { label: "Apellido", name: "apellido" },
-    { label: "RUT", name: "rut" },
-    { label: "Teléfono", name: "telefono" },
-    { label: "Medio de pago", name: "medio_pago", type: "select", options: ["Billete", "Moneda", "Tarjeta"] },
-    { label: "Últimos 4 dígitos de tarjeta", name: "digitos_tarjeta" },
-    { label: "Tipo de tarjeta", name: "tipo_tarjeta", type: "select", options: ["Débito", "Crédito"] },
-    { label: "Hora de compra", name: "hora", type: "time" },
-    { label: "Fecha de compra", name: "fecha", type: "date" },
-    { label: "Ciudad", name: "ciudad", type: "select", options: ["Los Ángeles", "Angol", "Santa Bárbara", "Huepil", "Mulchén", "Nacimiento", "Laja", "Concepción"] },
-    { label: "Recinto", name: "recinto" },
-    { label: "Número de máquina", name: "numero_maquina" },
-    { label: "Relato de lo ocurrido", name: "relato", type: "textarea" },
-    { label: "Adjuntar imagen", name: "imagen", type: "file" },
-    { label: "Datos para devolución", name: "devolucion", type: "group", fields: [
-      { label: "Nombre", name: "nombre_transferencia" },
-      { label: "RUT", name: "rut_transferencia" },
-      { label: "Banco", name: "banco" },
-      { label: "Número de cuenta", name: "cuenta" },
-      { label: "Tipo de cuenta", name: "tipo_cuenta", type: "select", options: ["Cta Vista", "Cta Corriente", "Cta Rut", "Chequera Electrónica"] },
-      { label: "Correo electrónico", name: "correo_transferencia" }
-    ]}
-  ],
-  sugerencia: [
-    { label: "Tu sugerencia", name: "sugerencia", type: "textarea" }
-  ],
-  felicitacion: [
-    { label: "¿A quién va dirigida?", name: "destinatario" },
-    { label: "Mensaje", name: "mensaje", type: "textarea" }
-  ],
-  contratacion: [
-    { label: "Empresa o contacto", name: "empresa" },
-    { label: "Propuesta", name: "propuesta", type: "textarea" }
-  ]
-};
 
 // Abrir modal y cargar campos
 botones.forEach(btn => {
