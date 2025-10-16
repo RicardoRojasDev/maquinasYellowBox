@@ -38,7 +38,6 @@
             top: 0;
         }
         .sub-section {
-            margin-top: 15px;
             padding: 15px;
             background-color: white;
             border-radius: 5px;
@@ -100,27 +99,27 @@
     <!-- Navbar End -->
 
     <!-- Contact Start -->
-    <div class="container px-3">
+    <div class="container p-3 px-lg-0">
         <h2 class="section-title text-uppercase"><span class="bg-secondary">Contáctanos</span></h2>
-        <div class="row px-xl-5">
-            <div class="col-lg-7 col-12">
+        <div class="row">
+            <div class="col-xl-7 ">
                 <div class="contact-form bg-light form-control-sm ">
                     <div id="success"></div>
 
                     <form id="contactForm" name="sentMessage" novalidate>
                             <!-- Sección de información básica -->
                             <div class="row ">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-xl-5 mb-3">
                                     <label for="name" class="form-label required-field">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                     <div class="invalid-feedback">Por favor ingresa tu nombre</div>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-xl-5 mb-3">
                                     <label for="email" class="form-label required-field">Correo electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                     <div class="invalid-feedback">Por favor ingresa un correo electrónico válido</div>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-xl-5 mb-3">
                                 <label for="asunto" class="form-label required-field">Asunto</label>
                                 <select class="form-select" id="asunto" name="asunto" required>
                                     <option value="">Selecciona un asunto</option>
@@ -129,13 +128,11 @@
                                     <option value="felicitacion">Felicitación</option>
                                 </select>
                                 <div class="invalid-feedback">Por favor selecciona un asunto</div>
-                            </div>
+                                </div>
                             </div>
 
-                            
-
-                            <!-- Sección dinámica para reclamos -->
-                            <div id="reclamo-section" class="dynamic-section d-lg-none">
+                        <!-- Sección dinámica para reclamos -->
+                            <div id="reclamo-section" class="dynamic-section ">
                                 <h3 class="form-section-title">Detalles del Reclamo</h3>
                                 
                                 <div class="row">
@@ -421,13 +418,13 @@
 
                 </div>
             </div>
-            <div class="col-lg-5 mb-5">
-                <div class="bg-light p-30 mb-30">
+            <div class="col-xl-5">
+                <div class="bg-light p-xl-4">
                     <iframe style="width: 100%; height: 250px;"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
                     frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
-                <div class="bg-light p-30 mb-3">
+                <div class="bg-light">
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Calle Falsa 123, Piso 4, Ciudad Ejemplo, País</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:soporte@yellowbox.example">soporte@yellowbox.example</a></p>
                     <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+34 123 456 789</p>
@@ -524,7 +521,7 @@
             function updateReclamoVisibility() {
                 if (asuntoSelect.value === 'reclamo') {
                     // mostrar la sección para pantallas grandes y pequeñas
-                    reclamoSection.classList.remove('d-lg-none');
+                    reclamoSection.classList.remove('d-none');
                     // opcional: forzar display block en pantallas pequeñas
                     reclamoSection.classList.add('d-block');
                     // hacer scroll suave hasta la sección (mejora UX)
