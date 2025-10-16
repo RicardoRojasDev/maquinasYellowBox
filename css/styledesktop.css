@@ -354,4 +354,7 @@
   .img-desktop { display: block; }
   .img-mobile { display: none; }
   .btn {width: 300px;}
+
+  .product-offer {
+  width: 310px;}
 }
