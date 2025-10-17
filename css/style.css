@@ -4606,9 +4606,11 @@ a.close.disabled {
 }
 
 .bg-primary {
+  background-color: #ffd333  !important;
+}
+.bg-primary2 {
   background-color: var(--secondary)  !important;
 }
-
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
