@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -196,12 +195,12 @@
                         <form id="contactForm" name="sentMessage" novalidate>
                             <!-- Sección de información básica -->
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-lg-6 pr-3 mb-3">
                                     <label for="name" class="form-label required-field">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                     <div class="invalid-feedback">Por favor ingresa tu nombre</div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-lg-6 pr-1">
                                     <label for="email" class="form-label required-field">Correo electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                     <div class="invalid-feedback">Por favor ingresa un correo electrónico válido</div>
@@ -225,8 +224,8 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="apellido" class="form-label required-field">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido">
+                                        <label for="nombre" class="form-label required-field">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="rut" class="form-label required-field">RUT</label>
@@ -258,6 +257,25 @@
                                     </div>
                                 </div>
 
+                                <!-- Sección de detalles del billete -->
+                                <div id="billete-details" class="sub-section" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <label class="form-label">Denominación del billete</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="billete-1000" name="tipo-billete" value="1000">
+                                                    <label class="form-check-label" for="billete-1000">$1.000</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="billete-2000" name="tipo-billete" value="2000">
+                                                    <label class="form-check-label" for="billete-2000">$2.000</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div id="tarjeta-details" class="sub-section" style="display: none;">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
@@ -269,6 +287,27 @@
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="debito" name="tipo-tarjeta" value="debito">
+                                                    <label class="form-check-label" for="debito">Débito</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="credito" name="tipo-tarjeta" value="credito">
+                                                    <label class="form-check-label" for="credito">Crédito</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div id="billete-details" class="sub-section" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="denominacionbillete" class="form-label">Denominacion Billete</label>
+                                            <input type="text" class="form-control" id="denominacionbillete" name="denominacionbillete" maxlength="4">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Tipo de billete</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="debito" name="tipo-billete" value="billete">
                                                     <label class="form-check-label" for="debito">Débito</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -445,7 +484,23 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="banco" class="form-label">Banco</label>
-                                            <input type="text" class="form-control" id="banco" name="banco">
+                                            <select class="form-control" id="banco-select" name="banco">
+                                                <option value="">Seleccione su banco</option>
+                                                <option value="banco-de-chile">Banco de Chile</option>
+                                                <option value="banco-estado">BancoEstado</option>
+                                                <option value="banco-santander">Banco Santander</option>
+                                                <option value="banco-bci">Banco BCI</option>
+                                                <option value="banco-scotiabank">Scotiabank</option>
+                                                <option value="banco-itau">Banco Itaú</option>
+                                                <option value="banco-security">Banco Security</option>
+                                                <option value="banco-falabella">Banco Falabella</option>
+                                                <option value="banco-ripley">Banco Ripley</option>
+                                                <option value="otro">Otro banco</option>
+                                            </select>
+                                            <!-- Campo de texto para "Otro banco" -->
+                                            <div id="otro-banco-container" class="mt-2" style="display: none;">
+                                                <input type="text" class="form-control" id="banco-otro" name="banco-otro" placeholder="Ingrese el nombre del banco">
+                                            </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="numero-cuenta" class="form-label">Número de cuenta</label>
@@ -504,13 +559,14 @@
                 </div>
             </div>
              <div class="col-xl-5 col-12">
-                <div class="bg-light p-xl-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="bg-light text-center">
+                <iframe class="img-mobile m-auto"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe class="img-desktop m-auto"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="bg-light">
+                <div class="bg-light p-2">
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del Bio Bio</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:soporte@yellowbox.example">soporte@yellowbox.cl</a></p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+34 123 456 789</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+569 92686884</p>
                 </div>
             </div>
         </div>
@@ -580,6 +636,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/form-handlers.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     
     <script>
