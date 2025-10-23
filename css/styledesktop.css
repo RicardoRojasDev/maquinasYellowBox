@@ -358,5 +358,76 @@
   .product-offer {
   width: 310px;}
 
-  
+      /* Estilos para mostrar/ocultar elementos según el dispositivo */
+        .contact-desktop {
+            display: block;
+        }
+        .contact-mobile {
+            display: none;
+        }
+        
+        /* Centrar el logo */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Estilos para el formulario de reclamos */
+        .dynamic-section {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #0d6efd;
+        }
+        .sub-section {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+        .form-section-title {
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #0d6efd;
+        }
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-item input, .radio-item input {
+            width: auto;
+            margin-right: 8px;
+        }
 }
