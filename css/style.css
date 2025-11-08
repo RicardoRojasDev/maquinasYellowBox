@@ -8381,6 +8381,9 @@ h6 {
   position: relative;
   width: 170px;
   height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+
 
 }
 
@@ -8438,7 +8441,8 @@ h6 {
   position: relative;
   background: rgba(61, 70, 77, 0.6);
   z-index: 1;
-  padding: px;
+  padding: 10px;
+  height: 180px;
 }
 
 /* Estilos para el formulario de reclamos */
