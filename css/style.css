@@ -421,64 +421,6 @@ h2,
   order: 12;
 }
 
-@media (max-width: 575.98px) {
-  .table-responsive-sm {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .table-responsive-sm > .table-bordered {
-    border: 0;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .table-responsive-md {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .table-responsive-md > .table-bordered {
-    border: 0;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .table-responsive-lg {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .table-responsive-lg > .table-bordered {
-    border: 0;
-  }
-}
-
-@media (max-width: 1199.98px) {
-  .table-responsive-xl {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .table-responsive-xl > .table-bordered {
-    border: 0;
-  }
-}
-
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.table-responsive > .table-bordered {
-  border: 0;
-}
 
 .form-control {
   display: block;
@@ -8459,9 +8401,10 @@ h6 {
 .product-offer {
   position: relative;
   width: 170px;
-  height: 190px;
+  height: 180px;
   overflow: hidden;
   border-radius: 20px;
+
 }
 
 .product-offer img {
@@ -8516,10 +8459,9 @@ h6 {
 }
 .product-offer .offer-text {
   position: relative;
-  height: 100%;
   background: rgba(61, 70, 77, 0.6);
   z-index: 1;
-  padding: 10px;
+  padding: 7px;
 }
 
 .contact-desktop {
@@ -8527,20 +8469,6 @@ h6 {
 }
 .contact-mobile {
   display: none;
-}
-
-/* Centrar el logo */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.logo-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .nav-left {
@@ -8566,40 +8494,15 @@ h6 {
     flex-wrap: nowrap;
   }
 
-  .logo-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .nav-left,
-  .nav-right {
-    flex: 1;
-  }
-
   .nav-right {
     justify-content: flex-end;
   }
 }
-.logo-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .contact-desktop {
   display: block;
 }
 .contact-mobile {
   display: none;
-}
-
-/* Centrar el logo */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
 }
 
 .nav-left {
@@ -8693,12 +8596,6 @@ h6 {
 
 .navbar {
   flex-wrap: nowrap;
-}
-
-.logo-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .nav-left,
