@@ -2705,10 +2705,11 @@ input[type="button"].btn-block {
 
 .navbar {
   position: relative;
-  display:grid;
-  /* navbar se divide en 3  */
-  grid-template-columns: auto 1fr auto;
+  display:flex;
+  /* navbar se divide en 3 pero deja el logo al medio */
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   padding: 0.5rem 1rem;
 
 }
