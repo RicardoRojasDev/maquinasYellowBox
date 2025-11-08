@@ -8464,57 +8464,6 @@ h6 {
   padding: 7px;
 }
 
-.contact-desktop {
-  display: block;
-}
-.contact-mobile {
-  display: none;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 991.98px) {
-  .contact-desktop {
-    display: none;
-  }
-  .contact-mobile {
-    display: block;
-  }
-
-  /* Ajustes para móviles */
-  .navbar {
-    flex-wrap: nowrap;
-  }
-
-  .nav-right {
-    justify-content: flex-end;
-  }
-}
-.contact-desktop {
-  display: block;
-}
-.contact-mobile {
-  display: none;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
 /* Estilos para el formulario de reclamos */
 .dynamic-section {
   display: none;
