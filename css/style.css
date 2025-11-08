@@ -8566,48 +8566,4 @@ h6 {
   }
   .contact-mobile {
     display: block;
-  }
-
-  /* Ajustes para móviles */
-  .navbar {
-    flex-wrap: nowrap;
-  }
-
-  .logo-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .nav-left,
-  .nav-right {
-    flex: 1;
-  }
-
-  .nav-right {
-    justify-content: flex-end;
-  }
-
-  .checkbox-group,
-  .radio-group {
-    flex-direction: column;
-  }
-}
-
-.navbar {
-  flex-wrap: nowrap;
-}
-
-.nav-left,
-.nav-right {
-  flex: 1;
-}
-
-.nav-right {
-  justify-content: flex-end;
-}
-
-.checkbox-group,
-.radio-group {
-  flex-direction: column;
-}
+  }}
