@@ -76,6 +76,35 @@
     </div>
     <!-- Navbar End -->
 
+<div class="container mt-4">
+  <!-- Botones tipo Segmented Control -->
+  <div class="btn-group w-100" role="group" aria-label="Segmented Control">
+    <button type="button" class="btn btn-outline-primary active" onclick="mostrarVista('compra')">Políticas de Compra</button>
+    <button type="button" class="btn btn-outline-primary" onclick="mostrarVista('devolucion')">Políticas de Devolución</button>
+    <button type="button" class="btn btn-outline-primary" onclick="mostrarVista('ambas')">Ambas</button>
+  </div>
+
+  <!-- Contenido dinámico -->
+  <div class="mt-4">
+    <div id="vista-compra">
+      <h5>🛒 Políticas de Compra</h5>
+      <p>Aquí van las condiciones, métodos de pago, tiempos de entrega, etc.</p>
+    </div>
+
+    <div id="vista-devolucion" style="display: none;">
+      <h5>🔄 Políticas de Devolución</h5>
+      <p>Información sobre cambios, reembolsos, plazos y requisitos.</p>
+    </div>
+
+    <div id="vista-ambas" style="display: none;">
+      <h5>📋 Políticas de Compra y Devolución</h5>
+      <p><strong>Compra:</strong> Aquí van las condiciones, métodos de pago, tiempos de entrega, etc.</p>
+      <p><strong>Devolución:</strong> Información sobre cambios, reembolsos, plazos y requisitos.</p>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Main Content Start -->
     <div class="container-fluid pt-3 pb-3">
@@ -257,6 +286,21 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+function mostrarVista(vista) {
+  document.getElementById('vista-compra').style.display = (vista === 'compra') ? 'block' : 'none';
+  document.getElementById('vista-devolucion').style.display = (vista === 'devolucion') ? 'block' : 'none';
+  document.getElementById('vista-ambas').style.display = (vista === 'ambas') ? 'block' : 'none';
+
+  // Actualizar botones activos
+  const botones = document.querySelectorAll('.btn-group .btn');
+  botones.forEach(btn => btn.classList.remove('active'));
+  if (vista === 'compra') botones[0].classList.add('active');
+  if (vista === 'devolucion') botones[1].classList.add('active');
+  if (vista === 'ambas') botones[2].classList.add('active');
+}
+</script>
+
 </body>
 
 </html>
