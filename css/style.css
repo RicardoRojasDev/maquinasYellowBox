@@ -2706,14 +2706,13 @@ input[type="button"].btn-block {
 .navbar {
   position: relative;
   display:flex;
-  /* navbar se divide en 3 pero deja el logo al medio */
+  /* navbar se divide en 3 pero deja el logo al medio */ 
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
 
 }
-
 .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
