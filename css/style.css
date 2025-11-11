@@ -8491,3 +8491,7 @@ h6 {
   .contact-mobile {
     display: block;
   }}
+
+  .text-invisible {
+  color: transparent !important;
+}
