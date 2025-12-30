@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Políticas De La Empresa - Yellow Box</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Políticas de la empresa" name="keywords" />
+    <meta content="Políticas de la empresa" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/styledesktop.css" rel="stylesheet" />
+  </head>
+
+  <body>
+   <!-- Navbar Start -->
+    <div class="container-fluid mb-4 pb-4 bg-primary ">
+        <div class="row mb-4">
+            <div class="col-xl-12 bg-primary pt-1 fixed-top ">
+                <nav class="navbar ">
+                    <!-- Sección izquierda - Inicio -->
+                    <div class="nav-left ml-xl-3">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                    </div>
+                    
+                    <!-- Logo centrado -->
+                    <div class="logo-container">
+                        <a href="" class="text-decoration-none">
+                            <img src="img/logo.png" alt="Yellow Box" class="site-logo">
+                        </a>
+                    </div>
+                    
+                    <!-- Sección derecha - Menú desplegable y Contactanos -->
+                    <div class="nav-right">
+                        <!-- Menú desplegable "Mas" -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas</a>
+                            <div class="dropdown-menu bg-primary">
+                                <a href="" class="dropdown-item">Tienda</a>
+                                <a href="contact.html" class="dropdown-item">Reclamos</a>
+                                <a href="recetas.html" class="dropdown-item">Recetas</a>
+                                <a href="servicioTecnico.html" class="dropdown-item">Servicio Técnico</a>
+                                    <a href="contrataciones.html" class="dropdown-item">Contratar</a>
+                                
+                                <!-- Enlace Contactanos visible solo en móviles -->
+                                <div class="contact-mobile">
+                                    <a href="contact.html" class="dropdown-item">Contactanos</a>
+        
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enlace Contactanos visible en desktop -->
+                        <div class="contact-desktop">
+                            <a href="contact.html" class="nav-item nav-link mx-xl-4">Contactanos</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Main Content Start -->
+    <div class="container mt-5">
+      <!-- Botones tipo Segmented Control -->
+      <div class="btn-group row d-xl-flex flex-wrap mx-auto w-100 justify-content-center px-3" role="group" aria-label="Segmented Control">
+        <button
+          type="button"
+          class="btn rounded col-4 btn-outline-primary text-dark active"
+          onclick="mostrarVista('compra')"
+        >
+          Políticas de Compra
+        </button>
+        <button
+          type="button"
+          class="btn contact-desktop col-4 btn-outline-primary text-dark"
+          onclick="mostrarVista('ambas')"
+        >
+          Ambas
+        </button>
+        <button
+          type="button"
+          class="btn rounded col-4 btn-outline-primary text-dark"
+          onclick="mostrarVista('devolucion')"
+        >
+          Políticas de Devolución
+        </button>
+      </div>
+
+      <!-- Contenido dinámico -->
+      <div class="mt-5">
+        <div id="vista-compra" class="flex-wrap mx-auto w-100">
+          <ol class="row justify-content-around">
+            <li class="col-xl-5">
+              <strong>Verificación del precio y producto</strong>
+              <p class="">
+                Es responsabilidad del usuario comprobar el precio mostrado en
+                pantalla antes de confirmar la compra. En máquinas de snack debe
+                digitarse el código del producto y verificar el valor en
+                pantalla. En máquinas de café debe seleccionarse el producto y
+                corroborar su precio en pantalla.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Comprobar disponibilidad</strong>
+              <p>
+                El usuario debe asegurarse de que el producto esté disponible
+                antes de pagar. Si al digitar el código no aparece el precio, la
+                máquina indicará NO DISPONIBLE. En máquinas de café, el producto
+                estará indicado como disponible cuando la luz correspondiente
+                esté encendida.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Uso del importe ingresado</strong>
+              <p>
+                Una vez ingresado dinero en la máquina, es responsabilidad del
+                usuario elegir un producto disponible. Esta medida evita el uso
+                indebido de la máquina para obtener cambio y protege a los demás
+                usuarios.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Alternativas si el producto no está disponible</strong>
+              <p>
+                Si el usuario no verificó precio o disponibilidad antes de
+                ingresar dinero, deberá utilizar el importe seleccionando otro
+                producto disponible en ese momento.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Interacción entre efectivo y modo tarjeta</strong>
+              <p>
+                Si el usuario introduce efectivo y luego activa el modo de pago
+                con tarjeta (pantalla PayScan), es responsabilidad del usuario
+                salir del modo tarjeta siguiendo las instrucciones en pantalla
+                para visualizar su crédito en efectivo. Yellow Box no se
+                responsabiliza por saldos visibles en pantalla que no hayan sido
+                utilizados y que puedan ser utilizados por terceros.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Vuelto limitado</strong>
+              <p>
+                Cuando la máquina muestre “NO HAY CAMBIO”, el usuario debe
+                ingresar el importe exacto requerido.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Manipulación de billetes y monedas</strong>
+              <p>
+                Si un usuario introduce billetes con la intención de retirar en
+                monedas u otros intentos de manipulación para obtener vuelto,
+                Yellow Box no se responsabiliza si la máquina retiene el dinero
+                por falta de capacidad de vuelto.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Compras con billetes o monedas en mal estado</strong>
+              <p>
+                Yellow Box no se responsabiliza por intentos de compra con
+                billetes o monedas falsos, dañados, incompletos o contaminados,
+                ni por objetos adheridos a monedas o billetes.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Retiro de tarjeta</strong>
+              <p>
+                En compras con tarjeta es responsabilidad del usuario retirar su
+                tarjeta del terminal. Yellow Box no se responsabiliza por
+                tarjetas extraviadas; si se encuentra una tarjeta, esta será
+                destruida por seguridad.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Retiro de vuelto y producto</strong>
+              <p>
+                Es responsabilidad del usuario retirar su vuelto en la ranura
+                correspondiente y retirar su producto en el momento de la
+                compra. Yellow Box no se responsabiliza por vuelto o productos
+                no retirados por el usuario.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Productos no reclamados</strong>
+              <p>
+                Los productos dispensados y no retirados quedan en la máquina.
+                Yellow Box no se hace responsable por dichos productos.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Satisfacción por preferencia</strong>
+              <p>
+                No existe garantía por gusto o preferencia personal; Yellow Box
+                no realizará devoluciones por desagrado del producto.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Información de ingredientes y recetas</strong>
+              <p>
+                El usuario debe revisar la descripción o recetario disponible en
+                la máquina o mediante el código QR ubicado en el frontis de cada
+                máquina.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Daños por retiro inadecuado</strong>
+              <p>
+                La empresa no se responsabiliza por derrames, roturas o daños
+                ocasionados por un retiro inadecuado del producto.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Retiro oportuno para evitar atascos</strong>
+              <p>
+                El usuario debe retirar el producto de forma oportuna para
+                evitar atascos o caídas; Yellow Box no responde por problemas
+                derivados de retrasos en el retiro.
+              </p>
+            </li>
+            <li
+             class="col-xl-5">
+              <strong>Conducta y vandalismo</strong>
+              <p>
+                Si un usuario realiza actos de vandalismo, golpes o
+                manipulaciones indebidas a la máquina, no procederá devolución
+                alguna y la empresa podrá iniciar acciones legales por daños.
+              </p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="flex-wrap mx-auto w-100" id="vista-devolucion"  style="display: none">
+          <ol class="row justify-content-around">
+            <li class="col-xl-5">
+              <strong>Plazo para reportes</strong>
+              <p>
+                El cliente debe reportar cualquier incidencia dentro de las
+                primeras 12 horas desde el momento del hecho para permitir la
+                verificación oportuna por parte de nuestros técnicos. Yellow Box
+                no se responsabiliza por reclamos recibidos fuera de este plazo.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Reversas en pagos con tarjeta</strong>
+              <p>
+                Para compras con tarjeta, la reversa es gestionada por PayScan y
+                el banco emisor. La reversa automática puede tardar hasta 72
+                horas hábiles. En pantalla aparecerá un código y el número de
+                contacto proporcionado por PayScan para seguimiento. Yellow Box
+                no realiza directamente las reversas.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Devoluciones por efectivo retenido</strong>
+              <p>
+                Si un producto no es dispensado tras pagar en efectivo y la
+                máquina dispone de vuelto, la devolución se realizará en la
+                ranura de vuelto en forma de monedas. Si la máquina no dispone
+                de vuelto, el saldo permanecerá visible en pantalla y podrá
+                utilizarse en otra compra.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Devoluciones de billetes o monedas retenidas</strong>
+              <p>
+                Yellow Box efectuará devoluciones de billetes o monedas
+                introducidas en buen estado y verificadas como retenidas por la
+                máquina, previa inspección técnica.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>No cambios por higiene</strong>
+              <p>
+                Por normas de higiene no se realizan cambios de productos ya
+                entregados.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Menores de edad</strong>
+              <p>
+                Yellow Box no se responsabiliza por compras realizadas por
+                menores de 12 años; la responsabilidad corresponde a sus tutores
+                o acompañantes.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong
+                >Procedimiento para presentar reclamos y documentación</strong
+              >
+              <p>
+                Para agilizar la verificación y resolución, al presentar una
+                solicitud adjunte: descripción clara del incidente, fotografía o
+                captura de pantalla con código visible, fecha y hora aproximada
+                y la máquina involucrada. Las solicitudes recibidas serán
+                evaluadas y respondidas según la naturaleza del caso.
+              </p>
+            </li>
+            <li class="col-xl-5">
+              <strong>Informes técnicos y plazo de verificación</strong>
+              <p>
+                Si un reclamo es ingresado en fecha distinta al hecho, los
+                técnicos podrán emitir un informe negativo por imposibilidad de
+                verificación, y la solicitud podría no proceder.
+              </p>
+            </li>
+                        <li class="col-xl-11">
+              <strong>Devoluciones por productos defectuosos</strong>
+              <p>
+                Se considerará producto defectuoso cuando no se haya dispensado
+                correctamente o presente fallas de elaboración o envasado. Para
+                gestionar una devolución por producto defectuoso se requerirá:
+              </p>
+              <ul>
+                <li>Evidencia fotográfica clara del producto afectado.</li>
+                <li>
+                  Informe técnico emitido por personal autorizado de Yellow Box
+                  tras verificación.
+                </li>
+                <li>
+                  En caso de productos elaborados por terceros, Yellow Box podrá
+                  requerir contacto directo con el proveedor y quedará liberada
+                  de responsabilidad sobre la elaboración cuando proceda.
+                </li>
+                <br />
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <div id="vista-ambas" style="display: none">
+          <h5>📋 Políticas de Compra y Devolución</h5>
+         
+        </div>
+      </div>
+      <div class="bg-light text-center py-2 mb-2">
+        <h3>Información de contacto y canal oficial</h3>
+        <p>
+          Todas las solicitudes, sugerencias o incidencias deben enviarse por el
+          canal oficial que se indique en la máquina o en el sitio web. Adjuntar
+          evidencia acelera la verificación técnica y la resolución.
+        </p>
+        <p>
+          Yellow Box responderá conforme a los plazos y responsabilidades aquí
+          establecidos y orientará sobre pasos posteriores cuando corresponda.
+        </p>
+      </div>
+    </div>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
+      <div class="row px-4 pt-1">
+        <div class="col-lg-4 col-md-12 pr-xl-4">
+          <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
+          <p class="">
+            Yellow Box - Servicios de vending y bebidas automáticas. Atención y
+            soporte técnico.
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
+            Bio-Bio , Chile
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-envelope text-primary mr-3"></i
+            ><a href="mailto:soporte@yellowbox.example" class="text-secondary"
+              >soporte@yellowbox.cl</a
+            >
+          </p>
+          <p class="mt-3">
+            Horario de atención: Lunes a Viernes, 09:00 - 18:00
+          </p>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="row">
+            <div class="col-lg-4">
+              <h5 class="text-secondary text-uppercase mb-4">Enlaces</h5>
+              <div class="d-flex flex-column justify-content-start">
+                <a class="text-secondary mb-2" href="index.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Inicio</a
+                >
+                <a class="text-secondary mb-2" href="shop.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Tienda</a
+                >
+                <a class="text-secondary mb-2" href="politicasEmpresa.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Políticas de la
+                  Empresa</a
+                >
+                <a class="text-secondary" href="contact.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Contacto</a
+                >
+              </div>
+            </div>
+
+            <div class="col-lg-8 mb-xl-5 mb-1">
+              <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
+              <p>Encuéntranos en redes para novedades y promociones.</p>
+              <div class="row">
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row border-top mx-xl-5 py-1"
+        style="border-color: rgba(256, 256, 256, 0.1) !important"
+      >
+        <div class="col-md-6">
+          <p class="text-center text-md-left text-secondary">
+            &copy; 2025 Yellow Box. Todos los derechos reservados.
+            <br />Diseñado por Küpan.
+          </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center">
+          <img
+            class="img-fluid"
+            src="img/payments.png"
+            alt="Métodos de pago aceptados"
+          />
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn-lg btn-primary back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+      function mostrarVista(vista) {
+        document.getElementById("vista-compra").style.display =
+          vista === "compra" ? "block" : "none";
+        document.getElementById("vista-devolucion").style.display =
+          vista === "devolucion" ? "block" : "none";
+        document.getElementById("vista-ambas").style.display =
+          vista === "ambas" ? "block" : "none";
+
+        // Actualizar botones activos
+        const botones = document.querySelectorAll(".btn-group .btn");
+        botones.forEach((btn) => btn.classList.remove("active"));
+        if (vista === "compra") botones[0].classList.add("active");
+        if (vista === "devolucion") botones[2].classList.add("active");
+        if (vista === "ambas") botones[1].classList.add("active");
+      }
+    </script>
+  </body>
+</html>
