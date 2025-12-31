@@ -924,7 +924,7 @@ textarea.form-control.is-invalid {
 }
 
 .btn {
-  width: 140px;
+  width: 170px;
   font-weight: 400;
   color: #6c757d;
   user-select: none;
@@ -967,13 +967,20 @@ textarea.form-control.is-invalid {
 .btn-primary {
   color: #212529;
   background-color: #ffd333;
-  border-color: #ffd333;
+  border-color: #141312;
+  color: #FFF8E1; /* Fondo claro */
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
   color: #212529;
   background-color: #ffcb0d;
   border-color: #ffc800;
+  transform: scale(1.05);
 }
 
 .btn-primary:focus,
@@ -8374,10 +8381,10 @@ h6 {
 
 .product-offer {
   position: relative;
-  width: 170px;
-  height: 180px;
+  width: 185px;
+  height: 190px;
   border-radius: 10px;
-  overflow: hidden;
+  overflow:hidden;
 
 }
 
@@ -8432,11 +8439,27 @@ h6 {
   width: 100px;
 }
 .product-offer .offer-text {
-  position: relative;
+  position:relative;
   background: rgba(61, 70, 77, 0.6);
   z-index: 1;
-  padding: 10px;
-  height: 180px;
+  padding: 0 10px;
+  height: 99%;
+  display: flex;
+}
+.product-offer .offer-text > :nth-child(1) {
+ height: 15%;
+ margin-bottom: 0%;
+}
+.product-offer .offer-text > :nth-child(2) {
+height: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+.product-offer .offer-text > :nth-child(3) {
+height: 25%;
+margin-bottom: 10%;
 }
 
 /* Estilos para el formulario de reclamos */
@@ -8495,3 +8518,42 @@ h6 {
   .text-invisible {
   color: transparent !important;
 }
+
+
+
+
+.cards-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+
+    @media (min-width: 768px) {
+      .cards-wrapper {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+    }
+
+    .card {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      margin: 1rem;
+      width: 90vw;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        width: 22vw;
+      }
+    }
+
+    .category-btn {
+      cursor: pointer;
+    }
+
+    .card[data-category] {
+      display: block;
+    }

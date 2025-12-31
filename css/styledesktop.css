@@ -1,4 +1,35 @@
 @media (min-width: 992px) {
+  .category-buttons-container {
+    margin-top:13vh;
+    height: 10vh;
+    position: fixed ;
+  
+}
+  .promotion-card {
+  width: 99%; /* Cambiamos de 80% a 95% */
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  background-color: #ffffff00;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 240px;
+  padding: 10px;
+
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+} .promotion-cards {
+    background-color: rgba(255, 255, 255, 0);
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff00;
+    display: grid;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between cards for mobile */
+    grid-template-columns: 45% 45%; /* 3 columns for desktop */
+    margin-top: 0px; /* Add margin to separate from the previous section */
+    width: 100%; /* Full width for desktop */
+  } .promotion-cards {
+  gap: 0px; /* Space between cards for mobile */
+ }
   .col-lg {
     flex-basis: 0;
     flex-grow: 1;
@@ -334,7 +365,6 @@
 
 
   }
-
   .navbar {
    height: 12vh;
   }
