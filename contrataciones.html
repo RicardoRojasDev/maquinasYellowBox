@@ -78,44 +78,92 @@
 
     <!-- Contrataciones Start -->
     <div class="container-fluid">
-        <div class="container pt-2">
-            <div class="row">
-                <div class="col-lg-6 px-3 text-center pb-4 ">
-                    <h1 class="mb-4">Contrata Nuestras Máquinas Expendedoras</h1>
-                    <p class="mb-4">Ofrecemos soluciones integrales de vending para tu negocio o institución:</p>
-                    <div class="text-left mb-5">
-                        <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Máquinas de snacks y bebidas</p>
-                        <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Máquinas de café premium</p>
-                        <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Servicio técnico 24/7</p>
-                        <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Reposición regular de productos</p>
-                        <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Personalización según tus necesidades</p>
-                    </div>
-                    <a href="contact.html" class="btn btn-primary p-2 ">Solicitar Información</a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="bg- px-4 py-1">
-                        <h3 class="mb-2 text-center">¿Por qué elegirnos?</h3>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column">
-                                <h4>Calidad Garantizada</h4>
-                                <p class="m-0">Máquinas de última generación con tecnología avanzada</p>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column">
-                                <h4>Servicio Premium</h4>
-                                <p class="m-0">Atención personalizada y mantenimiento regular</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <div class="d-flex flex-column">
-                                <h4>Productos Seleccionados</h4>
-                                <p class="m-0">Gran variedad de snacks y bebidas de primera calidad</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container px-2 mt-5">
+            <div class="text-center mb-5">
+                <h2>Formulario de Contratación</h2>
+                <p>Complete los datos para solicitar nuestros servicios.</p>
             </div>
+            <form action="mail/contact.php" method="post" class="row justify-content-around">
+                <div class="col-12">div class="form-group col-xl-4">
+                    <label for="nombreEmpresa">Nombre Empresa</label>
+                    <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa" required>
+                </div>
+                <div class="form-group col-xl-3">
+                    <label for="rut">RUT</label>
+                    <input type="text" class="form-control" id="rut" name="rut" required>
+                </div></div>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad</label>
+                    <select class="form-control" id="ciudad" name="ciudad" required>
+                        <option value="">Seleccione una ciudad</option>
+                        <option value="Arauco">Arauco</option>
+                        <option value="Cañete">Cañete</option>
+                        <option value="Contulmo">Contulmo</option>
+                        <option value="Curanilahue">Curanilahue</option>
+                        <option value="Lebu">Lebu</option>
+                        <option value="Los Álamos">Los Álamos</option>
+                        <option value="Tirúa">Tirúa</option>
+                        <option value="Alto Biobío">Alto Biobío</option>
+                        <option value="Antuco">Antuco</option>
+                        <option value="Cabrero">Cabrero</option>
+                        <option value="Laja">Laja</option>
+                        <option value="Los Ángeles">Los Ángeles</option>
+                        <option value="Mulchén">Mulchén</option>
+                        <option value="Nacimiento">Nacimiento</option>
+                        <option value="Negrete">Negrete</option>
+                        <option value="Quilaco">Quilaco</option>
+                        <option value="Quilleco">Quilleco</option>
+                        <option value="San Rosendo">San Rosendo</option>
+                        <option value="Santa Bárbara">Santa Bárbara</option>
+                        <option value="Tucapel">Tucapel</option>
+                        <option value="Yumbel">Yumbel</option>
+                        <option value="Chiguayante">Chiguayante</option>
+                        <option value="Concepción">Concepción</option>
+                        <option value="Coronel">Coronel</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Hualpén">Hualpén</option>
+                        <option value="Hualqui">Hualqui</option>
+                        <option value="Lota">Lota</option>
+                        <option value="Penco">Penco</option>
+                        <option value="San Pedro de la Paz">San Pedro de la Paz</option>
+                        <option value="Santa Juana">Santa Juana</option>
+                        <option value="Talcahuano">Talcahuano</option>
+                        <option value="Tomé">Tomé</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="personaContacto">Persona De Contacto</label>
+                    <input type="text" class="form-control" id="personaContacto" name="personaContacto" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" class="form-control" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="cantidadFuncionarios">Cantidad de Funcionarios</label>
+                    <input type="number" class="form-control" id="cantidadFuncionarios" name="cantidadFuncionarios" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Servicio</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoServicio" id="snack" value="snack" required>
+                        <label class="form-check-label" for="snack">Snack</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoServicio" id="cafe" value="cafe">
+                        <label class="form-check-label" for="cafe">Café</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
         </div>
     </div>
     <!-- Contrataciones End -->
