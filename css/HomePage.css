@@ -38,24 +38,6 @@
 }
 
 
-.btn-secondary {
-  background-color: #fffffff5;
-  color: rgb(0, 0, 0);
-  padding: 0.8vh 1vw;
-  border: 2px solid #9b282b;
-  border-radius: 25px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Arimo-VariableFont_wght', sans-serif;
-}
-
-.btn-secondary:hover {
-  background-color: #a42c2c;
-  color: rgb(255, 255, 255);
-  transform: scale(0.8);
-  border:2px solid #000000;
-}
-
 /* Promotion Cards */
 .promotion-cards {
   background-color: rgba(255, 255, 255, 0);
@@ -65,6 +47,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5vh; /* Space between cards for mobile */
+  width: 100%; /* Full width */
 }
 
 .promotion-card {
@@ -126,13 +109,16 @@
 }
 /*solo ocupa el 40% de la tarjeta hacia el lado izq*/
 .promotion-image img {
-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .promotion-image {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
 }
 
 /* Locations Section */
@@ -208,88 +194,3 @@ width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for mobile */
 }
 
-/* Media Query para pantallas pequeñas */
-@media (min-width: 768px) {
-  .section-title {
-    font-size: 3.5rem; /* Increase font size */
-    text-align: center;
-    color: #9b282b; /* Rojo vibrante */
-    font-family: 'BebasNeue-Bold', sans-serif; /* Apply BebasNeue-Bold font */
-    padding: 0rem; /* Add padding for better spacing */
-
-  }
-  /* Promotion Cards */
- 
-
-  .promotions-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0px; /* Add margin to separate from the previous section */
-  padding: 0 1vw; /* Add padding for better spacing */
-}
-  .locations-section {
-  text-align: center;
-  padding: 0 3vw; /* Add padding for better spacing */
-}
-  .navbar .navbar-brand {
-  color: #000;
-  grid-area: logo;
-}
-
-  .navbar .navbar-brand img {
-  height: 40px;
-  width: 100%;
-  object-fit: contain;
-}
-  .search-bar {
-  grid-area: search;
-  width: 450px;
-  text-align: center;
-  border: 1px inset #9f061b;
-  border-radius: 20px;
-}
-
-  .search-bar input {
-  background-color: #f5f5f5;
-  border: 1px outset #e2be0c;
-  border-radius: 20px;
-  padding: 8px 15px;
-  width: 100%;
-}
-
-  .products ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 4 columns for desktop */
-  gap: 1rem; /* Adjust gap for better spacing */
-  padding: 1rem;
-}
-  .promotion-image img {
-
-  height: 100%;
-  object-fit: fill; /* Ensure the image covers the container */
-  
-  }
-  
-  .promotion-image {
-    height: 195px; /* Adjust height for better visibility on desktop */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-  }}
-
-@media (min-width: 600px) {
-
-  .search-bar {
-    width: 100%; /* Full width for mobile */
-    margin: 0; /* Remove margin for mobile */
-  }
-
-  .products ul {
-    grid-template-columns: repeat(4, 1fr); /* 2 columns for mobile */
-    gap: 0.5rem; /* Adjust gap for better spacing on mobile */
-    padding: 2rem; /* Adjust padding for better spacing on mobile */
-  }
-}
