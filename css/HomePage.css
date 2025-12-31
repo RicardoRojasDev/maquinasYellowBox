@@ -219,30 +219,8 @@ width: 100%;
 
   }
   /* Promotion Cards */
-  .promotion-cards {
-  background-color: rgba(255, 255, 255, 0);
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff00;
-  display: grid;
-  flex-wrap: wrap;
-  gap: 0px; /* Space between cards for mobile */
-  grid-template-columns: 45% 45%; /* 3 columns for desktop */
-  margin-top: 0px; /* Add margin to separate from the previous section */
-  width: 100%; /* Full width for desktop */
- }
-  .promotion-card {
-  width: 99%; /* Cambiamos de 80% a 95% */
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 40% 60%;
-  background-color: #ffffff00;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 240px;
-  padding: 10px;
-  border: #9b282b solid 2px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
+ 
+
   .promotions-section {
   display: flex;
   flex-direction: column;
@@ -313,17 +291,5 @@ width: 100%;
     grid-template-columns: repeat(4, 1fr); /* 2 columns for mobile */
     gap: 0.5rem; /* Adjust gap for better spacing on mobile */
     padding: 2rem; /* Adjust padding for better spacing on mobile */
-  }
-  .promotion-cards {
-    background-color: rgba(255, 255, 255, 0);
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff00;
-    display: grid;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between cards for mobile */
-    grid-template-columns: 45% 45%; /* 3 columns for desktop */
-    margin-top: 0px; /* Add margin to separate from the previous section */
-    width: 100%; /* Full width for desktop */
   }
 }
