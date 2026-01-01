@@ -8390,7 +8390,18 @@ h6 {
   overflow:hidden;
 
 }
-
+.category-button.active {
+  color: var(--primary);
+  border: 1px solid black;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.promotion-card {
+  transition: opacity 0.3s ease;
+}
+.promotion-card.d-none {
+  opacity: 0;
+}
 .product-offer img {
   position: absolute;
   width: 100%;

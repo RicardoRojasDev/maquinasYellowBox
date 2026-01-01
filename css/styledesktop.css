@@ -459,6 +459,12 @@
     width: 100%;
     padding: 0 5%;
   }
+  .category-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
   /*Se Muestra Toda La Imagen En 300px dentro de su propio div*/
   .promotion-image img {
     width: 100px;
