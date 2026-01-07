@@ -479,7 +479,7 @@
   }
   .product-offer {
   position: relative;
-  width:20vw;
+  width:100px;
 
   border-radius: 10px;
   overflow:hidden;
