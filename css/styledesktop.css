@@ -329,9 +329,6 @@
   .offset-xl-11 {
     margin-left: 91.66667%;
   }
-  .bg-primary {
-  }
-
   .navbar {
     height: 12vh;
   }
@@ -490,7 +487,7 @@
 
   .product-offer {
     width: 260px;
-    height: 210px;
+    height: 180px;
   }
   
 }
