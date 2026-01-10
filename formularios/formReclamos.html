@@ -20,12 +20,6 @@
 
   <!-- EmailJS -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<!-- Después de Font Awesome -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-  <!-- Libraries Stylesheet -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet" />
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="../css/style.css" rel="stylesheet" />
@@ -643,16 +637,13 @@
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="../lib/easing/easing.min.js"></script>
-  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
 
-  <!-- Contact Javascript File -->
-  <script src="../mail/jqBootstrapValidation.min.js"></script>
-  <script src="../mail/contact.js"></script>
+
 
   <!-- Template Javascript -->
   <script src="../js/main.js"></script>
   <script src="../js/form-handlers.js"></script>
+  <script src="../js/email-service.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script>
     function mostrarVista(vista) {
@@ -670,7 +661,32 @@
       if (vista === "devolucion") botones[2].classList.add("active");
       if (vista === "ambas") botones[1].classList.add("active");
     }
-  </script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log('🔄 Página cargada, verificando EmailJS...');
+        
+        // Verificar manualmente que EmailJS y EmailService existan
+        if (typeof emailjs === 'undefined') {
+            console.error('❌ EmailJS SDK no cargado');
+            return;
+        }
+        
+        if (typeof EmailService === 'undefined') {
+            console.error('❌ EmailService no definido');
+            return;
+        }
+        
+        console.log('✅ EmailJS y EmailService listos');
+        
+        // Verificación adicional: ¿email-service.js se cargó?
+        setTimeout(() => {
+            console.log('📋 Verificación final:');
+            console.log('- emailjs:', typeof emailjs);
+            console.log('- EmailService:', typeof EmailService);
+            console.log('- emailjs.init ejecutado?', emailjs._user);
+        }, 1000);
+    });
+</script>
   <script>
     // JavaScript para el formulario dinámico
     document.addEventListener("DOMContentLoaded", function () {
