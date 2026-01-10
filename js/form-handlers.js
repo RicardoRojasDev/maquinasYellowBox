@@ -61,14 +61,12 @@
 
 
 
-
-
 // Configuración EmailJS - REEMPLAZA CON TUS DATOS
 const EMAILJS_CONFIG = {
     USER_ID: 'TU_USER_ID_AQUI',          // De EmailJS
     SERVICE_ID: 'service_7b1d0wb',    // De EmailJS
     TEMPLATE_ID: 'service_7b1d0wb',  // De EmailJS
-    TO_EMAIL: 'contacto@smkvending.cl'
+    TO_EMAIL: 'soporte@smkvending.cl'
 };
 
 // Inicializar EmailJS
