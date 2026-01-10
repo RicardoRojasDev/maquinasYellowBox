@@ -3,21 +3,20 @@ class EmailService {
     constructor() {
         // Configuración - REEMPLAZAR CON TUS DATOS REALES
         this.config = {
-   USER_ID: 'TU_USER_ID_AQUI',          // De EmailJS
+   USER_ID: 'yWyEO_dp5sA6hGS01',          // De EmailJS
     SERVICE_ID: 'service_7b1d0wb',    // De EmailJS
-    TEMPLATE_ID: 'service_7b1d0wb',  // De EmailJS
+    TEMPLATE_ID: 'template_k5wu6tu',  // De EmailJS
     TO_EMAIL: 'soporte@smkvending.cl',
             CC_EMAIL: '' // Opcional
         };
         
         // Inicializar EmailJS
-        this.init();
+        console.log('🔧 Inicializando EmailJS con Public Key:', this.config.USER_ID);
+        emailjs.init(this.config.USER_ID);
+        console.log('✅ EmailJS inicializado correctamente');
     }
     
-    init() {
-        emailjs.init(this.config.USER_ID);
-        console.log('EmailJS inicializado');
-    }
+
     
     /**
      * Procesa los datos del formulario para EmailJS
