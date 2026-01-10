@@ -59,106 +59,125 @@
     }
 })();
 
-
-
-// Configuración EmailJS - REEMPLAZA CON TUS DATOS
-const EMAILJS_CONFIG = {
-    USER_ID: 'TU_USER_ID_AQUI',          // De EmailJS
-    SERVICE_ID: 'service_7b1d0wb',    // De EmailJS
-    TEMPLATE_ID: 'service_7b1d0wb',  // De EmailJS
-    TO_EMAIL: 'soporte@smkvending.cl'
-};
-
-// Inicializar EmailJS
+// Form Handlers para Yellow Box
 (function() {
-    emailjs.init(EMAILJS_CONFIG.USER_ID);
-})();
-
-// Función para enviar el formulario con EmailJS
-async function sendFormWithEmailJS(formData) {
-    try {
-        // Convertir FormData a objeto
-        const formObject = {};
-        const fileInput = document.getElementById('imagen');
-        
-        // Procesar todos los campos del formulario
-        formData.forEach((value, key) => {
-            // Si es un checkbox o radio, acumular valores
-            if (key.includes('problema') || key.includes('medio-pago') || 
-                key.includes('tipo-') || key.includes('tipo-cuenta') || 
-                key.includes('tipo-billete') || key.includes('tipo-moneda') ||
-                key.includes('tipo-tarjeta')) {
-                
-                if (!formObject[key]) {
-                    formObject[key] = [];
-                }
-                if (value) formObject[key].push(value);
-            } else {
-                formObject[key] = value;
-            }
-        });
-
-        // Convertir arrays a strings para el email
-        Object.keys(formObject).forEach(key => {
-            if (Array.isArray(formObject[key])) {
-                formObject[key] = formObject[key].join(', ');
-            }
-        });
-
-        // Añadir información adicional para el email
-        formObject['to_email'] = EMAILJS_CONFIG.TO_EMAIL;
-        formObject['from_name'] = formObject.name || 'Usuario del formulario';
-        formObject['from_email'] = formObject.email;
-        formObject['fecha_envio'] = new Date().toLocaleString('es-CL');
-        formObject['tipo_formulario'] = formObject.asunto || 'No especificado';
-        formObject['subject'] = `Nuevo ${formObject.asunto} - ${formObject.name}`;
-
-        // Manejar archivo adjunto (si existe)
-        if (fileInput && fileInput.files[0]) {
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            
-            reader.onloadend = function() {
-                // EmailJS requiere archivos en base64 para el plan gratuito
-                formObject['imagen_base64'] = reader.result;
-                formObject['imagen_nombre'] = file.name;
-                formObject['imagen_tipo'] = file.type;
-                
-                // Enviar email con imagen
-                sendEmail(formObject);
-            };
-            
-            reader.readAsDataURL(file);
-        } else {
-            // Enviar email sin imagen
-            sendEmail(formObject);
+    'use strict';
+    
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        initFormHandlers();
+    });
+    
+    function initFormHandlers() {
+        // Formulario de reclamos
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            setupReclamosForm(contactForm);
         }
-
-        return true;
-    } catch (error) {
-        console.error('Error procesando formulario:', error);
-        throw error;
     }
-}
-
-// Función para enviar el email
-async function sendEmail(data) {
-    try {
-        const response = await emailjs.send(
-            EMAILJS_CONFIG.SERVICE_ID,
-            EMAILJS_CONFIG.TEMPLATE_ID,
-            data
-        );
+    
+    function setupReclamosForm(form) {
+        // Manejar envío del formulario
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Enviar formulario
+            await submitReclamosForm(form);
+        });
+    }
+    
+    async function submitReclamosForm(form) {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const successMessage = document.getElementById('success-message');
         
-        console.log('Email enviado exitosamente:', response);
-        return response;
-    } catch (error) {
-        console.error('Error enviando email:', error);
-        throw error;
+        // Estado de carga
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Enviando...';
+        submitBtn.disabled = true;
+        
+        try {
+            // Verificar que EmailJS esté cargado
+            if (typeof EmailService === 'undefined') {
+                throw new Error('Error de configuración. Por favor recarga la página.');
+            }
+            
+            // Enviar con EmailService
+            const result = await EmailService.send(form);
+            
+            if (result.success) {
+                // Mostrar mensaje de éxito
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Resetear formulario
+                form.reset();
+                form.classList.remove('was-validated');
+                
+                // Ocultar secciones dinámicas
+                document.querySelectorAll('.dynamic-section, .sub-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Resetear visibilidad de "Otro banco"
+                const otroBancoContainer = document.getElementById('otro-banco-container');
+                if (otroBancoContainer) otroBancoContainer.style.display = 'none';
+                
+                // Scroll al mensaje de éxito
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Auto-redireccionar después de 10 segundos (opcional)
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 10000);
+                
+            } else {
+                throw new Error(result.message);
+            }
+            
+        } catch (error) {
+            // Mostrar error
+            showError(error.message || 'Error al enviar el formulario');
+            console.error('Error:', error);
+            
+        } finally {
+            // Restaurar botón
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
     }
-}
-
-// Exportar para usar en otros archivos
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { sendFormWithEmailJS };
-}
+    
+    function showError(message) {
+        // Crear o usar contenedor de errores existente
+        let errorContainer = document.getElementById('form-error-message');
+        
+        if (!errorContainer) {
+            errorContainer = document.createElement('div');
+            errorContainer.id = 'form-error-message';
+            errorContainer.className = 'alert alert-danger mt-3';
+            errorContainer.style.display = 'none';
+            const formParent = document.querySelector('form').parentNode;
+            formParent.insertBefore(errorContainer, document.querySelector('form').nextSibling);
+        }
+        
+        errorContainer.innerHTML = `
+            <h4 class="alert-heading">⚠️ Error</h4>
+            <p>${message}</p>
+            <hr>
+            <p class="mb-0 small">Si el problema persiste, contacta directamente a <a href="mailto:contacto@smkvending.cl" class="alert-link">contacto@smkvending.cl</a> o llama al <strong>+56 9 XXXX XXXX</strong></p>
+        `;
+        errorContainer.style.display = 'block';
+        
+        // Auto-ocultar después de 15 segundos
+        setTimeout(() => {
+            errorContainer.style.display = 'none';
+        }, 15000);
+        
+        // Scroll al error
+        errorContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    // Exponer funciones globales si es necesario
+    window.setupFormHandlers = initFormHandlers;
+    
+})();
