@@ -3,10 +3,10 @@ class EmailService {
     constructor() {
         // Configuración - REEMPLAZAR CON TUS DATOS REALES
         this.config = {
-            USER_ID: 'YOUR_USER_ID',          // De EmailJS.com
-            SERVICE_ID: 'YOUR_SERVICE_ID',    // De EmailJS.com
-            TEMPLATE_ID: 'YOUR_TEMPLATE_ID',  // De EmailJS.com
-            TO_EMAIL: 'contacto@smkvending.cl',
+   USER_ID: 'TU_USER_ID_AQUI',          // De EmailJS
+    SERVICE_ID: 'service_7b1d0wb',    // De EmailJS
+    TEMPLATE_ID: 'service_7b1d0wb',  // De EmailJS
+    TO_EMAIL: 'soporte@smkvending.cl',
             CC_EMAIL: '' // Opcional
         };
         
