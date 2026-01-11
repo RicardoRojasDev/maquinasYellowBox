@@ -3,7 +3,7 @@
     const asuntoSelect = document.getElementById('asunto');
     const reclamoSection = document.getElementById('reclamo-section');
     const medioPagoInputs = document.getElementsByName('medio-pago');
-    const billeteDetails = document.getElementById('billete-details');
+    const billeteDetails = document.getElementById('billete-denominacion');
     const tarjetaDetails = document.getElementById('tarjeta-details');
     const bancoSelect = document.getElementById('banco-select');
     const otroBancoContainer = document.getElementById('otro-banco-container');

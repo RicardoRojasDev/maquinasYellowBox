@@ -1,13 +1,12 @@
-// EmailJS Configuration Service
+// EmailJS Configuration Service - ACTUALIZADO
 class EmailService {
     constructor() {
-        // Configuración - REEMPLAZAR CON TUS DATOS REALES
         this.config = {
-   USER_ID: 'yWyEO_dp5sA6hGS01',          // De EmailJS
-    SERVICE_ID: 'service_7b1d0wb',    // De EmailJS
-    TEMPLATE_ID: 'template_k5wu6tu',  // De EmailJS
-    TO_EMAIL: 'soporte@smkvending.cl',
-            CC_EMAIL: '' // Opcional
+            USER_ID: 'yWyEO_dp5sA6hGS01',
+            SERVICE_ID: 'service_7b1d0wb',
+            TEMPLATE_ID: 'template_cbawhm6',
+            TO_EMAIL: 'rickyplaymail@gmail.com',
+            CC_EMAIL: 'expendedorasyellowbox@gmail.com'
         };
         
         // Inicializar EmailJS
@@ -15,9 +14,7 @@ class EmailService {
         emailjs.init(this.config.USER_ID);
         console.log('✅ EmailJS inicializado correctamente');
     }
-    
 
-    
     /**
      * Procesa los datos del formulario para EmailJS
      */
@@ -44,12 +41,22 @@ class EmailService {
             }
         });
         
-        // Agregar metadatos
+        // Agregar metadatos importantes para el template
         processedData['to_email'] = this.config.TO_EMAIL;
-        processedData['from_name'] = processedData.name || 'Cliente Yellow Box';
-        processedData['from_email'] = processedData.email || 'no-email@yellowbox.cl';
+        processedData['from_name'] = processedData.name || processedData.nombre || 'Cliente Yellow Box';
+        processedData['from_email'] = processedData.email || processedData.correo || 'no-email@yellowbox.cl';
         processedData['fecha_envio'] = new Date().toLocaleString('es-CL');
         processedData['tipo_formulario'] = processedData.asunto || 'Consulta general';
+        processedData['pagina_origen'] = window.location.href;
+        
+        // Procesar datos específicos del reclamo
+        if (processedData.asunto === 'reclamo') {
+            processedData['es_reclamo'] = 'SÍ';
+            processedData['titulo_mensaje'] = `RECLAMO - ${processedData.nombre || 'Cliente'}`;
+        } else {
+            processedData['es_reclamo'] = 'NO';
+            processedData['titulo_mensaje'] = `${processedData.asunto?.toUpperCase() || 'CONSULTA'} - ${processedData.name || 'Cliente'}`;
+        }
         
         return processedData;
     }
@@ -59,16 +66,30 @@ class EmailService {
      */
     async sendForm(formElement) {
         try {
+            console.log('📤 Iniciando envío de formulario...');
+            
             // Validar formulario
             if (!formElement.checkValidity()) {
-                throw new Error('Por favor completa todos los campos requeridos');
+                console.error('❌ Validación fallida');
+                formElement.classList.add('was-validated');
+                throw new Error('Por favor completa todos los campos requeridos correctamente');
             }
             
             // Crear FormData
             const formData = new FormData(formElement);
             
+            // Verificar datos
+            console.log('📋 Datos del formulario:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`  ${key}: ${value}`);
+            }
+            
             // Procesar datos
             const templateParams = this.processFormData(formData);
+            
+            console.log('🚀 Enviando a EmailJS...');
+            console.log('   Service ID:', this.config.SERVICE_ID);
+            console.log('   Template ID:', this.config.TEMPLATE_ID);
             
             // Enviar email
             const response = await emailjs.send(
@@ -77,6 +98,8 @@ class EmailService {
                 templateParams
             );
             
+            console.log('✅ Email enviado exitosamente:', response);
+            
             return {
                 success: true,
                 message: 'Formulario enviado exitosamente',
@@ -84,10 +107,24 @@ class EmailService {
             };
             
         } catch (error) {
-            console.error('Error en EmailService:', error);
+            console.error('❌ Error en EmailService:', error);
+            
+            let userMessage = 'Error al enviar el formulario';
+            
+            if (error.text) {
+                // Error de EmailJS
+                if (error.text.includes('Invalid template')) {
+                    userMessage = 'Error de configuración del template. Contacta al administrador.';
+                } else if (error.text.includes('Invalid user id')) {
+                    userMessage = 'Error de configuración. Recarga la página.';
+                }
+            } else if (error.message) {
+                userMessage = error.message;
+            }
+            
             return {
                 success: false,
-                message: error.message || 'Error al enviar el formulario',
+                message: userMessage,
                 error: error
             };
         }

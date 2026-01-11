@@ -170,7 +170,7 @@
                     </div>
 
                     <!-- Sección de detalles del billete -->
-                    <div id="billete-details" class="sub-section" style="display: none">
+                    <div id="billete-denominacion-extra" class="sub-section" style="display: none">
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <label class="form-label">Denominación del billete</label>
@@ -645,27 +645,24 @@
   <script src="../js/form-handlers.js"></script>
   <script src="../js/email-service.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-  <script>
+ <script>
     function mostrarVista(vista) {
       document.getElementById("vista-compra").style.display =
         vista === "compra" ? "block" : "none";
       document.getElementById("vista-devolucion").style.display =
         vista === "devolucion" ? "block" : "none";
-      document.getElementById("vista-ambas").style.display =
-        vista === "ambas" ? "block" : "none";
 
-      // Actualizar botones activos
+      // Actualizar botones activos - SOLO HAY 2 BOTONES
       const botones = document.querySelectorAll(".btn-group .btn");
       botones.forEach((btn) => btn.classList.remove("active"));
       if (vista === "compra") botones[0].classList.add("active");
-      if (vista === "devolucion") botones[2].classList.add("active");
-      if (vista === "ambas") botones[1].classList.add("active");
+      if (vista === "devolucion") botones[1].classList.add("active");
+      // ELIMINA las líneas de botones[2] y "ambas"
     }
 
     document.addEventListener("DOMContentLoaded", function() {
         console.log('🔄 Página cargada, verificando EmailJS...');
         
-        // Verificar manualmente que EmailJS y EmailService existan
         if (typeof emailjs === 'undefined') {
             console.error('❌ EmailJS SDK no cargado');
             return;
@@ -678,101 +675,29 @@
         
         console.log('✅ EmailJS y EmailService listos');
         
-        // Verificación adicional: ¿email-service.js se cargó?
-        setTimeout(() => {
-            console.log('📋 Verificación final:');
-            console.log('- emailjs:', typeof emailjs);
-            console.log('- EmailService:', typeof EmailService);
-            console.log('- emailjs.init ejecutado?', emailjs._user);
-        }, 1000);
+        // DEBUG: Verificar todos los campos del formulario
+        const form = document.getElementById('contactForm');
+        if (form) {
+            console.log('📝 Formulario encontrado con', form.elements.length, 'elementos');
+            
+            // Agregar botón de prueba
+            const testBtn = document.createElement('button');
+            testBtn.type = 'button';
+            testBtn.className = 'btn btn-warning btn-sm mt-2';
+            testBtn.textContent = '🔍 Ver Datos del Formulario';
+            testBtn.onclick = function() {
+                const formData = new FormData(form);
+                console.log('📋 DATOS DEL FORMULARIO:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`  ${key}: ${value}`);
+                }
+                alert('Revisa la consola (F12) para ver los datos');
+            };
+            form.appendChild(testBtn);
+        }
     });
 </script>
-  <script>
-    // JavaScript para el formulario dinámico
-    document.addEventListener("DOMContentLoaded", function () {
-      const asuntoSelect = document.getElementById("asunto");
-      const reclamoSection = document.getElementById("reclamo-section");
-      const tarjetaDetails = document.getElementById("tarjeta-details");
-      const snackProblems = document.getElementById("snack-problems");
-      const cafeProblems = document.getElementById("cafe-problems");
-      const form = document.getElementById("contactForm");
-      const successMessage = document.getElementById("success-message");
-
-      // Mostrar/ocultar sección de reclamo
-      asuntoSelect.addEventListener("change", function () {
-        if (this.value === "reclamo") {
-          reclamoSection.style.display = "block";
-        } else {
-          reclamoSection.style.display = "none";
-        }
-      });
-
-      // Mostrar/ocultar detalles de tarjeta
-      document
-        .querySelectorAll('input[name="medio-pago"]')
-        .forEach((radio) => {
-          radio.addEventListener("change", function () {
-            if (this.value === "tarjeta") {
-              tarjetaDetails.style.display = "block";
-            } else {
-              tarjetaDetails.style.display = "none";
-            }
-          });
-        });
-
-      // Mostrar/ocultar problemas específicos según tipo de máquina
-      document
-        .getElementById("snack")
-        .addEventListener("change", function () {
-          if (this.checked) {
-            snackProblems.style.display = "block";
-            cafeProblems.style.display = "none";
-          }
-        });
-
-      document.getElementById("cafe").addEventListener("change", function () {
-        if (this.checked) {
-          cafeProblems.style.display = "block";
-          snackProblems.style.display = "none";
-        }
-      });
-
-      // Validación del formulario
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Validación básica de Bootstrap
-        if (!form.checkValidity()) {
-          e.stopPropagation();
-          form.classList.add("was-validated");
-          return;
-        }
-
-        // Enviar formulario
-        sendFormData();
-      });
-
-      function sendFormData() {
-        // Mostrar indicador de carga
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML =
-          '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
-        submitBtn.disabled = true;
-
-        // Simular envío (en producción aquí iría el fetch a tu backend)
-        setTimeout(() => {
-          // Mostrar mensaje de éxito
-          form.style.display = "none";
-          successMessage.style.display = "block";
-
-          // Restaurar botón
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-        }, 2000);
-      }
-    });
-  </script>
+ 
 </body>
 
 </html>
