@@ -18,8 +18,75 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- EmailJS -->
+<!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    // Inicializar EmailJS con tu Public Key
+    (function() {
+        emailjs.init('yWyEO_dp5sA6hGS01');
+        console.log('✅ EmailJS inicializado');
+    })();
+</script>
+<!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <!-- Template Javascript -->
+  <script src="../js/main.js"></script>
+  <script src="../js/form-handlers.js"></script>
+  <script src="../js/email-service.js"></script>
+  <script src="../js/email-debug.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+ <script>
+    function mostrarVista(vista) {
+      document.getElementById("vista-compra").style.display =
+        vista === "compra" ? "block" : "none";
+      document.getElementById("vista-devolucion").style.display =
+        vista === "devolucion" ? "block" : "none";
+
+      // Actualizar botones activos - SOLO HAY 2 BOTONES
+      const botones = document.querySelectorAll(".btn-group .btn");
+      botones.forEach((btn) => btn.classList.remove("active"));
+      if (vista === "compra") botones[0].classList.add("active");
+      if (vista === "devolucion") botones[1].classList.add("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log('🔄 Página cargada, verificando EmailJS...');
+        
+        if (typeof emailjs === 'undefined') {
+            console.error('❌ EmailJS SDK no cargado');
+            return;
+        }
+        
+        if (typeof EmailService === 'undefined') {
+            console.error('❌ EmailService no definido');
+            return;
+        }
+        
+        console.log('✅ EmailJS y EmailService listos');
+        
+        // DEBUG: Verificar todos los campos del formulario
+        const form = document.getElementById('contactForm');
+        if (form) {
+            console.log('📝 Formulario encontrado con', form.elements.length, 'elementos');
+            
+            // Agregar botón de prueba
+            const testBtn = document.createElement('button');
+            testBtn.type = 'button';
+            testBtn.className = 'btn btn-warning btn-sm mt-2';
+            testBtn.textContent = '🔍 Ver Datos del Formulario';
+            testBtn.onclick = function() {
+                const formData = new FormData(form);
+                console.log('📋 DATOS DEL FORMULARIO:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`  ${key}: ${value}`);
+                }
+                alert('Revisa la consola (F12) para ver los datos');
+            };
+            form.appendChild(testBtn);
+        }
+    });
+</script>
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="../css/style.css" rel="stylesheet" />
@@ -634,70 +701,7 @@
   <!-- Back to Top -->
   <a href="#" class="btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
-
-
-  <!-- Template Javascript -->
-  <script src="../js/main.js"></script>
-  <script src="../js/form-handlers.js"></script>
-  <script src="../js/email-service.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
- <script>
-    function mostrarVista(vista) {
-      document.getElementById("vista-compra").style.display =
-        vista === "compra" ? "block" : "none";
-      document.getElementById("vista-devolucion").style.display =
-        vista === "devolucion" ? "block" : "none";
-
-      // Actualizar botones activos - SOLO HAY 2 BOTONES
-      const botones = document.querySelectorAll(".btn-group .btn");
-      botones.forEach((btn) => btn.classList.remove("active"));
-      if (vista === "compra") botones[0].classList.add("active");
-      if (vista === "devolucion") botones[1].classList.add("active");
-      // ELIMINA las líneas de botones[2] y "ambas"
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log('🔄 Página cargada, verificando EmailJS...');
-        
-        if (typeof emailjs === 'undefined') {
-            console.error('❌ EmailJS SDK no cargado');
-            return;
-        }
-        
-        if (typeof EmailService === 'undefined') {
-            console.error('❌ EmailService no definido');
-            return;
-        }
-        
-        console.log('✅ EmailJS y EmailService listos');
-        
-        // DEBUG: Verificar todos los campos del formulario
-        const form = document.getElementById('contactForm');
-        if (form) {
-            console.log('📝 Formulario encontrado con', form.elements.length, 'elementos');
-            
-            // Agregar botón de prueba
-            const testBtn = document.createElement('button');
-            testBtn.type = 'button';
-            testBtn.className = 'btn btn-warning btn-sm mt-2';
-            testBtn.textContent = '🔍 Ver Datos del Formulario';
-            testBtn.onclick = function() {
-                const formData = new FormData(form);
-                console.log('📋 DATOS DEL FORMULARIO:');
-                for (let [key, value] of formData.entries()) {
-                    console.log(`  ${key}: ${value}`);
-                }
-                alert('Revisa la consola (F12) para ver los datos');
-            };
-            form.appendChild(testBtn);
-        }
-    });
-</script>
- 
+  
 </body>
 
 </html>

@@ -1,12 +1,12 @@
-// EmailJS Configuration Service - ACTUALIZADO
+// EmailJS Configuration Service - CONFIGURACIÓN FINAL
 class EmailService {
     constructor() {
         this.config = {
             USER_ID: 'yWyEO_dp5sA6hGS01',
             SERVICE_ID: 'service_7b1d0wb',
             TEMPLATE_ID: 'template_cbawhm6',
-            TO_EMAIL: 'rickyplaymail@gmail.com',
-            CC_EMAIL: 'expendedorasyellowbox@gmail.com'
+            TO_EMAIL: 'expendedorasyellowbox@gmail.com',
+            CC_EMAIL: 'rickyplaymail@gmail.com'  // Solo como copia
         };
         
         // Inicializar EmailJS
@@ -41,8 +41,10 @@ class EmailService {
             }
         });
         
-        // Agregar metadatos importantes para el template
-        processedData['to_email'] = this.config.TO_EMAIL;
+        // AGREGAR DESTINATARIO PRINCIPAL - IMPORTANTE
+        processedData['to_email'] = this.config.TO_EMAIL;  // expendedorasyellowbox@gmail.com
+        
+        // Metadatos para el template
         processedData['from_name'] = processedData.name || processedData.nombre || 'Cliente Yellow Box';
         processedData['from_email'] = processedData.email || processedData.correo || 'no-email@yellowbox.cl';
         processedData['fecha_envio'] = new Date().toLocaleString('es-CL');
@@ -52,12 +54,13 @@ class EmailService {
         // Procesar datos específicos del reclamo
         if (processedData.asunto === 'reclamo') {
             processedData['es_reclamo'] = 'SÍ';
-            processedData['titulo_mensaje'] = `RECLAMO - ${processedData.nombre || 'Cliente'}`;
+            processedData['titulo_mensaje'] = `RECLAMO - ${processedData.nombre || 'Cliente'} - ${processedData.fecha_envio}`;
         } else {
             processedData['es_reclamo'] = 'NO';
-            processedData['titulo_mensaje'] = `${processedData.asunto?.toUpperCase() || 'CONSULTA'} - ${processedData.name || 'Cliente'}`;
+            processedData['titulo_mensaje'] = `${processedData.asunto?.toUpperCase() || 'CONSULTA'} - ${processedData.name || 'Cliente'} - ${processedData.fecha_envio}`;
         }
         
+        console.log('📧 Datos procesados para email:', processedData);
         return processedData;
     }
     
@@ -66,7 +69,7 @@ class EmailService {
      */
     async sendForm(formElement) {
         try {
-            console.log('📤 Iniciando envío de formulario...');
+            console.log('📤 Iniciando envío de formulario a expendedorasyellowbox@gmail.com');
             
             // Validar formulario
             if (!formElement.checkValidity()) {
@@ -79,7 +82,7 @@ class EmailService {
             const formData = new FormData(formElement);
             
             // Verificar datos
-            console.log('📋 Datos del formulario:');
+            console.log('📋 Datos capturados del formulario:');
             for (let [key, value] of formData.entries()) {
                 console.log(`  ${key}: ${value}`);
             }
@@ -90,6 +93,7 @@ class EmailService {
             console.log('🚀 Enviando a EmailJS...');
             console.log('   Service ID:', this.config.SERVICE_ID);
             console.log('   Template ID:', this.config.TEMPLATE_ID);
+            console.log('   Destinatario:', this.config.TO_EMAIL);
             
             // Enviar email
             const response = await emailjs.send(
@@ -98,11 +102,13 @@ class EmailService {
                 templateParams
             );
             
-            console.log('✅ Email enviado exitosamente:', response);
+            console.log('✅ Email enviado exitosamente a:', this.config.TO_EMAIL);
+            console.log('   Response:', response);
             
             return {
                 success: true,
                 message: 'Formulario enviado exitosamente',
+                destinatario: this.config.TO_EMAIL,
                 data: response
             };
             
@@ -112,11 +118,12 @@ class EmailService {
             let userMessage = 'Error al enviar el formulario';
             
             if (error.text) {
-                // Error de EmailJS
                 if (error.text.includes('Invalid template')) {
                     userMessage = 'Error de configuración del template. Contacta al administrador.';
                 } else if (error.text.includes('Invalid user id')) {
                     userMessage = 'Error de configuración. Recarga la página.';
+                } else if (error.text.includes('429')) {
+                    userMessage = 'Límite de envíos alcanzado. Intenta más tarde.';
                 }
             } else if (error.message) {
                 userMessage = error.message;
