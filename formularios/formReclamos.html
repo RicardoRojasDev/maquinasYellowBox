@@ -34,7 +34,6 @@
   <script src="../js/main.js"></script>
   <script src="../js/form-handlers.js"></script>
   <script src="../js/email-service.js"></script>
-  <script src="../js/email-debug.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
  <script>
     function mostrarVista(vista) {
@@ -69,23 +68,8 @@
         const form = document.getElementById('contactForm');
         if (form) {
             console.log('📝 Formulario encontrado con', form.elements.length, 'elementos');
-            
-            // Agregar botón de prueba
-            const testBtn = document.createElement('button');
-            testBtn.type = 'button';
-            testBtn.className = 'btn btn-warning btn-sm mt-2';
-            testBtn.textContent = '🔍 Ver Datos del Formulario';
-            testBtn.onclick = function() {
-                const formData = new FormData(form);
-                console.log('📋 DATOS DEL FORMULARIO:');
-                for (let [key, value] of formData.entries()) {
-                    console.log(`  ${key}: ${value}`);
-                }
-                alert('Revisa la consola (F12) para ver los datos');
-            };
-            form.appendChild(testBtn);
-        }
-    });
+           ;}}); 
+     
 </script>
 
   <!-- Customized Bootstrap Stylesheet -->
@@ -94,55 +78,66 @@
 </head>
 
 <body>
-  <!-- Navbar Start -->
-  <div class="container-fluid mb-4 pb-4 bg-primary">
-    <div class="row mb-4">
-      <div class="col-xl-12 bg-primary pt-1 fixed-top">
-        <nav class="navbar">
-          <!-- Sección izquierda - Inicio -->
-          <div class="nav-left ml-xl-3">
-            <a href="../index.html" class="nav-item nav-link active">Inicio</a>
-          </div>
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5 pb-2 bg-primary">
+      <div class="row mb-3">
+        <div class="col-xl-12 bg-primary fixed-top">
+          <nav class="navbar">
+            <!-- Sección izquierda - Inicio -->
+            <div class="nav-left ml-xl-5">
+              <a href="../index.html" class="nav-item nav-link active">Inicio</a>
+            </div>
 
-          <!-- Logo centrado -->
-          <div class="logo-container">
-            <a href="" class="text-decoration-none">
-              <img src="../img/logo.png" alt="Yellow Box" class="site-logo" />
-            </a>
-          </div>
+            <!-- Logo centrado -->
+            <div class="logo-container">
+              <a href="" class="text-decoration-none">
+                <img src="../img/logo.png" alt="Yellow Box" class="site-logo" />
+              </a>
+            </div>
 
-          <!-- Sección derecha - Menú desplegable y Contactanos -->
-          <div class="nav-right">
-            <!-- Menú desplegable "Mas" -->
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas</a>
-              <div class="dropdown-menu bg-primary">
-                <a href="" class="dropdown-item">Tienda</a>
-                <a href="../contact.html" class="dropdown-item">Reclamos</a>
-                <a href="../recetas.html" class="dropdown-item">Recetas</a>
-                <a href="../servicioTecnico.html" class="dropdown-item">Servicio Técnico</a>
-                <a href="../contrataciones.html" class="dropdown-item">Contratar</a>
+            <!-- Sección derecha - Menú desplegable y Contactanos -->
+            <div class="nav-right">
+              <!-- Menú desplegable "Mas" -->
+              <div class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle mr-xl-5"
+                  data-toggle="dropdown"
+                  >Mas</a
+                >
+                <div class="dropdown-menu bg-primary">
+                  <a href="" class="dropdown-item">Tienda</a>
+                  <a href="../formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
+                  <a href=".recetas.html" class="dropdown-item">Recetas</a>
+                  <a href="servicioTecnico.html" class="dropdown-item"
+                    >Servicio Técnico</a
+                  >
+                  <a href="contrataciones.html" class="dropdown-item"
+                    >Contratar</a
+                  >
 
-                <!-- Enlace Contactanos visible solo en móviles -->
-                <div class="contact-mobile">
-                  <a href="../contact.html" class="dropdown-item">Contactanos</a>
+                  <!-- Enlace Contactanos visible solo en móviles -->
+                  <div class="contact-mobile">
+                    <a href="contact.html" class="dropdown-item">Contactanos</a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Enlace Contactanos visible en desktop -->
-            <div class="contact-desktop">
-              <a href="../contact.html" class="nav-item nav-link mx-xl-4">Contactanos</a>
+              <!-- Enlace Contactanos visible en desktop -->
+              <div class="contact-desktop">
+                <a href="contact.html" class="nav-item nav-link mx-xl-4"
+                  >Contactanos</a
+                >
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Navbar End -->
+    <!-- Navbar End -->
 
   <!-- Main Content Start -->
-  <div class="container mt-5">
+  <div class="pt-4">
     <!-- Botones tipo Segmented Control -->
     <div class="btn-group mt-xl-4 flex-wrap mx-auto w-100 justify-content-center px-xl-3" role="group"
       aria-label="Segmented Control">
@@ -158,7 +153,6 @@
     </div>
 
     <!-- Contenido dinámico -->
-    <div class=" ">
       <div id="vista-compra" class="mx-auto w-100">
         <div class="row">
           <div class="col-lg-8 p-4">  
@@ -617,11 +611,104 @@
         </div>
       </div>
 
-      <div class="flex-wrap mx-auto w-100" id="vista-devolucion" style="display: none">
-        <p>📋 Trabajando Formulario Ventas</p>
-      </div>
+      <div id="vista-devolucion" class="flex-wrap mx-auto w-100"  style="display: none">
+            <!-- Contrataciones Start -->
+        <div class="row justify-content-around py-4 px-2 ">
+            <form action="mail/contact.php" method="post" class="row justify-content-center px-3">
+                <div class="row justify-content-around w-100">
+                    <div class="form-group col-xl-4">
+                    <label for="nombreEmpresa">Nombre Empresa</label>
+                    <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa" required>
+                </div>
+        
+                <div class="form-group col-xl-2">
+                    <label for="rut">RUT</label>
+                    <input type="text" class="form-control" id="rut" name="rut" required>
+                </div>
+                 <div class="form-group col-xl-3">
+                    <label for="ciudad">Ciudad</label>
+                    <select class="form-control" id="ciudad" name="ciudad" required>
+                        <option value="">Seleccione una ciudad</option>
+                        <option value="Arauco">Arauco</option>
+                        <option value="Cañete">Cañete</option>
+                        <option value="Contulmo">Contulmo</option>
+                        <option value="Curanilahue">Curanilahue</option>
+                        <option value="Lebu">Lebu</option>
+                        <option value="Los Álamos">Los Álamos</option>
+                        <option value="Tirúa">Tirúa</option>
+                        <option value="Alto Biobío">Alto Biobío</option>
+                        <option value="Antuco">Antuco</option>
+                        <option value="Cabrero">Cabrero</option>
+                        <option value="Laja">Laja</option>
+                        <option value="Los Ángeles">Los Ángeles</option>
+                        <option value="Mulchén">Mulchén</option>
+                        <option value="Nacimiento">Nacimiento</option>
+                        <option value="Negrete">Negrete</option>
+                        <option value="Quilaco">Quilaco</option>
+                        <option value="Quilleco">Quilleco</option>
+                        <option value="San Rosendo">San Rosendo</option>
+                        <option value="Santa Bárbara">Santa Bárbara</option>
+                        <option value="Tucapel">Tucapel</option>
+                        <option value="Yumbel">Yumbel</option>
+                        <option value="Chiguayante">Chiguayante</option>
+                        <option value="Concepción">Concepción</option>
+                        <option value="Coronel">Coronel</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Hualpén">Hualpén</option>
+                        <option value="Hualqui">Hualqui</option>
+                        <option value="Lota">Lota</option>
+                        <option value="Penco">Penco</option>
+                        <option value="San Pedro de la Paz">San Pedro de la Paz</option>
+                        <option value="Santa Juana">Santa Juana</option>
+                        <option value="Talcahuano">Talcahuano</option>
+                        <option value="Tomé">Tomé</option>
+                    </select>
+                </div>
+                <div class="form-group col-xl-2">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                </div>
+                </div>
+                <div class="row justify-content-around w-100">
+                    <div class="form-group col-xl-3">
+                        <label for="personaContacto">Persona De Contacto</label>
+                        <input type="text" class="form-control" id="personaContacto" name="personaContacto" required>
+                    </div>
+                    <div class="form-group col-xl-2">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group col-xl-2">
+                        <label for="correo">Correo</label>
+                        <input type="email" class="form-control" id="correo" name="correo" required>
+                    </div>
+                    <div class="form-group col-xl-2">
+                        <label for="cantidadFuncionarios">N° De Funcionarios</label>
+                        <input type="number" class="form-control" id="cantidadFuncionarios" name="cantidadFuncionarios" required>
+                    </div>
+                    <div class="form-group col-xl-2 text-center">
+                        <label>Tipo de Servicio</label> <hr>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoServicio" id="snack" value="snack" required>
+                            <label class="form-check-label" for="snack">Snack</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoServicio" id="cafe" value="cafe">
+                            <label class="form-check-label" for="cafe">Café</label>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+                <button type="submit" class="btn btn-primary col-xl-6 rounded-lg">Enviar</button>
+            </form>
+        </div>
     </div>
+    <!-- Contrataciones End -->
+
   </div>
+    
   <!-- Main Content End -->
 
   <!-- Footer Start -->
