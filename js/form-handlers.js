@@ -1,13 +1,16 @@
 // Control de visibilidad para la sección de reclamos y detalles de pago
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
     const asuntoSelect = document.getElementById('asunto');
     const reclamoSection = document.getElementById('reclamo-section');
     const medioPagoInputs = document.getElementsByName('medio-pago');
-    const billeteDetails = document.getElementById('billete-denominacion');
+    const billeteDetailsExtra = document.getElementById('billete-denominacion-extra');
     const tarjetaDetails = document.getElementById('tarjeta-details');
     const bancoSelect = document.getElementById('banco-select');
     const otroBancoContainer = document.getElementById('otro-banco-container');
     const bancoOtroInput = document.getElementById('banco-otro');
+    const tipoMaquinaInputs = document.getElementsByName('tipo-maquina');
+    const snackProblems = document.getElementById('snack-problems');
+    const cafeProblems = document.getElementById('cafe-problems');
 
     // Si existen elementos, agregamos listener
     if (!asuntoSelect || !reclamoSection) return;
@@ -16,12 +19,12 @@
     medioPagoInputs.forEach(input => {
         input.addEventListener('change', function() {
             // Ocultar todos los detalles primero
-            if (billeteDetails) billeteDetails.style.display = 'none';
+            if (billeteDetailsExtra) billeteDetailsExtra.style.display = 'none';
             if (tarjetaDetails) tarjetaDetails.style.display = 'none';
 
             // Mostrar la sección correspondiente
-            if (this.value === 'billete' && billeteDetails) {
-                billeteDetails.style.display = 'block';
+            if (this.value === 'billete' && billeteDetailsExtra) {
+                billeteDetailsExtra.style.display = 'block';
             } else if (this.value === 'tarjeta' && tarjetaDetails) {
                 tarjetaDetails.style.display = 'block';
             }
@@ -31,16 +34,28 @@
     // Manejar visibilidad de la sección de reclamos
     function updateReclamoVisibility() {
         if (asuntoSelect.value === 'reclamo') {
-            reclamoSection.classList.remove('d-lg-none');
-            reclamoSection.classList.add('d-block');
+            reclamoSection.style.display = 'block';
             setTimeout(() => reclamoSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
         } else {
-            reclamoSection.classList.add('d-lg-none');
-            reclamoSection.classList.remove('d-block');
+            reclamoSection.style.display = 'none';
         }
     }
 
-    // Inicializar visibilidad
+    // Manejar visibilidad de problemas según tipo de máquina
+    tipoMaquinaInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (snackProblems) snackProblems.style.display = 'none';
+            if (cafeProblems) cafeProblems.style.display = 'none';
+
+            if (this.value === 'snack' && snackProblems) {
+                snackProblems.style.display = 'block';
+            } else if (this.value === 'cafe' && cafeProblems) {
+                cafeProblems.style.display = 'block';
+            }
+        });
+    });
+
+    // Inicializar estado
     updateReclamoVisibility();
     asuntoSelect.addEventListener('change', updateReclamoVisibility);
 
@@ -53,11 +68,11 @@
             } else {
                 otroBancoContainer.style.display = 'none';
                 bancoOtroInput.required = false;
-                bancoOtroInput.value = ''; // Limpiar el campo
+                bancoOtroInput.value = '';
             }
         });
     }
-})();
+});
 
 // Form Handlers para Yellow Box
 (function() {
