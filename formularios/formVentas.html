@@ -1,274 +1,441 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Yellow Box Vending</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>Ventas - Yellow Box</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="keywords" />
-  <meta content="" name="description" />
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon" />
 
-  <!-- Favicon -->
-  <link href="../img/favicon.ico" rel="icon" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
-  <!-- Libraries Stylesheet -->
-  <link href="../lib/animate/animate.min.css" rel="stylesheet" />
-  <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/styledesktop.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+  </head>
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/styledesktop.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-</head>
+  <body>
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5 pb-2 bg-primary">
+      <div class="row mb-3">
+        <div class="col-xl-12 bg-primary fixed-top">
+          <nav class="navbar">
+            <!-- Sección izquierda - Inicio -->
+            <div class="nav-left ml-xl-5">
+              <a href="../index.html" class="nav-item nav-link active">Inicio</a>
+            </div>
 
-<body>
-  <!-- Navbar Start -->
-  <div class="container-fluid mb-5 pb-2 bg-primary">
-    <div class="row mb-3">
-      <div class="col-xl-12 bg-primary fixed-top">
-        <nav class="navbar">
-          <!-- Sección izquierda - Inicio -->
-          <div class="nav-left ml-xl-5">
-            <a href="../index.html" class="nav-item nav-link">Inicio</a>
-          </div>
+            <!-- Logo centrado -->
+            <div class="logo-container">
+              <a href="" class="text-decoration-none">
+                <img src="../img/logo.png" alt="Yellow Box" class="site-logo" />
+              </a>
+            </div>
 
-          <!-- Logo centrado -->
-          <div class="logo-container">
-          </div>
+            <!-- Sección derecha - Menú desplegable y Contactanos -->
+            <div class="nav-right">
+              <!-- Menú desplegable "Mas" -->
+              <div class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle mr-xl-5"
+                  data-toggle="dropdown"
+                  >Mas</a
+                >
+                <div class="dropdown-menu bg-primary">
+                  <a href="" class="dropdown-item">Tienda</a>
+                  <a href="formReclamos.html" class="dropdown-item">Reclamos</a>
+                  <a href="../recetas.html" class="dropdown-item">Recetas</a>
+                  <a href="../servicioTecnico.html" class="dropdown-item"
+                    >Servicio Técnico</a
+                  >
+                  <a href="../contrataciones.html" class="dropdown-item"
+                    >Contratar</a
+                  >
 
-          <!-- Sección derecha - Menú desplegable y Contactanos -->
-          <div class="nav-right">
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!-- Navbar End -->
+                  <!-- Enlace Contactanos visible solo en móviles -->
+                  <div class="contact-mobile">
+                    <a href="../contact.html" class="dropdown-item">Contactanos</a>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Slider main container -->
-  <div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide">
-        <img src="../img/Slide 2.png" class="img-mobile" alt="" />
-        <img src="../img/slidedesktop1.svg" class="img-desktop" alt="Desktop" />
-      </div>
-      <div class="swiper-slide">
-        <img src="../img/Slide1.1.png" class="img-mobile" alt="" />
-        <img src="../img/slidedesktop2.svg" class="img-desktop" alt="Desktop" />
-      </div>
-
-      <div class="swiper-slide">
-        <img src="../img/slide5.png" class="img-mobile" alt="" />
-        <img src="../img/slidedesktop3.svg" class="img-desktop" alt="Desktop" />
-      </div>
-      <div class="swiper-slide d-lg-none">
-        <img src="../img/Slide4.png" class="img-mobile" alt="" />
-        <img src="" class="img-desktop" alt="Desktop" />
-      </div>
-      <div class="swiper-slide d-lg-none">
-        <img src="../img/slide7.png" class="img-mobile" alt="" />
-        <img src="" class="img-desktop" alt="Desktop" />
-      </div>
-      <div class="swiper-slide">
-        <img src="../img/Slide 2.png" class="img-mobile" alt="" />
-        <img src="../img/slidedesktop1.svg" class="img-desktop" alt="Desktop" />
-      </div>
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
-  </div>
-
-  <!-- Botones Start -->
-  <div class="container-fluid">
-    <div class="row w-100 p-2 justify-content-around">
-      <div class="col-6 col-xl-2 justify-content-center col-lg-3 mb-1">
-        <div class="product-offer">
-          <img class="img-fluid" src="../img/carousel-3.jpg" alt="" />
-          <div class="d-flex flex-column align-items-center offer-text text-center">
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-        <div class="product-offer">
-          <img class="img-fluid" src="../img/twist2.webp" alt="" />
-          <div class="d-flex flex-column align-items-center offer-text text-center">
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-        <div class="product-offer">
-          <img class="img-fluid" src="../img/carousel-3.jpg" alt="" />
-          <div class="offer-text text-center d-flex flex-column align-items-center">
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-        <div class="product-offer">
-          <img class="img-fluid" src="../img/Slide4.png" alt="" />
-          <div class="offer-text text-center flex-column align-items-center">
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-        <div class="product-offer contact-desktop">
-          <img class="img-fluid" src="../img/Vendingcafe.webp" alt="" />
-          <div class="offer-text text-center flex-column align-items-center">
-          </div>
+              <!-- Enlace Contactanos visible en desktop -->
+              <div class="contact-desktop">
+                <a href="../contact.html" class="nav-item nav-link mx-xl-4"
+                  >Contactanos</a
+                >
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Carousel End -->
+    <!-- Navbar End -->
 
-  <!-- Vendor Start -->
-  <div class="container-fluid py-2">
-    <div class="row px-xl-5">
-      <div class="col">
-        <div class="owl-carousel vendor-carousel">
-          <a href="https://smkvending.cl" class="bg-light text-decoration-none">
-          </a>
-          <a href="https://publuu.com/flip-book/256983/617190" class="bg-light text-decoration-none">
-          </a>
-          <a href="https://Pepsico.com/" class="bg-light text-decoration-none">
-          </a>
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <img src="../img/Slide 2.png" class="img-mobile" alt="" />
+          <img src="../img/slidedesktop1.svg" class="img-desktop" alt="Desktop" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/Slide1.1.png" class="img-mobile" alt="" />
+          <img src="../img/slidedesktop2.svg" class="img-desktop" alt="Desktop" />
+        </div>
+
+        <div class="swiper-slide">
+          <img src="../img/slide5.png" class="img-mobile" alt="" />
+          <img src="../img/slidedesktop3.svg" class="img-desktop" alt="Desktop" />
+        </div>
+        <div class="swiper-slide d-lg-none">
+          <img src="../img/Slide4.png" class="img-mobile" alt="" />
+          <img src="" class="img-desktop" alt="Desktop" />
+        </div>
+        <div class="swiper-slide d-lg-none">
+          <img src="../img/slide7.png" class="img-mobile" alt="" />
+          <img src="" class="img-desktop" alt="Desktop" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/Slide 2.png" class="img-mobile" alt="" />
+          <img src="../img/slidedesktop1.svg" class="img-desktop" alt="Desktop" />
+        </div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <!-- Botones Start -->
+    <div class="container-fluid">
+      <div class="row w-100 p-2 justify-content-around">
+        <div class="col-6 col-xl-2 justify-content-center col-lg-3 mb-1">
+          <div class="product-offer">
+            <img class="img-fluid" src="../img/carousel-3.jpg" alt="" />
+            <div
+              class="d-flex flex-column align-items-center offer-text text-center"
+            >
+              <h4 class="text-white">Devoluciones Y Sugerencias</h4>
+              <h3 class="text-white text-uppercase">Reclamos</h3>
+              <a href="formReclamos.html" class="btn btn-primary"
+                >Ir A Formulario</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+          <div class="product-offer">
+            <img class="img-fluid" src="../img/twist2.webp" alt="" />
+            <div
+              class="d-flex flex-column align-items-center offer-text text-center"
+            >
+              <h4 class="text-white">Maquinas Snacks , Cafes O Mixtas !</h4>
+              <h3 class="text-white text-uppercase">Contrataciones</h3>
+              <a href="../contrataciones.html" class="btn btn-primary"
+                >Contratar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+          <div class="product-offer">
+            <img class="img-fluid" src="../img/carousel-3.jpg" alt="" />
+            <div
+              class="offer-text text-center d-flex flex-column align-items-center"
+            >
+              <h4 class="text-white">Devoluciones Y Compras</h4>
+              <h3 class="text-white text-uppercase">Politicas Empresa</h3>
+              <a href="../politicasEmpresa.html" class="rounded btn btn-primary"
+                >Ver Mas</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+          <div class="product-offer">
+            <img class="img-fluid" src="../img/Slide4.png" alt="" />
+            <div class="offer-text text-center flex-column align-items-center">
+              <h4 class="text-white">Insumos Maquinas Café</h4>
+              <h3 class="text-white text-uppercase">Ventas</h3>
+              <a href="../productos.html" class="rounded btn btn-primary"
+                >Ver Mas</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+          <div class="product-offer contact-desktop">
+            <img class="img-fluid" src="../img/Vendingcafe.webp" alt="" />
+            <div class="offer-text text-center flex-column align-items-center">
+              <h4 class="text-white">Informate Facil</h4>
+              <h3 class="text-white text-uppercase">Recetas</h3>
+              <a href="../recetas.html" class="rounded btn btn-primary">Ver Mas</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Vendor End -->
+    <!-- Carousel End -->
 
-  <!-- Featured Start -->
-  <div class="container-fluid text-center contact-desktop">
-    <div class="row text-center">
-      <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-        <div class="d-flex align-items-center bg-primary bg-primary2" style="padding: 30px">
-          <h1 aria-hidden="true"></h1>
-          <h5 class="font-weight-semi-bold m-0">Productos de calidad</h5>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-        <div class="d-flex align-items-center bg-primary bg-primary2" style="padding: 30px">
-          <h1 aria-hidden="true"></h1>
-          <h5 class="font-weight-semi-bold m-0"></h5>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-        <div class="d-flex align-items-center bg-primary bg-primary2" style="padding: 30px">
-          <h1 aria-hidden="true"></h1>
-          <h5 class="font-weight-semi-bold m-0">Reposición y recambios</h5>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-        <div class="d-flex align-items-center bg-primary bg-primary2" style="padding: 30px">
-          <h1 aria-hidden="true"></h1>
-          <h5 class="font-weight-semi-bold m-0">Soporte técnico 24/7</h5>
+    <!-- Vendor Start -->
+    <div class="container-fluid py-2">
+      <div class="row px-xl-5">
+        <div class="col">
+          <div class="owl-carousel vendor-carousel">
+            <a href="https://smkvending.cl" class="bg-light text-decoration-none">
+              <img src="../img/Necta.png" alt="" />
+            </a>
+            <a href="https://publuu.com/flip-book/256983/617190" class="bg-light text-decoration-none">
+              <img src="../img/Laqtia.png" alt="" />
+            </a>
+            <a href="https://Pepsico.com/" class="bg-light text-decoration-none">
+              <img src="img/Pepsico.png" alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Featured End -->
+    <!-- Vendor End -->
 
-  <!-- Footer Start -->
-  <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
-    <div class="row px-4 pt-1">
-      <div class="col-lg-4 col-12 pr-xl-4">
-        <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
-        <p class="">
-          Yellow Box - Servicios de vending y bebidas automáticas. Atención y
-          soporte técnico.
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
-          Bio-Bio , Chile
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-envelope text-primary mr-3"></i
-          ><a href="mailto:soporte@yellowbox.example" class="text-secondary"
-            >soporte@yellowbox.cl</a
+
+    <!-- Featured Start -->
+    <div class="container-fluid text-center contact-desktop">
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+          <div
+            class="d-flex align-items-center bg-primary bg-primary2"
+            style="padding: 30px"
           >
-        </p>
-        <p class="mt-3">
-          Horario de atención: Lunes a Viernes, 09:00 - 18:00
-        </p>
-      </div>
-      <div class="col-lg-8 col-12">
-        <div class="row">
-          <div class="col-lg-4 col-12">
+            <h1
+              class="fa fa-check text-primary m-0 mr-3"
+              aria-hidden="true"
+            ></h1>
+            <h5 class="font-weight-semi-bold m-0">Productos de calidad</h5>
           </div>
-
-          <div class="col-lg-7 mb-xl-5 mb-1">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+          <div
+            class="d-flex align-items-center bg-primary bg-primary2"
+            style="padding: 30px"
+          >
+            <h1
+              class="fa fa-tools text-primary m-0 mr-2"
+              aria-hidden="true"
+            ></h1>
+            <h5 class="font-weight-semi-bold m-0">
+              Instalación y mantenimiento
+            </h5>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+          <div
+            class="d-flex align-items-center bg-primary bg-primary2"
+            style="padding: 30px"
+          >
+            <h1
+              class="fas fa-box-open text-primary m-0 mr-3"
+              aria-hidden="true"
+            ></h1>
+            <h5 class="font-weight-semi-bold m-0">Reposición y recambios</h5>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+          <div
+            class="d-flex align-items-center bg-primary bg-primary2"
+            style="padding: 30px"
+          >
+            <h1
+              class="fa fa-phone-volume text-primary m-0 mr-3"
+              aria-hidden="true"
+            ></h1>
+            <h5 class="font-weight-semi-bold m-0">Soporte técnico 24/7</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="row border-top mx-xl-5 py-1" style="border-color: rgba(256, 256, 256, 0.1) !important">
-      <div class="col-md-6">
-        <p class="text-center text-md-left text-secondary">
-          &copy; 2025 Yellow Box. Todos los derechos reservados.
-          <br />Diseñado por Küpan.
-        </p>
+    <!-- Featured End -->
+
+
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
+      <div class="row px-4 pt-1">
+        <div class="col-lg-4 col-12 pr-xl-4">
+          <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
+          <p class="">
+            Yellow Box - Servicios de vending y bebidas automáticas. Atención y
+            soporte técnico.
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
+            Bio-Bio , Chile
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-envelope text-primary mr-3"></i
+            ><a href="mailto:soporte@yellowbox.example" class="text-secondary"
+              >soporte@yellowbox.cl</a
+            >
+          </p>
+          <p class="mt-3">
+            Horario de atención: Lunes a Viernes, 09:00 - 18:00
+          </p>
+        </div>
+        <div class="col-lg-8 col-12">
+          <div class="row">
+            <div class="col-lg-4 col-12">
+              <h5 class="text-secondary text-uppercase mb-3">Enlaces</h5>
+              <div class="row">
+                <a class="text-secondary col-xl-12 col-4" href="index.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Inicio</a
+                >
+                <a class="text-secondary col-xl-12 col-8" href="shop.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Tienda</a
+                >
+                <a class="text-secondary col-xl-12 col-4" href="contact.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Contacto</a
+                >
+                <a
+                  class="text-secondary col-xl-12 col-8"
+                  href="politicasEmpresa.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Políticas de la
+                  Empresa</a
+                >
+              </div>
+            </div>
+
+            <div class="col-lg-7 mb-xl-5 mb-1">
+              <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
+              <p>Encuéntranos en redes para novedades y promociones.</p>
+              <div class="row">
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 px-xl-0 text-center">
-        <img class="img-fluid" src="../img/payments.png" alt="Métodos de pago aceptados" />
+      <div
+        class="row border-top mx-xl-5 py-1"
+        style="border-color: rgba(256, 256, 256, 0.1) !important"
+      >
+        <div class="col-md-6">
+          <p class="text-center text-md-left text-secondary">
+            &copy; 2025 Yellow Box. Todos los derechos reservados.
+            <br />Diseñado por Küpan.
+          </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center">
+          <img
+            class="img-fluid"
+            src="img/payments.png"
+            alt="Métodos de pago aceptados"
+          />
+        </div>
       </div>
-    </div>
-  </footer>
-  <!-- Footer End -->
+    </footer>
+    <!-- Footer End -->
 
-  <!-- Back to Top -->
-  <a href="#" class="btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn-lg btn-primary back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="../lib/easing/easing.min.js"></script>
-  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-  <!-- Template Javascript -->
-  <script src="../js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <!-- Contact Javascript File -->
 
-  <script>
-    const swiper = new Swiper(".swiper", {
-      // Optional parameters
-      direction: "horizontal",
-      loop: true,
-      effect: "fade",
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: true,
-      },
 
-      // If we need pagination
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+    <script>
+      const swiper = new Swiper(".swiper", {
+        // Optional parameters
+        direction: "horizontal",
+        loop: true,
+        effect: "fade",
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: true,
+        },
 
-      // And if we need scrollbar
-      scrollbar: {
-        el: ".swiper-scrollbar",
-      },
-    });
-  </script>
-</body>
+        // If we need pagination
 
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+    </script>
+  </body>
 </html>

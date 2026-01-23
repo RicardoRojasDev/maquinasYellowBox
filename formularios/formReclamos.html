@@ -1,286 +1,312 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reclamos - Yellow Box</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Políticas de la empresa" name="keywords" />
+    <meta content="Políticas de la empresa" name="description" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>Reclamos - Yellow Box</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="Políticas de la empresa" name="keywords" />
-  <meta content="Políticas de la empresa" name="description" />
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon" />
 
-  <!-- Favicon -->
-  <link href="../img/favicon.ico" rel="icon" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      // Inicializar EmailJS con tu Public Key
+      (function () {
+        emailjs.init("yWyEO_dp5sA6hGS01");
+        console.log("✅ EmailJS inicializado");
+      })();
+    </script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/form-handlers.js"></script>
+    <script src="../js/email-service.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+      // Función para cambiar entre vistas
+      function mostrarVista(vista) {
+        document.getElementById("vista-compra").style.display =
+          vista === "compra" ? "block" : "none";
+        document.getElementById("vista-devolucion").style.display =
+          vista === "devolucion" ? "block" : "none";
 
-<!-- EmailJS SDK -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-    // Inicializar EmailJS con tu Public Key
-    (function() {
-        emailjs.init('yWyEO_dp5sA6hGS01');
-        console.log('✅ EmailJS inicializado');
-    })();
-</script>
-<!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <!-- Template Javascript -->
-  <script src="../js/main.js"></script>
-  <script src="../js/form-handlers.js"></script>
-  <script src="../js/email-service.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
- <script>
-    // Función para cambiar entre vistas
-    function mostrarVista(vista) {
-      document.getElementById("vista-compra").style.display =
-        vista === "compra" ? "block" : "none";
-      document.getElementById("vista-devolucion").style.display =
-        vista === "devolucion" ? "block" : "none";
+        // Actualizar botones activos
+        const botones = document.querySelectorAll(".btn-group .btn");
+        botones.forEach((btn) => btn.classList.remove("active"));
+        if (vista === "compra") botones[0].classList.add("active");
+        if (vista === "devolucion") botones[1].classList.add("active");
+      }
 
-      // Actualizar botones activos
-      const botones = document.querySelectorAll(".btn-group .btn");
-      botones.forEach((btn) => btn.classList.remove("active"));
-      if (vista === "compra") botones[0].classList.add("active");
-      if (vista === "devolucion") botones[1].classList.add("active");
-    }
+      // Función para mostrar/ocultar sección de reclamos
+      function updateReclamoVisibility() {
+        const asuntoSelect = document.getElementById("asunto");
+        const reclamoSection = document.getElementById("reclamo-section");
 
-    // Función para mostrar/ocultar sección de reclamos
-    function updateReclamoVisibility() {
-        const asuntoSelect = document.getElementById('asunto');
-        const reclamoSection = document.getElementById('reclamo-section');
-        
         if (!asuntoSelect || !reclamoSection) return;
-        
-        if (asuntoSelect.value === 'reclamo') {
-            reclamoSection.style.display = 'block';
-            console.log('✅ Mostrando sección de reclamos');
-        } else {
-            reclamoSection.style.display = 'none';
-            console.log('❌ Ocultando sección de reclamos');
-        }
-    }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log('🔄 Página cargada, verificando EmailJS...');
-        
-        if (typeof emailjs === 'undefined') {
-            console.error('❌ EmailJS SDK no cargado');
-            return;
+        if (asuntoSelect.value === "reclamo") {
+          reclamoSection.style.display = "block";
+          console.log("✅ Mostrando sección de reclamos");
+        } else {
+          reclamoSection.style.display = "none";
+          console.log("❌ Ocultando sección de reclamos");
         }
-        
-        if (typeof EmailService === 'undefined') {
-            console.error('❌ EmailService no definido');
-            return;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🔄 Página cargada, verificando EmailJS...");
+
+        if (typeof emailjs === "undefined") {
+          console.error("❌ EmailJS SDK no cargado");
+          return;
         }
-        
-        console.log('✅ EmailJS y EmailService listos');
-        
+
+        if (typeof EmailService === "undefined") {
+          console.error("❌ EmailService no definido");
+          return;
+        }
+
+        console.log("✅ EmailJS y EmailService listos");
+
         // 1. Configurar visibilidad de reclamos
-        const asuntoSelect = document.getElementById('asunto');
+        const asuntoSelect = document.getElementById("asunto");
         if (asuntoSelect) {
-            updateReclamoVisibility();
-            asuntoSelect.addEventListener('change', updateReclamoVisibility);
+          updateReclamoVisibility();
+          asuntoSelect.addEventListener("change", updateReclamoVisibility);
         }
-        
+
         // 2. Configurar visibilidad de medios de pago
-        const medioPagoInputs = document.querySelectorAll('input[name="medio-pago"]');
-        const billeteSection = document.getElementById('billete-denominacion-extra');
-        const tarjetaSection = document.getElementById('tarjeta-details');
-        
-        medioPagoInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                if (billeteSection) billeteSection.style.display = 'none';
-                if (tarjetaSection) tarjetaSection.style.display = 'none';
-                
-                if (this.value === 'billete' && billeteSection) {
-                    billeteSection.style.display = 'block';
-                } else if (this.value === 'tarjeta' && tarjetaSection) {
-                    tarjetaSection.style.display = 'block';
-                }
-            });
+        const medioPagoInputs = document.querySelectorAll(
+          'input[name="medio-pago"]'
+        );
+        const billeteSection = document.getElementById(
+          "billete-denominacion-extra"
+        );
+        const tarjetaSection = document.getElementById("tarjeta-details");
+
+        medioPagoInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            if (billeteSection) billeteSection.style.display = "none";
+            if (tarjetaSection) tarjetaSection.style.display = "none";
+
+            if (this.value === "billete" && billeteSection) {
+              billeteSection.style.display = "block";
+            } else if (this.value === "tarjeta" && tarjetaSection) {
+              tarjetaSection.style.display = "block";
+            }
+          });
         });
-        
+
         // 3. Configurar tipo de máquina
-        const tipoMaquinaInputs = document.querySelectorAll('input[name="tipo-maquina"]');
-        const snackProblems = document.getElementById('snack-problems');
-        const cafeProblems = document.getElementById('cafe-problems');
-        
-        tipoMaquinaInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                if (snackProblems) snackProblems.style.display = 'none';
-                if (cafeProblems) cafeProblems.style.display = 'none';
-                
-                if (this.value === 'snack' && snackProblems) {
-                    snackProblems.style.display = 'block';
-                } else if (this.value === 'cafe' && cafeProblems) {
-                    cafeProblems.style.display = 'block';
-                }
-            });
+        const tipoMaquinaInputs = document.querySelectorAll(
+          'input[name="tipo-maquina"]'
+        );
+        const snackProblems = document.getElementById("snack-problems");
+        const cafeProblems = document.getElementById("cafe-problems");
+
+        tipoMaquinaInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            if (snackProblems) snackProblems.style.display = "none";
+            if (cafeProblems) cafeProblems.style.display = "none";
+
+            if (this.value === "snack" && snackProblems) {
+              snackProblems.style.display = "block";
+            } else if (this.value === "cafe" && cafeProblems) {
+              cafeProblems.style.display = "block";
+            }
+          });
         });
-        
+
         // 4. Configurar banco (Otro banco)
-        const bancoSelect = document.getElementById('banco-select');
-        const otroBancoContainer = document.getElementById('otro-banco-container');
-        const bancoOtroInput = document.getElementById('banco-otro');
-        
+        const bancoSelect = document.getElementById("banco-select");
+        const otroBancoContainer = document.getElementById(
+          "otro-banco-container"
+        );
+        const bancoOtroInput = document.getElementById("banco-otro");
+
         if (bancoSelect) {
-            bancoSelect.addEventListener('change', function() {
-                if (this.value === 'otro') {
-                    otroBancoContainer.style.display = 'block';
-                    bancoOtroInput.required = true;
-                } else {
-                    otroBancoContainer.style.display = 'none';
-                    bancoOtroInput.required = false;
-                    bancoOtroInput.value = '';
-                }
-            });
+          bancoSelect.addEventListener("change", function () {
+            if (this.value === "otro") {
+              otroBancoContainer.style.display = "block";
+              bancoOtroInput.required = true;
+            } else {
+              otroBancoContainer.style.display = "none";
+              bancoOtroInput.required = false;
+              bancoOtroInput.value = "";
+            }
+          });
         }
-        
+
         // 5. Configurar formulario de ventas
-        const ventasForm = document.getElementById('ventasForm');
-        const successVentas = document.getElementById('success-ventas');
-        
+        const ventasForm = document.getElementById("ventasForm");
+        const successVentas = document.getElementById("success-ventas");
+
         if (ventasForm) {
-            ventasForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Validación
-                if (!ventasForm.checkValidity()) {
-                    ventasForm.classList.add('was-validated');
-                    return;
+          ventasForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Validación
+            if (!ventasForm.checkValidity()) {
+              ventasForm.classList.add("was-validated");
+              return;
+            }
+
+            const submitBtn = ventasForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            try {
+              // Estado de carga
+              submitBtn.innerHTML =
+                '<span class="spinner-border spinner-border-sm"></span> Enviando...';
+              submitBtn.disabled = true;
+
+              // Preparar datos para EmailJS
+              const formData = new FormData(ventasForm);
+              const templateParams = {
+                to_email: "expendedorasyellowbox@gmail.com",
+                from_name: formData.get("personaContacto") || "Cliente",
+                from_email: formData.get("correo") || "no-email@yellowbox.cl",
+                nombreEmpresa: formData.get("nombreEmpresa"),
+                rut: formData.get("rut"),
+                ciudad: formData.get("ciudad"),
+                direccion: formData.get("direccion"),
+                personaContacto: formData.get("personaContacto"),
+                telefono: formData.get("telefono"),
+                correo: formData.get("correo"),
+                cantidadFuncionarios: formData.get("cantidadFuncionarios"),
+                tipoServicio: formData.get("tipoServicio"),
+                fecha_envio: new Date().toLocaleString("es-CL"),
+                timestamp: Date.now(),
+                pagina_origen: window.location.href,
+                asunto:
+                  "SOLICITUD DE CONTRATACIÓN - " +
+                  formData.get("nombreEmpresa"),
+              };
+
+              console.log("📤 Enviando formulario de ventas...");
+              console.log("Datos:", templateParams);
+
+              // Enviar con EmailJS - usa el MISMO template o crea uno nuevo
+              const response = await emailjs.send(
+                "service_7b1d0wb", // Tu Service ID
+                "template_cbawhm6", // MISMO template ID (o crea uno nuevo para ventas)
+                templateParams
+              );
+
+              console.log("✅ Formulario de ventas enviado:", response);
+
+              // Mostrar éxito
+              successVentas.style.display = "block";
+              ventasForm.style.display = "none";
+              successVentas.scrollIntoView({ behavior: "smooth" });
+
+              // Auto-redireccionar después de 8 segundos
+              setTimeout(() => {
+                mostrarVista("compra"); // Volver al primer formulario
+                successVentas.style.display = "none";
+                ventasForm.style.display = "block";
+                ventasForm.reset();
+                ventasForm.classList.remove("was-validated");
+              }, 8000);
+            } catch (error) {
+              console.error("❌ Error en formulario de ventas:", error);
+
+              // Mostrar error específico
+              let errorMessage = "Error al enviar la solicitud";
+              if (error.text) {
+                if (error.text.includes("Invalid template")) {
+                  errorMessage =
+                    "Error de configuración del template. Contacta al soporte.";
+                } else if (error.text.includes("Invalid user id")) {
+                  errorMessage = "Error de configuración. Recarga la página.";
+                } else if (error.text.includes("429")) {
+                  errorMessage =
+                    "Límite de envíos alcanzado. Intenta más tarde.";
                 }
-                
-                const submitBtn = ventasForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                try {
-                    // Estado de carga
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Enviando...';
-                    submitBtn.disabled = true;
-                    
-                    // Preparar datos para EmailJS
-                    const formData = new FormData(ventasForm);
-                    const templateParams = {
-                        to_email: 'expendedorasyellowbox@gmail.com',
-                        from_name: formData.get('personaContacto') || 'Cliente',
-                        from_email: formData.get('correo') || 'no-email@yellowbox.cl',
-                        nombreEmpresa: formData.get('nombreEmpresa'),
-                        rut: formData.get('rut'),
-                        ciudad: formData.get('ciudad'),
-                        direccion: formData.get('direccion'),
-                        personaContacto: formData.get('personaContacto'),
-                        telefono: formData.get('telefono'),
-                        correo: formData.get('correo'),
-                        cantidadFuncionarios: formData.get('cantidadFuncionarios'),
-                        tipoServicio: formData.get('tipoServicio'),
-                        fecha_envio: new Date().toLocaleString('es-CL'),
-                        timestamp: Date.now(),
-                        pagina_origen: window.location.href,
-                        asunto: 'SOLICITUD DE CONTRATACIÓN - ' + formData.get('nombreEmpresa')
-                    };
-                    
-                    console.log('📤 Enviando formulario de ventas...');
-                    console.log('Datos:', templateParams);
-                    
-                    // Enviar con EmailJS - usa el MISMO template o crea uno nuevo
-                    const response = await emailjs.send(
-                        'service_7b1d0wb', // Tu Service ID
-                        'template_cbawhm6', // MISMO template ID (o crea uno nuevo para ventas)
-                        templateParams
-                    );
-                    
-                    console.log('✅ Formulario de ventas enviado:', response);
-                    
-                    // Mostrar éxito
-                    successVentas.style.display = 'block';
-                    ventasForm.style.display = 'none';
-                    successVentas.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Auto-redireccionar después de 8 segundos
-                    setTimeout(() => {
-                        mostrarVista('compra'); // Volver al primer formulario
-                        successVentas.style.display = 'none';
-                        ventasForm.style.display = 'block';
-                        ventasForm.reset();
-                        ventasForm.classList.remove('was-validated');
-                    }, 8000);
-                    
-                } catch (error) {
-                    console.error('❌ Error en formulario de ventas:', error);
-                    
-                    // Mostrar error específico
-                    let errorMessage = 'Error al enviar la solicitud';
-                    if (error.text) {
-                        if (error.text.includes('Invalid template')) {
-                            errorMessage = 'Error de configuración del template. Contacta al soporte.';
-                        } else if (error.text.includes('Invalid user id')) {
-                            errorMessage = 'Error de configuración. Recarga la página.';
-                        } else if (error.text.includes('429')) {
-                            errorMessage = 'Límite de envíos alcanzado. Intenta más tarde.';
-                        }
-                    }
-                    
-                    // Crear mensaje de error
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'alert alert-danger mt-3';
-                    errorDiv.innerHTML = `
+              }
+
+              // Crear mensaje de error
+              const errorDiv = document.createElement("div");
+              errorDiv.className = "alert alert-danger mt-3";
+              errorDiv.innerHTML = `
                         <h4 class="alert-heading">⚠️ Error</h4>
                         <p>${errorMessage}</p>
                         <hr>
                         <p class="mb-0 small">Si el problema persiste, contacta a <strong>soporte@yellowbox.cl</strong></p>
                     `;
-                    
-                    ventasForm.parentNode.insertBefore(errorDiv, ventasForm.nextSibling);
-                    
-                    // Auto-remover error después de 10 segundos
-                    setTimeout(() => {
-                        errorDiv.remove();
-                    }, 10000);
-                    
-                } finally {
-                    // Restaurar botón
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
+
+              ventasForm.parentNode.insertBefore(
+                errorDiv,
+                ventasForm.nextSibling
+              );
+
+              // Auto-remover error después de 10 segundos
+              setTimeout(() => {
+                errorDiv.remove();
+              }, 10000);
+            } finally {
+              // Restaurar botón
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }
+          });
         }
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log('🔄 Página cargada, verificando EmailJS...');
-        
-        if (typeof emailjs === 'undefined') {
-            console.error('❌ EmailJS SDK no cargado');
-            return;
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🔄 Página cargada, verificando EmailJS...");
+
+        if (typeof emailjs === "undefined") {
+          console.error("❌ EmailJS SDK no cargado");
+          return;
         }
-        
-        if (typeof EmailService === 'undefined') {
-            console.error('❌ EmailService no definido');
-            return;
+
+        if (typeof EmailService === "undefined") {
+          console.error("❌ EmailService no definido");
+          return;
         }
-        
-        console.log('✅ EmailJS y EmailService listos');
-        
+
+        console.log("✅ EmailJS y EmailService listos");
+
         // DEBUG: Verificar todos los campos del formulario
-        const form = document.getElementById('contactForm');
+        const form = document.getElementById("contactForm");
         if (form) {
-            console.log('📝 Formulario encontrado con', form.elements.length, 'elementos');
-           ;}}); 
-     
-</script>
+          console.log(
+            "📝 Formulario encontrado con",
+            form.elements.length,
+            "elementos"
+          );
+        }
+      });
+    </script>
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/styledesktop.css" rel="stylesheet" />
-</head>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/styledesktop.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <!-- Navbar Start -->
     <div class="container-fluid mb-5 pb-2 bg-primary">
       <div class="row mb-3">
@@ -288,7 +314,9 @@
           <nav class="navbar">
             <!-- Sección izquierda - Inicio -->
             <div class="nav-left ml-xl-5">
-              <a href="../index.html" class="nav-item nav-link active">Inicio</a>
+              <a href="../index.html" class="nav-item nav-link active"
+                >Inicio</a
+              >
             </div>
 
             <!-- Logo centrado -->
@@ -310,7 +338,11 @@
                 >
                 <div class="dropdown-menu bg-primary">
                   <a href="" class="dropdown-item">Tienda</a>
-                  <a href="../formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
+                  <a
+                    href="../formularios/formReclamos.html"
+                    class="dropdown-item"
+                    >Reclamos</a
+                  >
                   <a href=".recetas.html" class="dropdown-item">Recetas</a>
                   <a href="servicioTecnico.html" class="dropdown-item"
                     >Servicio Técnico</a
@@ -339,671 +371,1194 @@
     </div>
     <!-- Navbar End -->
 
-  <!-- Main Content Start -->
-  <div class="pt-3">
-    <!-- Botones tipo Segmented Control -->
-    <div class="btn-group mt-xl-4 flex-wrap mx-auto w-100 justify-content-center px-xl-3 mb-xl-3" role="group"
-      aria-label="Segmented Control">
-      <button type="button" class="btn rounded col-4 btn-outline-primary text-dark active"
-        onclick="mostrarVista('compra')">
-        Formulario Reclamos
-      </button>
+    <!-- Main Content Start -->
+    <div class="pt-3 -2">
+      <!-- Botones tipo Segmented Control -->
+      <div
+        class="btn-group mt-xl-4 flex-wrap mx-auto w-100 justify-content-center px-xl-3 mb-xl-3 mb-3"
+        role="group"
+        aria-label="Segmented Control"
+      >
+        <button
+          type="button"
+          class="btn rounded col-4 btn-outline-primary text-dark active"
+          onclick="mostrarVista('compra')"
+        >
+          Formulario Reclamos
+        </button>
 
-      <button type="button" class="btn rounded col-4 btn-outline-primary text-dark"
-        onclick="mostrarVista('devolucion')">
-        Formulario Ventas
-      </button>
-    </div>
+        <button
+          type="button"
+          class="btn rounded col-4 btn-outline-primary text-dark"
+          onclick="mostrarVista('devolucion')"
+        >
+          Formulario Ventas
+        </button>
+      </div>
 
-    <!-- Contenido dinámico -->
+      <!-- Contenido dinámico -->
       <div id="vista-compra" class="mx-auto w-100 rounded p-xl-2">
-        <div class="row justify-content-center align-content-center" style="box-shadow: -1px 2px 7px 0px #000000;">
-          <div class="col-lg-11 p-4">  
-         
-                <form id="contactForm" name="sentMessage" novalidate>
+        <div
+          class="row justify-content-center align-content-center"
+          style="box-shadow: -1px 2px 7px 0px #000000"
+        >
+          <div class="col-lg-11 p-4">
+            <form id="contactForm" name="sentMessage" novalidate>
+              <!-- Sección de información básica -->
+              <div class="row">
+                <div class="col-lg-6 mb-3 pr-2">
+                  <label for="name" class="form-label required-field"
+                    >Nombre</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor ingresa tu nombre
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <label for="email" class="form-label required-field"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor ingresa un correo electrónico válido
+                  </div>
+                </div>
+              </div>
 
-                  <!-- Sección de información básica -->
+              <div class="col-lg-12 mb-3">
+                <select
+                  class="custom-select"
+                  id="asunto"
+                  name="asunto"
+                  required
+                >
+                  <option selected>Selecciona Tipo De Formulario</option>
+                  <option value="reclamo">Reclamo</option>
+                  <option value="sugerencia">Sugerencia</option>
+                  <option value="felicitacion">Felicitación</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor selecciona un asunto
+                </div>
+              </div>
+
+              <!-- Sección dinámica para reclamos -->
+              <div
+                id="reclamo-section"
+                class="dynamic-section"
+                style="display: none"
+              >
+                <h3 class="form-section-title">Detalles del Reclamo</h3>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="nombre" class="form-label required-field"
+                      >Nombre</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      name="nombre"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="rut" class="form-label required-field"
+                      >RUT</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rut"
+                      name="rut"
+                      placeholder="12.345.678-9"
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="telefono" class="form-label required-field"
+                      >Teléfono</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="telefono"
+                      name="telefono"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label required-field"
+                      >Medio de pago</label
+                    >
+                    <div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="billete"
+                          name="medio-pago"
+                          value="billete"
+                        />
+                        <label class="form-check-label" for="billete"
+                          >Billete</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="moneda"
+                          name="medio-pago"
+                          value="moneda"
+                        />
+                        <label class="form-check-label" for="moneda"
+                          >Moneda</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="tarjeta"
+                          name="medio-pago"
+                          value="tarjeta"
+                        />
+                        <label class="form-check-label" for="tarjeta"
+                          >Tarjeta</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sección de detalles del billete -->
+                <div
+                  id="billete-denominacion-extra"
+                  class="sub-section"
+                  style="display: none"
+                >
                   <div class="row">
-                    <div class="col-lg-6 mb-3 pr-2">
-                      <label for="name" class="form-label required-field">Nombre</label>
-                      <input type="text" class="form-control" id="name" name="name" required />
-                      <div class="invalid-feedback">
-                        Por favor ingresa tu nombre
-                      </div>
-                    </div>
-                    <div class="col-lg-6 mb-4">
-                      <label for="email" class="form-label required-field">Correo electrónico</label>
-                      <input type="email" class="form-control" id="email" name="email" required />
-                      <div class="invalid-feedback">
-                        Por favor ingresa un correo electrónico válido
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12 mb-3">
-                    <select class="custom-select" id="asunto" name="asunto" required>
-                      <option selected>Selecciona Tipo De Formulario</option>
-                      <option value="reclamo">Reclamo</option>
-                      <option value="sugerencia">Sugerencia</option>
-                      <option value="felicitacion">Felicitación</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Por favor selecciona un asunto
-                    </div>
-                  </div>
-
-                  <!-- Sección dinámica para reclamos -->
-                  <div id="reclamo-section" class="dynamic-section" style="display: none">
-                    <h3 class="form-section-title">Detalles del Reclamo</h3>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="nombre" class="form-label required-field">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="rut" class="form-label required-field">RUT</label>
-                        <input type="text" class="form-control" id="rut" name="rut" placeholder="12.345.678-9" />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="telefono" class="form-label required-field">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label class="form-label required-field">Medio de pago</label>
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="billete" name="medio-pago"
-                              value="billete" />
-                            <label class="form-check-label" for="billete">Billete</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="moneda" name="medio-pago" value="moneda" />
-                            <label class="form-check-label" for="moneda">Moneda</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="tarjeta" name="medio-pago"
-                              value="tarjeta" />
-                            <label class="form-check-label" for="tarjeta">Tarjeta</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Sección de detalles del billete -->
-                    <div id="billete-denominacion-extra" class="sub-section" style="display: none">
-                      <div class="row">
-                        <div class="col-md-12 mb-3">
-                          <label class="form-label">Denominación del billete</label>
-                          <div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="billete-1000" name="tipo-billete"
-                                value="1000" />
-                              <label class="form-check-label" for="billete-1000">$1.000</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="billete-2000" name="tipo-billete"
-                                value="2000" />
-                              <label class="form-check-label" for="billete-2000">$2.000</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div id="tarjeta-details" class="sub-section" style="display: none">
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="digitos-tarjeta" class="form-label">Últimos 4 dígitos de la tarjeta</label>
-                          <input type="text" class="form-control" id="digitos-tarjeta" name="digitos-tarjeta"
-                            maxlength="4" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label class="form-label">Tipo de tarjeta</label>
-                          <div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="debito" name="tipo-tarjeta"
-                                value="debito" />
-                              <label class="form-check-label" for="debito">Débito</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="credito" name="tipo-tarjeta"
-                                value="credito" />
-                              <label class="form-check-label" for="credito">Crédito</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="billete-adicional" class="sub-section" style="display: none">
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="denominacionbillete" class="form-label">Denominacion Billete</label>
-                          <input type="text" class="form-control" id="denominacionbillete" name="denominacionbillete"
-                            maxlength="4" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label class="form-label">Tipo de billete</label>
-                          <div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="debito" name="tipo-billete"
-                                value="billete" />
-                              <label class="form-check-label" for="debito">Débito</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" id="credito" name="tipo-tarjeta"
-                                value="credito" />
-                              <label class="form-check-label" for="credito">Crédito</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="hora-compra" class="form-label">Hora de la compra</label>
-                        <input type="time" class="form-control" id="hora-compra" name="hora-compra" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="fecha-compra" class="form-label">Fecha de la compra</label>
-                        <input type="date" class="form-control" id="fecha-compra" name="fecha-compra" />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="ciudad" class="form-label">Ciudad</label>
-                        <select class="form-select" id="ciudad" name="ciudad">
-                          <option value="">Selecciona una ciudad</option>
-                          <option value="los-angeles">Los Ángeles</option>
-                          <option value="angol">Angol</option>
-                          <option value="santa-barbara">Santa Bárbara</option>
-                          <option value="huepil">Huepil</option>
-                          <option value="mulchen">Mulchén</option>
-                          <option value="nacimiento">Nacimiento</option>
-                          <option value="laja">Laja</option>
-                          <option value="concepcion">Concepción</option>
-                        </select>
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="recinto" class="form-label">Recinto</label>
-                        <input type="text" class="form-control" id="recinto" name="recinto" />
-                      </div>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="numero-maquina" class="form-label">Número de máquina</label>
-                      <input type="text" class="form-control" id="numero-maquina" name="numero-maquina" />
-                    </div>
-
-                    <div class="mb-3">
-                      <label class="form-label required-field">Tipo de máquina</label>
+                    <div class="col-md-12 mb-3">
+                      <label class="form-label">Denominación del billete</label>
                       <div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" id="snack" name="tipo-maquina" value="snack" />
-                          <label class="form-check-label" for="snack">Snack</label>
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="billete-1000"
+                            name="tipo-billete"
+                            value="1000"
+                          />
+                          <label class="form-check-label" for="billete-1000"
+                            >$1.000</label
+                          >
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" id="cafe" name="tipo-maquina" value="cafe" />
-                          <label class="form-check-label" for="cafe">Café</label>
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="billete-2000"
+                            name="tipo-billete"
+                            value="2000"
+                          />
+                          <label class="form-check-label" for="billete-2000"
+                            >$2.000</label
+                          >
                         </div>
-                      </div>
-                    </div>
-
-                    <!-- Problemas específicos para máquinas snack -->
-                    <div id="snack-problems" class="sub-section" style="display: none">
-                      <label class="form-label required-field">Problema específico</label>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-moneda-atrapada"
-                              name="snack-problema" value="moneda-atrapada" />
-                            <label class="form-check-label" for="snack-moneda-atrapada">Ingresé monedas y estas quedaron
-                              atrapadas</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-dinero-pantalla"
-                              name="snack-problema" value="dinero-pantalla" />
-                            <label class="form-check-label" for="snack-dinero-pantalla">Ingresé dinero y presioné la
-                              pantalla
-                              touch</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-billete-rojo"
-                              name="snack-problema" value="billete-rojo" />
-                            <label class="form-check-label" for="snack-billete-rojo">Ingresé billete y el lector quedó
-                              de color rojo
-                              o se apagó</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-billete-atrapado"
-                              name="snack-problema" value="billete-atrapado" />
-                            <label class="form-check-label" for="snack-billete-atrapado">Ingresé billete y este quedó
-                              atrapado</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-producto-colgado"
-                              name="snack-problema" value="producto-colgado" />
-                            <label class="form-check-label" for="snack-producto-colgado">Producto no cayó correctamente
-                              y quedó colgando
-                              en máquina</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-espiral" name="snack-problema"
-                              value="espiral" />
-                            <label class="form-check-label" for="snack-espiral">Espiral no disponible</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-producto-mal-estado"
-                              name="snack-problema" value="producto-mal-estado" />
-                            <label class="form-check-label" for="snack-producto-mal-estado">Producto en mal
-                              estado</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="snack-otro" name="snack-problema"
-                              value="otro" />
-                            <label class="form-check-label" for="snack-otro">Otro</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Problemas específicos para máquinas de café -->
-                    <div id="cafe-problems" class="sub-section" style="display: none">
-                      <label class="form-label required-field">Problema específico</label>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-moneda-atrapada"
-                              name="cafe-problema" value="moneda-atrapada" />
-                            <label class="form-check-label" for="cafe-moneda-atrapada">Ingresé monedas y estas quedaron
-                              atrapadas</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-dinero-pantalla"
-                              name="cafe-problema" value="dinero-pantalla" />
-                            <label class="form-check-label" for="cafe-dinero-pantalla">Ingresé dinero y presioné la
-                              pantalla
-                              touch</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-billete-rojo" name="cafe-problema"
-                              value="billete-rojo" />
-                            <label class="form-check-label" for="cafe-billete-rojo">Ingresé billete y el lector quedó de
-                              color
-                              rojo</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-billete-atrapado"
-                              name="cafe-problema" value="billete-atrapado" />
-                            <label class="form-check-label" for="cafe-billete-atrapado">Ingresé billete y este quedó
-                              atrapado</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-cafe-no-corresponde"
-                              name="cafe-problema" value="cafe-no-corresponde" />
-                            <label class="form-check-label" for="cafe-cafe-no-corresponde">Café no salió como
-                              corresponde</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-vaso-vacio" name="cafe-problema"
-                              value="vaso-vacio" />
-                            <label class="form-check-label" for="cafe-vaso-vacio">Salió vaso vacío</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-no-cayo-vaso" name="cafe-problema"
-                              value="no-cayo-vaso" />
-                            <label class="form-check-label" for="cafe-no-cayo-vaso">No cayó el vaso</label>
-                          </div>
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="cafe-otro" name="cafe-problema"
-                              value="otro" />
-                            <label class="form-check-label" for="cafe-otro">Otro</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="descripcion" class="form-label required-field">Explique brevemente el relato de lo
-                        ocurrido</label>
-                      <textarea class="form-control" id="descripcion" name="descripcion" rows="4"></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="imagen" class="form-label">Adjuntar imagen</label>
-                      <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" />
-                    </div>
-
-                    <!-- Sección de datos bancarios para devolución -->
-                    <div class="sub-section">
-                      <h4 class="form-section-title">
-                        Datos para devolución (en caso necesario)
-                      </h4>
-
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="nombre-banco" class="form-label">Nombre completo</label>
-                          <input type="text" class="form-control" id="nombre-banco" name="nombre-banco" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="rut-banco" class="form-label">RUT</label>
-                          <input type="text" class="form-control" id="rut-banco" name="rut-banco"
-                            placeholder="12.345.678-9" />
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="banco" class="form-label">Banco</label>
-                          <select class="form-control" id="banco-select" name="banco">
-                            <option value="">Seleccione su banco</option>
-                            <option value="banco-de-chile">
-                              Banco de Chile
-                            </option>
-                            <option value="banco-estado">BancoEstado</option>
-                            <option value="banco-santander">
-                              Banco Santander
-                            </option>
-                            <option value="banco-bci">Banco BCI</option>
-                            <option value="banco-scotiabank">
-                              Scotiabank
-                            </option>
-                            <option value="banco-itau">Banco Itaú</option>
-                            <option value="banco-security">
-                              Banco Security
-                            </option>
-                            <option value="banco-falabella">
-                              Banco Falabella
-                            </option>
-                            <option value="banco-ripley">Banco Ripley</option>
-                            <option value="otro">Otro banco</option>
-                          </select>
-                          <!-- Campo de texto para "Otro banco" -->
-                          <div id="otro-banco-container" class="mt-2" style="display: none">
-                            <input type="text" class="form-control" id="banco-otro" name="banco-otro"
-                              placeholder="Ingrese el nombre del banco" />
-                          </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="numero-cuenta" class="form-label">Número de cuenta</label>
-                          <input type="text" class="form-control" id="numero-cuenta" name="numero-cuenta" />
-                        </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <label class="form-label">Tipo de cuenta</label>
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="cta-vista" name="tipo-cuenta"
-                              value="cta-vista" />
-                            <label class="form-check-label" for="cta-vista">Cta Vista</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="cta-corriente" name="tipo-cuenta"
-                              value="cta-corriente" />
-                            <label class="form-check-label" for="cta-corriente">Cta Corriente</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="cta-rut" name="tipo-cuenta"
-                              value="cta-rut" />
-                            <label class="form-check-label" for="cta-rut">Cta Rut</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="chequera-electronica" name="tipo-cuenta"
-                              value="chequera-electronica" />
-                            <label class="form-check-label" for="chequera-electronica">Chequera Electrónica</label>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="correo-devolucion" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="correo-devolucion" name="correo-devolucion" />
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <!-- Campo de mensaje general -->
+                <div
+                  id="tarjeta-details"
+                  class="sub-section"
+                  style="display: none"
+                >
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="digitos-tarjeta" class="form-label"
+                        >Últimos 4 dígitos de la tarjeta</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="digitos-tarjeta"
+                        name="digitos-tarjeta"
+                        maxlength="4"
+                      />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Tipo de tarjeta</label>
+                      <div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="debito"
+                            name="tipo-tarjeta"
+                            value="debito"
+                          />
+                          <label class="form-check-label" for="debito"
+                            >Débito</label
+                          >
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="credito"
+                            name="tipo-tarjeta"
+                            value="credito"
+                          />
+                          <label class="form-check-label" for="credito"
+                            >Crédito</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="billete-adicional"
+                  class="sub-section"
+                  style="display: none"
+                >
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="denominacionbillete" class="form-label"
+                        >Denominacion Billete</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="denominacionbillete"
+                        name="denominacionbillete"
+                        maxlength="4"
+                      />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Tipo de billete</label>
+                      <div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="debito"
+                            name="tipo-billete"
+                            value="billete"
+                          />
+                          <label class="form-check-label" for="debito"
+                            >Débito</label
+                          >
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            id="credito"
+                            name="tipo-tarjeta"
+                            value="credito"
+                          />
+                          <label class="form-check-label" for="credito"
+                            >Crédito</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="hora-compra" class="form-label"
+                      >Hora de la compra</label
+                    >
+                    <input
+                      type="time"
+                      class="form-control"
+                      id="hora-compra"
+                      name="hora-compra"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="fecha-compra" class="form-label"
+                      >Fecha de la compra</label
+                    >
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="fecha-compra"
+                      name="fecha-compra"
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <select class="form-select" id="ciudad" name="ciudad">
+                      <option value="">Selecciona una ciudad</option>
+                      <option value="los-angeles">Los Ángeles</option>
+                      <option value="angol">Angol</option>
+                      <option value="santa-barbara">Santa Bárbara</option>
+                      <option value="huepil">Huepil</option>
+                      <option value="mulchen">Mulchén</option>
+                      <option value="nacimiento">Nacimiento</option>
+                      <option value="laja">Laja</option>
+                      <option value="concepcion">Concepción</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="recinto" class="form-label">Recinto</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="recinto"
+                      name="recinto"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="numero-maquina" class="form-label"
+                    >Número de máquina</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="numero-maquina"
+                    name="numero-maquina"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label required-field"
+                    >Tipo de máquina</label
+                  >
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="snack"
+                        name="tipo-maquina"
+                        value="snack"
+                      />
+                      <label class="form-check-label" for="snack">Snack</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="cafe"
+                        name="tipo-maquina"
+                        value="cafe"
+                      />
+                      <label class="form-check-label" for="cafe">Café</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Problemas específicos para máquinas snack -->
+                <div
+                  id="snack-problems"
+                  class="sub-section"
+                  style="display: none"
+                >
+                  <label class="form-label required-field"
+                    >Problema específico</label
+                  >
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-moneda-atrapada"
+                          name="snack-problema"
+                          value="moneda-atrapada"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="snack-moneda-atrapada"
+                          >Ingresé monedas y estas quedaron atrapadas</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-dinero-pantalla"
+                          name="snack-problema"
+                          value="dinero-pantalla"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="snack-dinero-pantalla"
+                          >Ingresé dinero y presioné la pantalla touch</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-billete-rojo"
+                          name="snack-problema"
+                          value="billete-rojo"
+                        />
+                        <label class="form-check-label" for="snack-billete-rojo"
+                          >Ingresé billete y el lector quedó de color rojo o se
+                          apagó</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-billete-atrapado"
+                          name="snack-problema"
+                          value="billete-atrapado"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="snack-billete-atrapado"
+                          >Ingresé billete y este quedó atrapado</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-producto-colgado"
+                          name="snack-problema"
+                          value="producto-colgado"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="snack-producto-colgado"
+                          >Producto no cayó correctamente y quedó colgando en
+                          máquina</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-espiral"
+                          name="snack-problema"
+                          value="espiral"
+                        />
+                        <label class="form-check-label" for="snack-espiral"
+                          >Espiral no disponible</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-producto-mal-estado"
+                          name="snack-problema"
+                          value="producto-mal-estado"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="snack-producto-mal-estado"
+                          >Producto en mal estado</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="snack-otro"
+                          name="snack-problema"
+                          value="otro"
+                        />
+                        <label class="form-check-label" for="snack-otro"
+                          >Otro</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Problemas específicos para máquinas de café -->
+                <div
+                  id="cafe-problems"
+                  class="sub-section"
+                  style="display: none"
+                >
+                  <label class="form-label required-field"
+                    >Problema específico</label
+                  >
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-moneda-atrapada"
+                          name="cafe-problema"
+                          value="moneda-atrapada"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="cafe-moneda-atrapada"
+                          >Ingresé monedas y estas quedaron atrapadas</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-dinero-pantalla"
+                          name="cafe-problema"
+                          value="dinero-pantalla"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="cafe-dinero-pantalla"
+                          >Ingresé dinero y presioné la pantalla touch</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-billete-rojo"
+                          name="cafe-problema"
+                          value="billete-rojo"
+                        />
+                        <label class="form-check-label" for="cafe-billete-rojo"
+                          >Ingresé billete y el lector quedó de color
+                          rojo</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-billete-atrapado"
+                          name="cafe-problema"
+                          value="billete-atrapado"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="cafe-billete-atrapado"
+                          >Ingresé billete y este quedó atrapado</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-cafe-no-corresponde"
+                          name="cafe-problema"
+                          value="cafe-no-corresponde"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="cafe-cafe-no-corresponde"
+                          >Café no salió como corresponde</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-vaso-vacio"
+                          name="cafe-problema"
+                          value="vaso-vacio"
+                        />
+                        <label class="form-check-label" for="cafe-vaso-vacio"
+                          >Salió vaso vacío</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-no-cayo-vaso"
+                          name="cafe-problema"
+                          value="no-cayo-vaso"
+                        />
+                        <label class="form-check-label" for="cafe-no-cayo-vaso"
+                          >No cayó el vaso</label
+                        >
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="cafe-otro"
+                          name="cafe-problema"
+                          value="otro"
+                        />
+                        <label class="form-check-label" for="cafe-otro"
+                          >Otro</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="descripcion" class="form-label required-field"
+                    >Explique brevemente el relato de lo ocurrido</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="descripcion"
+                    name="descripcion"
+                    rows="4"
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="imagen" class="form-label">Adjuntar imagen</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="imagen"
+                    name="imagen"
+                    accept="image/*"
+                  />
+                </div>
+
+                <!-- Sección de datos bancarios para devolución -->
+                <div class="sub-section">
+                  <h4 class="form-section-title">
+                    Datos para devolución (en caso necesario)
+                  </h4>
 
                   <div class="row">
-                    <div class="col-xl-7 pt-xl-2">
-                      <label for="message" class="form-label required-field">Mensaje</label>
-                      <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    <div class="col-md-6 mb-3">
+                      <label for="nombre-banco" class="form-label"
+                        >Nombre completo</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombre-banco"
+                        name="nombre-banco"
+                      />
                     </div>
-                    <div class="col-xl-1"></div>
-
-                    <div class="col-4 pt-3 my-auto rounded ">
-                      <button type="submit" class="btn btn-primary ">
-                        Enviar Mensaje
-                      </button>
+                    <div class="col-md-6 mb-3">
+                      <label for="rut-banco" class="form-label">RUT</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="rut-banco"
+                        name="rut-banco"
+                        placeholder="12.345.678-9"
+                      />
                     </div>
                   </div>
-                </form>
 
-                <div id="success-message" class="alert alert-success mt-4" style="display: none">
-                  <h4 class="alert-heading">¡Gracias por contactarnos!</h4>
-                  <p class="mb-0">
-                    Hemos recibido tu mensaje. Uno de nuestros ejecutivos
-                    analizará tu caso y entregará una respuesta dentro de las
-                    72 horas hábiles siguientes.
-                  </p>
-                  <hr />
-                  <p class="mb-0">Estamos un paso más cerca de ti.</p>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="banco" class="form-label">Banco</label>
+                      <select
+                        class="form-control"
+                        id="banco-select"
+                        name="banco"
+                      >
+                        <option value="">Seleccione su banco</option>
+                        <option value="banco-de-chile">Banco de Chile</option>
+                        <option value="banco-estado">BancoEstado</option>
+                        <option value="banco-santander">Banco Santander</option>
+                        <option value="banco-bci">Banco BCI</option>
+                        <option value="banco-scotiabank">Scotiabank</option>
+                        <option value="banco-itau">Banco Itaú</option>
+                        <option value="banco-security">Banco Security</option>
+                        <option value="banco-falabella">Banco Falabella</option>
+                        <option value="banco-ripley">Banco Ripley</option>
+                        <option value="otro">Otro banco</option>
+                      </select>
+                      <!-- Campo de texto para "Otro banco" -->
+                      <div
+                        id="otro-banco-container"
+                        class="mt-2"
+                        style="display: none"
+                      >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="banco-otro"
+                          name="banco-otro"
+                          placeholder="Ingrese el nombre del banco"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="numero-cuenta" class="form-label"
+                        >Número de cuenta</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="numero-cuenta"
+                        name="numero-cuenta"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Tipo de cuenta</label>
+                    <div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="cta-vista"
+                          name="tipo-cuenta"
+                          value="cta-vista"
+                        />
+                        <label class="form-check-label" for="cta-vista"
+                          >Cta Vista</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="cta-corriente"
+                          name="tipo-cuenta"
+                          value="cta-corriente"
+                        />
+                        <label class="form-check-label" for="cta-corriente"
+                          >Cta Corriente</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="cta-rut"
+                          name="tipo-cuenta"
+                          value="cta-rut"
+                        />
+                        <label class="form-check-label" for="cta-rut"
+                          >Cta Rut</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="chequera-electronica"
+                          name="tipo-cuenta"
+                          value="chequera-electronica"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="chequera-electronica"
+                          >Chequera Electrónica</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="correo-devolucion" class="form-label"
+                      >Correo electrónico</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="correo-devolucion"
+                      name="correo-devolucion"
+                    />
+                  </div>
                 </div>
-              
+              </div>
+
+              <!-- Campo de mensaje general -->
+
+              <div class="row">
+                <div class="col-xl-7 pt-xl-2">
+                  <label for="message" class="form-label required-field"
+                    >Mensaje</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-xl-1"></div>
+
+                <div class="col-4 pt-3 my-auto rounded">
+                  <button type="submit" class="btn btn-primary">
+                    Enviar Mensaje
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div
+              id="success-message"
+              class="alert alert-success mt-4"
+              style="display: none"
+            >
+              <h4 class="alert-heading">¡Gracias por contactarnos!</h4>
+              <p class="mb-0">
+                Hemos recibido tu mensaje. Uno de nuestros ejecutivos analizará
+                tu caso y entregará una respuesta dentro de las 72 horas hábiles
+                siguientes.
+              </p>
+              <hr />
+              <p class="mb-0">Estamos un paso más cerca de ti.</p>
+            </div>
           </div>
           <div class="col-xl-4 col-12 d-lg-none">
-              <iframe class="img-mobile m-auto"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl"
-                width="350" height="350" style="border: 0" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <iframe class="img-desktop m-auto"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl"
-                width="600" height="400" style="border: 0" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe
+              class="img-mobile m-auto"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl"
+              width="350"
+              height="350"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <iframe
+              class="img-desktop m-auto"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621562.7718652177!2d-73.7976745383427!3d-37.45801157972161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9668484b3b386227%3A0xc8e553de0ce0c351!2zQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1760595630366!5m2!1ses-419!2scl"
+              width="600"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>
 
-<div id="vista-devolucion" class=" mx-auto w-100 rounded p-xl-2" style="display: none">
-    <!-- Formulario de Ventas/Contrataciones -->
-    <div class="row justify-content-around py-4 px-2 " style="box-shadow: -1px 2px 7px 0px #000000;">
-        <!-- Mensaje de éxito para ventas -->
-        <div id="success-ventas" class="alert alert-success col-12" style="display: none">
+      <div
+        id="vista-devolucion"
+        class="flex-wrap mx-auto w-100 p-xl-2 rounded"
+        style="display: none"
+      >
+        <!-- Formulario de Ventas/Contrataciones -->
+        <div
+          class="row justify-content-around py-4"
+          style="box-shadow: -1px 2px 7px 0px #000000"
+        >
+          <!-- Mensaje de éxito para ventas -->
+          <div
+            id="success-ventas"
+            class="alert alert-success col-12"
+            style="display: none"
+          >
             <h4 class="alert-heading">¡Solicitud enviada exitosamente!</h4>
-            <p>Hemos recibido tu solicitud de contratación. Nos contactaremos contigo en menos de 48 horas hábiles.</p>
-        </div>
-        
-        <!-- Formulario actualizado para usar EmailJS -->
-        <form id="ventasForm" class="row justify-content-center px-3" novalidate>
+
+            <p>
+              Hemos recibido tu solicitud de contratación. Nos contactaremos
+              contigo en menos de 48 horas hábiles.
+            </p>
+          </div>
+
+          <!-- Formulario actualizado para usar EmailJS -->
+          <form
+            id="ventasForm"
+            class="row justify-content-center px-3"
+            novalidate
+          >
             <div class="row justify-content-around w-100">
-                <div class="form-group col-xl-4">
-                    <label for="nombreEmpresa" class="required-field">Nombre Empresa</label>
-                    <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa el nombre de la empresa
-                    </div>
+              <div class="form-group col-xl-4">
+                <label for="nombreEmpresa" class="required-field"
+                  >Nombre Empresa</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombreEmpresa"
+                  name="nombreEmpresa"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa el nombre de la empresa
                 </div>
-        
-                <div class="form-group col-xl-2">
-                    <label for="rut" class="required-field">RUT</label>
-                    <input type="text" class="form-control" id="rut" name="rut" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa el RUT
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2">
+                <label for="rut" class="required-field">RUT</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="rut"
+                  name="rut"
+                  required
+                />
+                <div class="invalid-feedback">Por favor ingresa el RUT</div>
+              </div>
+
+              <div class="form-group col-xl-3">
+                <label for="ciudad" class="required-field">Ciudad</label>
+                <select class="form-control" id="ciudad" name="ciudad" required>
+                  <option value="">Seleccione una ciudad</option>
+                  <option value="Arauco">Arauco</option>
+                  <option value="Cañete">Cañete</option>
+                  <!-- ... mantén todas tus ciudades ... -->
+                </select>
+                <div class="invalid-feedback">
+                  Por favor selecciona una ciudad
                 </div>
-                
-                <div class="form-group col-xl-3">
-                    <label for="ciudad" class="required-field">Ciudad</label>
-                    <select class="form-control" id="ciudad" name="ciudad" required>
-                        <option value="">Seleccione una ciudad</option>
-                        <option value="Arauco">Arauco</option>
-                        <option value="Cañete">Cañete</option>
-                        <!-- ... mantén todas tus ciudades ... -->
-                    </select>
-                    <div class="invalid-feedback">
-                        Por favor selecciona una ciudad
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2">
+                <label for="direccion" class="required-field">Dirección</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="direccion"
+                  name="direccion"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa la dirección
                 </div>
-                
-                <div class="form-group col-xl-2">
-                    <label for="direccion" class="required-field">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa la dirección
-                    </div>
-                </div>
+              </div>
             </div>
-            
+
             <div class="row justify-content-around w-100">
-                <div class="form-group col-xl-3">
-                    <label for="personaContacto" class="required-field">Persona De Contacto</label>
-                    <input type="text" class="form-control" id="personaContacto" name="personaContacto" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa el nombre del contacto
-                    </div>
+              <div class="form-group col-xl-3">
+                <label for="personaContacto" class="required-field"
+                  >Persona De Contacto</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="personaContacto"
+                  name="personaContacto"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa el nombre del contacto
                 </div>
-                
-                <div class="form-group col-xl-2">
-                    <label for="telefono" class="required-field">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa un teléfono válido
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2">
+                <label for="telefono" class="required-field">Teléfono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telefono"
+                  name="telefono"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa un teléfono válido
                 </div>
-                
-                <div class="form-group col-xl-2">
-                    <label for="correo" class="required-field">Correo</label>
-                    <input type="email" class="form-control" id="correo" name="correo" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa un correo válido
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2">
+                <label for="correo" class="required-field">Correo</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="correo"
+                  name="correo"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa un correo válido
                 </div>
-                
-                <div class="form-group col-xl-2">
-                    <label for="cantidadFuncionarios" class="required-field">N° De Funcionarios</label>
-                    <input type="number" class="form-control" id="cantidadFuncionarios" name="cantidadFuncionarios" min="1" required>
-                    <div class="invalid-feedback">
-                        Por favor ingresa el número de funcionarios
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2">
+                <label for="cantidadFuncionarios" class="required-field"
+                  >N° De Funcionarios</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="cantidadFuncionarios"
+                  name="cantidadFuncionarios"
+                  min="1"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Por favor ingresa el número de funcionarios
                 </div>
-                
-                <div class="form-group col-xl-2 text-center">
-                    <label class="required-field">Tipo de Servicio</label>
-                    <hr>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoServicio" id="snack" value="snack" required>
-                        <label class="form-check-label" for="snack">Snack</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoServicio" id="cafe" value="cafe">
-                        <label class="form-check-label" for="cafe">Café</label>
-                    </div>
-                    <div class="invalid-feedback d-block">
-                        Por favor selecciona un tipo de servicio
-                    </div>
+              </div>
+
+              <div class="form-group col-xl-2 text-center">
+                <label class="required-field">Tipo de Servicio</label>
+                <hr />
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="tipoServicio"
+                    id="snack"
+                    value="snack"
+                    required
+                  />
+                  <label class="form-check-label" for="snack">Snack</label>
                 </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="tipoServicio"
+                    id="cafe"
+                    value="cafe"
+                  />
+                  <label class="form-check-label" for="cafe">Café</label>
+                </div>
+                <div class="invalid-feedback d-block">
+                  Por favor selecciona un tipo de servicio
+                </div>
+              </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary col-xl-6 rounded-lg mt-3">
-                Enviar Solicitud
+
+            <button
+              type="submit"
+              class="btn btn-primary col-xl-6 rounded-lg mt-3"
+            >
+              Enviar Solicitud
             </button>
-        </form>
-    </div>
-</div>
-    <!-- Contrataciones End -->
-
-  </div>
-    
-  <!-- Main Content End -->
-
-  <!-- Footer Start -->
-  <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
-    <div class="row px-3 px-xl-4 pt-1">
-      <div class="col-lg-4 col-md-12 pr-xl-4">
-        <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
-        <p class="">
-          Yellow Box - Servicios de vending y bebidas automáticas. Atención y
-          soporte técnico.
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
-          Bio-Bio , Chile
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:soporte@yellowbox.example"
-            class="text-secondary">soporte@yellowbox.cl</a>
-        </p>
-        <p class="mt-3">
-          Horario de atención: Lunes a Viernes, 09:00 - 18:00
-        </p>
+          </form>
+        </div>
       </div>
-      <div class="col-lg-8 col-md-12">
-        <div class="row">
-          <div class="col-lg-4 contact-desktop">
-            <h5 class="text-secondary text-uppercase mb-4">Enlaces</h5>
-            <div class="d-flex flex-column justify-content-start">
-              <a class="text-secondary mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-              <a class="text-secondary mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
-              <a class="text-secondary mb-2" href="politicasEmpresa.html"><i
-                  class="fa fa-angle-right mr-2"></i>Políticas de la
-                Empresa</a>
-              <a class="text-secondary" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
-            </div>
-          </div>
+      <!-- Contrataciones End -->
+    </div>
+    <!-- Main Content End -->
 
-          <div class="col-lg-8 mb-xl-5 mb-1">
-            <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
-            <p>Encuéntranos en redes para novedades y promociones.</p>
-            <div class="row">
-              <div class="col-xl-6 col-3">
-                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Twitter"><i
-                    class="fab fa-twitter"></i></a>
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
+      <div class="row px-3 px-xl-4 pt-1">
+        <div class="col-lg-4 col-md-12 pr-xl-4">
+          <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
+          <p class="">
+            Yellow Box - Servicios de vending y bebidas automáticas. Atención y
+            soporte técnico.
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
+            Bio-Bio , Chile
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-envelope text-primary mr-3"></i
+            ><a href="mailto:soporte@yellowbox.example" class="text-secondary"
+              >soporte@yellowbox.cl</a
+            >
+          </p>
+          <p class="mt-3">
+            Horario de atención: Lunes a Viernes, 09:00 - 18:00
+          </p>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="row">
+            <div class="col-lg-4 contact-desktop">
+              <h5 class="text-secondary text-uppercase mb-4">Enlaces</h5>
+              <div class="d-flex flex-column justify-content-start">
+                <a class="text-secondary mb-2" href="index.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Inicio</a
+                >
+                <a class="text-secondary mb-2" href="shop.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Tienda</a
+                >
+                <a class="text-secondary mb-2" href="politicasEmpresa.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Políticas de la
+                  Empresa</a
+                >
+                <a class="text-secondary" href="contact.html"
+                  ><i class="fa fa-angle-right mr-2"></i>Contacto</a
+                >
               </div>
-              <div class="col-xl-6 col-3">
-                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Facebook"><i
-                    class="fab fa-facebook-f"></i></a>
-              </div>
-              <div class="col-xl-6 col-3">
-                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Instagram"><i
-                    class="fab fa-instagram"></i></a>
-              </div>
-              <div class="col-xl-6 col-3">
-                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="LinkedIn"><i
-                    class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <div class="col-lg-8 mb-xl-5 mb-1">
+              <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
+              <p>Encuéntranos en redes para novedades y promociones.</p>
+              <div class="row">
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-primary btn-square mb-2"
+                    href="#"
+                    aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row border-top mx-xl-5 py-1" style="border-color: rgba(256, 256, 256, 0.1) !important">
-      <div class="col-md-6">
-        <p class="text-center text-md-left text-secondary">
-          &copy; 2025 Yellow Box. Todos los derechos reservados.
-          <br />Diseñado por Küpan.
-        </p>
+      <div
+        class="row border-top mx-xl-5 py-1"
+        style="border-color: rgba(256, 256, 256, 0.1) !important"
+      >
+        <div class="col-md-6">
+          <p class="text-center text-md-left text-secondary">
+            &copy; 2025 Yellow Box. Todos los derechos reservados.
+            <br />Diseñado por Küpan.
+          </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center">
+          <img
+            class="img-fluid"
+            src="../img/payments.png"
+            alt="Métodos de pago aceptados"
+          />
+        </div>
       </div>
-      <div class="col-md-6 px-xl-0 text-center">
-        <img class="img-fluid" src="../img/payments.png" alt="Métodos de pago aceptados" />
-      </div>
-    </div>
-  </footer>
-  <!-- Footer End -->
+    </footer>
+    <!-- Footer End -->
 
-  <!-- Back to Top -->
-  <a href="#" class="btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-  
-</body>
-
+    <!-- Back to Top -->
+    <a href="#" class="btn-lg btn-primary back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+  </body>
 </html>
