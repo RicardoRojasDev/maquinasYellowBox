@@ -1,4 +1,4 @@
-// EmailJS Configuration Service - VERSIÓN MEJORADA
+// EmailJS Configuration Service - VERSIÓN CORREGIDA PARA YELLOW BOX
 class EmailService {
     constructor() {
         this.config = {
@@ -9,8 +9,15 @@ class EmailService {
             CC_EMAIL: 'rickyplaymail@gmail.com'
         };
         
-        console.log('🔧 Inicializando EmailJS...');
+        console.log('📧 Inicializando EmailJS...');
         emailjs.init(this.config.USER_ID);
+    }
+
+    /**
+     * Convierte nombres con guiones a guiones bajos para EmailJS
+     */
+    normalizeFieldName(name) {
+        return name.replace(/-/g, '_');
     }
 
     /**
@@ -21,14 +28,17 @@ class EmailService {
         
         // 1. Recolectar todos los campos del formulario
         for (let [key, value] of formData.entries()) {
-            if (processedData[key]) {
+            // Normalizar nombre del campo (reemplazar - por _)
+            const normalizedKey = this.normalizeFieldName(key);
+            
+            if (processedData[normalizedKey]) {
                 // Si ya existe (como checkboxes), convertir a array
-                if (!Array.isArray(processedData[key])) {
-                    processedData[key] = [processedData[key]];
+                if (!Array.isArray(processedData[normalizedKey])) {
+                    processedData[normalizedKey] = [processedData[normalizedKey]];
                 }
-                processedData[key].push(value);
+                processedData[normalizedKey].push(value);
             } else {
-                processedData[key] = value;
+                processedData[normalizedKey] = value;
             }
         }
         
@@ -49,28 +59,47 @@ class EmailService {
         
         // 4. Determinar tipo de formulario
         if (processedData.asunto === 'reclamo') {
-            processedData['tipo_formulario'] = 'RECLAMO';
+            processedData['tipo_formulario'] = '⚠️ RECLAMO';
             processedData['es_reclamo'] = 'SÍ';
             processedData['titulo_mensaje'] = `RECLAMO - ${processedData.nombre || 'Cliente'}`;
-            
-            // Flags para secciones específicas en el template
-            if (processedData['medio-pago'] === 'tarjeta') {
-                processedData['tarjeta'] = 'true';
-            }
-            if (processedData['medio-pago'] === 'billete') {
-                processedData['billete'] = 'true';
-            }
+        } else if (processedData.asunto === 'sugerencia') {
+            processedData['tipo_formulario'] = '💡 SUGERENCIA';
+            processedData['es_reclamo'] = 'NO';
+            processedData['titulo_mensaje'] = `SUGERENCIA - ${processedData.name || 'Cliente'}`;
+        } else if (processedData.asunto === 'felicitacion') {
+            processedData['tipo_formulario'] = '👏 FELICITACIÓN';
+            processedData['es_reclamo'] = 'NO';
+            processedData['titulo_mensaje'] = `FELICITACIÓN - ${processedData.name || 'Cliente'}`;
         } else {
             processedData['tipo_formulario'] = processedData.asunto?.toUpperCase() || 'CONSULTA';
             processedData['es_reclamo'] = 'NO';
             processedData['titulo_mensaje'] = `${processedData.tipo_formulario} - ${processedData.name || 'Cliente'}`;
         }
         
-        // 5. DEBUG: Verificar qué datos se están enviando
-        console.log('📤 Datos que se enviarán a EmailJS:');
-        Object.keys(processedData).forEach(key => {
-            console.log(`  ${key}: ${processedData[key]}`);
+        // 5. Asegurarse de que todos los campos existan (evitar undefined en template)
+        const camposEsperados = [
+            'nombre', 'rut', 'telefono', 'medio_pago', 'tipo_billete', 'digitos_tarjeta',
+            'tipo_tarjeta', 'hora_compra', 'fecha_compra', 'ciudad', 'recinto',
+            'numero_maquina', 'tipo_maquina', 'snack_problema', 'cafe_problema',
+            'descripcion', 'nombre_banco', 'rut_banco', 'banco', 'banco_otro',
+            'numero_cuenta', 'tipo_cuenta', 'correo_devolucion'
+        ];
+        
+        camposEsperados.forEach(campo => {
+            if (!processedData[campo]) {
+                processedData[campo] = '';
+            }
         });
+        
+        // 6. DEBUG: Verificar qué datos se están enviando
+        console.log('📤 Datos que se enviarán a EmailJS:');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        Object.keys(processedData).forEach(key => {
+            if (processedData[key]) {
+                console.log(`  ✓ ${key}: ${processedData[key]}`);
+            }
+        });
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         
         return processedData;
     }
@@ -151,6 +180,9 @@ class EmailService {
         }
     }
     
+    /**
+     * Método estático para enviar desde cualquier lugar
+     */
     static async send(formElement) {
         const service = new EmailService();
         return await service.sendForm(formElement);
@@ -160,4 +192,5 @@ class EmailService {
 // Hacer disponible globalmente
 if (typeof window !== 'undefined') {
     window.EmailService = EmailService;
+    console.log('✅ EmailService cargado y disponible globalmente');
 }
