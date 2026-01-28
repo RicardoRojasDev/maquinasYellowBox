@@ -40,10 +40,7 @@
 
 /* Promotion Cards */
 .promotion-cards {
-  background-color: rgba(255, 255, 255, 0);
-  justify-content: center;
   align-items: center;
-  background-color: #ffffff00;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5vh; /* Space between cards for mobile */
@@ -51,7 +48,7 @@
 }
 
 .promotion-card {
-  width: 95%; /* Cambiamos de 80% a 95% */
+  width: 100%; /* Cambiamos de 80% a 95% */
   border-radius: 8px;
   display: grid;
   grid-template-columns: 40% 60%;

@@ -8396,12 +8396,7 @@ h6 {
   border-radius: 8px;
   transition: all 0.3s ease;
 }
-.promotion-card {
-  transition: opacity 0.3s ease;
-}
-.promotion-card.d-none {
-  opacity: 0;
-}
+
 .product-offer img {
   position: absolute;
   width: 100%;

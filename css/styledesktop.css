@@ -431,26 +431,16 @@
     margin-right: 8px;
   }
   .promotion-card {
-    width: 300px; /* Cambiamos de 80% a 95% */
-    border-radius: 8px;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background-color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 240px;
-    padding: 10px;
-    box-sizing: content-box; /* Include padding and border in the element's total width and height */
+    width: 100% !important; /* Ocupa todo el ancho de la celda grid */
+    max-width: 350px; /* Máximo ancho pero flexible */
+
+
+
   }
   /* Promotion Cards */
   .promotion-cards {
-    background-color: rgba(255, 255, 255, 0);
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff00;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5vh; /* Space between cards for mobile */
-    width: 100%; /* Full width */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
   }
   .category-button.active {
   background-color: #007bff;
@@ -458,18 +448,7 @@
   border-radius: 8px;
   transition: all 0.3s ease;
 }
-  /*Se Muestra Toda La Imagen En 300px dentro de su propio div*/
-  .promotion-image img {
-    width: 100px;
-    height: auto;
-    object-fit: cover;
-  }
 
-  .promotion-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   .product-offer {
   position: relative;
   width:100px;
