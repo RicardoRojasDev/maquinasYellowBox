@@ -41,26 +41,23 @@
 /* Promotion Cards */
 .promotion-cards {
   align-items: center;
-  display: flex;
   flex-wrap: wrap;
-  gap: 1.5vh; /* Space between cards for mobile */
+  gap: 1vh; /* Space between cards for mobile */
   width: 100%; /* Full width */
 }
 
 .promotion-card {
-  width: 100%; /* Cambiamos de 80% a 95% */
+  width: 100%; 
   border-radius: 8px;
   display: grid;
   grid-template-columns: 40% 60%;
-  background-color: #fff;
+  background-color: #ffffff00;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 240px;
-  padding: 10px;
+  height: 250px;
   border-right: #f6ff00 outset 2px;
   border-bottom: #f6ff00 outset 2px;
   border-top: #0000005b inset 2px;
-  border-left: #00005b inset 2px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border-left: #ffda0a inset 2px;
 }
 
 .promotion-card:hover {
@@ -91,7 +88,6 @@
   min-height: 85px;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0 5px;
 }
 

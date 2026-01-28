@@ -165,7 +165,7 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
   .col-xl {
     flex-basis: 0;
     flex-grow: 1;
@@ -433,6 +433,17 @@
   .promotion-card {
     width: 100% !important; /* Ocupa todo el ancho de la celda grid */
     max-width: 350px; /* Máximo ancho pero flexible */
+      width: 100%; 
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px;
+  padding: 10px;
+  border-right: #f6ff00 outset 2px;
+  border-bottom: #f6ff00 outset 2px;
+  border-top: #0000005b inset 2px;
+  border-left: #00005b inset 2px;
 
 
 
