@@ -452,10 +452,6 @@
     gap: 1.5vh; /* Space between cards for mobile */
     width: 100%; /* Full width */
   }
-  .promotions-section {
-    width: 100%;
-    padding: 0 5%;
-  }
   .category-button.active {
   background-color: #007bff;
   color: #fff;
