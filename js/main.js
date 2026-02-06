@@ -39,7 +39,7 @@
         margin: 29,
         nav: false,
         autoplay: true,
-        smartSpeed: 1000,
+        smartSpeed: 200,
         responsive: {
             0:{
                 items:2
@@ -66,7 +66,7 @@
         margin: 29,
         nav: false,
         autoplay: true,
-        smartSpeed: 1000,
+        smartSpeed: 200,
         responsive: {
             0:{
                 items:1
