@@ -98,16 +98,16 @@
     <!-- Products Start -->
     <div class="category-buttons-container">
       <div class="category-buttons">
+        <button class="category-button mokador-btn" data-filter="mokador">
+          <img style="width: 9rem"
+            src="img/mokador.svg"
+            alt="Café"
+          />
+        </button>
         <button class="category-button" data-filter="leches">
           <span>Leches</span
           ><img
-            style="width: 2em; height: 2em"
-            src="img/caja-de-leche.png"
-            alt=""
-          />
-        </button>
-        <button class="category-button" data-filter="chai">
-          <span>Chai</span
+          
           ><img
             src="img/chai-masala.png"
             alt=""
@@ -118,6 +118,14 @@
           <span>Capuchinos</span
           ><img
             src="img/capuchino.png"
+            style="width: 2em; height: 2em"
+            alt=""
+          />
+        </button>
+         <button class="category-button" data-filter="chai">
+          <span>Chai</span
+          ><img
+            src="img/chai-masala.png"
             style="width: 2em; height: 2em"
             alt=""
           />
@@ -136,174 +144,191 @@
       </div>
     </div>
 
+
     <div class="promotions-section mt-xl-1 p-2">
       <!-- Cards -->
       <div
         class="row- promotion-cards justify-content-around d-flex"
         id="cardsContainer"
       >
-<!--Card Mokador-->
+        <!--Card Mokador-->
 
-      <!-- Gran Miscela -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/miscela.png" alt="Gran Miscela Mokador" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Gran Miscela</div>
-    <div class="promotion-description">
-      Café con sabor refinado, vetas afrutadas y florales, crema aterciopelada color avellana.
-    </div>
-    <small class="text-muted">
-      Mezcla certificada IEI por el Istituto Espresso Italiano. Notas: albaricoques secos y chocolate negro. Ideal para almuerzo.
-    </small>
-  </div>
-</div>
+        <!-- Gran Miscela -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/miscela.png" alt="Gran Miscela Mokador" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Gran Miscela</div>
+            <div class="promotion-description">
+              Café con sabor refinado, vetas afrutadas y florales, crema
+              aterciopelada color avellana.
+            </div>
+            <small class="text-muted">
+              Mezcla certificada IEI por el Istituto Espresso Italiano. Notas:
+              albaricoques secos y chocolate negro. Ideal para almuerzo.
+            </small>
+          </div>
+        </div>
 
-<!-- 100% arabica BIO -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/arabicabio.png" alt="100% Arabica BIO" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">100% Arabica BIO</div>
-    <div class="promotion-description">
-      Café 100% Arábica certificado ecológico, delicado con crema perfecta y aterciopelada.
-    </div>
-    <small class="text-muted">
-      Certificado ecológico IT BIO 014. Notas: vainilla y melocotón. Ideal para pausa.
-    </small>
-  </div>
-</div>
+        <!-- 100% arabica BIO -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/arabicabio.png" alt="100% Arabica BIO" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">100% Arabica BIO</div>
+            <div class="promotion-description">
+              Café 100% Arábica certificado ecológico, delicado con crema
+              perfecta y aterciopelada.
+            </div>
+            <small class="text-muted">
+              Certificado ecológico IT BIO 014. Notas: vainilla y melocotón.
+              Ideal para pausa.
+            </small>
+          </div>
+        </div>
 
-<!-- 100% arabica -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/arabica.png" alt="100% Arabica" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">100% Arabica</div>
-    <div class="promotion-description">
-      Mezcla con sabor dulce y aromático, textura sedosa y crema color dorado.
-    </div>
-    <small class="text-muted">
-      Selección de variedades de Centro y Sudamérica. Notas: albaricoque y galletas. Ideal para pausa.
-    </small>
-  </div>
-</div>
+        <!-- 100% arabica -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/arabica.png" alt="100% Arabica" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">100% Arabica</div>
+            <div class="promotion-description">
+              Mezcla con sabor dulce y aromático, textura sedosa y crema color
+              dorado.
+            </div>
+            <small class="text-muted">
+              Selección de variedades de Centro y Sudamérica. Notas: albaricoque
+              y galletas. Ideal para pausa.
+            </small>
+          </div>
+        </div>
 
-<!-- DESCAFEINADO -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/descafeinado.png" alt="Descafeinado" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Descafeinado</div>
-    <div class="promotion-description">
-      Café ligero y aromático descafeinado, con menos del 0.1% de cafeína.
-    </div>
-    <small class="text-muted">
-      Método tradicional que preserva aromas. Notas: nueces y mazapán. Ideal para cena.
-    </small>
-  </div>
-</div>
+        <!-- DESCAFEINADO -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/descafeinado.png" alt="Descafeinado" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Descafeinado</div>
+            <div class="promotion-description">
+              Café ligero y aromático descafeinado, con menos del 0.1% de
+              cafeína.
+            </div>
+            <small class="text-muted">
+              Método tradicional que preserva aromas. Notas: nueces y mazapán.
+              Ideal para cena.
+            </small>
+          </div>
+        </div>
 
-<!-- ESPRESSO ORO -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/oro.png" alt="Espresso Oro" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Espresso Oro</div>
-    <div class="promotion-description">
-      Mezcla de alta calidad con textura regular, crema compacta y sabor redondo.
-    </div>
-    <small class="text-muted">
-      Notas: fruta seca y chocolate negro. Ideal para desayuno y almuerzo.
-    </small>
-  </div>
-</div>
+        <!-- ESPRESSO ORO -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/oro.png" alt="Espresso Oro" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Espresso Oro</div>
+            <div class="promotion-description">
+              Mezcla de alta calidad con textura regular, crema compacta y sabor
+              redondo.
+            </div>
+            <small class="text-muted">
+              Notas: fruta seca y chocolate negro. Ideal para desayuno y
+              almuerzo.
+            </small>
+          </div>
+        </div>
 
-<!-- FLORITA -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/florita.png" alt="Florita" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Florita</div>
-    <div class="promotion-description">
-      Café aromático y aterciopelado con cuerpo intensamente estructurado.
-    </div>
-    <small class="text-muted">
-      Notas: nueces y chocolate negro. Ideal para todas las ocasiones.
-    </small>
-  </div>
-</div>
+        <!-- FLORITA -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/florita.png" alt="Florita" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Florita</div>
+            <div class="promotion-description">
+              Café aromático y aterciopelado con cuerpo intensamente
+              estructurado.
+            </div>
+            <small class="text-muted">
+              Notas: nueces y chocolate negro. Ideal para todas las ocasiones.
+            </small>
+          </div>
+        </div>
 
-<!-- BRIO -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/brio.png" alt="Brio" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Brio</div>
-    <div class="promotion-description">
-      Café intenso y con cuerpo, de personalidad enérgica y vivaz.
-    </div>
-    <small class="text-muted">
-      Mezcla calificada CSQA. Notas: anacardos y caramelo. Ideal para almuerzo.
-    </small>
-  </div>
-</div>
+        <!-- BRIO -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/brio.png" alt="Brio" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Brio</div>
+            <div class="promotion-description">
+              Café intenso y con cuerpo, de personalidad enérgica y vivaz.
+            </div>
+            <small class="text-muted">
+              Mezcla calificada CSQA. Notas: anacardos y caramelo. Ideal para
+              almuerzo.
+            </small>
+          </div>
+        </div>
 
-<!-- EXTRA CREAM -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/extracream.png" alt="Extra Cream" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">Extra Cream</div>
-    <div class="promotion-description">
-      Café fuerte con intenso aroma tostado y cremosidad persistente.
-    </div>
-    <small class="text-muted">
-      Mezcla calificada CSQA. Notas: caramelo y chocolate negro. Ideal para desayuno.
-    </small>
-  </div>
-</div>
+        <!-- EXTRA CREAM -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/extracream.png" alt="Extra Cream" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">Extra Cream</div>
+            <div class="promotion-description">
+              Café fuerte con intenso aroma tostado y cremosidad persistente.
+            </div>
+            <small class="text-muted">
+              Mezcla calificada CSQA. Notas: caramelo y chocolate negro. Ideal
+              para desayuno.
+            </small>
+          </div>
+        </div>
 
-<!-- 100% ARABICA COLOMBIA -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/colombia.png" alt="100% Arabica Colombia" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">100% Arabica Colombia</div>
-    <div class="promotion-description">
-      Café de origen único colombiano con aroma cítrico, floral y buen equilibrio.
-    </div>
-    <small class="text-muted">
-      Altitud 1300-1700 m. Notas: melocotón y frutos del bosque. Ideal para pausa.
-    </small>
-  </div>
-</div>
+        <!-- 100% ARABICA COLOMBIA -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/colombia.png" alt="100% Arabica Colombia" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">100% Arabica Colombia</div>
+            <div class="promotion-description">
+              Café de origen único colombiano con aroma cítrico, floral y buen
+              equilibrio.
+            </div>
+            <small class="text-muted">
+              Altitud 1300-1700 m. Notas: melocotón y frutos del bosque. Ideal
+              para pausa.
+            </small>
+          </div>
+        </div>
 
-<!-- 100% ARABICA BRAZIL -->
-<div class="promotion-card col-xl-3" data-category="mokador">
-  <div class="promotion-image">
-    <img src="img/brazil.png" alt="100% Arabica Brazil" />
-  </div>
-  <div class="promotion-info">
-    <div class="promotion-title">100% Arabica Brazil</div>
-    <div class="promotion-description">
-      Café brasileño con aroma floral y afrutado, cuerpo bien estructurado.
-    </div>
-    <small class="text-muted">
-      Zonas Alta Mogiana y Sul de Minas. Notas: albaricoques secos y chocolate con leche. Ideal para pausa.
-    </small>
-  </div>
-</div>
-
+        <!-- 100% ARABICA BRAZIL -->
+        <div class="promotion-card col-xl-3" data-category="mokador">
+          <div class="promotion-image">
+            <img src="img/brazil.png" alt="100% Arabica Brazil" />
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-title">100% Arabica Brazil</div>
+            <div class="promotion-description">
+              Café brasileño con aroma floral y afrutado, cuerpo bien
+              estructurado.
+            </div>
+            <small class="text-muted">
+              Zonas Alta Mogiana y Sul de Minas. Notas: albaricoques secos y
+              chocolate con leche. Ideal para pausa.
+            </small>
+          </div>
+        </div>
 
         <!-- Card Leches -->
 
@@ -440,7 +465,9 @@
             <img src="img/301.svg" alt="Cappuccino Café Vainilla" />
           </div>
           <div class="promotion-info">
-            <div class="promotion-title">Cappuccino <small>"Café Vainilla"</small></div>
+            <div class="promotion-title">
+              Cappuccino <small>"Café Vainilla"</small>
+            </div>
             <div class="promotion-description">
               Cremoso y con cuerpo, realzada nota de vainilla deliciosamente
               dulce.
@@ -458,13 +485,16 @@
             <img src="img/302.png" alt="Cappuccino Café Caramel" />
           </div>
           <div class="promotion-info">
-            <div class="promotion-title">Cappuccino <small>"Café Caramel"</small></div>
+            <div class="promotion-title">
+              Cappuccino <small>"Café Caramel"</small>
+            </div>
             <div class="promotion-description">
               Delicioso y cremoso sabor a caramelo con exquisita textura en
               boca.
             </div>
             <small class="text-muted">
-              Cappuccino No.302 Para amantes del caramelo, con base de leche desnatada premium para calidad excepcional.
+              Cappuccino No.302 Para amantes del caramelo, con base de leche
+              desnatada premium para calidad excepcional.
             </small>
           </div>
         </div>
@@ -475,7 +505,9 @@
             <img src="img/303.svg" alt="Cappuccino Café Noisette" />
           </div>
           <div class="promotion-info">
-            <div class="promotion-title">Cappuccino <small>"Café Noisette"</small></div>
+            <div class="promotion-title">
+              Cappuccino <small>"Café Noisette"</small>
+            </div>
             <div class="promotion-description">
               Encantador aroma a avellana con sabor equilibrado y dulce.
             </div>
@@ -489,10 +521,12 @@
         <!-- Cappuccino No. 304 "Irish Coffee" -->
         <div class="promotion-card col-xl-3" data-category="capuchinos">
           <div class="promotion-image">
-            <img src="img/304.png"  alt="Cappuccino Irish Coffee" />
+            <img src="img/304.png" alt="Cappuccino Irish Coffee" />
           </div>
           <div class="promotion-info">
-            <div class="promotion-title">Cappuccino <small>"Irish Coffee"</small></div>
+            <div class="promotion-title">
+              Cappuccino <small>"Irish Coffee"</small>
+            </div>
             <div class="promotion-description">
               Sabor típico del capuchino combinado con whisky irlandés.
             </div>
@@ -514,9 +548,8 @@
               Cappuccino No. 305 Capuchino instantáneo con sutil toque de cacao.
             </div>
             <small class="text-muted">
-              Sabor intenso y equilibrado con fina nota de
-              cacao y agradable textura en boca, apto para máquinas
-              expendedoras.
+              Sabor intenso y equilibrado con fina nota de cacao y agradable
+              textura en boca, apto para máquinas expendedoras.
             </small>
           </div>
         </div>
@@ -532,8 +565,8 @@
               Cappuccino No. 306 Clásico capuchino con toque dulce perfecto.
             </div>
             <small class="text-muted">
-              Desarrollado para preparación manual, se
-              disuelve bien tras removerlo brevemente, con sutil toque de cacao.
+              Desarrollado para preparación manual, se disuelve bien tras
+              removerlo brevemente, con sutil toque de cacao.
             </small>
           </div>
         </div>
@@ -658,9 +691,8 @@
               Preparado alimenticio en polvo a base de cacao.
             </div>
             <small class="text-muted">
-              Azúcar, cacao en polvo desgrasado (12%), leche en
-              polvo, lactosa, lactosuero, almidón de maíz, antiaglomerante:
-              E-551.
+              Azúcar, cacao en polvo desgrasado (12%), leche en polvo, lactosa,
+              lactosuero, almidón de maíz, antiaglomerante: E-551.
             </small>
           </div>
         </div>
@@ -691,12 +723,12 @@
           <div class="promotion-info">
             <div class="promotion-title">SHOO Choco "Rich"</div>
             <div class="promotion-description">
-              Clásica de chocolate con 14% de cacao. Textura excepcional
-              y aroma intenso.
+              Clásica de chocolate con 14% de cacao. Textura excepcional y aroma
+              intenso.
             </div>
             <small class="text-muted">
-              Equilibrado a chocolate dulce. Aptó para preparación manual
-              y máquinas expendedoras. Dosis: 25g por 180ml agua (80°C).
+              Equilibrado a chocolate dulce. Aptó para preparación manual y
+              máquinas expendedoras. Dosis: 25g por 180ml agua (80°C).
             </small>
           </div>
         </div>

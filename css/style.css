@@ -8391,11 +8391,12 @@ h6 {
 
 }
 .category-button.active {
-  color: var(--primary);
+  color: #3d464d !important;
   border: 1px solid black;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
+
 
 .product-offer img {
   position: absolute;
@@ -8551,18 +8552,4 @@ margin-bottom: 10%;
       scroll-snap-align: start;
       margin: 1rem;
       width: 90vw;
-    }
-
-    @media (min-width: 768px) {
-      .card {
-        width: 22vw;
-      }
-    }
-
-    .category-btn {
-      cursor: pointer;
-    }
-
-    .card[data-category] {
-      display: block;
     }

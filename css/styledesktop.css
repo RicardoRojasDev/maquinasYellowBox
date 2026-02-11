@@ -454,8 +454,7 @@
     grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
   }
   .category-button.active {
-  background-color: #007bff;
-  color: #fff;
+  color: #000000;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
@@ -475,5 +474,32 @@
     width: 260px;
     height: 180px;
   }
+  .mokador-btn {
+  background-image: url('../img/mokador.jpg'); /* Cambia esta ruta por la de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* Para que el texto sea visible sobre el fondo */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejor legibilidad */
+  border: none; /* Quitar borde si es necesario */
+  }
+  .mokador-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+.mokador-btn.active {
+  border: 2px solid gold; /* O el color que prefieras */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+/* Estilo para la barra de categorías */
+.category-buttons-container {
+  position: sticky;
+  z-index: 10;
+  top:10vh;
+  background-color: rgb(255, 255, 255);
+  padding: 8px 0;
+  box-shadow: 0 3px 8px rgba(209, 209, 9, 0.1);
+}
   
 }

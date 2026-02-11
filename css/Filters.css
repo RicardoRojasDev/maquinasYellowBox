@@ -2,37 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); /* Aquí puedes elegir la tipografía que prefieras */
 
 /* Estilos generales para el contenedor de los filtros */
-.filters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  gap: 1rem;
-  padding-top: 0;
-  position: fixed; /* Usar siempre fixed para evitar que desaparezca */
-  top: 70px; /* Ajustado para evitar colisión con la barra de navegación */
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  z-index: 1000; /* Que esté por encima de otros elementos */
-  background-color: white;
-  padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para mayor visibilidad */
-}
 
 /* Estilos para los contenedores de los filtros */
-.filters > div {
-  display: flex;
-  gap: 1rem;
-}
 
 /* Estilos generales para los botones de categorías */
 .category-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 8px 16px;
+  padding: 8px 2px;
   border: 2px solid #ddd; /* Borde suave */
   border-radius: 10px; /* Bordes redondeados */
   background: white; /* Fondo blanco */
@@ -43,9 +21,11 @@
   font-weight: 700; /* Asegurando que esté en negrita */
   box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
   transition: box-shadow 500ms, font-size 500ms; /* Suaviza los cambios de sombra y tamaño de fuente */
-  width: auto;
+  width: 500px;
   height: 50px;
   outline: none;
+  flex: 1 1 auto
+
 }
 
 /* Estilo para el botón de categoría seleccionado */
@@ -54,6 +34,7 @@
   border: 2px solid rgb(155, 2, 2) !important; /* Borde rojo */
   color: black; /* Mantener texto negro */
   box-shadow: 0 0 8px rgba(255, 123, 123, 0.5); /* Sombra resaltada en selección */
+
 }
 
 /* Estilo para el hover de los botones de categorías */
@@ -64,12 +45,7 @@
   transition: 500ms;
 }
 
-/* Estilo para los iconos dentro de los botones */
-.category-button svg {
-  width: 25px;
-  height: 18px;
-  fill: currentColor;
-}
+
 
 /* Ajuste para los productos */
 /* Media Query para pantallas pequeñas */
