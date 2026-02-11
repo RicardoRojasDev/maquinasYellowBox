@@ -22,7 +22,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
       rel="stylesheet"
     />
-
+<!-- Modal Reclamos 3D CSS -->
+<link href="css/modal-reclamos.css" rel="stylesheet">
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"
@@ -307,6 +308,7 @@
   </head>
 
   <body>
+
     <!-- Navbar Start -->
     <div class="container-fluid mb-5 pb-2 bg-primary">
       <div class="row mb-3">
@@ -1540,5 +1542,139 @@
     <a href="#" class="btn-lg btn-primary back-to-top"
       ><i class="fa fa-angle-double-up"></i
     ></a>
+
+
+
+    <!-- ======================================== -->
+<!-- MODAL 3D PREMIUM - YELLOW BOX RECLAMOS  -->
+<!-- Diseño profesional cross-platform        -->
+<!-- ======================================== -->
+
+<!-- Modal Structure -->
+<div class="modal fade modal-reclamos" id="modalReclamos3D" 
+     tabindex="-1" 
+     aria-labelledby="modalReclamosLabel" 
+     aria-hidden="true"
+     data-bs-backdrop="true"      <!-- Permite cerrar clickeando fuera -->
+     data-bs-keyboard="true">     <!-- Permite cerrar con tecla ESC -->
+    
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            
+            <!-- HEADER 3D -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReclamosLabel">
+                    ⚠️ YELLOW BOX
+                    <small>SISTEMA PREMIUM DE RECLAMOS</small>
+                </h5>
+                <!-- Botón Cerrar (X) - Funciona en todos los dispositivos -->
+                <button type="button" class="btn-close" 
+                        data-bs-dismiss="modal" 
+                        aria-label="Cerrar"
+                        title="Cerrar"></button>
+            </div>
+            
+            <!-- BODY 3D -->
+            <div class="modal-body">
+                
+                <!-- Icono 3D flotante -->
+                <div class="icon-3d-wrapper">
+                    <i class="fas fa-crown icon-3d-premium"></i>
+                </div>
+                
+                <!-- Badge de atención -->
+                <div class="text-center">
+                    <span class="badge-3d-premium">
+                        🔔 ATENCIÓN PRIORITARIA
+                    </span>
+                </div>
+                
+                <!-- Mensaje principal (EDITABLE) -->
+                <div class="text-center">
+                    <h3 class="mensaje-principal" id="modalMensajePrincipal">
+                        "mensaje que ira despues"
+                    </h3>
+                </div>
+                
+                <!-- Lista 3D de características -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <ul class="list-3d-premium">
+                            <li>
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <strong style="color: #b96f00;">RESPUESTA RÉCORD</strong><br>
+                                    <small>72 horas hábiles</small>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong style="color: #b96f00;">PROCESO SEGURO</strong><br>
+                                    <small>Tus datos protegidos</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-3d-premium">
+                            <li>
+                                <i class="fas fa-camera"></i>
+                                <div>
+                                    <strong style="color: #b96f00;">FOTO EVIDENCIA</strong><br>
+                                    <small>Adjunta imagen del problema</small>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong style="color: #b96f00;">HISTORIAL 24/7</strong><br>
+                                    <small>Seguimiento en línea</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta informativa 3D -->
+                <div class="card-3d-premium">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-star" style="font-size: 2.5rem; color: #FFD700; text-shadow: 0 0 20px #FFD700;"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <p class="mb-0" style="font-weight: 600; color: #b96f00; font-size: 1.1rem;">
+                                ✨ COMPLETA TODOS LOS CAMPOS MARCADOS CON * 
+                                <br class="d-md-none">PARA UN PROCESO EXPRESS ✨
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- FOOTER 3D con botones -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-3d-outline-premium" 
+                        data-bs-dismiss="modal">
+                    <i class="fas fa-times-circle"></i>
+                    AHORA NO
+                </button>
+                <button type="button" class="btn btn-3d-yellow-premium" 
+                        data-bs-dismiss="modal">
+                    <i class="fas fa-check-circle"></i>
+                    ¡ENTENDIDO, COMENZAR!
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Cargar CSS del modal (DEBE IR EN EL HEAD, pero por compatibilidad lo ponemos aquí) -->
+<link rel="stylesheet" href="css/modal-reclamos.css">
+
+<!-- Cargar JS del modal -->
+<script src="js/modal-reclamos.js"></script>
   </body>
 </html>
