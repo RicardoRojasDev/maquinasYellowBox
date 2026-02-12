@@ -19,11 +19,10 @@
 /* Contenedor del modal con perspectiva 3D */
 .modal-reclamos {
     font-family: 'Inter', sans-serif;
-    perspective: 1300px;
 }
 
 .modal-reclamos .modal-dialog {
-    max-width: 800px;
+    max-width: 100px;
     margin: 1.75rem auto;
 }
 
@@ -161,19 +160,6 @@
     perspective: 500px;
 }
 
-.icon-3d-premium {
-    font-size: 5.5rem;
-    display: inline-block;
-    animation: float3d 4s infinite ease-in-out;
-    filter: drop-shadow(0 20px 15px rgba(0,0,0,0.2));
-    background: radial-gradient(circle at 30% 30%, #FFD700, #FF8C00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 
-        3px 3px 0 #b96f00,
-        6px 6px 0 rgba(0,0,0,0.15),
-        0 0 40px #FFD700;
-}
 
 /* Badge 3D */
 .badge-3d-premium {
@@ -209,6 +195,7 @@
     padding: 0;
     margin: 25px 0;
     perspective: 800px;
+    /* -- los li de este ul iran en direccion horizontal */
 }
 
 .list-3d-premium li {

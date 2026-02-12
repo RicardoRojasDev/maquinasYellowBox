@@ -196,3 +196,40 @@ document.addEventListener('DOMContentLoaded', function() {
     window.setupFormHandlers = initFormHandlers;
     
 })();
+
+// ============================================
+// MODAL 3D RECLAMOS - AGREGADO EN 2026
+// ============================================
+
+const ModalReclamos3D = (function() {
+    'use strict';
+    
+    const MODAL_ID = 'modalReclamos3D';
+    const STORAGE_KEY = 'yellowbox_modal_reclamos';
+    
+    function init() {
+        if (!document.getElementById(MODAL_ID)) return;
+        
+        const modalElement = document.getElementById(MODAL_ID);
+        const modal = new bootstrap.Modal(modalElement, {
+            backdrop: true,
+            keyboard: true
+        });
+        
+        setTimeout(() => {
+            modal.show();
+            console.log('[YellowBox] Modal 3D mostrado');
+        }, 400);
+        
+        // Remover storage si existía
+        sessionStorage.removeItem(STORAGE_KEY);
+    }
+    
+    return { init: init };
+})();
+
+// Auto-ejecutar si estamos en página de reclamos
+if (window.location.pathname.includes('formReclamos.html') || 
+    document.getElementById('contactForm')) {
+    document.addEventListener('DOMContentLoaded', ModalReclamos3D.init);
+}

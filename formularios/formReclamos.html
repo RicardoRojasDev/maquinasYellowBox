@@ -1555,8 +1555,8 @@
      tabindex="-1" 
      aria-labelledby="modalReclamosLabel" 
      aria-hidden="true"
-     data-bs-backdrop="true"      <!-- Permite cerrar clickeando fuera -->
-     data-bs-keyboard="true">     <!-- Permite cerrar con tecla ESC -->
+     data-bs-backdrop="true"     
+     data-bs-keyboard="true" >     <!-- Permite cerrar con tecla ESC --> 
     
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -1564,41 +1564,35 @@
             <!-- HEADER 3D -->
             <div class="modal-header">
                 <h5 class="modal-title" id="modalReclamosLabel">
-                    ⚠️ YELLOW BOX
-                    <small>SISTEMA PREMIUM DE RECLAMOS</small>
+                    🔔 ATENCIÓN PRIORITARIA
                 </h5>
                 <!-- Botón Cerrar (X) - Funciona en todos los dispositivos -->
                 <button type="button" class="btn-close" 
                         data-bs-dismiss="modal" 
                         aria-label="Cerrar"
-                        title="Cerrar"></button>
+                        title="Cerrar">x</button>
             </div>
             
             <!-- BODY 3D -->
             <div class="modal-body">
                 
-                <!-- Icono 3D flotante -->
-                <div class="icon-3d-wrapper">
-                    <i class="fas fa-crown icon-3d-premium"></i>
-                </div>
-                
                 <!-- Badge de atención -->
                 <div class="text-center">
                     <span class="badge-3d-premium">
-                        🔔 ATENCIÓN PRIORITARIA
+                        TITULO TEXTO
                     </span>
                 </div>
                 
                 <!-- Mensaje principal (EDITABLE) -->
                 <div class="text-center">
                     <h3 class="mensaje-principal" id="modalMensajePrincipal">
-                        "mensaje que ira despues"
+                        "MENSAJE TEXTO PRINCIPAL"
                     </h3>
                 </div>
                 
                 <!-- Lista 3D de características -->
-                <div class="row mt-4">
-                    <div class="col-md-6">
+                <div class="row ">
+                    <div class="col-md-5">
                         <ul class="list-3d-premium">
                             <li>
                                 <i class="fas fa-bolt"></i>
@@ -1616,7 +1610,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <ul class="list-3d-premium">
                             <li>
                                 <i class="fas fa-camera"></i>
@@ -1652,20 +1646,7 @@
                 </div>
                 
             </div>
-            
-            <!-- FOOTER 3D con botones -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-3d-outline-premium" 
-                        data-bs-dismiss="modal">
-                    <i class="fas fa-times-circle"></i>
-                    AHORA NO
-                </button>
-                <button type="button" class="btn btn-3d-yellow-premium" 
-                        data-bs-dismiss="modal">
-                    <i class="fas fa-check-circle"></i>
-                    ¡ENTENDIDO, COMENZAR!
-                </button>
-            </div>
+ 
             
         </div>
     </div>

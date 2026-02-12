@@ -8448,6 +8448,13 @@ h6 {
 .site-logo {
   width: 100px;
 }
+.banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* importante */
+  display: block;
+}
+
 .product-offer .offer-text {
   position:relative;
   background: rgba(61, 70, 77, 0.6);
