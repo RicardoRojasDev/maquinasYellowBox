@@ -22,7 +22,6 @@
 }
 
 .modal-reclamos .modal-dialog {
-    max-width: 100px;
     margin: 1.75rem auto;
 }
 
@@ -42,20 +41,6 @@
     border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* Efecto shine overlay */
-.modal-reclamos .modal-content::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-    animation: shine 12s infinite linear;
-    pointer-events: none;
-    z-index: 1;
-}
-
 /* ========== HEADER 3D ========== */
 .modal-reclamos .modal-header {
     background: var(--yellow-gradient);
@@ -69,14 +54,13 @@
 .modal-reclamos .modal-header::after {
     content: '⚡';
     position: absolute;
-    top: 15px;
     right: 70px;
     font-size: 32px;
     color: rgba(255,255,255,0.3);
     text-shadow: 0 0 15px rgba(255,255,255,0.8);
     animation: pulse 3s infinite;
     pointer-events: none;
-}
+} 
 
 .modal-reclamos .modal-title {
     font-size: 2rem;
@@ -157,7 +141,6 @@
 .icon-3d-wrapper {
     text-align: center;
     margin-bottom: 25px;
-    perspective: 500px;
 }
 
 
@@ -179,61 +162,11 @@
 
 /* Título mensaje principal */
 .mensaje-principal {
-    font-weight: 800;
     color: #b96f00;
-    text-shadow: 3px 3px 0 rgba(255,215,0,0.3);
-    font-size: 1.8rem;
-    margin: 20px 0;
-    line-height: 1.3;
-    position: relative;
-    display: inline-block;
+
 }
 
-/* ========== LISTAS 3D ========== */
-.list-3d-premium {
-    list-style: none;
-    padding: 0;
-    margin: 25px 0;
-    perspective: 800px;
-    /* -- los li de este ul iran en direccion horizontal */
-}
-
-.list-3d-premium li {
-    background: linear-gradient(145deg, #ffffff, #f8f8f8);
-    margin-bottom: 15px;
-    padding: 18px 20px;
-    border-radius: var(--border-radius-md);
-    box-shadow: 
-        0 8px 0 #cc9900,
-        0 15px 20px rgba(0,0,0,0.15);
-    transform: translateZ(10px) rotateX(2deg);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    align-items: center;
-    border-left: 6px solid #FFD700;
-    position: relative;
-}
-
-/* Touch feedback para móviles */
-.list-3d-premium li:active {
-    transform: translateZ(5px) scale(0.98);
-    box-shadow: 
-        0 4px 0 #cc9900,
-        0 10px 15px rgba(0,0,0,0.1);
-}
-
-/* Hover solo en desktop */
-@media (hover: hover) {
-    .list-3d-premium li:hover {
-        transform: translateZ(25px) rotateX(0deg) scale(1.02);
-        box-shadow: 
-            0 12px 0 #b8860b,
-            0 20px 25px rgba(0,0,0,0.2);
-        margin-left: 8px;
-    }
-}
-
-.list-3d-premium li i {
+.list-3d-premium i {
     font-size: 2rem;
     margin-right: 20px;
     background: var(--yellow-gradient);
