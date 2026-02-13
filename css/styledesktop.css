@@ -330,7 +330,7 @@
     margin-left: 91.66667%;
   }
   .navbar {
-    height: 13vh;
+    height: 12vh;
     padding-top: 20px;
   }
 
@@ -504,4 +504,7 @@
 }
 
   
+}
+.bg-navbar {
+  background-color:#BDB093 !important;
 }
