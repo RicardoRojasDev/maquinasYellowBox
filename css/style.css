@@ -8453,15 +8453,15 @@ h6 {
   background: rgba(61, 70, 77, 0.6);
   z-index: 1;
   padding: 0 10px;
-  height: 99%;
+  height: 100%;
   display: flex;
 }
 .product-offer .offer-text > :nth-child(1) {
- height: 20%;
+ height: 25%;
  margin-bottom: 0%;
 }
 .product-offer .offer-text > :nth-child(2) {
-height: 45%;
+height: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -8469,7 +8469,7 @@ text-align: center;
 }
 .product-offer .offer-text > :nth-child(3) {
 height: 20%;
-margin-bottom: 10%;
+margin-bottom: 12%;
 }
 
 /* Estilos para el formulario de reclamos */
