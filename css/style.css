@@ -103,7 +103,9 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
-
+.nav-2 {
+  color: #39f500;
+}
 nav a:hover {
   color: #747474;
   text-decoration: underline;
