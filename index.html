@@ -14,14 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
     <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
@@ -32,20 +30,24 @@
     <link href="css/styledesktop.css" rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
-  </head>
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap JS con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      
+  </head>
 
   <body>
     <!-- Navbar Start -->
-    <div class="container-fluid mb-5 pb-2 bg-primary">
+    <div class="container-fluid mb-4 pb-4 ">
       <div class="row mb-3">
-        <div class="col-xl-12 bg-primary fixed-top">
+        <div class="col-xl-12 bg-navbar fixed-top">
           <nav class="navbar">
             <!-- Sección izquierda - Inicio -->
             <div class="nav-left ml-xl-5">
-              <a href="index.html" class="nav-item nav-link active">Inicio</a>
+              <a href="index.html" class="nav-link">Inicio</a>
             </div>
 
             <!-- Logo centrado -->
@@ -59,8 +61,8 @@
             <div class="nav-right">
               <!-- Menú desplegable "Mas" -->
               <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas</a>
-                <div class="dropdown-menu bg-primary">
+                <a href="" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas</a>
+                <div class="dropdown-menu bg-navbar">
                   <a href="productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
                   <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
@@ -88,6 +90,7 @@
       </div>
     </div>
     <!-- Navbar End -->
+     
     <!-- Slider main container -->
     <div class="swiper">
       <!-- Additional required wrapper -->
@@ -132,46 +135,34 @@
     </div>
     <!-- Botones Start -->
     <div class="container-fluid">
-      <div class="row w-100 p-2 justify-content-around">
-        <div class="col-6 col-xl-2 justify-content-center col-lg-3 mb-1">
-          <div class="product-offer">
+      <div class="row w-100 pt-2 justify-content-around">
+        <div class="col-6 col-xl-2 col-lg-3 mb-1">
+          <div class="product-offer ">
             <img class="img-fluid" src="img/carousel-3.jpg" alt="" />
-            <div
-              class="d-flex flex-column align-items-center offer-text text-center"
-            >
-              <h4 class="text-white">Devoluciones Y Sugerencias</h4>
-              <h3 class="text-white text-uppercase">Reclamos</h3>
-              <a href="formularios/formReclamos.html" class="btn btn-primary"
-                >Ir A Formulario</a
-              >
+            <div class="d-flex text-center flex-column offer-text align-items-center  ">
+              <h6 class="text-white mt-3">Devoluciones Y Sugerencias</h6>
+              <h4 class="text-white text-uppercase">Reclamos</h4>
+              <a href="formularios/formReclamos.html" class="btn btn-warning">Ir A Formulario</a>
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-          <div class="product-offer">
+        <div class="col-6 col-xl-2 col-lg-3">
+          <div class="product-offer ">
             <img class="img-fluid" src="img/twist2.webp" alt="" />
-            <div
-              class="d-flex flex-column align-items-center offer-text text-center"
-            >
-              <h4 class="text-white">Maquinas Snacks , Cafes O Mixtas !</h4>
-              <h3 class="text-white text-uppercase">Contrataciones</h3>
-              <a href="contrataciones.html" class="btn btn-primary"
-                >Contratar</a
-              >
+            <div class="d-flex flex-column text-center offer-text align-items-center">
+              <h6 class="text-white mt-3">Maquinas Snacks , Cafes O Mixtas!</h6>
+              <h4 class="text-white text-uppercase font-weight-bold">Contratacion</h4>
+              <a href="contrataciones.html" class="btn btn-warning">Contratar</a>
             </div>
           </div>
         </div>
         <div class="col-6 col-xl-2 justify-content-center col-lg-3">
           <div class="product-offer">
             <img class="img-fluid" src="img/carousel-3.jpg" alt="" />
-            <div
-              class="offer-text text-center d-flex flex-column align-items-center"
-            >
-              <h4 class="text-white">Devoluciones Y Compras</h4>
-              <h3 class="text-white text-uppercase">Politicas Empresa</h3>
-              <a href="politicasEmpresa.html" class="rounded btn btn-primary"
-                >Ver Mas</a
-              >
+            <div class="offer-text text-center d-flex flex-column align-items-center">
+              <h6 class="text-white mt-3">Devoluciones Y Compras</h6>
+              <h4 class="text-white text-uppercase font-weight-bold">Politicas Empresa</h4>
+              <a href="politicasEmpresa.html" class="btn btn-warning">Ver Mas</a>
             </div>
           </div>
         </div>
@@ -179,11 +170,9 @@
           <div class="product-offer">
             <img class="img-fluid" src="img/Slide4.png" alt="" />
             <div class="offer-text text-center flex-column align-items-center">
-              <h4 class="text-white">Insumos Maquinas Café</h4>
-              <h3 class="text-white text-uppercase">Ventas</h3>
-              <a href="productos.html" class="rounded btn btn-primary"
-                >Ver Mas</a
-              >
+              <h6 class="text-white mt-3">Insumos Maquinas Café</h6>
+              <h4 class="text-white text-uppercase font-weight-bold">Ventas</h4>
+              <a href="productos.html" class="rounded btn btn-warning">Ver Mas</a>
             </div>
           </div>
         </div>
@@ -191,15 +180,14 @@
           <div class="product-offer contact-desktop">
             <img class="img-fluid" src="img/Vendingcafe.webp" alt="" />
             <div class="offer-text text-center flex-column align-items-center">
-              <h4 class="text-white">Informate Facil</h4>
-              <h3 class="text-white text-uppercase">Recetas</h3>
-              <a href="recetas.html" class="rounded btn btn-primary">Ver Mas</a>
+              <h6 class="text-white mt-3">Informate Facil</h6>
+              <h4 class="text-white text-uppercase font-weight-bold">Recetas</h4>
+              <a href="recetas.html" class="rounded btn btn-warning">Ver Mas</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Carousel End -->
 
     <!-- Vendor Start -->
     <div class="container-fluid py-2">
@@ -228,56 +216,32 @@
     <!-- Vendor End -->
 
     <!-- Featured Start -->
-    <div class="container-fluid text-center contact-desktop">
-      <div class="row text-center">
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-          <div
-            class="d-flex align-items-center bg-primary bg-primary2"
-            style="padding: 30px"
-          >
-            <h1
-              class="fa fa-check text-primary m-0 mr-3"
-              aria-hidden="true"
-            ></h1>
-            <h5 class="font-weight-semi-bold m-0">Productos de calidad</h5>
+    <div class="container-fluid contact-desktop">
+      <div class="row bg-navbar ">
+        <div class="col-lg-3 col-md-6 col-sm-12 pl-5 py-3 ">
+          <div class="d-flex align-items-center">
+            <h1 class="fa fa-check text-warning mr-3" aria-hidden="true"></h1>
+            <h5 class="font-weight-semi-bold ">Productos de calidad</h5>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-          <div
-            class="d-flex align-items-center bg-primary bg-primary2"
-            style="padding: 30px"
-          >
-            <h1
-              class="fa fa-tools text-primary m-0 mr-2"
-              aria-hidden="true"
-            ></h1>
-            <h5 class="font-weight-semi-bold m-0">
+        <div class="col-lg-3 col-md-6 col-sm-12 py-3">
+          <div class="d-flex align-items-center">
+            <h1 class="fa fa-tools text-warning mr-3" aria-hidden="true"></h1>
+            <h5 class="font-weight-semi-bold">
               Instalación y mantenimiento
             </h5>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-          <div
-            class="d-flex align-items-center bg-primary bg-primary2"
-            style="padding: 30px"
-          >
-            <h1
-              class="fas fa-box-open text-primary m-0 mr-3"
-              aria-hidden="true"
-            ></h1>
-            <h5 class="font-weight-semi-bold m-0">Reposición y recambios</h5>
+        <div class="col-lg-3 col-md-6 col-sm-12 py-3">
+          <div class="d-flex align-items-center">
+            <h1 class="fas fa-box-open text-warning mr-3" aria-hidden="true"></h1>
+            <h5 class="font-weight-semi-bold ">Reposición y recambios</h5>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-          <div
-            class="d-flex align-items-center bg-primary bg-primary2"
-            style="padding: 30px"
-          >
-            <h1
-              class="fa fa-phone-volume text-primary m-0 mr-3"
-              aria-hidden="true"
-            ></h1>
-            <h5 class="font-weight-semi-bold m-0">Soporte técnico 24/7</h5>
+        <div class="col-lg-3 col-md-6 col-sm-12 py-3">
+          <div class="d-flex align-items-center ">
+            <h1 class="fa fa-phone-volume text-warning mr-3" aria-hidden="true"></h1>
+            <h5 class="font-weight-semi-bold">Soporte técnico 24/7</h5>
           </div>
         </div>
       </div>
@@ -285,44 +249,39 @@
     <!-- Featured End -->
 
     <!-- Footer Start -->
-    <footer class="container-fluid bg-dark text-secondary" role="contentinfo">
-      <div class="row px-4 pt-1">
-        <div class="col-lg-4 col-12 pr-xl-4">
-          <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
-          <p class="">
-            Yellow Box - Servicios de vending y bebidas automáticas. Atención y
-            soporte técnico.
-          </p>
-          <p class="mb-2">
-            <i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del
-            Bio-Bio , Chile
-          </p>
-          <p class="mb-2">
-            <i class="fa fa-envelope text-primary mr-3"></i
-            ><a href="mailto:soporte@yellowbox.example" class="text-secondary"
+    <footer class="container-fluid bg-dark text-white" role="contentinfo">
+      <div class="row pt-3 px-2 pt-1">
+        <div class="col-lg-4 col-12 pr-xl-4 mb-2">
+          <h5 class="text-warning text-uppercase">Contacto</h5>
+          <p class="mt-3">Yellow Box - Servicios de vending y bebidas automáticas. Atención y soporte técnico.</p>
+          
+          <p class="mb-2"><i class="fa fa-map-marker-alt text-danger mr-3"></i>Region Del Bio-Bio , Chile</p>
+
+          <p class="mb-1">
+            <i class="fa fa-envelope mr-3"></i
+            ><a href="mailto:soporte@yellowbox.example" class="text-light text-decoration-none"
               >soporte@yellowbox.cl</a
             >
           </p>
-          <p class="mt-3">
-            Horario de atención: Lunes a Viernes, 09:00 - 18:00
-          </p>
         </div>
+        
         <div class="col-lg-8 col-12">
           <div class="row">
-            <div class="col-lg-4 col-12">
-              <h5 class="text-secondary text-uppercase mb-3">Enlaces</h5>
+
+            <div class="col-lg-4 col-12 mb-3">
+              <h5 class="text-warning text-uppercase">Enlaces</h5>
               <div class="row">
-                <a class="text-secondary col-xl-12 col-4" href="index.html"
+                <a class="text-white col-xl-12 col-4" href="index.html"
                   ><i class="fa fa-angle-right mr-2"></i>Inicio</a
                 >
-                <a class="text-secondary col-xl-12 col-8" href="shop.html"
+                <a class="text-white col-xl-12 col-8" href="shop.html"
                   ><i class="fa fa-angle-right mr-2"></i>Tienda</a
                 >
-                <a class="text-secondary col-xl-12 col-4" href="contact.html"
+                <a class="text-white col-xl-12 col-4" href="contact.html"
                   ><i class="fa fa-angle-right mr-2"></i>Contacto</a
                 >
                 <a
-                  class="text-secondary col-xl-12 col-8"
+                  class="text-white col-xl-12 col-8"
                   href="politicasEmpresa.html"
                   ><i class="fa fa-angle-right mr-2"></i>Políticas de la
                   Empresa</a
@@ -330,13 +289,13 @@
               </div>
             </div>
 
-            <div class="col-lg-7 mb-xl-5 mb-1">
-              <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
+            <div class="col-lg-8 mb-xl-5">
+              <h5 class="text-warning text-uppercase mb-3">Síguenos</h5>
               <p>Encuéntranos en redes para novedades y promociones.</p>
               <div class="row">
                 <div class="col-xl-6 col-3">
                   <a
-                    class="btn btn-primary btn-square mb-2"
+                    class="btn btn-warning btn-square mb-2"
                     href="#"
                     aria-label="Twitter"
                     ><i class="fab fa-twitter"></i
@@ -344,7 +303,7 @@
                 </div>
                 <div class="col-xl-6 col-3">
                   <a
-                    class="btn btn-primary btn-square mb-2"
+                    class="btn btn-warning btn-square mb-2"
                     href="#"
                     aria-label="Facebook"
                     ><i class="fab fa-facebook-f"></i
@@ -352,7 +311,7 @@
                 </div>
                 <div class="col-xl-6 col-3">
                   <a
-                    class="btn btn-primary btn-square mb-2"
+                    class="btn btn-warning btn-square mb-2"
                     href="#"
                     aria-label="Instagram"
                     ><i class="fab fa-instagram"></i
@@ -360,7 +319,7 @@
                 </div>
                 <div class="col-xl-6 col-3">
                   <a
-                    class="btn btn-primary btn-square mb-2"
+                    class="btn btn-warning btn-square mb-2"
                     href="#"
                     aria-label="LinkedIn"
                     ><i class="fab fa-linkedin-in"></i
@@ -368,6 +327,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -376,7 +336,7 @@
         style="border-color: rgba(256, 256, 256, 0.1) !important"
       >
         <div class="col-md-6">
-          <p class="text-center text-md-left text-secondary">
+          <p class="text-center text-md-left text-white">
             &copy; 2025 Yellow Box. Todos los derechos reservados.
             <br />Diseñado por Küpan.
           </p>

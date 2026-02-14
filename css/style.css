@@ -8385,7 +8385,7 @@ h6 {
 .product-offer {
   position: relative;
   width: 185px;
-  height: 190px;
+  height: 170px;
   border-radius: 10px;
   overflow:hidden;
 
@@ -8457,11 +8457,11 @@ h6 {
   display: flex;
 }
 .product-offer .offer-text > :nth-child(1) {
- height: 15%;
+ height: 20%;
  margin-bottom: 0%;
 }
 .product-offer .offer-text > :nth-child(2) {
-height: 50%;
+height: 45%;
 display: flex;
 align-items: center;
 justify-content: center;
