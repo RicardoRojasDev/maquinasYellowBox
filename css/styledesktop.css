@@ -344,7 +344,7 @@
     text-decoration: underline;
   }
   .site-logo {
-    width: 150px;
+    width: 70px;
   }
   .img-desktop {
     display: block;
@@ -371,7 +371,19 @@
     justify-content: space-between;
     position: relative;
   }
+  .nav-3 {
+    color: #585858; 
+    font-size: 1.5rem;
+    margin-left: 8rem;
+   
 
+  }
+  .nav-3:hover {
+    color: rgb(0, 0, 0);
+    scale: 1.2;
+
+    transition: all 0.5s ease;
+  }
   .logo-container {
     position: absolute;
     left: 50%;

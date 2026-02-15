@@ -8343,7 +8343,12 @@ h6 {
 .navbar-dark .dropdown-toggle::after {
   display: none;
 }
-
+  .nav-right {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    color: white;
+  }
 #header-carousel img {
   width: 100%;
   height: 100%;
@@ -8448,7 +8453,7 @@ h6 {
   object-fit: cover;
 }
 .site-logo {
-  width: 100px;
+  width: 50px;
 }
 .product-offer .offer-text {
   position:relative;

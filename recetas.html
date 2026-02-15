@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yellow Box - Recetas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Estilos específicos para Recetas (paleta y ajustes propios) -->
+  <link href="recetas.css" rel="stylesheet">
+      <link href="css/styledesktop.css" rel="stylesheet">
+</head>
+
+<body>
+
+   
+   <!-- Navbar Start -->
+    <div class="container-fluid mb-4 pb-4 bg-primary ">
+        <div class="row mb-4">
+            <div class="col-xl-12 bg-primary pt-1 fixed-top ">
+                <nav class="navbar ">
+                    <!-- Sección izquierda - Inicio -->
+                    <div class="nav-left ml-xl-3">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                    </div>
+                    
+                    <!-- Logo centrado -->
+                    <div class="logo-container">
+                        <a href="" class="text-decoration-none">
+                            <img src="img/logo.png" alt="Yellow Box" class="site-logo">
+                        </a>
+                    </div>
+                    
+                    <!-- Sección derecha - Menú desplegable y Contactanos -->
+                    <div class="nav-right">
+                        <!-- Menú desplegable "Mas" -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle mr-xl-5" data-toggle="dropdown">Mas</a>
+                            <div class="dropdown-menu bg-primary">
+                                <a href="" class="dropdown-item">Tienda</a>
+                                <a href="contact.html" class="dropdown-item">Reclamos</a>
+                                <a href="recetas.html" class="dropdown-item">Recetas</a>
+                                <a href="servicioTecnico.html" class="dropdown-item">Servicio Técnico</a>
+                                    <a href="contrataciones.html" class="dropdown-item">Contratar</a>
+                                
+                                <!-- Enlace Contactanos visible solo en móviles -->
+                                <div class="contact-mobile">
+                                    <a href="contact.html" class="dropdown-item">Contactanos</a>
+        
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enlace Contactanos visible en desktop -->
+                        <div class="contact-desktop">
+                            <a href="contact.html" class="nav-item nav-link mx-xl-4">Contactanos</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+      <!-- Main Content Start -->
+      <div class="container-fluid ">
+        
+          <div class="row px-xl-5">
+              <div class="col-xl-11 m-auto">
+                  <!-- CONTROLES: búsqueda y filtro por categoría -->
+                  <section class="recetas-controls" aria-label="Controles de búsqueda y filtro">
+                    <div class="container controls-row">
+                      <div class="control search" style="flex:1;">
+                
+                        <input id="buscar" type="search" placeholder="Buscar recetas..." aria-label="Buscar recetas por nombre">
+                      </div>
+                      <div class="control filter" style="width:220px;">
+                        <label for="filtroCategoria" class="sr-only">Filtrar por categoría</label>
+                        <select id="filtroCategoria" aria-label="Filtrar por categoría">
+                          <option value="all">Todas las categorías</option>
+                        </select>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Lista de recetas (renderizada por JS) -->
+                  <section id="listaRecetas" class="recetas-grid" aria-live="polite" aria-label="Listado de recetas" style="margin-top:1rem"></section>
+
+  
+
+              </div>
+          </div>
+      </div>
+      <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-secondary " role="contentinfo">
+        <div class="row px-4 pt-1">
+            <div class="col-lg-4 col-12  pr-xl-4">
+                <h5 class="text-secondary text-uppercase mb-4">Contacto</h5>
+                <p class="">Yellow Box - Servicios de vending y bebidas automáticas. Atención y soporte técnico.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Region Del Bio-Bio , Chile</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:soporte@yellowbox.example" class="text-secondary">soporte@yellowbox.cl</a></p>
+                <p class="mt-3">Horario de atención: Lunes a Viernes, 09:00 - 18:00</p>
+            </div>
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <h5 class="text-secondary text-uppercase mb-3">Enlaces</h5>
+                        <div class="row">
+                            <a class="text-secondary col-xl-12 col-4" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-secondary  col-xl-12 col-8" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
+                             <a class="text-secondary col-xl-12 col-4" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                             <a class="text-secondary  col-xl-12 col-8" href="politicasEmpresa.html"><i class="fa fa-angle-right mr-2"></i>Políticas de la Empresa</a>
+                        </div>
+                            
+                           
+                    </div>
+                
+                    <div class=" col-lg-7 mb-xl-5 mb-1">
+                        <h5 class="text-secondary text-uppercase mb-4">Síguenos</h5>
+                        <p>Encuéntranos en redes para novedades y promociones.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-3">
+                                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            </div>
+                            <div class="col-xl-6 col-3">
+                                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                            <div class="col-xl-6 col-3">
+                                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-xl-6 col-3">
+                                <a class="btn btn-primary btn-square mb-2" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-1" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6">
+                <p class="text-center text-md-left text-secondary">&copy; 2025 Yellow Box. Todos los derechos reservados. <br>Diseñado por Küpan.</p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center ">
+                <img class="img-fluid" src="img/payments.png" alt="Métodos de pago aceptados">
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+      <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+      <!-- Template Javascript -->
+      <script src="js/main.js"></script>
+
+      <!-- Script de recetas: datos, render y accesibilidad (vanilla JS) -->
+      <script>
+      (function () {
+        'use strict';
+        const RECETAS = [
+          { id:1, nombre: 'CAFÉ AMERICANO', descripcion: 'Carga fuerte de café en grano, molido al instante; mezcla con 90-100 ml de agua, ideal para mañanas difíciles.', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:2, nombre: 'CAFÉ GRANO CORTO', descripcion: 'Carga fuerte de café en grano, molido al instante; preparado habitualmente con 50-60 ml de agua (servido en vaso de 200 ml).', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:3, nombre: 'CAFÉ GRANO LARGO', descripcion: 'Moderada carga de café en grano, molido al instante en 180 ml de agua.', ingredientes: 'Café en grano;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:4, nombre: 'CAFÉ GRANO CORTADO', descripcion: 'Carga de café en grano, molido al instante y cortado con una dosis de leche descremada.', ingredientes: 'Café en grano;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:5, nombre: 'CAPUCHINO', descripcion: 'Carga de café en grano, molido al instante con leche descremada y espuma ligera.', ingredientes: 'Café en grano;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:6, nombre: 'CAFÉ GRANO CON CHOCOLATE', descripcion: 'Carga de café en grano, molido al instante combinado con chocolate para un sabor dulce y robusto.', ingredientes: 'Café en grano;Chocolate', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Puede contener trazas de leche' },
+          { id:7, nombre: 'MOKACCINO', descripcion: 'Carga de café en grano, molido al instante con leche descremada y chocolate.', ingredientes: 'Café en grano;Leche descremada;Chocolate', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Leche' },
+          { id:8, nombre: 'CHOCOLATE', descripcion: 'Carga fuerte de chocolate en polvo; bebida caliente y reconfortante.', ingredientes: 'Chocolate en polvo;Agua', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Puede contener trazas de leche' },
+          { id:9, nombre: 'CHOCOLATE CON LECHE', descripcion: 'Carga fuerte de chocolate con leche descremada; sabor cremoso.', ingredientes: 'Chocolate en polvo;Leche descremada', categoria: 'Chocolate', volumen: '200 ml', alergenos: 'Leche' },
+          { id:10, nombre: 'TE PURO', descripcion: 'Carga de té soluble; infusión simple y clásica.', ingredientes: 'Té soluble;Agua', categoria: 'Té', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:11, nombre: 'TE CON LECHE', descripcion: 'Carga de té soluble combinado con leche descremada.', ingredientes: 'Té soluble;Leche descremada', categoria: 'Té', volumen: '200 ml', alergenos: 'Leche' },
+          { id:12, nombre: 'CEBADA', descripcion: 'Carga moderada de cebada tostada; sabor tostado y suave.', ingredientes: 'Cebada tostada;Agua', categoria: 'Cebada', volumen: '200 ml', alergenos: 'Gluten' },
+          { id:13, nombre: 'CEBADA CON LECHE', descripcion: 'Carga moderada de cebada tostada servida con leche descremada.', ingredientes: 'Cebada tostada;Leche descremada', categoria: 'Cebada', volumen: '200 ml', alergenos: 'Gluten;Leche' },
+          { id:14, nombre: 'CAFÉ INSTANTÁNEO LARGO', descripcion: 'Carga moderada de café soluble; opción práctica y rápida.', ingredientes: 'Café soluble;Agua', categoria: 'Café', volumen: '200 ml', alergenos: 'Sin alérgenos comunes' },
+          { id:15, nombre: 'CAFÉ INSTANTÁNEO CON LECHE', descripcion: 'Carga moderada de café soluble combinado con leche descremada.', ingredientes: 'Café soluble;Leche descremada', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:16, nombre: 'CAPUCHINO CARAMELO', descripcion: 'Capuchino con sabor a caramelo; carga moderada y dulzor marcado.', ingredientes: 'Café;Leche descremada;Sabor caramelo', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:17, nombre: 'CAPUCHINO VAINILLA', descripcion: 'Capuchino con sabor a vainilla; aroma y textura cremosa.', ingredientes: 'Café;Leche descremada;Vainilla', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:18, nombre: 'CAPUCHINO VAINILLA CON LECHE', descripcion: 'Capuchino vainilla mezclado con leche descremada para mayor cremosidad.', ingredientes: 'Café;Leche descremada;Vainilla', categoria: 'Bebida con leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:19, nombre: 'LECHE', descripcion: 'Carga de leche descremada; opción simple y natural.', ingredientes: 'Leche descremada', categoria: 'Leche', volumen: '200 ml', alergenos: 'Leche' },
+          { id:20, nombre: 'LECHE MACCIATO', descripcion: 'Carga de leche descremada con un toque de café en grano recién molido.', ingredientes: 'Leche descremada;Café en grano', categoria: 'Leche', volumen: '200 ml', alergenos: 'Leche' }
+        ];
+
+        const $lista = document.getElementById('listaRecetas');
+        const $buscar = document.getElementById('buscar');
+        const $filtro = document.getElementById('filtroCategoria');
+
+        const categorias = Array.from(new Set(RECETAS.map(r => r.categoria)));
+        categorias.forEach(cat => {
+          const opt = document.createElement('option');
+          opt.value = cat;
+          opt.textContent = cat;
+          $filtro.appendChild(opt);
+        });
+
+        function crearTarjeta(receta) {
+          const article = document.createElement('article');
+          article.className = 'receta-card';
+          article.tabIndex = 0;
+          article.setAttribute('role', 'article');
+          article.setAttribute('aria-labelledby', `titulo-${receta.id}`);
+
+          article.innerHTML = `
+            <div class="receta-card__media" aria-hidden="true">
+              <svg class="receta-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 3h12v2H6z" fill="currentColor" opacity="0.2"></path>
+                <path d="M8 5h8v10a4 4 0 1 1-8 0V5z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div class="receta-card__body">
+              <h3 id="titulo-${receta.id}" class="receta-card__titulo">${receta.nombre}</h3>
+              <p class="receta-card__descripcion">${receta.descripcion}</p>
+              <p class="receta-card__ingredientes"><strong>Ingredientes:</strong> ${receta.ingredientes}</p>
+              <p class="receta-card__volumen">Volumen: <strong>${receta.volumen}</strong></p>
+
+              <div class="receta-card__actions">
+                <button class="btn-toggle" aria-expanded="false" aria-controls="panel-${receta.id}" data-id="${receta.id}">Ver Info nutricional</button>
+              </div>
+
+              <div id="panel-${receta.id}" class="receta-card__panel" role="region" aria-hidden="true">
+                <p><strong>Alérgenos:</strong> ${receta.alergenos}</p>
+                <p class="muted">Más información nutricional disponible bajo solicitud.</p>
+              </div>
+            </div>
+          `;
+
+          article.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              const btn = article.querySelector('.btn-toggle');
+              if (btn) btn.click();
+              e.preventDefault();
+            }
+          });
+
+          return article;
+        }
+
+        function renderizar(lista) {
+          $lista.innerHTML = '';
+          if (!lista.length) {
+            $lista.innerHTML = '<p class="muted">No se encontraron recetas que coincidan.</p>';
+            return;
+          }
+          const fragment = document.createDocumentFragment();
+          lista.forEach(r => fragment.appendChild(crearTarjeta(r)));
+          $lista.appendChild(fragment);
+        }
+
+        function filtrar() {
+          const q = $buscar.value.trim().toLowerCase();
+          const cat = $filtro.value;
+          const resultado = RECETAS.filter(r => {
+            const matchNombre = r.nombre.toLowerCase().includes(q);
+            const matchCat = (cat === 'all') ? true : r.categoria === cat;
+            return matchNombre && matchCat;
+          });
+          renderizar(resultado);
+        }
+
+        document.body.addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-toggle');
+          if (!btn) return;
+          const id = btn.dataset.id;
+          const panel = document.getElementById(`panel-${id}`);
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            cerrarPanel(btn, panel);
+          } else {
+            abrirPanel(btn, panel);
+          }
+        });
+
+        function abrirPanel(btn, panel) {
+          btn.setAttribute('aria-expanded', 'true');
+          panel.setAttribute('aria-hidden', 'false');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          panel.setAttribute('tabindex', '-1');
+          panel.focus();
+          document.addEventListener('keydown', handleEsc);
+        }
+
+        function cerrarPanel(btn, panel) {
+          btn.setAttribute('aria-expanded', 'false');
+          panel.setAttribute('aria-hidden', 'true');
+          panel.style.maxHeight = null;
+          btn.focus();
+          document.removeEventListener('keydown', handleEsc);
+        }
+
+        function handleEsc(e) {
+          if (e.key === 'Escape' || e.key === 'Esc') {
+            const openBtn = document.querySelector('.btn-toggle[aria-expanded="true"]');
+            if (openBtn) {
+              const id = openBtn.dataset.id;
+              const panel = document.getElementById(`panel-${id}`);
+              cerrarPanel(openBtn, panel);
+            }
+          }
+        }
+
+        $buscar.addEventListener('input', filtrar);
+        $filtro.addEventListener('change', filtrar);
+
+        renderizar(RECETAS);
+      })();
+      </script>
+
+  </body>
+
+  </html>
