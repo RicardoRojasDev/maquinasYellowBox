@@ -35,8 +35,7 @@
     transition: all 0.5s ease;
   }
   .logo-container {
-    left: 50vw;
-    transform: translateX(-50%);
+    left: 75dvw: translateX(-50%);
   }
 
   .nav-left {
