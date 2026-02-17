@@ -1,11 +1,8 @@
-@media (min-width: 992px) {
+@media (min-width: 800px) {
   
   .navbar {
-    height: 10dvh;
-    display: flex;
+    height: 13dvh;
     align-items: center;
-    justify-content: space-between;
-    position: relative;
   }
 
   a {
@@ -18,43 +15,27 @@
     text-decoration: underline;
   }
   .site-logo {
+    width: 5dvw;
 
-  }
-  .img-desktop {
-    display: block;
-  }
-  .img-mobile {
-    display: none;
   }
   .btn {
-    width: 15vw;
+    width: 12vw;
   }
-
-  /* Estilos para mostrar/ocultar elementos según el dispositivo */
-  .contact-desktop {
-    display: block;
-  }
-  .contact-mobile {
-    display: none;
-  }
-
   /* Centrar el logo */
   .nav-3 {
-    color: #585858; 
+    color: #9e9e9e; 
     font-size: 1.5rem;
-    margin-left: 8rem;
+    margin-left: 10dvw;
    
-
   }
   .nav-3:hover {
     color: rgb(0, 0, 0);
-    scale: 1.2;
+    scale: 1.15;
 
     transition: all 0.5s ease;
   }
   .logo-container {
-    position: absolute;
-    left: 50%;
+    left: 50vw;
     transform: translateX(-50%);
   }
 
@@ -75,7 +56,7 @@
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 5px;
-    border-left: 4px solid #0d6efd;
+    border-left: 4px solid #d8b130;
   }
   .sub-section {
     margin-top: 15px;
@@ -88,12 +69,7 @@
     content: " *";
     color: #dc3545;
   }
-  .form-section-title {
-    border-bottom: 2px solid #0d6efd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    color: #0d6efd;
-  }
+
   .checkbox-group,
   .radio-group {
     display: flex;
@@ -114,7 +90,6 @@
   .promotion-card {
     width: 100% !important; /* Ocupa todo el ancho de la celda grid */
     max-width: 350px; /* Máximo ancho pero flexible */
-      width: 100%; 
   border-radius: 8px;
   display: grid;
   grid-template-columns: 30% 70%;
@@ -125,8 +100,6 @@
   border-bottom: #f6ff00 outset 2px;
   border-top: #0000005b inset 2px;
   border-left: #00005b inset 2px;
-
-
 
   }
   /* Promotion Cards */
@@ -139,23 +112,7 @@
   border-radius: 8px;
   transition: all 0.3s ease;
 }
-
-  .product-offer {
-  position: relative;
-  width:100px;
-
-  border-radius: 10px;
-  overflow:hidden;
-
-}
-}
-@media (min-width: 1400px){
-
-  .product-offer {
-    width: 260px;
-    height: 180px;
-  }
-  .mokador-btn {
+.mokador-btn {
   background-image: url('../img/mokador.jpg'); /* Cambia esta ruta por la de tu imagen */
   background-size: cover;
   background-position: center;
@@ -175,16 +132,19 @@
 }
 /* Estilo para la barra de categorías */
 .category-buttons-container {
-  position: sticky;
+  position: relative;
   z-index: 10;
-  top:10vh;
+  top:5vh;
   background-color: rgb(255, 255, 255);
   padding: 8px 0;
   box-shadow: 0 3px 8px rgba(209, 209, 9, 0.1);
 }
 
-  
+.product-offer {
+  width: 100%;
+  height: 25dvh;
+  border-radius: 10px;
+  overflow: hidden;
 }
-.bg-navbar {
-  background-color:#BDB093 !important;
+
 }

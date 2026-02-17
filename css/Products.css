@@ -113,5 +113,4 @@
   overflow-x: auto;
   scrollbar-width: none; /* Ocultar barra de desplazamiento */
   -ms-overflow-style: none;  /* IE y Edge */
-  white-space: nowrap;
 }
