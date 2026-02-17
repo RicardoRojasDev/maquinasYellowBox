@@ -48,12 +48,9 @@
   
   <body>
     <!-- Navbar Start -->
-    <div class="container-fluid mb-4 pb-4 ">
-      <div class="row mb-3">
-        <div class="col-xl-12 bg-navbar fixed-top">
-          <nav class="navbar">
+          <nav class="navbar bg-navbar sticky-top">
             <!-- Sección izquierda - Inicio -->
-            <div class="nav-left ml-4 ml-xl-4">
+            <div class="nav-left">
               <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
 
@@ -67,35 +64,31 @@
             <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
               <!-- Menú desplegable "Mas" -->
-              <div class="dropdown nav-3">
-                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle mr-xl-5 text-decoration-none" data-toggle="dropdown">Mas</a>
+              <div class="dropdown">
+                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2" data-toggle="dropdown">Mas</a>
+                
                 <div class="dropdown-menu bg-navbar">
                   <a href="productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
                   <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
                   <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
                   <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                  
-                  
-
                   <!-- Enlace Contactanos visible solo en móviles -->
                   <div class="contact-mobile">
                     <a href="contact.html" class="dropdown-item">Contactanos</a>
                   </div>
                 </div>
+
               </div>
 
               <!-- Enlace Contactanos visible en desktop -->
-              <div class="contact-desktop">
+              <div class="d-none d-lg-block">
                 <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
                   >Contactanos</a
                 >
               </div>
             </div>
           </nav>
-        </div>
-      </div>
-    </div>
     <!-- Navbar End -->
      
         <!-- CARRITO FLOTANTE -->
@@ -185,7 +178,7 @@
 
 
     <!-- Products Start -->
-    <div class="category-buttons-container pt-xl-4">
+    <div class="category-buttons-container">
       <div class="category-buttons">
         <button class="category-button mokador-btn" data-filter="mokador">
           <img style="width: 9rem"

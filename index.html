@@ -10,6 +10,7 @@
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
 
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -41,12 +42,9 @@
 
   <body>
     <!-- Navbar Start -->
-    <div class="container-fluid mb-4 pb-4 ">
-      <div class="row mb-3">
-        <div class="col-xl-12 bg-navbar fixed-top">
-          <nav class="navbar">
+          <nav class="navbar bg-navbar sticky-top">
             <!-- Sección izquierda - Inicio -->
-            <div class="nav-left ml-4 ml-xl-4">
+            <div class="nav-left">
               <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
 
@@ -60,66 +58,62 @@
             <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
               <!-- Menú desplegable "Mas" -->
-              <div class="dropdown nav-3">
-                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle mr-xl-5 text-decoration-none" data-toggle="dropdown">Mas</a>
-                <div class="dropdown-menu bg-navbar">
+              <div class="dropdown ">
+                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2 " data-toggle="dropdown">Mas</a>
+                
+                <div class="dropdown-menu">
                   <a href="productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
                   <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
                   <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
                   <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                  
-                  
-
                   <!-- Enlace Contactanos visible solo en móviles -->
                   <div class="contact-mobile">
                     <a href="contact.html" class="dropdown-item">Contactanos</a>
                   </div>
                 </div>
+
               </div>
 
               <!-- Enlace Contactanos visible en desktop -->
-              <div class="contact-desktop">
+              <div class="d-none d-lg-block">
                 <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
                   >Contactanos</a
                 >
               </div>
             </div>
           </nav>
-        </div>
-      </div>
-    </div>
     <!-- Navbar End -->
      
     <!-- Slider main container -->
-    <div class="swiper">
+    <div class="swiper pb-2">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
   
-          <img src="img/Slide 2.png" class="img-mobile" alt="" />
-          <img src="img/slidedesktop1.png" class="img-desktop" alt="Desktop" />
+          <img src="img/Slide 2.png" class="d-lg-none" alt="" />
+          <img src="img/slidedesktop1.png" class="d-none d-lg-block" alt="Desktop" />
         </div>
 
         <div class="swiper-slide">
-          <img src="img/Slide1.1.png" class="img-mobile" alt="" />
-          <img src="img/slidedesktop0.png" class="img-desktop" alt="Desktop" />
+          <img src="img/Slide1.1.png" class="d-lg-none" alt="" />
+          <img src="img/slidedesktop0.png" class="d-none d-lg-block" alt="Desktop" />
         </div>
 
         <div class="swiper-slide">
-          <img src="img/slide5.png" class="img-mobile" alt="" />
-          <img src="img/mokador2.png" class="img-desktop" alt="Desktop" />
+          <img src="img/slide5.png" class="d-lg-none" alt="" />
+          <img src="img/mokador2.png" class="d-none d-lg-block" alt="Desktop" />
         </div>
 
         <div class="swiper-slide">
-          <img src="img/slide7.png" class="img-mobile" alt="" />
-          <img src="img/mokador3.png" class="img-desktop" alt="Desktop" />
+          <img src="img/slide7.png" class="d-lg-none" alt="" />
+          <img src="img/mokador3.png" class="d-none d-lg-block" alt="Desktop" />
         </div>
 
         <div class="swiper-slide">
-          <img src="img/Slide4.png" class="img-mobile" alt="" />
-          <img src="img/slidedesktop3.png" class="img-desktop" alt="Desktop" />
+          <img src="img/Slide4.png" class="d-lg-none" alt="" />
+          <img src="img/slidedesktop3.png" class="d-none d-lg-block" alt="Desktop" />
         </div>
 
       </div>
@@ -134,10 +128,9 @@
       <div class="swiper-scrollbar"></div>
     </div>
     <!-- Botones Start -->
-    <div class="container-fluid">
-      <div class="row w-100 pt-2 justify-content-around">
-        <div class="col-6 col-xl-2 col-lg-3 mb-1">
-          <div class="product-offer ">
+      <div class="row justify-content-evenly w-100 m-auto g-1 px-1">
+        <div class="col-6 col-sm-4 col-lg-2">
+          <div class="product-offer">
             <img class="img-fluid" src="img/carousel-3.jpg" alt="" />
             <div class="d-flex text-center flex-column offer-text align-items-center  ">
               <h6 class="text-white mt-3">Devoluciones Y Sugerencias</h6>
@@ -146,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-2 col-lg-3">
+        <div class="col-6 col-sm-4 col-lg-2">
           <div class="product-offer ">
             <img class="img-fluid" src="img/twist2.webp" alt="" />
             <div class="d-flex flex-column text-center offer-text align-items-center">
@@ -156,17 +149,17 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+        <div class="col-6 col-sm-4 col-lg-2">
           <div class="product-offer">
             <img class="img-fluid" src="img/carousel-3.jpg" alt="" />
             <div class="offer-text text-center d-flex flex-column align-items-center">
               <h6 class="text-white mt-3">Devoluciones Y Compras</h6>
               <h4 class="text-white text-uppercase font-weight-bold">Politicas Empresa</h4>
-              <a href="politicasEmpresa.html" class="btn btn-warning">Ver Mas</a>
+              <a href="politicasEmpresa.html" class=" rounded btn btn-warning">Ver Mas</a>
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
+        <div class="col-6 col-sm-4 col-lg-2">
           <div class="product-offer">
             <img class="img-fluid" src="img/Slide4.png" alt="" />
             <div class="offer-text text-center flex-column align-items-center">
@@ -176,8 +169,8 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-2 justify-content-center col-lg-3">
-          <div class="product-offer contact-desktop">
+        <div class="col-6 col-sm-4 col-lg-2 ">
+          <div class="product-offer d-none d-sm-block">
             <img class="img-fluid" src="img/Vendingcafe.webp" alt="" />
             <div class="offer-text text-center flex-column align-items-center">
               <h6 class="text-white mt-3">Informate Facil</h6>
@@ -186,8 +179,18 @@
             </div>
           </div>
         </div>
+          <div class="col-6 col-sm-4 col-lg-2 ">
+          <div class="product-offer d-none d-sm-block">
+            <img class="img-fluid" src="img/Vendingcafe.webp" alt="" />
+            <div class="offer-text text-center flex-column align-items-center">
+              <h6 class="text-white mt-3">Atencion Personalizada</h6>
+              <h4 class="text-white text-uppercase font-weight-bold">Agente</h4>
+              <a href="recetas.html" class="rounded btn btn-warning">Escribenos !</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      
 
     <!-- Vendor Start -->
     <div class="container-fluid py-2">
@@ -349,7 +352,7 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn-lg btn-primary back-to-top"
+    <a href="#" class="btn-lg btn-warning back-to-top"
       ><i class="fa fa-angle-double-up"></i
     ></a>
 

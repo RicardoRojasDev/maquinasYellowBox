@@ -17,7 +17,7 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
     <!-- Modal Reclamos 3D CSS -->
-    <link href="css/modal-reclamos.css" rel="stylesheet">
+    <link href="../css/modal-reclamos.css" rel="stylesheet">
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"
@@ -98,12 +98,9 @@
 </script>
 
     <!-- Navbar Start -->
-    <div class="container-fluid mb-4 pb-4 ">
-      <div class="row mb-3">
-        <div class="col-xl-12 bg-navbar fixed-top">
-          <nav class="navbar">
+          <nav class="navbar bg-navbar sticky-top">
             <!-- Sección izquierda - Inicio -->
-            <div class="nav-left ml-4 ml-xl-4">
+            <div class="nav-left">
               <a href="../index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
 
@@ -117,50 +114,41 @@
             <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
               <!-- Menú desplegable "Mas" -->
-              <div class="dropdown nav-3">
-                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle mr-xl-5 text-decoration-none" data-toggle="dropdown">Mas</a>
+              <div class="dropdown">
+                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none" data-toggle="dropdown">Mas</a>
+                
                 <div class="dropdown-menu bg-navbar">
-                  <a href="productos.html" class="dropdown-item">Tienda Online</a>
+                  <a href="../productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
-                  <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
+                  <a href="../contrataciones.html" class="dropdown-item">Contrataciones</a>
                   <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
                   <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                  
-                  
-
                   <!-- Enlace Contactanos visible solo en móviles -->
                   <div class="contact-mobile">
-                    <a href="contact.html" class="dropdown-item">Contactanos</a>
+                    <a href="../contact.html" class="dropdown-item">Contactanos</a>
                   </div>
                 </div>
+
               </div>
 
               <!-- Enlace Contactanos visible en desktop -->
-              <div class="contact-desktop">
-                <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
+              <div class="d-none d-lg-block">
+                <a href="../contact.html" class="navbar-brand text-decoration-none mx-xl-4"
                   >Contactanos</a
                 >
               </div>
             </div>
           </nav>
-        </div>
-      </div>
-    </div>
     <!-- Navbar End -->
-     
+    
     <!-- Main Content Start -->
-    <div class="pt-3 p-3">
+    <div class=" py-2 py-xl-0 justify-content-around ">
       <!-- Botones tipo Segmented Control -->
-      <div
-        class="btn-group mt-xl-4 flex-wrap mx-auto w-100 justify-content-center px-xl-3 mb-xl-3 mb-3"
-        role="group"
-        aria-label="Segmented Control"
-      >
+      <div class="btn-group mt-xl-4  mx-auto w-75 " role="group" aria-label="Segmented Control">
         <button
           type="button"
           class="btn rounded col-4 btn-outline-warning text-dark active"
-          onclick="mostrarVista('compra')"
-        >
+          onclick="mostrarVista('compra')">
           Formulario Reclamos
         </button>
 
@@ -174,13 +162,13 @@
       </div>
 
       <!-- Contenido dinámico -->
-      <div id="vista-compra" class="mx-auto w-100 rounded">
-        <div class="row justify-content-center align-content-center" style="box-shadow: -1px 2px 7px 0px #000000">
-          <div class="col-lg-11 p-4">
+      <div id="vista-compra" class=" w-100 rounded px-xl-5 px-4 mt-4">
+        <div class="row" style="box-shadow: -1px 2px 7px 0px #000000">
+          <div class="col-12 p-4">
             <form id="contactForm" name="sentMessage" novalidate>
               <!-- Sección de información básica -->
               <div class="row">
-                <div class="col-lg-6 mb-3 pr-2">
+                <div class="col-lg-6 mb-3 pr-xl-2">
                   <label for="name" class="form-label required-field"
                     >Nombre</label>
                   <input
@@ -1031,7 +1019,7 @@
         </div>
       </div>
 
-      <div id="vista-devolucion" class="flex-wrap mx-auto w-100  rounded" style="display: none">
+      <div id="vista-devolucion" class=" w-100 px-xl-5 px-4 mt-4 rounded" style="display: none">
         <!-- Formulario de Ventas/Contrataciones -->
         <div class="row justify-content-center align-content-center py-4" style="box-shadow: -1px 2px 7px 0px #000000">
           <!-- Mensaje de éxito para ventas -->
