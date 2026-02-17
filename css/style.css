@@ -56,7 +56,11 @@ body {
 .bg-navbar {
   background-color: #bdb093;
 }
+ .dropdown-menu {
+  left: -15vw;
+  ;
 
+  }
 a {
   color: #000000;
   font-weight: 500;

@@ -103,24 +103,22 @@
             <div class="nav-left">
               <a href="../index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
-
             <!-- Logo centrado -->
             <div class="logo-container">
               <a href="" class="text-decoration-none">
                 <img src="../img/logo.png" alt="Yellow Box" class="site-logo" />
               </a>
             </div>
-
             <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
               <!-- Menú desplegable "Mas" -->
-              <div class="dropdown">
-                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none" data-toggle="dropdown">Mas</a>
+              <div class="dropdown ">
+                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2 " data-toggle="dropdown">Mas</a>
                 
-                <div class="dropdown-menu bg-navbar">
+                <div style="  background-color: #bdb093;" class="dropdown-menu">
                   <a href="../productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
-                  <a href="../contrataciones.html" class="dropdown-item">Contrataciones</a>
+                  <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
                   <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
                   <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
                   <!-- Enlace Contactanos visible solo en móviles -->
@@ -140,29 +138,24 @@
             </div>
           </nav>
     <!-- Navbar End -->
-    
+     
     <!-- Main Content Start -->
-    <div class=" py-2 py-xl-0 justify-content-around ">
+    <div class=" py-2 py-xl-0 text-center  ">
       <!-- Botones tipo Segmented Control -->
       <div class="btn-group mt-xl-4  mx-auto w-75 " role="group" aria-label="Segmented Control">
-        <button
-          type="button"
-          class="btn rounded col-4 btn-outline-warning text-dark active"
-          onclick="mostrarVista('compra')">
+
+        <button type="button" class="btn rounded col-4 btn-outline-warning text-dark active" onclick="mostrarVista('compra')">
           Formulario Reclamos
         </button>
 
-        <button
-          type="button"
-          class="btn rounded col-4 btn-outline-warning text-dark"
-          onclick="mostrarVista('devolucion')"
-        >
+        <button type="button" class="btn rounded col-4 btn-outline-warning text-dark" onclick="mostrarVista('devolucion')">
           Formulario Ventas
         </button>
+
       </div>
 
       <!-- Contenido dinámico -->
-      <div id="vista-compra" class=" w-100 rounded px-xl-5 px-4 mt-4">
+      <div id="vista-compra" class="text-start w-100  px-xl-5 px-4 my-4 rounded">
         <div class="row" style="box-shadow: -1px 2px 7px 0px #000000">
           <div class="col-12 p-4">
             <form id="contactForm" name="sentMessage" novalidate>
@@ -1019,17 +1012,12 @@
         </div>
       </div>
 
-      <div id="vista-devolucion" class=" w-100 px-xl-5 px-4 mt-4 rounded" style="display: none">
+      <div id="vista-devolucion" class="text-start w-100 px-xl-5 px-4 my-4 rounded " style="display: none">
         <!-- Formulario de Ventas/Contrataciones -->
-        <div class="row justify-content-center align-content-center py-4" style="box-shadow: -1px 2px 7px 0px #000000">
+        <div class="row pt-xl-3" style="box-shadow: -1px 2px 7px 0px #000000">
           <!-- Mensaje de éxito para ventas -->
-          <div
-            id="success-ventas"
-            class="alert alert-success col-12"
-            style="display: none"
-          >
+          <div id="success-ventas" class="alert alert-success col-12 " style="display: none">
             <h4 class="alert-heading">¡Solicitud enviada exitosamente!</h4>
-
             <p>
               Hemos recibido tu solicitud de contratación. Nos contactaremos
               contigo en menos de 48 horas hábiles.
@@ -1039,7 +1027,7 @@
           <!-- Formulario actualizado para usar EmailJS -->
           <form
             id="ventasForm"
-            class="row justify-content-center px-3"
+            class="row justify-content-center "
             novalidate
           >
             <div class="row justify-content-around w-100">
