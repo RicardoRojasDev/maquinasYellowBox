@@ -20,11 +20,18 @@
   }
   .site-logo {
     width: 5dvw;
+  }
 
-  }
-  .btn {
-    width: 12vw;
-  }
+  .back-to-top {
+  position: fixed;
+  display: none;
+  right: 70px;
+  bottom: 30px;
+  z-index: 11;
+  animation: action 1s infinite alternate;
+  width: 16vw;
+}
+
   /* Centrar el logo */
   .nav-3 {
     color: #9e9e9e; 

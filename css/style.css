@@ -221,6 +221,9 @@ input[type="checkbox"] {
   bottom: 30px;
   z-index: 11;
   animation: action 1s infinite alternate;
+  width: 15vw;
+
+  background-color: #000000 ;
 }
 
 @keyframes action {
