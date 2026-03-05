@@ -21,9 +21,7 @@
   font-weight: 700; /* Asegurando que esté en negrita */
   box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
   transition: box-shadow 500ms, font-size 500ms; /* Suaviza los cambios de sombra y tamaño de fuente */
-  width: 500px;
-  height: 50px;
-  outline: none;
+
   flex: 1 1 auto
 
 }

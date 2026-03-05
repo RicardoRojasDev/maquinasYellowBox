@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Auto-redireccionar después de 10 segundos (opcional)
                 setTimeout(() => {
                     window.location.href = '../index.html';
-                }, 10000);
+                }, 100000);
                 
             } else {
                 throw new Error(result.message);
