@@ -1,184 +1,705 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Yellow Box Vending - Tienda</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <meta content="" name="keywords" />
-        <meta content="" name="description" />
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Yellow Box Vending</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon" />
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-        <!-- Font Awesome -->
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-            rel="stylesheet"/>
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet" />
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/style.css" rel="stylesheet" />
-        <link href="css/styledesktop.css" rel="stylesheet" />
-        <link href="css/tienda.css" rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"/>
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/styledesktop.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/Filters.css">
+    <link rel="stylesheet" href="css/Products.css">
 
-    <body>
-        <!-- Navbar Start -->
-        <nav class="navbar bg-navbar sticky-top">
+    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      
+    <!-- Nuevos estilos para la tienda -->
+    <style>
+        /* Estilos básicos para la tienda */
+        :root {
+            --yellow: #ffc107;
+            --dark: #343a40;
+        }
+
+        /* Navbar (copia la misma estructura de index.html) */
+        .navbar.bg-navbar {
+            background-color: #bdb093 !important;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Carrito flotante */
+        .carrito-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .carrito-flotante .bg-warning {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        #carrito-contador {
+            font-size: 0.9rem;
+        }
+
+        /* Tarjetas de producto */
+        .promotion-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f0f0f0;
+        }
+
+        .promotion-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 15px;
+        }
+
+        .promotion-image img {
+            max-width: 80%;
+            max-height: 160px;
+            object-fit: contain;
+        }
+
+        .promotion-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .promotion-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--yellow);
+            padding-bottom: 5px;
+        }
+
+        .product-footer {
+            padding: 15px 20px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .btn-add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background: var(--yellow);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-add-to-cart:hover {
+            background: #e0a800;
+        }
+
+        /* Filtros */
+        .category-buttons-container {
+            background: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .category-button {
+            padding: 8px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            background: white;
+            color: #333;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .category-button.active {
+            background: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        .category-button img {
+            width: 24px;
+            height: 24px;
+            margin-left: 5px;
+        }
+
+        .mokador-btn img {
+            width: 120px;
+        }
+
+        /* Items del carrito en modal */
+        .carrito-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            gap: 15px;
+        }
+
+        .carrito-item-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .carrito-item-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .cantidad-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Notificaciones */
+        .notificacion {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 300px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 4px solid var(--yellow);
+        }
+
+        .notificacion.exito { border-left-color: #28a745; }
+        .notificacion.error { border-left-color: #dc3545; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carrito-flotante .bg-warning {
+                width: 60px;
+                height: 60px;
+            }
+            .category-button {
+                padding: 5px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Start -->
+          <nav class="navbar bg-navbar sticky-top">
             <!-- Sección izquierda - Inicio -->
             <div class="nav-left">
-                <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
+              <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
 
             <!-- Logo centrado -->
             <div class="logo-container">
-                <a href="" class="text-decoration-none">
-                    <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
-                </a>
+              <a href="" class="text-decoration-none">
+                <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
+              </a>
             </div>
 
             <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
-                <!-- Menú desplegable "Mas" -->
-                <div class="dropdown">
-                    <a href="" style="color: rgb(80, 77, 77);" class="dropdown-toggle text-decoration-none nav-2" data-toggle="dropdown">Mas</a>
-                    
-                    <div style="background-color: #bdb093;" class="dropdown-menu">
-                        <a href="productos.html" class="dropdown-item">Tienda Online</a>
-                        <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
-                        <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
-                        <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
-                        <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                        <!-- Enlace Contactanos visible solo en móviles -->
-                        <div class="contact-mobile">
-                            <a href="contact.html" class="dropdown-item">Contactanos</a>
-                        </div>
-                    </div>
+              <!-- Menú desplegable "Mas" -->
+              <div class="dropdown ">
+                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2 " data-toggle="dropdown">Mas</a>
+                
+                <div style="  background-color: #bdb093;" class="dropdown-menu">
+                  <a href="productos.html" class="dropdown-item">Tienda Online</a>
+                  <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
+                  <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
+                  <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
+                  <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
+                  <!-- Enlace Contactanos visible solo en móviles -->
+                  <div class="contact-mobile">
+                    <a href="contact.html" class="dropdown-item">Contactanos</a>
+                  </div>
                 </div>
 
-                <!-- Enlace Contactanos visible en desktop -->
-                <div class="d-none d-lg-block">
-                    <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4">Contactanos</a>
-                </div>
+              </div>
+
+              <!-- Enlace Contactanos visible en desktop -->
+              <div class="d-none d-lg-block">
+                <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
+                  >Contactanos</a
+                >
+              </div>
             </div>
-        </nav>
-        <!-- Navbar End -->
+          </nav>
+    <!-- Navbar End -->
+     
+<!-- Carrito Flotante -->
+<div class="carrito-flotante" onclick="abrirModalCarrito()">
+    <div class="bg-warning rounded-circle p-3 shadow-lg">
+        <i class="fas fa-shopping-cart fa-2x text-dark"></i>
+        <span id="carrito-contador" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">0</span>
+    </div>
+</div>
 
-        <!-- Main Content -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="shop-container">
-                        <!-- Header de la tienda -->
-                        <div class="shop-header d-flex justify-content-between align-items-center mb-4">
-
-                            <button class="shoppingBasket btn btn-warning">
-                                <i class="fa fa-shopping-cart"></i> Carrito (<span class="quantity">0</span>)
-                            </button>
-                        </div>
-
-                        <!-- Grid de productos -->
-                        <div class="products row g-3" id="products">
-                            <!-- Los productos se cargarán aquí dinámicamente -->
-                        </div>
-                    </div>
-                </div>
+<!-- Modal Carrito -->
+<div class="modal fade" id="modalCarrito" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>Tu Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-        </div>
-
-        <!-- Carrito lateral -->
-        <div class="shopping-cart-modal">
-            <button class="close btn btn-close"></button>
-            <h2 class="mb-4">Mi Carrito</h2>
-            <ul class="productList" id="productList">
-                <!-- Los productos del carrito se cargarán aquí -->
-            </ul>
-            <div class="cart-footer mt-4">
-                <div class="total mb-3 fw-bold">
-                    <small>Subtotal (0 items):</small> $0
-                </div>
-                <button class="btn btn-success w-100">Proceder al Pago</button>
-            </div>
-        </div>
-
-        <!-- Footer Start -->
-        <footer class="container-fluid bg-dark text-white pb-4" role="contentinfo">
-            <div class="row pt-3 px-2 pt-1">
-                <div class="col-lg-4 col-12 pr-xl-4 mb-2">
-                    <h5 class="text-warning text-uppercase">Contacto</h5>
-                    <p class="mt-3">Yellow Box - Servicios de vending y bebidas automáticas. <br class="d-lg-block d-none"> Atención y soporte técnico.</p>
-                    
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-danger">&nbsp;&nbsp;</i>Region Del Bio-Bio , Chile</p>
-
-                    <p class="mb-1"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:soporte@smkvending.cl" class="text-light text-decoration-none">soporte@smkvending.cl</a>
-                    </p>
+            <div class="modal-body">
+                <div id="carrito-vacio" class="text-center py-4">
+                    <i class="fas fa-shopping-basket fa-4x text-muted mb-3"></i>
+                    <p class="lead">Tu carrito está vacío</p>
                 </div>
                 
-                <div class="col-lg-8 col-12">
-                    <div class="row">
-                        <div class="col-lg-4 col-12 mb-3">
-                            <h5 class="text-warning text-uppercase">Enlaces</h5>
-                            <div class="row">
-                                <a class="text-white col-xl-12 col-4 text-decoration-none" href="index.html">Inicio</a>
-                                <a class="text-white col-xl-12 col-4 text-decoration-none" href="shop.html">Tienda</a>
-                                <a class="text-white col-xl-12 col-4 text-decoration-none" href="contact.html">Contacto</a>
-                                <a class="text-white col-xl-12 col-8 text-decoration-none d-lg-block d-none" href="politicasEmpresa.html">Políticas de la Empresa</a>
-                            </div>
+                <div id="carrito-con-items" style="display: none;">
+                    <div id="carrito-items" class="mb-3"></div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-danger" onclick="vaciarCarrito()">
+                                <i class="fas fa-trash me-2"></i>Vaciar carrito
+                            </button>
                         </div>
-
-                        <div class="col-lg-8 mb-xl-5">
-                            <h5 class="text-warning text-uppercase mb-3">Síguenos</h5>
-                            <p>Encuéntranos en redes para novedades y promociones.</p>
-                            <div class="row">
-                                <div class="col-xl-6 col-3">
-                                    <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                </div>
-                                <div class="col-xl-6 col-3">
-                                    <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                </div>
-                                <div class="col-xl-6 col-3">
-                                    <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                </div>
-                                <div class="col-xl-6 col-3">
-                                    <a class="btn btn-warning btn-square mb-2" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
+                        <div class="col-md-6 text-end">
+                            <h4>Total: <span id="carrito-total" class="text-warning">$0</span></h4>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row border-top mx-xl-5 py-1" style="border-color: rgba(256, 256, 256, 0.1) !important">
-                <div class="col-md-6">
-                    <p class="text-center text-md-left text-white">
-                        &copy; 2025 Yellow Box. Todos los derechos reservados.
-                        <br />Diseñado por Küpan.
-                    </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
+                <button type="button" class="btn btn-warning" onclick="mostrarFormularioPago()">Solicitar Cotización</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Formulario de Contacto -->
+<div class="modal fade" id="modalPago" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title">Tus datos para la cotización</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formPago">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre completo *</label>
+                        <input type="text" class="form-control" id="cliente-nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Correo electrónico *</label>
+                        <input type="email" class="form-control" id="cliente-email" required>
+                        <small class="text-muted">Te enviaremos la cotización aquí</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="cliente-telefono">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Empresa / Dirección</label>
+                        <textarea class="form-control" id="cliente-direccion" rows="2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mensaje adicional</label>
+                        <textarea class="form-control" id="cliente-mensaje" rows="2" placeholder="¿Alguna consulta específica?"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-warning" onclick="procesarPago()">Enviar Cotización</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros de categoría -->
+    <div class="category-buttons-container">
+      <div class="category-buttons">
+        <button class="category-button mokador-btn" data-filter="mokador">
+          <img  src="img/mokador.png" alt="Café"/>
+        </button>
+        
+        <button class="category-button" data-filter="leches">
+          <span>Leches</span>
+          <img src="img/chai-masala.png" alt="" style="width: 2em; height: 2em"
+          />
+        </button>
+        <button class="category-button" data-filter="capuchinos">
+          <span>Capuchinos</span>
+          <img src="img/capuchino.png" style="width: 2em; height: 2em" alt="Capuchino"/>
+        </button>
+         <button class="category-button" data-filter="chai">
+          <span>Chai</span>
+          <img
+            src="img/chai-masala.png"
+            style="width: 2em; height: 2em"
+            alt="Chai"
+          />
+        </button>
+        <button class="category-button" data-filter="chocolates">
+          <span>Chocolates</span>
+          <img src="img/chocolate.png" alt="Chocolate" style="width: 2em; height: 2em"
+          />
+        </button>
+        <button class="category-button" data-filter="all">
+          <span>Todos</span>
+        </button>
+      </div>
+    </div>
+
+
+<!-- Productos Start -->
+<div class="container-fluid py-4">
+    <div class="row px-3" id="cardsContainer">
+        <!-- Aquí van TODOS tus productos con la siguiente estructura -->
+        
+        <!-- EJEMPLO DE PRODUCTO (copia esta estructura para cada producto) -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" data-category="mokador">
+            <div class="promotion-card">
+                <div class="promotion-image">
+                    <img src="img/miscela.png" alt="Gran Miscela">
                 </div>
-                <div class="col-md-6 px-xl-0 text-center">
-                    <img class="img-fluid" src="img/payments.png" alt="Métodos de pago aceptados" />
+                <div class="promotion-info">
+                    <div class="promotion-title">Gran Miscela</div>
+                    <div class="promotion-description">Café con sabor refinado, vetas afrutadas y florales</div>
+                    <small class="text-muted">Mezcla certificada IEI</small>
+                </div>
+                <div class="product-footer">
+                    <div class="product-price" data-precio="8990">$8.990</div>
+                    <button class="btn-add-to-cart" onclick="agregarAlCarrito(this)">
+                        <i class="fas fa-cart-plus"></i> Agregar
+                    </button>
                 </div>
             </div>
-        </footer>
-        <!-- Footer End -->
+        </div>
+        <!-- FIN EJEMPLO -->
 
-        <!-- Back to Top -->
-        <a href="#" class="text-center back-to-top text-dark bg-warning rounded-bottom-circle"><i class="fa fa-angle-double-up"></i></a>
+        <!-- REPITE ESTE BLOQUE PARA CADA PRODUCTO DE TU LISTA -->
+        <!-- Ajusta data-category, img, título, descripción y precio según corresponda -->
+        
+    </div>
+</div>
+<!-- Productos End -->
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/tienda.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    </body>
+<!-- Footer Start -->
+<footer class="container-fluid bg-dark text-white py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <h5 class="text-warning">Contacto</h5>
+            <p><i class="fa fa-map-marker-alt text-danger me-2"></i>Región Del Bio-Bio, Chile</p>
+            <p><i class="fa fa-envelope me-2"></i>soporte@smkvending.cl</p>
+        </div>
+        <div class="col-md-8">
+            <!-- Agrega aquí el resto de tu footer -->
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script de la tienda -->
+<script>
+// Variables globales
+let carrito = [];
+
+// Cargar carrito al iniciar
+document.addEventListener('DOMContentLoaded', function() {
+    cargarCarrito();
+    configurarFiltros();
+});
+
+// Configurar filtros
+function configurarFiltros() {
+    document.querySelectorAll('.category-button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            document.querySelectorAll('.category-button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            document.querySelectorAll('[data-category]').forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Funciones del carrito
+function cargarCarrito() {
+    const guardado = localStorage.getItem('yellowbox_carrito');
+    if (guardado) {
+        carrito = JSON.parse(guardado);
+        actualizarInterfazCarrito();
+    }
+}
+
+function guardarCarrito() {
+    localStorage.setItem('yellowbox_carrito', JSON.stringify(carrito));
+    actualizarInterfazCarrito();
+}
+
+function agregarAlCarrito(btn) {
+    const card = btn.closest('.promotion-card');
+    const producto = {
+        id: Date.now() + Math.random(),
+        nombre: card.querySelector('.promotion-title').textContent,
+        precio: parseInt(card.querySelector('.product-price').getAttribute('data-precio')),
+        imagen: card.querySelector('.promotion-image img').src,
+        cantidad: 1
+    };
+    
+    const existente = carrito.find(p => p.nombre === producto.nombre);
+    if (existente) {
+        existente.cantidad++;
+    } else {
+        carrito.push(producto);
+    }
+    
+    guardarCarrito();
+    mostrarNotificacion('Producto agregado', producto.nombre, 'exito');
+}
+
+function actualizarInterfazCarrito() {
+    const contador = document.getElementById('carrito-contador');
+    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+    
+    if (totalItems > 0) {
+        contador.textContent = totalItems;
+        contador.style.display = 'inline';
+    } else {
+        contador.style.display = 'none';
+    }
+    
+    // Actualizar modal si está abierto
+    actualizarModalCarrito();
+}
+
+function actualizarModalCarrito() {
+    const carritoVacio = document.getElementById('carrito-vacio');
+    const carritoConItems = document.getElementById('carrito-con-items');
+    const carritoItems = document.getElementById('carrito-items');
+    const carritoTotal = document.getElementById('carrito-total');
+    
+    if (!carritoItems) return;
+    
+    if (carrito.length === 0) {
+        carritoVacio.style.display = 'block';
+        carritoConItems.style.display = 'none';
+        return;
+    }
+    
+    carritoVacio.style.display = 'none';
+    carritoConItems.style.display = 'block';
+    
+    carritoItems.innerHTML = carrito.map(item => `
+        <div class="carrito-item" data-id="${item.id}">
+            <img src="${item.imagen}" class="carrito-item-img">
+            <div>
+                <div><strong>${item.nombre}</strong></div>
+                <div>$${item.precio.toLocaleString('es-CL')}</div>
+                <div class="carrito-item-cantidad">
+                    <button class="cantidad-btn" onclick="cambiarCantidad('${item.id}', -1)">-</button>
+                    <span>${item.cantidad}</span>
+                    <button class="cantidad-btn" onclick="cambiarCantidad('${item.id}', 1)">+</button>
+                    <button class="btn btn-sm text-danger" onclick="eliminarProducto('${item.id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+    carritoTotal.textContent = '$' + total.toLocaleString('es-CL');
+}
+
+function cambiarCantidad(id, delta) {
+    const producto = carrito.find(p => p.id == id);
+    if (producto) {
+        producto.cantidad += delta;
+        if (producto.cantidad <= 0) {
+            carrito = carrito.filter(p => p.id != id);
+        }
+        guardarCarrito();
+    }
+}
+
+function eliminarProducto(id) {
+    carrito = carrito.filter(p => p.id != id);
+    guardarCarrito();
+}
+
+function vaciarCarrito() {
+    if (confirm('¿Vaciar carrito?')) {
+        carrito = [];
+        guardarCarrito();
+    }
+}
+
+// Modales
+function abrirModalCarrito() {
+    actualizarModalCarrito();
+    new bootstrap.Modal(document.getElementById('modalCarrito')).show();
+}
+
+function mostrarFormularioPago() {
+    if (carrito.length === 0) {
+        mostrarNotificacion('Error', 'Agrega productos primero', 'error');
+        return;
+    }
+    bootstrap.Modal.getInstance(document.getElementById('modalCarrito')).hide();
+    new bootstrap.Modal(document.getElementById('modalPago')).show();
+}
+
+function procesarPago() {
+    const nombre = document.getElementById('cliente-nombre').value.trim();
+    const email = document.getElementById('cliente-email').value.trim();
+    
+    if (!nombre || !email) {
+        mostrarNotificacion('Error', 'Completa nombre y email', 'error');
+        return;
+    }
+    
+    if (!email.includes('@')) {
+        mostrarNotificacion('Error', 'Email inválido', 'error');
+        return;
+    }
+    
+    // Preparar datos para el correo
+    const datos = {
+        cliente: {
+            nombre,
+            email,
+            telefono: document.getElementById('cliente-telefono').value || 'No especificado',
+            direccion: document.getElementById('cliente-direccion').value || 'No especificada',
+            mensaje: document.getElementById('cliente-mensaje').value || 'Sin mensaje'
+        },
+        productos: carrito,
+        total: carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0),
+        fecha: new Date().toLocaleString('es-CL')
+    };
+    
+    // Aquí enviarías el correo (simulado)
+    console.log('ENVIAR COTIZACIÓN A: soporte@smkvending.cl', datos);
+    
+    // Guardar pedido
+    const pedidos = JSON.parse(localStorage.getItem('yellowbox_pedidos') || '[]');
+    pedidos.push(datos);
+    localStorage.setItem('yellowbox_pedidos', JSON.stringify(pedidos));
+    
+    // Limpiar carrito
+    carrito = [];
+    guardarCarrito();
+    
+    // Cerrar modales
+    bootstrap.Modal.getInstance(document.getElementById('modalPago')).hide();
+    
+    // Mostrar éxito
+    mostrarNotificacion('¡Cotización enviada!', 'Te contactaremos pronto a ' + email, 'exito');
+    
+    // Limpiar formulario
+    document.getElementById('formPago').reset();
+}
+
+function mostrarNotificacion(titulo, mensaje, tipo) {
+    const notif = document.createElement('div');
+    notif.className = `notificacion ${tipo}`;
+    notif.innerHTML = `
+        <i class="fas ${tipo === 'exito' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <div>
+            <div class="fw-bold">${titulo}</div>
+            <div>${mensaje}</div>
+        </div>
+        <i class="fas fa-times ms-auto" style="cursor:pointer" onclick="this.parentElement.remove()"></i>
+    `;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 5000);
+}
+</script>
+
+</body>
 </html>

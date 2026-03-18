@@ -190,22 +190,20 @@
                 </div>
               </div>
 
-              <div class="col-lg-12 mb-3">
-                <select
-                  class="custom-select"
-                  id="asunto"
-                  name="asunto"
-                  required
-                >
-                  <option selected>Selecciona Tipo De Formulario</option>
-                  <option value="reclamo">Reclamo</option>
-                  <option value="sugerencia">Sugerencia</option>
-                  <option value="felicitacion">Felicitación</option>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor selecciona un asunto
-                </div>
-              </div>
+        <div class="col-lg-12 mb-4">
+    <label for="asunto" class="select-label required-field">¿Cuál es el motivo de tu contacto?</label>
+    
+    <select class="custom-select" id="asunto" name="asunto" required>
+        <option value="" disabled selected>Selecciona una opción...</option>
+        <option value="reclamo">Reclamo</option>
+        <option value="sugerencia">Sugerencia</option>
+        <option value="felicitacion">Felicitación</option>
+    </select>
+    
+    <div class="invalid-feedback">
+        Por favor selecciona un asunto para continuar.
+    </div>
+</div>
 
               <!-- Sección dinámica para reclamos -->
               <div
