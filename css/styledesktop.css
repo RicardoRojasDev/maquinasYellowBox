@@ -36,7 +36,7 @@
   .nav-3 {
     color: #9e9e9e; 
     font-size: 1.5rem;
-    margin-left: 10dvw;
+    margin-left: 4dvw;
    
   }
   .nav-3:hover {
@@ -46,7 +46,6 @@
     transition: all 0.5s ease;
   }
   .logo-container {
-    left: 75vw;
     transform: translateX(-50%);
   }
 
