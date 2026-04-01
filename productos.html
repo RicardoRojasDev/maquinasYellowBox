@@ -1,79 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>Yellow Box Vending</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="keywords" />
-    <meta content="" name="description" />
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
+    <title>Productos y Cotizacion | Yellow Box</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Productos Yellow Box con carrito y formulario de cotizacion."
     />
 
-    <!-- Font Awesome -->
+    <link href="img/favicon.ico" rel="icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
       rel="stylesheet"
     />
-
-    <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/styledesktop.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/Products.css" />
-    <link rel="stylesheet" href="css/Filters.css" />
-    <link rel="stylesheet" href="css/HomePage.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
-
-        <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap JS con Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-     
+    <link href="css/tienda.css" rel="stylesheet" />
   </head>
-  
-  <body>
+  <body class="catalog-page">
     <!-- Navbar Start -->
           <nav class="navbar bg-navbar sticky-top">
-            <!-- Sección izquierda - Inicio -->
             <div class="nav-left">
               <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
             </div>
 
-            <!-- Logo centrado -->
             <div class="logo-container">
-              <a href="" class="text-decoration-none">
+              <a href="index.html" class="text-decoration-none">
                 <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
               </a>
             </div>
 
-            <!-- Sección derecha - Menú desplegable y Contactanos -->
             <div class="nav-right">
-              <!-- Menú desplegable "Mas" -->
-              <div class="dropdown">
-                <a href="" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2" data-toggle="dropdown">Mas</a>
+              <div class="dropdown ">
+                <a href="#" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2 " data-toggle="dropdown">Mas</a>
                 
-                <div class="dropdown-menu bg-navbar">
+                <div style="background-color: #bdb093;" class="dropdown-menu">
                   <a href="productos.html" class="dropdown-item">Tienda Online</a>
                   <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
                   <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
                   <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
                   <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                  <!-- Enlace Contactanos visible solo en móviles -->
                   <div class="contact-mobile">
                     <a href="contact.html" class="dropdown-item">Contactanos</a>
                   </div>
@@ -81,7 +59,6 @@
 
               </div>
 
-              <!-- Enlace Contactanos visible en desktop -->
               <div class="d-none d-lg-block">
                 <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
                   >Contactanos</a
@@ -90,812 +67,194 @@
             </div>
           </nav>
     <!-- Navbar End -->
-     
-    <!-- Products Start -->
-    <div class="category-buttons-container">
-      <div class="category-buttons">
-        <button class="category-button mokador-btn" data-filter="mokador">
-          <img style="width: 9rem" src="img/mokador.png" alt="Café"/>
-        </button>
 
-        <button class="category-button" data-filter="leches">
-          <span>Leches</span
-          ><img
-          
-          ><img
-            src="img/chai-masala.png"
-            alt=""
-            style="width: 2em; height: 2em"
-          />
-        </button>
-        <button class="category-button" data-filter="capuchinos">
-          <span>Capuchinos</span
-          ><img
-            src="img/capuchino.png"
-            style="width: 2em; height: 2em"
-            alt=""
-          />
-        </button>
-         <button class="category-button" data-filter="chai">
-          <span>Chai</span
-          ><img
-            src="img/chai-masala.png"
-            style="width: 2em; height: 2em"
-            alt=""
-          />
-        </button>
-        <button class="category-button" data-filter="chocolates">
-          <span>Chocolates</span
-          ><img
-            src="img/chocolate.png"
-            alt=""
-            style="width: 2em; height: 2em"
-          />
-        </button>
-        <button class="category-button" data-filter="all">
+    <section class="category-buttons-container" aria-label="Filtros del catalogo">
+      <div class="category-buttons">
+        <button class="category-button" data-filter="all" type="button">
           <span>Todos</span>
         </button>
+        <button class="category-button mokador-btn" data-filter="mokador" type="button">
+          <img src="img/mokador.png" alt="Mokador" />
+        </button>
+        <button class="category-button" data-filter="leches" type="button">
+          <span>Leches</span>
+          <img src="img/caja-de-leche.png" alt="Leches" />
+        </button>
+        <button class="category-button" data-filter="capuchinos" type="button">
+          <span>Capuchinos</span>
+          <img src="img/capuchino.png" alt="Capuchinos" />
+        </button>
+        <button class="category-button" data-filter="chai" type="button">
+          <span>Chai</span>
+          <img src="img/chai-masala.png" alt="Chai" />
+        </button>
+        <button class="category-button" data-filter="chocolates" type="button">
+          <span>Chocolates</span>
+          <img src="img/chocolate.png" alt="Chocolates" />
+        </button>
       </div>
-    </div>
+    </section>
 
+    <button
+      class="quote-mobile-trigger"
+      id="quoteMobileTrigger"
+      type="button"
+      aria-controls="quotePanel"
+      aria-expanded="false"
+    >
+      Ver cotizacion
+      <span class="quote-mobile-trigger__count" id="mobileQuoteCount">0</span>
+    </button>
 
-    <div class="promotions-section mt-xl-1 p-2">
-      <!-- Cards -->
-      <div
-        class="row- promotion-cards justify-content-around d-flex"
-        id="cardsContainer"
-      >
-        <!--Card Mokador-->
-
-        <!-- Gran Miscela -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/miscela.png" alt="Gran Miscela Mokador" />
+    <main class="catalog-shell">
+      <section class="catalog-main" aria-labelledby="catalogSectionTitle">
+        <div class="catalog-section-heading">
+          <div>
+            <span class="catalog-section-heading__eyebrow">Productos</span>
           </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Gran Miscela</div>
-            <div class="promotion-description">
-              Café con sabor refinado, vetas afrutadas y florales, crema
-              aterciopelada color avellana.
-            </div>
-            <small class="text-muted">
-              Mezcla certificada IEI por el Istituto Espresso Italiano. Notas:
-              albaricoques secos y chocolate negro. Ideal para almuerzo.
-            </small>
-          </div>
-          
+          <p id="catalogResultText">Mostrando todos los productos disponibles.</p>
         </div>
+        <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+      </section>
 
-        <!-- 100% arabica BIO -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/arabicabio.png" alt="100% Arabica BIO" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">100% Arabica BIO</div>
-            <div class="promotion-description">
-              Café 100% Arábica certificado ecológico, delicado con crema
-              perfecta y aterciopelada.
-            </div>
-            <small class="text-muted">
-              Certificado ecológico IT BIO 014. Notas: vainilla y melocotón.
-              Ideal para pausa.
-            </small>
-          </div>
-        </div>
-
-        <!-- 100% arabica -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/arabica.png" alt="100% Arabica" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">100% Arabica</div>
-            <div class="promotion-description">
-              Mezcla con sabor dulce y aromático, textura sedosa y crema color
-              dorado.
-            </div>
-            <small class="text-muted">
-              Selección de variedades de Centro y Sudamérica. Notas: albaricoque
-              y galletas. Ideal para pausa.
-            </small>
-          </div>
-        </div>
-
-        <!-- DESCAFEINADO -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/descafeinado.png" alt="Descafeinado" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Descafeinado</div>
-            <div class="promotion-description">
-              Café ligero y aromático descafeinado, con menos del 0.1% de
-              cafeína.
-            </div>
-            <small class="text-muted">
-              Método tradicional que preserva aromas. Notas: nueces y mazapán.
-              Ideal para cena.
-            </small>
-          </div>
-        </div>
-
-        <!-- ESPRESSO ORO -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/oro.png" alt="Espresso Oro" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Espresso Oro</div>
-            <div class="promotion-description">
-              Mezcla de alta calidad con textura regular, crema compacta y sabor
-              redondo.
-            </div>
-            <small class="text-muted">
-              Notas: fruta seca y chocolate negro. Ideal para desayuno y
-              almuerzo.
-            </small>
-          </div>
-        </div>
-
-        <!-- FLORITA -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/florita.png" alt="Florita" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Florita</div>
-            <div class="promotion-description">
-              Café aromático y aterciopelado con cuerpo intensamente
-              estructurado.
-            </div>
-            <small class="text-muted">
-              Notas: nueces y chocolate negro. Ideal para todas las ocasiones.
-            </small>
-          </div>
-        </div>
-
-        <!-- BRIO -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/brio.png" alt="Brio" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Brio</div>
-            <div class="promotion-description">
-              Café intenso y con cuerpo, de personalidad enérgica y vivaz.
-            </div>
-            <small class="text-muted">
-              Mezcla calificada CSQA. Notas: anacardos y caramelo. Ideal para
-              almuerzo.
-            </small>
-          </div>
-        </div>
-
-        <!-- EXTRA CREAM -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/extracream.png" alt="Extra Cream" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Extra Cream</div>
-            <div class="promotion-description">
-              Café fuerte con intenso aroma tostado y cremosidad persistente.
-            </div>
-            <small class="text-muted">
-              Mezcla calificada CSQA. Notas: caramelo y chocolate negro. Ideal
-              para desayuno.
-            </small>
-          </div>
-        </div>
-
-        <!-- 100% ARABICA COLOMBIA -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/colombia.png" alt="100% Arabica Colombia" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">100% Arabica Colombia</div>
-            <div class="promotion-description">
-              Café de origen único colombiano con aroma cítrico, floral y buen
-              equilibrio.
-            </div>
-            <small class="text-muted">
-              Altitud 1300-1700 m. Notas: melocotón y frutos del bosque. Ideal
-              para pausa.
-            </small>
-          </div>
-        </div>
-
-        <!-- 100% ARABICA BRAZIL -->
-        <div class="promotion-card col-xl-3" data-category="mokador">
-          <div class="promotion-image">
-            <img src="img/brazil.png" alt="100% Arabica Brazil" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">100% Arabica Brazil</div>
-            <div class="promotion-description">
-              Café brasileño con aroma floral y afrutado, cuerpo bien
-              estructurado.
-            </div>
-            <small class="text-muted">
-              Zonas Alta Mogiana y Sul de Minas. Notas: albaricoques secos y
-              chocolate con leche. Ideal para pausa.
-            </small>
-          </div>
-        </div>
-
-        <!-- Card Leches -->
-
-        <!--Milk 100%-->
-        <div class="promotion-card col-xl-3" data-category="leches">
-          <div class="promotion-image">
-            <img src="img/Milk100.png" class="" alt="Milk 100%" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Milk 100%</div>
-            <div class="promotion-description">Leche 100% granulada</div>
-            <span class="text-muted"
-              >Ingredientes: Leche desnatada en polvo y leche entera en
-              polvo.</span
+      <aside class="quote-sidebar" id="quoteSidebar">
+        <div class="quote-panel" id="quotePanel">
+          <section class="quote-card">
+            <button
+              class="quote-panel__close"
+              id="quotePanelClose"
+              type="button"
+              aria-label="Cerrar cotizacion"
             >
-          </div>
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="quote-card__header">
+              <span class="quote-card__eyebrow">Cotizacion</span>
+              <h2>Resumen de productos</h2>
+              <p>
+                Elige productos, revisa el total referencial y envia tu
+                solicitud desde el mismo sidebar.
+              </p>
+            </div>
+
+            <div class="quote-summary">
+              <div class="quote-summary__row">
+                <span>Productos seleccionados</span>
+                <strong id="cartItemsCount">0</strong>
+              </div>
+              <div class="quote-summary__row quote-summary__row--total">
+                <span>Total referencial</span>
+                <strong id="cartTotal">$0</strong>
+              </div>
+            </div>
+
+            <div class="cart-list" id="cartItems" aria-live="polite"></div>
+            <div class="cart-empty-state" id="cartEmptyState">
+              Agrega productos para construir una cotizacion personalizada.
+            </div>
+
+            <form class="quote-form" id="quoteForm" novalidate>
+              <div class="quote-form__group">
+                <label for="quoteName">Nombre</label>
+                <input
+                  id="quoteName"
+                  name="name"
+                  type="text"
+                  class="form-control"
+                  autocomplete="name"
+                  placeholder="Tu nombre completo"
+                  required
+                />
+              </div>
+              <div class="quote-form__group">
+                <label for="quoteEmail">Correo</label>
+                <input
+                  id="quoteEmail"
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  autocomplete="email"
+                  placeholder="correo@empresa.cl"
+                  required
+                />
+              </div>
+              <div class="quote-form__group">
+                <label for="quotePhone">Telefono</label>
+                <input
+                  id="quotePhone"
+                  name="phone"
+                  type="tel"
+                  class="form-control"
+                  autocomplete="tel"
+                  placeholder="+56 9 1234 5678"
+                  required
+                />
+              </div>
+              <div class="quote-form__group">
+                <label for="quoteMessage">Mensaje</label>
+                <textarea
+                  id="quoteMessage"
+                  name="message"
+                  rows="4"
+                  class="form-control"
+                  required
+                  placeholder="Cuentanos que necesitas: instalacion, volumen estimado, ubicacion o tipo de servicio."
+                ></textarea>
+              </div>
+              <input id="quoteSummaryField" name="quoteSummary" type="hidden" />
+              <button class="quote-submit btn btn-dark" id="quoteSubmit" type="submit">
+                Enviar cotizacion
+              </button>
+              <p class="quote-form__note">
+                La cotizacion se enviara a soporte@smkvending.cl.
+              </p>
+            </form>
+
+            <section class="contact-card" aria-labelledby="contactCardTitle">
+              <div class="contact-card__copy">
+                <span class="contact-card__eyebrow">Contactanos</span>
+                <h3 id="contactCardTitle">Atencion comercial clara y profesional</h3>
+                <p>
+                  Si prefieres hablar con un ejecutivo antes de enviar la
+                  cotizacion, te orientamos sobre instalacion, volumen,
+                  reposicion y soporte segun tu necesidad.
+                </p>
+              </div>
+              <div class="contact-card__details">
+                <a href="mailto:soporte@smkvending.cl" class="contact-card__detail">
+                  <i class="fas fa-envelope"></i>
+                  <span>soporte@smkvending.cl</span>
+                </a>
+                <div class="contact-card__detail">
+                  <i class="fas fa-clock"></i>
+                  <span>Respuesta comercial en horario habil</span>
+                </div>
+              </div>
+              <a href="contact.html" class="btn btn-warning contact-card__button">
+                Ir a Contactanos
+              </a>
+            </section>
+
+            <div class="quote-feedback" id="quoteFeedback" aria-live="polite"></div>
+          </section>
         </div>
+      </aside>
+    </main>
 
-        <!--Natur Cream-->
-        <div class="promotion-card col-xl-3" data-category="leches">
-          <div class="promotion-image">
-            <img src="img/NaturCream.png" class="" alt="Natur Cream" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Natur Cream</div>
-            <div class="promotion-description">
-              Preparado alimenticio granulado a base de leche.
-            </div>
-            <span class="text-muted"
-              >Ingredientes: Leche desnatada en polvo, lactosa, lactosuero,
-              leche entera en polvo.</span
-            >
-          </div>
-        </div>
-
-        <!--Natur Original-->
-        <div class="promotion-card col-xl-3" data-category="leches">
-          <div class="promotion-image">
-            <img
-              src="img/NaturOriginal.png"
-              class="card-img-top"
-              alt="Natur Original"
-            />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Natur Original</div>
-            <div class="promotion-description">
-              Preparado alimenticio granulado a base de leche.
-            </div>
-            <span class="text-muted"
-              >Ingredientes: Lactosa, lactosuero, leche en polvo, leche
-              desnatada en polvo, azúcar.</span
-            >
-          </div>
-        </div>
-
-        <!--Natur Basic-->
-        <div class="promotion-card col-xl-3" data-category="leches">
-          <div class="promotion-image">
-            <img src="img/NaturBasic.png" class="" alt="Natur Basic" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Natur Basic</div>
-            <div class="promotion-description">
-              Tradicional, Sin azúcar. Preparado alimenticio granulado a base de
-              leche.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Lactosa, lactosuero, leche desnatada en polvo,
-              azúcar, leche en polvo, almidón de maíz.</small
-            >
-          </div>
-        </div>
-
-        <!-- Card Capuchinos -->
-
-        <!-- Cappuccino Vainilla -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/Capu.png" alt="Cappuccino Vainilla" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Cappuccino Vainilla</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de leche y café soluble.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Leche desnatada en polvo, azúcar, café soluble
-              natural (4.5%), cacao en polvo desgrasado y alcalinizado, aroma a
-              vainilla.</small
-            >
-          </div>
-        </div>
-
-        <!-- Cappuccino Caramelo -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/Capu.png" alt="Cappuccino Caramelo" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Cappuccino Caramelo</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de leche y café soluble.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Leche desnatada en polvo, azúcar, café soluble
-              natural (4.5%), cacao en polvo desgrasado y alcalinizado, aroma a
-              caramelo.</small
-            >
-          </div>
-        </div>
-
-        <!-- Cappuccino Avellana -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/Capu.png" alt="Cappuccino Avellana" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Cappuccino Avellana</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de leche y café soluble.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Leche desnatada en polvo, azúcar, café soluble
-              natural (4.5%), cacao en polvo desgrasado y alcalinizado, aroma a
-              avellana.</small
-            >
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 301 "Café Vainilla" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/301.svg" alt="Cappuccino Café Vainilla" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">
-              Cappuccino <small>"Café Vainilla"</small>
-            </div>
-            <div class="promotion-description">
-              Cremoso y con cuerpo, realzada nota de vainilla deliciosamente
-              dulce.
-            </div>
-            <small class="text-muted">
-              Cappuccino No. 301 Equilibrio justo de nota de café y el
-              característico sabor a vainilla se suma a la sensación en boca.
-            </small>
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 302 "Café Caramel" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/302.png" alt="Cappuccino Café Caramel" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">
-              Cappuccino <small>"Café Caramel"</small>
-            </div>
-            <div class="promotion-description">
-              Delicioso y cremoso sabor a caramelo con exquisita textura en
-              boca.
-            </div>
-            <small class="text-muted">
-              Cappuccino No.302 Para amantes del caramelo, con base de leche
-              desnatada premium para calidad excepcional.
-            </small>
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 303 "Café Noisette" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/303.svg" alt="Cappuccino Café Noisette" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">
-              Cappuccino <small>"Café Noisette"</small>
-            </div>
-            <div class="promotion-description">
-              Encantador aroma a avellana con sabor equilibrado y dulce.
-            </div>
-            <small class="text-muted">
-              Cappuccino No. 303 Producto líder para vending, con sensación en
-              boca excepcionalmente cremosa.
-            </small>
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 304 "Irish Coffee" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/304.png" alt="Cappuccino Irish Coffee" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">
-              Cappuccino <small>"Irish Coffee"</small>
-            </div>
-            <div class="promotion-description">
-              Sabor típico del capuchino combinado con whisky irlandés.
-            </div>
-            <small class="text-muted">
-              Cappuccino No. 304 Combinación equilibrada de suave nota de café
-              con intenso sabor a whisky, sin alcohol.
-            </small>
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 305 "Classic" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/305.svg" alt="Cappuccino Classic" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Cappuccino "Classic"</div>
-            <div class="promotion-description">
-              Cappuccino No. 305 Capuchino instantáneo con sutil toque de cacao.
-            </div>
-            <small class="text-muted">
-              Sabor intenso y equilibrado con fina nota de cacao y agradable
-              textura en boca, apto para máquinas expendedoras.
-            </small>
-          </div>
-        </div>
-
-        <!-- Cappuccino No. 306 "Original" -->
-        <div class="promotion-card col-xl-3" data-category="capuchinos">
-          <div class="promotion-image">
-            <img src="img/306.png" alt="Cappuccino Original" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Cappuccino "Original"</div>
-            <div class="promotion-description">
-              Cappuccino No. 306 Clásico capuchino con toque dulce perfecto.
-            </div>
-            <small class="text-muted">
-              Desarrollado para preparación manual, se disuelve bien tras
-              removerlo brevemente, con sutil toque de cacao.
-            </small>
-          </div>
-        </div>
-
-        <!-- Card Chai -->
-
-        <!-- Chai Latte -->
-        <div class="promotion-card col-xl-3" data-category="chai">
-          <div class="promotion-image">
-            <img src="img/CHAI.svg" alt="Chai Latte" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chai Latte</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de extracto de té y leche.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Leche desnatada en polvo, azúcar, té,
-              aromas.</small
-            >
-          </div>
-        </div>
-
-        <!-- Chai Menta -->
-        <div class="promotion-card col-xl-3" data-category="chai">
-          <div class="promotion-image">
-            <img src="img/CHAI.svg" alt="Chai Menta" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chai Menta</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de extracto de té y menta
-              para infusiones.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Azúcar, extracto de té, extracto de menta (2.5%),
-              glucosa, antiaglomerante: E-341. Puede contener trazas de
-              leche.</small
-            >
-          </div>
-        </div>
-
-        <!-- Chai Manzanilla -->
-        <div class="promotion-card col-xl-3" data-category="chai">
-          <div class="promotion-image">
-            <img src="img/CHAI.svg" alt="Chai Manzanilla" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chai Manzanilla</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de extracto de manzanilla.
-            </div>
-            <small class="text-muted">
-              Ingredientes: Azúcar, lactosa, extracto de manzanilla.
-            </small>
-          </div>
-        </div>
-
-        <!-- Chai Limón -->
-        <div class="promotion-card col-xl-3" data-category="chai">
-          <div class="promotion-image">
-            <img src="img/CHAI.svg" alt="Chai Limón" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chai Limón</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de extracto de té y limón.
-            </div>
-            <small class="text-muted">
-              Ingredientes: Azúcar, extracto soluble de té, acidulantes: E-330,
-              E-331, aroma limón, antiaglomerantes: E-341, E-551.
-            </small>
-          </div>
-        </div>
-
-        <!--Card Chocolates-->
-
-        <!-- Chocolate L’Chocolate -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/Choco.png" alt="Chocolate L’Chocolate" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chocolate L’Chocolate</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de cacao.
-            </div>
-            <small class="text-muted"
-              >Ingredientes: Azúcar, cacao en polvo desgrasado (14.5%), leche
-              desnatada en polvo, lactosa, lactosuero, sal, almidón de maíz,
-              antiaglomerante: E-551.</small
-            >
-          </div>
-        </div>
-
-        <!-- Chocolate Nero -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/Nero.png" alt="Chocolate Nero" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chocolate Nero</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de cacao.
-            </div>
-            <small class="text-muted">
-              Ingredientes: Azúcar, lactosa, lactosuero, cacao en polvo
-              desgrasado (15%), leche en polvo, aroma, almidón de maíz,
-              antiaglomerante: E-551.
-            </small>
-          </div>
-        </div>
-
-        <!-- Chocolate Suave -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/Suave.png" alt="Chocolate Suave" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">Chocolate Suave</div>
-            <div class="promotion-description">
-              Preparado alimenticio en polvo a base de cacao.
-            </div>
-            <small class="text-muted">
-              Azúcar, cacao en polvo desgrasado (12%), leche en polvo, lactosa,
-              lactosuero, almidón de maíz, antiaglomerante: E-551.
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 101 "Suave" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/101.svg" alt="Choco No. 101 Suave" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Suave"</div>
-            <div class="promotion-description">
-              Contiene 13% de cacao. Textura cremosa con proporción equilibrada
-              de leche y cacao.
-            </div>
-            <small class="text-muted"
-              >Sabor suave y dulce con aroma a chocolate con leche. Corona de
-              espuma espesa. Dosis: 25g por 180ml agua (80°C).</small
-            >
-          </div>
-        </div>
-
-        <!-- Choco No. 102 "Rich" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/102.png" alt="Choco No. 102 Rich" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Rich"</div>
-            <div class="promotion-description">
-              Clásica de chocolate con 14% de cacao. Textura excepcional y aroma
-              intenso.
-            </div>
-            <small class="text-muted">
-              Equilibrado a chocolate dulce. Aptó para preparación manual y
-              máquinas expendedoras. Dosis: 25g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 103 "Intense" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/103.svg" alt="Choco No. 103 Intense" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Intense"</div>
-            <div class="promotion-description">
-              Contiene 15% de cacao certificado Rainforest Alliance. Sabor
-              intenso y ligeramente amargo.
-            </div>
-            <small class="text-muted">
-              Cacao de primera calidad producido con métodos sostenibles. Dosis:
-              25g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 104 "Original" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/104.png" alt="Choco No. 104 Original" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Original"</div>
-            <div class="promotion-description">
-              Receta probada con suero de leche dulce y 13% de cacao. Textura
-              redonda en boca.
-            </div>
-            <small class="text-muted">
-              Perfil de sabor equilibrado con notas de cacao. Para preparación
-              manual. Dosis: 26g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 105 "Classic" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/105.svg" alt="Choco No. 105 Classic" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Classic"</div>
-            <div class="promotion-description">
-              Cacao certificado Rainforest Alliance con 14.5% de cacao. Sabor
-              cremoso y achocolatado.
-            </div>
-            <small class="text-muted">
-              Base de suero de leche dulce en polvo. Hermosa espuma ligera. Aptó
-              para manual y máquina. Dosis: 25g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 106 "Orgánico" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/106.png" alt="Choco No. 106 Orgánico" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Orgánico"</div>
-            <div class="promotion-description">
-              Bebida de chocolate con 16% de cacao orgánico y de comercio justo.
-            </div>
-            <small class="text-muted">
-              Ingredientes orgánicos y de Comercio Justo de alta calidad.
-              Transparencia total en origen. Dosis: 27g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 107 "Milky" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/107.png" alt="Choco No. 107 Milky" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Milky"</div>
-            <div class="promotion-description">
-              Contiene 14% de cacao. IVA reducido (7%) por contener +75%
-              componentes lácteos.
-            </div>
-            <small class="text-muted">
-              Sabor a chocolate con leche y sensación cremosa en boca. Para
-              consumo fuera del hogar. Dosis: 26g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 108 "Vegan" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/108.png" alt="Choco No. 108 Vegan" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Vegan"</div>
-            <div class="promotion-description">
-              Contiene 14% de cacao certificado Rainforest Alliance. Sin
-              ingredientes de origen animal.
-            </div>
-            <small class="text-muted">
-              Alternativa vegana con sabor cremoso y con cuerpo. Dosis: 29-32g
-              por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-
-        <!-- Choco No. 109 "Exquisite" -->
-        <div class="promotion-card col-xl-3" data-category="chocolates">
-          <div class="promotion-image">
-            <img src="img/109.svg " alt="Choco No. 109 Exquisite" />
-          </div>
-          <div class="promotion-info">
-            <div class="promotion-title">SHOO Choco "Exquisite"</div>
-            <div class="promotion-description">
-              Producto en spray puro con 12% de cacao de Comercio Justo.
-            </div>
-            <small class="text-muted">
-              Sabor delicado y cremoso a leche con intensa nota de cacao. Dosis:
-              26g por 180ml agua (80°C).
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- JS para filtrar -->
-    <script>
-      const buttons = document.querySelectorAll(".category-button");
-      const cards = document.querySelectorAll(".promotion-card");
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const filter = btn.getAttribute("data-filter");
-
-          cards.forEach((card) => {
-            const category = card.getAttribute("data-category");
-            if (filter === "all" || category === filter) {
-              card.classList.remove("d-none");
-            } else {
-              card.classList.add("d-none");
-            }
-          });
-
-          // Marcar botón activo
-          buttons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-        });
-      });
-    </script>
-
-    <!-- Products End -->
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Footer Start -->
-    <footer class="container-fluid bg-dark text-white" role="contentinfo">
+    <footer class="container-fluid bg-dark text-white pb-4" role="contentinfo">
       <div class="row pt-3 px-2 pt-1">
         <div class="col-lg-4 col-12 pr-xl-4 mb-2">
           <h5 class="text-warning text-uppercase">Contacto</h5>
-          <p class="mt-3">Yellow Box - Servicios de vending y bebidas automáticas. Atención y soporte técnico.</p>
+          <p class="mt-3">Yellow Box - Servicios de vending y bebidas autom&aacute;ticas. <br class="d-lg-block d-none"> Atenci&oacute;n y soporte t&eacute;cnico.</p>
           
-          <p class="mb-2"><i class="fa fa-map-marker-alt text-danger mr-3"></i>Region Del Bio-Bio , Chile</p>
+          <p class="mb-2"><i class="fa fa-map-marker-alt text-danger">&nbsp;&nbsp;</i>Region Del Bio-Bio , Chile</p>
 
-          <p class="mb-1">
-            <i class="fa fa-envelope mr-3"></i
-            ><a href="mailto:soporte@yellowbox.example" class="text-light text-decoration-none"
-              >soporte@yellowbox.cl</a
-            >
+          <p class="mb-1"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:soporte@smkvending.cl" class="text-light text-decoration-none">soporte@smkvending.cl</a>
           </p>
+
         </div>
         
         <div class="col-lg-8 col-12">
@@ -904,27 +263,26 @@
             <div class="col-lg-4 col-12 mb-3">
               <h5 class="text-warning text-uppercase">Enlaces</h5>
               <div class="row">
-                <a class="text-white col-xl-12 col-4" href="index.html"
-                  ><i class="fa fa-angle-right mr-2"></i>Inicio</a
+                <a class="text-white col-xl-12 col-4 text-decoration-none" href="index.html"
+                  >Inicio</a
                 >
-                <a class="text-white col-xl-12 col-8" href="shop.html"
-                  ><i class="fa fa-angle-right mr-2"></i>Tienda</a
+                <a class="text-white col-xl-12 col-4 text-decoration-none" href="productos.html"
+                  >Tienda</a
                 >
-                <a class="text-white col-xl-12 col-4" href="contact.html"
-                  ><i class="fa fa-angle-right mr-2"></i>Contacto</a
+                <a class="text-white col-xl-12 col-4 text-decoration-none" href="contact.html"
+                  >Contacto</a
                 >
                 <a
-                  class="text-white col-xl-12 col-8"
+                  class="text-white col-xl-12 col-8 text-decoration-none d-lg-block d-none"
                   href="politicasEmpresa.html"
-                  ><i class="fa fa-angle-right mr-2"></i>Políticas de la
-                  Empresa</a
+                  >Pol&iacute;ticas de la Empresa</a
                 >
               </div>
             </div>
 
             <div class="col-lg-8 mb-xl-5">
-              <h5 class="text-warning text-uppercase mb-3">Síguenos</h5>
-              <p>Encuéntranos en redes para novedades y promociones.</p>
+              <h5 class="text-warning text-uppercase mb-3">S&iacute;guenos</h5>
+              <p>Encu&eacute;ntranos en redes para novedades y promociones.</p>
               <div class="row">
                 <div class="col-xl-6 col-3">
                   <a
@@ -971,34 +329,31 @@
         <div class="col-md-6">
           <p class="text-center text-md-left text-white">
             &copy; 2025 Yellow Box. Todos los derechos reservados.
-            <br />Diseñado por Küpan.
+            <br />Dise&ntilde;ado por K&uuml;pan.
           </p>
         </div>
         <div class="col-md-6 px-xl-0 text-center">
           <img
             class="img-fluid"
             src="img/payments.png"
-            alt="Métodos de pago aceptados"
+            alt="M&eacute;todos de pago aceptados"
           />
         </div>
       </div>
     </footer>
     <!-- Footer End -->
 
-
-    <!-- Back to Top -->
-    <a href="#" class=" text-center back-to-top text-dark bg-warning rounded-bottom-circle  "
+    <a href="#" class="text-center back-to-top text-dark bg-warning rounded-bottom-circle"
       ><i class="fa fa-angle-double-up"></i
     ></a>
-    <!-- JavaScript Libraries -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-
+    <script src="js/catalog-data.js"></script>
+    <script src="js/tienda.js"></script>
   </body>
 </html>

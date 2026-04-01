@@ -53,7 +53,7 @@
 // SOLO ESTO DEBE QUEDAR EN main.js
 function mostrarVista(vista) {
     const vistaCompra = document.getElementById("vista-compra");
-    const vistaDevolucion = document.getElementById("vista-devolucion");
+    const vistaDevolucion = document.getElementById("vista-ventas");
     const botones = document.querySelectorAll(".btn-group .btn");
     
     if (vistaCompra) {

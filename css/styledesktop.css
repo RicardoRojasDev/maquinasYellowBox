@@ -5,7 +5,7 @@
   }
 
   .navbar {
-    height: 13dvh;
+    height: 11dvh;
     align-items: center;
   }
 
@@ -19,7 +19,7 @@
     text-decoration: underline;
   }
   .site-logo {
-    width: 10dvw;
+    width: 8dvw;
   }
 
   .back-to-top {
@@ -97,6 +97,31 @@
     width: auto;
     margin-right: 8px;
   }
+
+  /* Ajuste de Layout Principal Productos */
+  .catalog-shell {
+    display: flex !important;
+    height: calc(100vh - 140px); /* Altura fija restando navbar/filtros */
+    overflow: hidden;
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .catalog-main {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto; /* Scroll interno para productos */
+    padding-bottom: 50px;
+  }
+
+  .quote-sidebar {
+    width: 420px !important;
+    height: 100%;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  /* Corrección de Tarjetas de Producto */
   .promotion-card {
     width: 100% !important; /* Ocupa todo el ancho de la celda grid */
     max-width: 350px; /* Máximo ancho pero flexible */
@@ -110,13 +135,27 @@
   border-bottom: #f6ff00 outset 2px;
   border-top: #0000005b inset 2px;
   border-left: #00005b inset 2px;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 480px;
+    max-width: 100% !important;
+    padding: 0 !important;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+  }
 
+  .promotion-image {
+    height: 200px !important;
+    background: #f8f9fa;
   }
   /* Promotion Cards */
   .promotion-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
   }
+
   .category-button.active {
   color: #000000;
   border-radius: 8px;
@@ -144,10 +183,8 @@
 .category-buttons-container {
   position: relative;
   z-index: 10;
-  top:5vh;
-  background-color: rgb(255, 255, 255);
-  padding: 8px 0;
-  box-shadow: 0 3px 8px rgba(209, 209, 9, 0.1);
+  top:4vh;
+  padding: 0 0;
 }
 
 .product-offer {
