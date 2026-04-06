@@ -15,7 +15,8 @@ const CATEGORY_PRICING = {
 };
 
 const EMAIL_INTEGRATION = {
-  backendEndpoint: window.YELLOWBOX_QUOTE_ENDPOINT || "http://localhost:3001/enviar-cotizacion",
+  backendEndpoint:
+    window.YELLOWBOX_QUOTE_ENDPOINT || "http://localhost:3001/enviar-cotizacion",
   emailjs: {
     publicKey: "",
     serviceId: "",
@@ -25,25 +26,33 @@ const EMAIL_INTEGRATION = {
 
 const CART_STORAGE_KEY = "yellowbox_quote_cart";
 const MOBILE_BREAKPOINT = 1023;
-const PRODUCT_SLIDE_INTERVAL_MS = 3000;
-const PRODUCT_SLIDE_IDLE_MS = 5000;
+const ROW_COUNT = 2;
+const DESKTOP_CARDS_PER_ROW = 3;
+const MOBILE_CARDS_PER_ROW = 2;
+const RAIL_REPEAT_COUNT = 3;
+const AUTO_SCROLL_PAUSE_MS = 3200;
+const AUTO_SCROLL_SPEEDS = [28, 22];
+const DRAG_THRESHOLD_PX = 6;
+const SNAP_THRESHOLD_PX = 18;
+const CLICK_SUPPRESSION_MS = 240;
 
 const PRODUCTS = enrichProducts(window.YELLOWBOX_PRODUCTS || []);
 const PRODUCT_INDEX = new Map(PRODUCTS.map((product) => [product.id, product]));
 const PRODUCT_NAME_INDEX = new Map(PRODUCTS.map((product) => [product.name, product]));
 const draftQuantities = new Map(PRODUCTS.map((product) => [product.id, 1]));
-const productsScroller = {
-  intervalId: null,
-  paused: false,
-  resumeTimer: null,
-  listenersBound: false,
+const railControllers = [];
+const elements = {};
+
+const catalogState = {
+  currentFilter: "all",
+  shuffledPool: [],
+  poolKey: "",
+  activeModalProductId: "",
+  suppressClickUntil: 0,
+  resizeTimer: 0,
 };
 
 let cart = loadCart().map(normalizeCartItem).filter(Boolean);
-let currentFilter = "all";
-let expandedProductId = "";
-let lastProductsPerPage = getProductsPerPage();
-const elements = {};
 
 window.cart = cart;
 window.addToCart = addToCart;
@@ -57,53 +66,74 @@ document.addEventListener("DOMContentLoaded", () => {
   bindEvents();
   syncStickyOffsets();
   syncMobileQuoteState();
-  initializeProductsAutoScroll();
-  renderProducts();
+  ensureShuffledPool(true);
+  renderProducts({ preservePool: true });
   renderCart();
 });
 
 function cacheElements() {
   elements.productsGrid = document.getElementById("productsGrid");
+  elements.catalogEmptyState = document.getElementById("catalogEmptyState");
   elements.resultText = document.getElementById("catalogResultText");
+  elements.heroProductCount = document.getElementById("heroProductCount");
+  elements.heroCategoryCount = document.getElementById("heroCategoryCount");
+  elements.heroCartCount = document.getElementById("heroCartCount");
   elements.cartItems = document.getElementById("cartItems");
   elements.cartEmptyState = document.getElementById("cartEmptyState");
   elements.cartTotal = document.getElementById("cartTotal");
   elements.cartItemsCount = document.getElementById("cartItemsCount");
-  elements.heroProductCount = document.getElementById("heroProductCount");
-  elements.heroCategoryCount = document.getElementById("heroCategoryCount");
-  elements.heroCartCount = document.getElementById("heroCartCount");
   elements.mobileQuoteCount = document.getElementById("mobileQuoteCount");
   elements.quoteForm = document.getElementById("quoteForm");
   elements.quoteSubmit = document.getElementById("quoteSubmit");
   elements.quoteFeedback = document.getElementById("quoteFeedback");
-  elements.quotePreview = document.getElementById("quotePreview");
   elements.quoteSummaryField = document.getElementById("quoteSummaryField");
   elements.quoteSidebar = document.getElementById("quoteSidebar");
   elements.quotePanel = document.getElementById("quotePanel");
   elements.quoteMobileTrigger = document.getElementById("quoteMobileTrigger");
   elements.quotePanelClose = document.getElementById("quotePanelClose");
+  elements.quoteSidebarBackdrop = document.getElementById("quoteSidebarBackdrop");
   elements.toastStack = document.getElementById("toastStack");
+  elements.productModal = document.getElementById("productModal");
+  elements.productModalBackdrop = document.getElementById("productModalBackdrop");
+  elements.productModalClose = document.getElementById("productModalClose");
+  elements.productModalImage = document.getElementById("productModalImage");
+  elements.productModalCategory = document.getElementById("productModalCategory");
+  elements.productModalTitle = document.getElementById("productModalTitle");
+  elements.productModalDescription = document.getElementById("productModalDescription");
+  elements.productModalDetails = document.getElementById("productModalDetails");
+  elements.productModalPrice = document.getElementById("productModalPrice");
+  elements.productModalQty = document.getElementById("productModalQty");
+  elements.productModalQtyMinus = document.getElementById("productModalQtyMinus");
+  elements.productModalQtyPlus = document.getElementById("productModalQtyPlus");
+  elements.productModalAdd = document.getElementById("productModalAdd");
 
   if (elements.heroCategoryCount) {
-    elements.heroCategoryCount.textContent = Object.keys(CATEGORY_LABELS).length.toString();
+    elements.heroCategoryCount.textContent = String(
+      Object.keys(CATEGORY_LABELS).length,
+    );
   }
 }
 
 function bindEvents() {
   document.querySelectorAll(".category-button").forEach((button) => {
     button.addEventListener("click", () => {
-      currentFilter = button.dataset.filter || "all";
+      if ((button.dataset.filter || "all") === catalogState.currentFilter) return;
+
+      catalogState.currentFilter = button.dataset.filter || "all";
       document.querySelectorAll(".category-button").forEach((item) => {
         item.classList.toggle("active", item === button);
       });
-      renderProducts();
+
+      clearFeedback();
+      ensureShuffledPool(true);
+      closeProductModal();
+      renderProducts({ preservePool: true });
     });
   });
 
   document.querySelector('.category-button[data-filter="all"]')?.classList.add("active");
 
-  elements.productsGrid?.addEventListener("click", handleProductGridClick);
-  elements.productsGrid?.addEventListener("keydown", handleProductGridKeydown);
+  elements.productsGrid?.addEventListener("click", handleCatalogClick);
   elements.cartItems?.addEventListener("click", handleCartClick);
   elements.quoteForm?.addEventListener("submit", handleQuoteSubmit);
   elements.quoteForm?.querySelectorAll("input, textarea")?.forEach((field) => {
@@ -112,14 +142,23 @@ function bindEvents() {
       clearFeedback();
     });
   });
+
   elements.quoteMobileTrigger?.addEventListener("click", () => toggleQuotePanel());
   elements.quotePanelClose?.addEventListener("click", () => toggleQuotePanel(false));
+  elements.quoteSidebarBackdrop?.addEventListener("click", () => toggleQuotePanel(false));
+  elements.productModalBackdrop?.addEventListener("click", closeProductModal);
+  elements.productModalClose?.addEventListener("click", closeProductModal);
+  elements.productModalQtyMinus?.addEventListener("click", () =>
+    changeActiveModalQuantity(-1),
+  );
+  elements.productModalQtyPlus?.addEventListener("click", () =>
+    changeActiveModalQuantity(1),
+  );
+  elements.productModalAdd?.addEventListener("click", addActiveModalProductToCart);
 
-  window.addEventListener("resize", () => {
-    syncStickyOffsets();
-    syncMobileQuoteState();
-    handleViewportChange();
-  });
+  document.addEventListener("keydown", handleGlobalKeydown);
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  window.addEventListener("resize", handleResize);
 }
 
 function enrichProducts(seed) {
@@ -128,6 +167,7 @@ function enrichProducts(seed) {
   return seed.map((product) => {
     const index = counters[product.category] || 0;
     counters[product.category] = index + 1;
+
     return {
       ...product,
       id: slugify(`${product.category}-${product.name}`),
@@ -141,59 +181,477 @@ function simulatePrice(category, index) {
   return rule.base + rule.step * index;
 }
 
-function renderProducts(options = {}) {
-  if (!elements.productsGrid) return;
-  const shouldResetScroll = options.resetScroll !== false;
-  const previousScrollLeft = elements.productsGrid.scrollLeft;
-
-  const filtered =
-    currentFilter === "all"
-      ? PRODUCTS
-      : PRODUCTS.filter((product) => product.category === currentFilter);
-
-  const productsPerPage = getProductsPerPage();
-  lastProductsPerPage = productsPerPage;
-  const productPages = chunkProducts(filtered, productsPerPage);
-
-  elements.productsGrid.innerHTML = productPages
-    .map(
-      (pageProducts, pageIndex) => `
-      <section class="products-page" aria-label="Pagina de productos ${pageIndex + 1}">
-        ${pageProducts.map(renderProductCard).join("")}
-      </section>
-    `,
-    )
-    .join("");
-
-  elements.productsGrid.scrollTo({
-    left: shouldResetScroll ? 0 : previousScrollLeft,
-    behavior: "auto",
-  });
-
-  if (elements.resultText) {
-    elements.resultText.textContent =
-      currentFilter === "all"
-        ? "Mostrando todos los productos disponibles."
-        : `Mostrando ${filtered.length} productos en ${CATEGORY_LABELS[currentFilter] || "la categoria seleccionada"}.`;
-  }
-
-  if (elements.heroProductCount) {
-    elements.heroProductCount.textContent = filtered.length.toString();
-  }
-
-  refreshProductsAutoSlide();
+function handleResize() {
+  window.clearTimeout(catalogState.resizeTimer);
+  catalogState.resizeTimer = window.setTimeout(() => {
+    syncStickyOffsets();
+    syncMobileQuoteState();
+    renderProducts({ preservePool: true });
+    renderCart();
+  }, 120);
 }
 
-function handleProductGridClick(event) {
+function handleGlobalKeydown(event) {
+  if (event.key !== "Escape") return;
+
+  if (elements.productModal?.classList.contains("is-open")) {
+    closeProductModal();
+    return;
+  }
+
+  if (isMobileViewport() && elements.quoteSidebar?.classList.contains("is-open")) {
+    toggleQuotePanel(false);
+  }
+}
+
+function handleVisibilityChange() {
+  railControllers.forEach((controller) => {
+    controller.lastFrame = 0;
+  });
+}
+
+function getFilteredProducts() {
+  if (catalogState.currentFilter === "all") return PRODUCTS;
+
+  return PRODUCTS.filter((product) => product.category === catalogState.currentFilter);
+}
+
+function ensureShuffledPool(forceShuffle = false) {
+  const filtered = getFilteredProducts();
+  const nextKey = filtered.map((product) => product.id).join("|");
+
+  if (forceShuffle || catalogState.poolKey !== nextKey) {
+    catalogState.poolKey = nextKey;
+    catalogState.shuffledPool = shuffleArray([...filtered]);
+  }
+
+  return catalogState.shuffledPool;
+}
+
+function renderProducts(options = {}) {
+  if (!elements.productsGrid) return;
+
+  const preservePool = options.preservePool === true;
+  const filtered = getFilteredProducts();
+  const pool = ensureShuffledPool(!preservePool);
+  const rows = buildCatalogRows(pool);
+  const hasProducts = filtered.length > 0;
+
+  destroyRailControllers();
+
+  if (!hasProducts) {
+    elements.productsGrid.innerHTML = "";
+    elements.catalogEmptyState.hidden = false;
+    updateCatalogSummary(filtered.length);
+    return;
+  }
+
+  elements.catalogEmptyState.hidden = true;
+  elements.productsGrid.innerHTML = rows
+    .filter((row) => row.length)
+    .map((rowProducts, rowIndex) => renderProductRow(rowProducts, rowIndex))
+    .join("");
+
+  updateCatalogSummary(filtered.length);
+
+  if (
+    catalogState.activeModalProductId &&
+    !filtered.some((product) => product.id === catalogState.activeModalProductId)
+  ) {
+    closeProductModal();
+  }
+
+  window.requestAnimationFrame(() => {
+    initializeRails();
+    syncStickyOffsets();
+    syncProductModalQuantity();
+  });
+}
+
+function updateCatalogSummary(filteredCount) {
+  if (elements.heroProductCount) {
+    elements.heroProductCount.textContent = String(filteredCount);
+  }
+
+  if (elements.heroCategoryCount) {
+    elements.heroCategoryCount.textContent = String(
+      catalogState.currentFilter === "all" ? Object.keys(CATEGORY_LABELS).length : 1,
+    );
+  }
+
+  if (elements.resultText) {
+    if (catalogState.currentFilter === "all") {
+      elements.resultText.textContent = `${filteredCount} productos distribuidos en dos sliders infinitos para cotizar sin salir de la vista.`;
+    } else {
+      elements.resultText.textContent = `${filteredCount} productos en ${CATEGORY_LABELS[catalogState.currentFilter] || "la categoria seleccionada"}, repartidos entre dos filas independientes.`;
+    }
+  }
+}
+
+function buildCatalogRows(products) {
+  const rows = Array.from({ length: ROW_COUNT }, () => []);
+
+  products.forEach((product, index) => {
+    rows[index % ROW_COUNT].push(product);
+  });
+
+  if (!rows[1].length && rows[0].length > 1) {
+    rows[1] = rows[0].splice(Math.ceil(rows[0].length / 2));
+  }
+
+  return rows;
+}
+
+function renderProductRow(products, rowIndex) {
+  const visibleCards = Math.max(1, Math.min(getCardsPerRow(), products.length));
+  const repeatedProducts = buildLoopedProducts(products);
+  const rowTitle =
+    rowIndex === 0 ? "Descubre productos destacados" : "Sigue armando tu mix";
+  const rowText =
+    rowIndex === 0
+      ? "Movimiento continuo para explorar rapido y sumar al carrito."
+      : "Otra fila independiente para evitar repeticiones visibles.";
+
+  return `
+    <section class="product-row" style="--visible-cards: ${visibleCards}" data-row-index="${rowIndex}">
+
+      <div class="product-row__viewport" data-rail-viewport data-row-index="${rowIndex}">
+        <div class="product-row__track" data-rail-track data-base-count="${products.length}">
+          ${repeatedProducts.map((product) => renderProductCard(product)).join("")}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function buildLoopedProducts(products) {
+  if (products.length <= 1) return products;
+
+  const repeated = [];
+  for (let copyIndex = 0; copyIndex < RAIL_REPEAT_COUNT; copyIndex += 1) {
+    repeated.push(...products);
+  }
+  return repeated;
+}
+
+function renderProductCard(product) {
+  const qty = getDraftQuantity(product.id);
+
+  return `
+    <article class="product-card" data-product-id="${product.id}">
+      <div class="product-card__media">
+        <img src="${product.image}" alt="${escapeHtml(product.alt)}" loading="lazy" />
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__topline">
+          <span class="product-card__badge">${CATEGORY_LABELS[product.category] || "Catalogo"}</span>
+          <button class="product-card__detail" type="button" data-open-detail="${product.id}" aria-label="Ver detalle de ${escapeHtml(product.name)}">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="product-card__copy">
+          <h3 class="product-card__title">${escapeHtml(product.name)}</h3>
+          <p class="product-card__description">${escapeHtml(product.description)}</p>
+          <p class="product-card__details">${escapeHtml(product.details)}</p>
+        </div>
+        <div class="product-card__footer">
+          <div class="product-card__price">
+            <span>Precio referencial</span>
+            <strong>${formatCurrency(product.price)}</strong>
+          </div>
+          <div class="product-card__actions">
+            <div class="qty-stepper" role="group" aria-label="Cantidad de ${escapeHtml(product.name)}">
+              <button class="qty-stepper__btn" type="button" data-product-qty-minus="${product.id}" aria-label="Restar cantidad de ${escapeHtml(product.name)}">
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="qty-stepper__value" data-product-qty-value="${product.id}">${qty}</span>
+              <button class="qty-stepper__btn" type="button" data-product-qty-plus="${product.id}" aria-label="Sumar cantidad de ${escapeHtml(product.name)}">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <button class="btn-add-to-cart" type="button" data-add-to-cart="${product.id}" data-price="${product.price}">
+              <i class="fas fa-cart-plus"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function initializeRails() {
+  if (!elements.productsGrid) return;
+
+  elements.productsGrid.querySelectorAll("[data-rail-viewport]").forEach((viewport, index) => {
+    railControllers.push(createRailController(viewport, index));
+  });
+}
+
+function createRailController(viewport, rowIndex) {
+  const track = viewport.querySelector("[data-rail-track]");
+  const controller = {
+    viewport,
+    track,
+    rowIndex,
+    baseCount: Number(track?.dataset.baseCount) || 0,
+    speed: AUTO_SCROLL_SPEEDS[rowIndex % AUTO_SCROLL_SPEEDS.length],
+    baseWidth: 0,
+    cardSpan: 0,
+    canLoop: false,
+    canAnimate: false,
+    paused: false,
+    resumeTimer: 0,
+    rafId: 0,
+    lastFrame: 0,
+    activePointerId: null,
+    startX: 0,
+    startScrollLeft: 0,
+    dragDistance: 0,
+    cleanupFns: [],
+  };
+
+  measureRail(controller);
+
+  bindRailEvent(controller, viewport, "pointerdown", (event) =>
+    startRailDrag(controller, event),
+  );
+  bindRailEvent(controller, viewport, "pointermove", (event) =>
+    handleRailDragMove(controller, event),
+  );
+  bindRailEvent(controller, viewport, "pointerup", (event) =>
+    finishRailDrag(controller, event),
+  );
+  bindRailEvent(controller, viewport, "pointercancel", (event) =>
+    finishRailDrag(controller, event),
+  );
+  bindRailEvent(
+    controller,
+    viewport,
+    "scroll",
+    () => normalizeRailPosition(controller),
+    { passive: true },
+  );
+  bindRailEvent(
+    controller,
+    viewport,
+    "wheel",
+    () => pauseRail(controller),
+    { passive: true },
+  );
+  bindRailEvent(controller, viewport, "mouseenter", () => {
+    if (isMobileViewport()) return;
+    holdRail(controller);
+  });
+  bindRailEvent(controller, viewport, "mouseleave", () => {
+    if (isMobileViewport()) return;
+    scheduleRailResume(controller, 280);
+  });
+
+  controller.rafId = window.requestAnimationFrame((time) => stepRail(controller, time));
+  return controller;
+}
+
+function bindRailEvent(controller, target, eventName, handler, options) {
+  target.addEventListener(eventName, handler, options);
+  controller.cleanupFns.push(() => target.removeEventListener(eventName, handler, options));
+}
+
+function destroyRailControllers() {
+  while (railControllers.length) {
+    const controller = railControllers.pop();
+    if (!controller) continue;
+
+    window.cancelAnimationFrame(controller.rafId);
+    window.clearTimeout(controller.resumeTimer);
+    controller.cleanupFns.forEach((cleanup) => cleanup());
+  }
+}
+
+function measureRail(controller) {
+  const cards = Array.from(controller.track?.children || []);
+  const firstCard = cards[0];
+  const anchorCard = cards[controller.baseCount];
+  const gap = Number.parseFloat(
+    window.getComputedStyle(controller.track).gap || "0",
+  );
+
+  controller.cardSpan = firstCard
+    ? firstCard.getBoundingClientRect().width + gap
+    : 0;
+  controller.baseWidth = anchorCard
+    ? anchorCard.offsetLeft - firstCard.offsetLeft
+    : controller.cardSpan * controller.baseCount;
+  controller.canLoop = controller.baseCount > 1 && controller.baseWidth > 0;
+  controller.canAnimate =
+    controller.baseCount > getCardsPerRow() &&
+    controller.viewport.scrollWidth > controller.viewport.clientWidth + 8;
+
+  if (controller.canLoop) {
+    controller.viewport.scrollLeft = controller.baseWidth;
+  } else {
+    controller.viewport.scrollLeft = 0;
+  }
+}
+
+function stepRail(controller, time) {
+  if (!controller.viewport?.isConnected) return;
+
+  if (!controller.lastFrame) {
+    controller.lastFrame = time;
+  }
+
+  const delta = time - controller.lastFrame;
+  controller.lastFrame = time;
+
+  if (shouldAnimateRail(controller)) {
+    controller.viewport.scrollLeft += controller.speed * (delta / 1000);
+    normalizeRailPosition(controller);
+  }
+
+  controller.rafId = window.requestAnimationFrame((nextTime) =>
+    stepRail(controller, nextTime),
+  );
+}
+
+function shouldAnimateRail(controller) {
+  return (
+    controller.canAnimate &&
+    !controller.paused &&
+    !document.hidden &&
+    !prefersReducedMotion() &&
+    controller.activePointerId === null
+  );
+}
+
+function normalizeRailPosition(controller) {
+  if (!controller.canLoop) return;
+
+  const lowerLimit = controller.baseWidth * 0.5;
+  const upperLimit = controller.baseWidth * 1.5;
+
+  if (controller.viewport.scrollLeft <= lowerLimit) {
+    controller.viewport.scrollLeft += controller.baseWidth;
+  } else if (controller.viewport.scrollLeft >= upperLimit) {
+    controller.viewport.scrollLeft -= controller.baseWidth;
+  }
+}
+
+function holdRail(controller) {
+  controller.paused = true;
+  window.clearTimeout(controller.resumeTimer);
+}
+
+function scheduleRailResume(controller, delay = AUTO_SCROLL_PAUSE_MS) {
+  window.clearTimeout(controller.resumeTimer);
+  controller.resumeTimer = window.setTimeout(() => {
+    controller.paused = false;
+    controller.lastFrame = 0;
+  }, delay);
+}
+
+function pauseRail(controller, delay = AUTO_SCROLL_PAUSE_MS) {
+  holdRail(controller);
+  scheduleRailResume(controller, delay);
+}
+
+function pauseAllRails(delay = AUTO_SCROLL_PAUSE_MS) {
+  railControllers.forEach((controller) => pauseRail(controller, delay));
+}
+
+function startRailDrag(controller, event) {
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+  if (event.target.closest("button, a, input, textarea, select, label")) return;
+
+  holdRail(controller);
+  controller.activePointerId = event.pointerId;
+  controller.startX = event.clientX;
+  controller.startScrollLeft = controller.viewport.scrollLeft;
+  controller.dragDistance = 0;
+  controller.viewport.classList.add("is-dragging");
+  controller.viewport.setPointerCapture?.(event.pointerId);
+}
+
+function handleRailDragMove(controller, event) {
+  if (controller.activePointerId !== event.pointerId) return;
+
+  const deltaX = event.clientX - controller.startX;
+  controller.dragDistance = Math.max(controller.dragDistance, Math.abs(deltaX));
+
+  if (controller.dragDistance < 2) return;
+
+  controller.viewport.scrollLeft = controller.startScrollLeft - deltaX;
+  normalizeRailPosition(controller);
+  event.preventDefault();
+}
+
+function finishRailDrag(controller, event) {
+  if (controller.activePointerId !== event.pointerId) return;
+
+  const scrollDelta = controller.viewport.scrollLeft - controller.startScrollLeft;
+
+  if (controller.dragDistance >= DRAG_THRESHOLD_PX) {
+    catalogState.suppressClickUntil = performance.now() + CLICK_SUPPRESSION_MS;
+    snapRailToCard(controller, scrollDelta);
+  }
+
+  controller.viewport.releasePointerCapture?.(event.pointerId);
+  controller.viewport.classList.remove("is-dragging");
+  controller.activePointerId = null;
+  controller.startX = 0;
+  controller.startScrollLeft = 0;
+  controller.dragDistance = 0;
+  scheduleRailResume(controller);
+}
+
+function snapRailToCard(controller, scrollDelta) {
+  if (!controller.cardSpan) return;
+
+  normalizeRailPosition(controller);
+
+  const current = controller.canLoop
+    ? controller.viewport.scrollLeft - controller.baseWidth
+    : controller.viewport.scrollLeft;
+
+  let targetIndex;
+  if (Math.abs(scrollDelta) >= SNAP_THRESHOLD_PX) {
+    targetIndex = scrollDelta > 0
+      ? Math.ceil(current / controller.cardSpan)
+      : Math.floor(current / controller.cardSpan);
+  } else {
+    targetIndex = Math.round(current / controller.cardSpan);
+  }
+
+  targetIndex = clamp(targetIndex, 0, Math.max(0, controller.baseCount - 1));
+
+  controller.viewport.scrollTo({
+    left: (controller.canLoop ? controller.baseWidth : 0) + targetIndex * controller.cardSpan,
+    behavior: "smooth",
+  });
+}
+
+function shouldSuppressCatalogClick() {
+  return performance.now() < catalogState.suppressClickUntil;
+}
+
+function handleCatalogClick(event) {
+  if (shouldSuppressCatalogClick()) {
+    event.preventDefault();
+    event.stopPropagation();
+    return;
+  }
+
   const minusButton = event.target.closest("[data-product-qty-minus]");
   if (minusButton) {
     changeDraftQuantity(minusButton.dataset.productQtyMinus, -1);
+    pauseAllRails();
     return;
   }
 
   const plusButton = event.target.closest("[data-product-qty-plus]");
   if (plusButton) {
     changeDraftQuantity(plusButton.dataset.productQtyPlus, 1);
+    pauseAllRails();
     return;
   }
 
@@ -201,54 +659,129 @@ function handleProductGridClick(event) {
   if (addButton) {
     const productId = addButton.dataset.addToCart;
     const quantity = getDraftQuantity(productId);
-    const addedProduct = addToCartById(productId, quantity, Number(addButton.dataset.price));
+    const addedProduct = addToCartById(
+      productId,
+      quantity,
+      Number(addButton.dataset.price),
+    );
     if (!addedProduct) return;
-
-    const card = addButton.closest(".promotion-card");
-    if (card) {
-      card.classList.remove("is-added");
-      void card.offsetWidth;
-      card.classList.add("is-added");
-    }
 
     addButton.classList.remove("is-added");
     void addButton.offsetWidth;
     addButton.classList.add("is-added");
-    setTimeout(() => addButton.classList.remove("is-added"), 420);
-    pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS);
+    pauseAllRails();
     return;
   }
 
-  const card = event.target.closest(".promotion-card");
-  if (!card) return;
+  const detailButton = event.target.closest("[data-open-detail]");
+  if (detailButton) {
+    openProductModal(detailButton.dataset.openDetail);
+    pauseAllRails();
+    return;
+  }
 
-  toggleProductExpansion(card.dataset.productId);
-  pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS);
+  const card = event.target.closest(".product-card");
+  if (!card) return;
+  if (!isMobileViewport()) return;
+  if (event.target.closest("button, a, input, textarea, select, label")) return;
+
+  openProductModal(card.dataset.productId);
+  pauseAllRails();
 }
 
-function handleProductGridKeydown(event) {
-  if (event.key !== "Enter" && event.key !== " ") return;
-  if (event.target.closest("[data-product-qty-minus], [data-product-qty-plus], [data-add-to-cart]")) {
-    return;
+function changeDraftQuantity(productId, delta) {
+  const current = getDraftQuantity(productId);
+  const next = normalizeQuantity(current + Number(delta));
+  draftQuantities.set(productId, next);
+  syncProductQuantityDisplays(productId);
+}
+
+function getDraftQuantity(productId) {
+  return normalizeQuantity(draftQuantities.get(productId));
+}
+
+function syncProductQuantityDisplays(productId) {
+  document
+    .querySelectorAll(`[data-product-qty-value="${productId}"]`)
+    .forEach((node) => {
+      node.textContent = String(getDraftQuantity(productId));
+    });
+
+  if (catalogState.activeModalProductId === productId && elements.productModalQty) {
+    elements.productModalQty.textContent = String(getDraftQuantity(productId));
   }
+}
 
-  const card = event.target.closest(".promotion-card");
-  if (!card) return;
+function openProductModal(productId) {
+  const product = PRODUCT_INDEX.get(productId);
+  if (!product || !elements.productModal) return;
 
-  event.preventDefault();
-  toggleProductExpansion(card.dataset.productId);
-  pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS);
+  catalogState.activeModalProductId = productId;
+  elements.productModalImage.src = product.image;
+  elements.productModalImage.alt = product.alt;
+  elements.productModalCategory.textContent =
+    CATEGORY_LABELS[product.category] || "Catalogo";
+  elements.productModalTitle.textContent = product.name;
+  elements.productModalDescription.textContent = product.description;
+  elements.productModalDetails.textContent = product.details;
+  elements.productModalPrice.textContent = formatCurrency(product.price);
+  elements.productModalAdd.dataset.productId = productId;
+  syncProductModalQuantity();
+
+  elements.productModal.hidden = false;
+  elements.productModal.setAttribute("aria-hidden", "false");
+  window.requestAnimationFrame(() => {
+    elements.productModal.classList.add("is-open");
+  });
+  syncBodyLock();
+}
+
+function closeProductModal() {
+  if (!elements.productModal) return;
+
+  elements.productModal.classList.remove("is-open");
+  elements.productModal.setAttribute("aria-hidden", "true");
+  catalogState.activeModalProductId = "";
+  window.setTimeout(() => {
+    if (!elements.productModal.classList.contains("is-open")) {
+      elements.productModal.hidden = true;
+    }
+  }, 240);
+  syncBodyLock();
+}
+
+function syncProductModalQuantity() {
+  if (!catalogState.activeModalProductId || !elements.productModalQty) return;
+
+  elements.productModalQty.textContent = String(
+    getDraftQuantity(catalogState.activeModalProductId),
+  );
+}
+
+function changeActiveModalQuantity(delta) {
+  if (!catalogState.activeModalProductId) return;
+  changeDraftQuantity(catalogState.activeModalProductId, delta);
+}
+
+function addActiveModalProductToCart() {
+  const productId = catalogState.activeModalProductId;
+  if (!productId) return;
+
+  addToCartById(productId, getDraftQuantity(productId));
+  closeProductModal();
 }
 
 function addToCart(nombre, precio, cantidad = 1) {
   const product = PRODUCT_NAME_INDEX.get(nombre);
   if (!product) return null;
+
   return addProductToCart(product, Number(cantidad), Number(precio) || product.price);
 }
 
 function addToCartById(productId, cantidad = 1, priceOverride) {
   const product = PRODUCT_INDEX.get(productId);
   if (!product) return null;
+
   return addProductToCart(product, Number(cantidad), Number(priceOverride) || product.price);
 }
 
@@ -257,7 +790,9 @@ function addProductToCart(product, cantidad, priceOverride) {
   const existingProduct = cart.find((item) => item.id === product.id);
 
   if (existingProduct) {
-    existingProduct.quantity = normalizeQuantity(existingProduct.quantity + quantityToAdd);
+    existingProduct.quantity = normalizeQuantity(
+      existingProduct.quantity + quantityToAdd,
+    );
   } else {
     cart.push({
       id: product.id,
@@ -272,7 +807,7 @@ function addProductToCart(product, cantidad, priceOverride) {
   window.cart = cart;
   persistCart();
   renderCart();
-  showToast("Producto agregado", `${product.name} agregado (x${quantityToAdd}) al carrito.`);
+  showToast("Producto agregado", `${product.name} agregado (x${quantityToAdd}) a tu cotizacion.`);
   pulseMobileQuoteTrigger();
   return product;
 }
@@ -282,6 +817,7 @@ function removeFromCart(productIdentifier) {
   cart = cart.filter(
     (item) => item.id !== productIdentifier && item.name !== productIdentifier,
   );
+
   if (cart.length === previousLength) return false;
 
   window.cart = cart;
@@ -331,7 +867,7 @@ function handleCartClick(event) {
 
   const removed = removeFromCart(removeButton.dataset.removeItem);
   if (removed) {
-    showToast("Producto eliminado", "Producto retirado de la cotizacion.");
+    showToast("Producto eliminado", "El producto fue retirado de la cotizacion.");
   }
 }
 
@@ -343,70 +879,109 @@ function renderCart() {
     elements.cartItems.innerHTML = cart
       .map(
         (item) => `
-      <article class="cart-item">
-        <div class="cart-item__image"><img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" /></div>
-        <div class="cart-item__content">
-          <p class="cart-item__title">${escapeHtml(item.name)}</p>
-          <div class="cart-item__prices">
-            <span class="cart-item__unit">${formatCurrency(item.price)} c/u</span>
-            <span class="cart-item__price">${formatCurrency(item.price * item.quantity)}</span>
-          </div>
-          <div class="cart-item__controls">
-            <div class="qty-stepper qty-stepper--cart" role="group" aria-label="Cantidad de ${escapeHtml(item.name)}">
-              <button class="qty-stepper__btn" type="button" data-cart-qty-minus="${item.id}" aria-label="Restar ${escapeHtml(item.name)}">
-                <i class="fas fa-minus"></i>
-              </button>
-              <span class="qty-stepper__value">${item.quantity}</span>
-              <button class="qty-stepper__btn" type="button" data-cart-qty-plus="${item.id}" aria-label="Sumar ${escapeHtml(item.name)}">
-                <i class="fas fa-plus"></i>
-              </button>
+          <article class="cart-item">
+            <div class="cart-item__image">
+              <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
             </div>
-          </div>
-        </div>
-        <button class="cart-item__remove" type="button" data-remove-item="${item.id}" aria-label="Eliminar ${escapeHtml(item.name)}">
-          <i class="fas fa-trash-alt"></i>
-        </button>
-      </article>
-    `,
+            <div class="cart-item__content">
+              <div class="cart-item__header">
+                <p class="cart-item__title">${escapeHtml(item.name)}</p>
+                <button class="cart-item__remove" type="button" data-remove-item="${item.id}" aria-label="Eliminar ${escapeHtml(item.name)}">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+              <div class="cart-item__meta">
+                <span>${formatCurrency(item.price)} c/u</span>
+                <span class="cart-item__subtotal">Subtotal ${formatCurrency(item.price * item.quantity)}</span>
+              </div>
+              <div class="cart-item__controls">
+                <div class="qty-stepper" role="group" aria-label="Cantidad de ${escapeHtml(item.name)}">
+                  <button class="qty-stepper__btn" type="button" data-cart-qty-minus="${item.id}" aria-label="Restar ${escapeHtml(item.name)}">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <span class="qty-stepper__value">${item.quantity}</span>
+                  <button class="qty-stepper__btn" type="button" data-cart-qty-plus="${item.id}" aria-label="Sumar ${escapeHtml(item.name)}">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `,
       )
       .join("");
   }
 
   if (elements.cartItemsCount) {
-    elements.cartItemsCount.textContent = totalItems.toString();
+    elements.cartItemsCount.textContent = String(totalItems);
   }
   if (elements.heroCartCount) {
-    elements.heroCartCount.textContent = totalItems.toString();
+    elements.heroCartCount.textContent = String(totalItems);
   }
   if (elements.mobileQuoteCount) {
-    elements.mobileQuoteCount.textContent = totalItems.toString();
+    elements.mobileQuoteCount.textContent = String(totalItems);
   }
   if (elements.cartTotal) {
     elements.cartTotal.textContent = formatCurrency(totalAmount);
   }
-
   if (elements.cartEmptyState) {
     elements.cartEmptyState.hidden = cart.length > 0;
   }
-
   if (elements.quoteSubmit) {
     elements.quoteSubmit.disabled = cart.length === 0;
   }
-
   if (elements.quoteSummaryField) {
     elements.quoteSummaryField.value = buildQuoteSummary();
-  }
-
-  if (elements.quotePreview) {
-    elements.quotePreview.textContent =
-      elements.quoteSummaryField?.value ||
-      "El resumen de productos aparecera aqui antes de enviar.";
   }
 
   if (!isMobileViewport()) {
     elements.quoteSidebar?.classList.add("is-open");
     elements.quoteMobileTrigger?.setAttribute("aria-expanded", "true");
   }
+}
+
+function toggleQuotePanel(forceState) {
+  if (!elements.quoteSidebar || !elements.quoteMobileTrigger) return;
+  if (!isMobileViewport()) return;
+
+  const shouldOpen =
+    typeof forceState === "boolean"
+      ? forceState
+      : !elements.quoteSidebar.classList.contains("is-open");
+
+  elements.quoteSidebar.classList.toggle("is-open", shouldOpen);
+  elements.quoteMobileTrigger.setAttribute("aria-expanded", String(shouldOpen));
+  syncBodyLock();
+}
+
+function syncMobileQuoteState() {
+  if (!elements.quoteSidebar || !elements.quoteMobileTrigger) return;
+
+  if (isMobileViewport()) {
+    elements.quoteSidebar.classList.remove("is-open");
+    elements.quoteMobileTrigger.setAttribute("aria-expanded", "false");
+  } else {
+    elements.quoteSidebar.classList.add("is-open");
+    elements.quoteMobileTrigger.setAttribute("aria-expanded", "true");
+  }
+
+  syncBodyLock();
+}
+
+function pulseMobileQuoteTrigger() {
+  if (!isMobileViewport() || !elements.quoteMobileTrigger) return;
+
+  elements.quoteMobileTrigger.classList.remove("is-pulse");
+  void elements.quoteMobileTrigger.offsetWidth;
+  elements.quoteMobileTrigger.classList.add("is-pulse");
+}
+
+function syncBodyLock() {
+  const shouldLock =
+    (isMobileViewport() && elements.quoteSidebar?.classList.contains("is-open")) ||
+    elements.productModal?.classList.contains("is-open");
+
+  document.body.classList.toggle("catalog-lock", Boolean(shouldLock));
 }
 
 async function handleQuoteSubmit(event) {
@@ -434,6 +1009,7 @@ async function handleQuoteSubmit(event) {
       "success",
     );
     showToast("Cotizacion enviada", "Tu solicitud fue enviada a soporte@smkvending.cl.");
+
     event.currentTarget.reset();
     cart = [];
     window.cart = cart;
@@ -466,17 +1042,12 @@ function validateQuoteForm(form) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[+()\d\s-]{8,20}$/;
 
-  if (!emailRegex.test(emailInput.value)) {
-    emailInput.setCustomValidity("Ingresa un correo valido.");
-  } else {
-    emailInput.setCustomValidity("");
-  }
-
-  if (!phoneRegex.test(phoneInput.value)) {
-    phoneInput.setCustomValidity("Ingresa un telefono valido.");
-  } else {
-    phoneInput.setCustomValidity("");
-  }
+  emailInput.setCustomValidity(
+    emailRegex.test(emailInput.value) ? "" : "Ingresa un correo valido.",
+  );
+  phoneInput.setCustomValidity(
+    phoneRegex.test(phoneInput.value) ? "" : "Ingresa un telefono valido.",
+  );
 
   const isValid = form.reportValidity();
   if (!isValid) {
@@ -577,254 +1148,28 @@ function initializeEmailProvider() {
 function syncStickyOffsets() {
   const navbar = document.querySelector(".catalog-page .navbar");
   const filterBar = document.querySelector(".category-buttons-container");
-  const scope = document.body;
 
-  if (navbar && scope) {
-    scope.style.setProperty("--catalog-navbar-height", `${navbar.offsetHeight}px`);
+  if (navbar) {
+    document.body.style.setProperty("--catalog-navbar-height", `${navbar.offsetHeight}px`);
   }
 
-  if (filterBar && scope) {
-    scope.style.setProperty("--catalog-filter-height", `${filterBar.offsetHeight}px`);
+  if (filterBar) {
+    document.body.style.setProperty("--catalog-filter-height", `${filterBar.offsetHeight}px`);
   }
-}
-
-function syncMobileQuoteState() {
-  if (!elements.quoteSidebar || !elements.quoteMobileTrigger) return;
-
-  if (isMobileViewport()) {
-    elements.quoteSidebar.classList.remove("is-open");
-    elements.quoteMobileTrigger.setAttribute("aria-expanded", "false");
-    return;
-  }
-
-  elements.quoteSidebar.classList.add("is-open");
-  elements.quoteMobileTrigger.setAttribute("aria-expanded", "true");
-}
-
-function initializeProductsAutoScroll() {
-  if (!elements.productsGrid || productsScroller.listenersBound) return;
-
-  const pause = () => setProductsAutoScrollPaused(true);
-  const resume = () => {
-    if (isMobileViewport()) return;
-    setProductsAutoScrollPaused(false);
-  };
-
-  elements.productsGrid.addEventListener("mouseenter", pause);
-  elements.productsGrid.addEventListener("mouseleave", resume);
-  elements.productsGrid.addEventListener("focusin", pause);
-  elements.productsGrid.addEventListener("focusout", resume);
-  elements.productsGrid.addEventListener("pointerdown", () => {
-    pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS);
-  });
-  elements.productsGrid.addEventListener(
-    "wheel",
-    () => pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS),
-    { passive: true },
-  );
-  elements.productsGrid.addEventListener(
-    "touchstart",
-    () => pauseProductsAutoSlideTemporarily(PRODUCT_SLIDE_IDLE_MS),
-    { passive: true },
-  );
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      setProductsAutoScrollPaused(true);
-    } else if (!isMobileViewport()) {
-      setProductsAutoScrollPaused(false);
-    }
-  });
-
-  productsScroller.listenersBound = true;
-}
-
-function refreshProductsAutoSlide() {
-  if (!elements.productsGrid) return;
-
-  const canScroll =
-    !isMobileViewport() &&
-    elements.productsGrid.scrollWidth > elements.productsGrid.clientWidth + 6;
-
-  if (!canScroll) {
-    stopProductsAutoSlide();
-    return;
-  }
-
-  if (productsScroller.intervalId) return;
-  productsScroller.intervalId = window.setInterval(() => {
-    if (productsScroller.paused || document.hidden || isMobileViewport()) return;
-    advanceProductsSlide();
-  }, PRODUCT_SLIDE_INTERVAL_MS);
-}
-
-function advanceProductsSlide() {
-  if (!elements.productsGrid) return;
-
-  const pageWidth = elements.productsGrid.clientWidth;
-  const maxScrollLeft = elements.productsGrid.scrollWidth - pageWidth;
-
-  if (maxScrollLeft <= 8) return;
-
-  const nextLeft = elements.productsGrid.scrollLeft + pageWidth;
-  const targetLeft = nextLeft >= maxScrollLeft - 8 ? 0 : nextLeft;
-
-  elements.productsGrid.scrollTo({
-    left: targetLeft,
-    behavior: "smooth",
-  });
-}
-
-function stopProductsAutoSlide() {
-  if (productsScroller.intervalId) {
-    clearInterval(productsScroller.intervalId);
-    productsScroller.intervalId = null;
-  }
-  clearTimeout(productsScroller.resumeTimer);
-}
-
-function setProductsAutoScrollPaused(forcePause) {
-  productsScroller.paused = forcePause;
-}
-
-function pauseProductsAutoSlideTemporarily(ms) {
-  setProductsAutoScrollPaused(true);
-  clearTimeout(productsScroller.resumeTimer);
-  productsScroller.resumeTimer = setTimeout(() => {
-    if (!isMobileViewport()) {
-      setProductsAutoScrollPaused(false);
-    }
-  }, ms);
-}
-
-function handleViewportChange() {
-  const nextProductsPerPage = getProductsPerPage();
-  if (nextProductsPerPage !== lastProductsPerPage) {
-    renderProducts();
-    return;
-  }
-
-  refreshProductsAutoSlide();
-}
-
-function getProductsPerPage() {
-  if (window.innerWidth <= 767) return 1;
-  if (window.innerWidth <= MOBILE_BREAKPOINT) return 2;
-  return 4;
-}
-
-function chunkProducts(products, size) {
-  const chunks = [];
-
-  for (let index = 0; index < products.length; index += size) {
-    chunks.push(products.slice(index, index + size));
-  }
-
-  return chunks;
-}
-
-function renderProductCard(product) {
-  const qty = getDraftQuantity(product.id);
-  const isExpanded = expandedProductId === product.id;
-
-  return `
-    <article class="promotion-card ${isExpanded ? "is-expanded" : ""}" data-product-id="${product.id}" tabindex="0" role="button" aria-expanded="${isExpanded ? "true" : "false"}" aria-label="Ver detalles de ${escapeHtml(product.name)}">
-      <div class="promotion-card__top">
-        <div class="promotion-image">
-          <img src="${product.image}" alt="${escapeHtml(product.alt)}" loading="lazy" />
-        </div>
-        <div class="promotion-content">
-          <div class="promotion-info">
-            <span class="promotion-meta">${CATEGORY_LABELS[product.category] || "Catalogo"}</span>
-            <h3 class="promotion-title">${escapeHtml(product.name)}</h3>
-            <p class="promotion-description">${escapeHtml(product.description)}</p>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">${formatCurrency(product.price)}<small>Precio referencial</small></div>
-            <div class="product-actions">
-              <div class="qty-stepper qty-stepper--card" role="group" aria-label="Cantidad de ${escapeHtml(product.name)}">
-                <button class="qty-stepper__btn" type="button" data-product-qty-minus="${product.id}" aria-label="Restar cantidad de ${escapeHtml(product.name)}">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <span class="qty-stepper__value" data-product-qty-value="${product.id}">${qty}</span>
-                <button class="qty-stepper__btn" type="button" data-product-qty-plus="${product.id}" aria-label="Sumar cantidad de ${escapeHtml(product.name)}">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <button class="btn-add-to-cart" type="button" data-add-to-cart="${product.id}" data-price="${product.price}">
-                <i class="fas fa-cart-plus"></i>
-                <span>Agregar</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="promotion-extra">
-        <p class="promotion-details">${escapeHtml(product.details)}</p>
-      </div>
-    </article>
-  `;
-}
-
-function toggleProductExpansion(productId) {
-  expandedProductId = expandedProductId === productId ? "" : productId;
-  renderProducts({ resetScroll: false });
-}
-
-function toggleQuotePanel(forceState) {
-  if (!elements.quoteSidebar || !elements.quoteMobileTrigger) return;
-  if (!isMobileViewport()) return;
-
-  const shouldOpen =
-    typeof forceState === "boolean"
-      ? forceState
-      : !elements.quoteSidebar.classList.contains("is-open");
-
-  elements.quoteSidebar.classList.toggle("is-open", shouldOpen);
-  elements.quoteMobileTrigger.setAttribute("aria-expanded", String(shouldOpen));
-
-  if (shouldOpen) {
-    window.setTimeout(() => {
-      elements.quotePanel?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 120);
-  }
-}
-
-function pulseMobileQuoteTrigger() {
-  if (!isMobileViewport() || !elements.quoteMobileTrigger) return;
-  elements.quoteMobileTrigger.classList.remove("is-pulse");
-  void elements.quoteMobileTrigger.offsetWidth;
-  elements.quoteMobileTrigger.classList.add("is-pulse");
-}
-
-function changeDraftQuantity(productId, delta) {
-  const current = getDraftQuantity(productId);
-  const next = normalizeQuantity(current + Number(delta));
-  draftQuantities.set(productId, next);
-
-  document
-    .querySelectorAll(`[data-product-qty-value="${productId}"]`)
-    .forEach((node) => {
-      node.textContent = String(next);
-    });
-}
-
-function getDraftQuantity(productId) {
-  return normalizeQuantity(draftQuantities.get(productId));
-}
-
-function normalizeQuantity(quantity) {
-  const parsed = Math.floor(Number(quantity) || 1);
-  return Math.min(99, Math.max(1, parsed));
 }
 
 function showFeedback(message, type) {
   if (!elements.quoteFeedback) return;
-  elements.quoteFeedback.className = `quote-feedback is-visible ${type === "success" ? "is-success" : "is-error"}`;
+
+  elements.quoteFeedback.className = `quote-feedback is-visible ${
+    type === "success" ? "is-success" : "is-error"
+  }`;
   elements.quoteFeedback.textContent = message;
 }
 
 function clearFeedback() {
   if (!elements.quoteFeedback) return;
+
   elements.quoteFeedback.className = "quote-feedback";
   elements.quoteFeedback.textContent = "";
 }
@@ -834,9 +1179,21 @@ function showToast(title, message) {
 
   const toast = document.createElement("article");
   toast.className = "toast-card";
-  toast.innerHTML = `<div class="toast-card__icon"><i class="fas fa-check"></i></div><div><div class="toast-card__title">${escapeHtml(title)}</div><div class="toast-card__message">${escapeHtml(message)}</div></div>`;
+  toast.innerHTML = `
+    <div class="toast-card__icon"><i class="fas fa-check"></i></div>
+    <div>
+      <div class="toast-card__title">${escapeHtml(title)}</div>
+      <div class="toast-card__message">${escapeHtml(message)}</div>
+    </div>
+  `;
+
   elements.toastStack.appendChild(toast);
-  window.setTimeout(() => toast.remove(), 2800);
+
+  if (elements.toastStack.children.length > 4) {
+    elements.toastStack.firstElementChild?.remove();
+  }
+
+  window.setTimeout(() => toast.remove(), 3200);
 }
 
 function loadCart() {
@@ -850,11 +1207,8 @@ function loadCart() {
 
 function normalizeCartItem(rawItem) {
   if (!rawItem) return null;
-  const ref =
-    PRODUCT_INDEX.get(rawItem.id) ||
-    PRODUCT_NAME_INDEX.get(rawItem.name) ||
-    null;
 
+  const ref = PRODUCT_INDEX.get(rawItem.id) || PRODUCT_NAME_INDEX.get(rawItem.name) || null;
   if (!ref) return null;
 
   return {
@@ -875,6 +1229,11 @@ function getCartTotal() {
   return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
+function normalizeQuantity(quantity) {
+  const parsed = Math.floor(Number(quantity) || 1);
+  return Math.min(99, Math.max(1, parsed));
+}
+
 function formatCurrency(value) {
   return new Intl.NumberFormat("es-CL", {
     style: "currency",
@@ -887,10 +1246,29 @@ function isMobileViewport() {
   return window.innerWidth <= MOBILE_BREAKPOINT;
 }
 
+function getCardsPerRow() {
+  return isMobileViewport() ? MOBILE_CARDS_PER_ROW : DESKTOP_CARDS_PER_ROW;
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function shuffleArray(list) {
+  for (let index = list.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [list[index], list[randomIndex]] = [list[randomIndex], list[index]];
+  }
+
+  return list;
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
 function safeJson(response) {
-  return response
-    .json()
-    .catch(() => ({}));
+  return response.json().catch(() => ({}));
 }
 
 function slugify(value) {

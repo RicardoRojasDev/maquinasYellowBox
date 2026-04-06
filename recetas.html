@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Recetas y Preparaciones | Yellow Box</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Recetas, preparaciones e ideas de servicio para productos vending Yellow Box."
+    />
+
+    <link href="img/favicon.ico" rel="icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/styledesktop.css" rel="stylesheet" />
+    <link href="css/recetas.css" rel="stylesheet" />
+  </head>
+  <body class="recipes-page">
+    <!-- Navbar Start -->
+    <nav class="navbar bg-navbar sticky-top">
+      <div class="nav-left">
+        <a
+          href="index.html"
+          style="color: rgb(80, 77, 77)"
+          class="nav-3 text-decoration-none"
+          >Inicio</a
+        >
+      </div>
+
+      <div class="logo-container">
+        <a href="index.html" class="text-decoration-none">
+          <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="dropdown">
+          <a
+            href="#"
+            style="color: rgb(80, 77, 77)"
+            class="dropdown-toggle text-decoration-none nav-2"
+            data-toggle="dropdown"
+            >Mas</a
+          >
+
+          <div style="background-color: #bdb093" class="dropdown-menu">
+            <a href="productos.html" class="dropdown-item">Tienda Online</a>
+            <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
+            <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
+            <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
+            <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item"
+              >Catalogo Laqtia</a
+            >
+            <div class="contact-mobile">
+              <a href="contact.html" class="dropdown-item">Contactanos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-none d-lg-block">
+          <a
+            href="contact.html"
+            class="navbar-brand text-decoration-none mx-xl-4"
+            >Contactanos</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <main class="recipes-shell">
+      <section class="recipes-hero" aria-labelledby="recipesHeroTitle">
+        <div class="recipes-hero__copy">
+          <span class="recipes-hero__eyebrow">Centro de recetas</span>
+          <h1 id="recipesHeroTitle">Recetas y Preparaciones</h1>
+          <p class="recipes-hero__text">
+            Revisa combinaciones, ingredientes, pasos y sugerencias de servicio
+            para bebidas vending con una vista clara, practica y profesional.
+          </p>
+        </div>
+
+        <div class="recipes-hero__stats" aria-label="Resumen de recetas">
+          <article class="recipes-stat">
+            <span>Recetas activas</span>
+            <strong id="heroRecipeCount">0</strong>
+          </article>
+          <article class="recipes-stat">
+            <span>Categorias</span>
+            <strong id="heroCategoryCount">0</strong>
+          </article>
+          <article class="recipes-stat">
+            <span>Destacadas</span>
+            <strong id="heroFeaturedCount">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="recipes-filters" aria-label="Filtros de recetas">
+        <div class="recipes-filters__inner">
+          <button class="recipes-filter active" type="button" data-filter="all">
+            Todas
+          </button>
+          <button class="recipes-filter" type="button" data-filter="cafes">
+            Cafes
+          </button>
+          <button class="recipes-filter" type="button" data-filter="capuchinos">
+            Capuchinos
+          </button>
+          <button class="recipes-filter" type="button" data-filter="chocolates">
+            Chocolates
+          </button>
+          <button class="recipes-filter" type="button" data-filter="chai">
+            Chai
+          </button>
+          <button class="recipes-filter" type="button" data-filter="leches">
+            Leches
+          </button>
+          <button class="recipes-filter" type="button" data-filter="frios">
+            Frios
+          </button>
+          <button class="recipes-filter" type="button" data-filter="especiales">
+            Especiales
+          </button>
+        </div>
+      </section>
+
+      <section class="recipes-featured" aria-labelledby="featuredRecipesTitle">
+        <header class="section-heading">
+          <div class="section-heading__copy">
+            <span class="section-heading__eyebrow">Destacadas</span>
+            <h2 id="featuredRecipesTitle">Recetas recomendadas para mostrar y servir</h2>
+          </div>
+          <div class="section-heading__actions">
+            <p id="featuredSummaryText">
+              Seleccion destacada para consulta rapida y demostraciones.
+            </p>
+            <div class="featured-nav" aria-label="Navegacion de recetas destacadas">
+              <button
+                class="featured-nav__button"
+                id="featuredPrev"
+                type="button"
+                aria-label="Ver destacadas anteriores"
+              >
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <button
+                class="featured-nav__button"
+                id="featuredNext"
+                type="button"
+                aria-label="Ver siguientes destacadas"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div class="featured-slider" id="featuredSlider">
+          <div class="featured-slider__track" id="featuredTrack" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="recipes-catalog" aria-labelledby="recipesCatalogTitle">
+        <header class="section-heading section-heading--catalog">
+          <div class="section-heading__copy">
+            <span class="section-heading__eyebrow">Catalogo</span>
+            <h2 id="recipesCatalogTitle">Listado principal de recetas</h2>
+          </div>
+          <p id="recipesResultText">Cargando recetas disponibles...</p>
+        </header>
+
+        <div class="recipes-grid" id="recipesGrid" aria-live="polite"></div>
+
+        <div class="recipes-empty" id="recipesEmptyState" hidden>
+          <div class="recipes-empty__icon">
+            <i class="fas fa-mug-hot"></i>
+          </div>
+          <h3>No hay recetas en esta categoria</h3>
+          <p>Prueba otro filtro para revisar preparaciones disponibles.</p>
+        </div>
+      </section>
+
+      <section class="recipes-cta" aria-labelledby="recipesCtaTitle">
+        <div class="recipes-cta__copy">
+          <span class="recipes-cta__eyebrow">Soporte comercial</span>
+          <h2 id="recipesCtaTitle">Necesitas ayuda para configurar tus recetas?</h2>
+          <p>
+            Te apoyamos con parametros de servicio, seleccion de insumos,
+            instalacion y recomendaciones para cada punto de consumo.
+          </p>
+        </div>
+
+        <div class="recipes-cta__actions">
+          <a href="contact.html" class="recipes-button recipes-button--primary"
+            >Hablar con soporte</a
+          >
+          <a href="productos.html" class="recipes-button recipes-button--ghost"
+            >Ver productos</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <section
+      class="recipe-modal"
+      id="recipeModal"
+      hidden
+      aria-hidden="true"
+      aria-labelledby="recipeModalTitle"
+    >
+      <button
+        class="recipe-modal__backdrop"
+        id="recipeModalBackdrop"
+        type="button"
+        aria-hidden="true"
+        tabindex="-1"
+      ></button>
+
+      <div class="recipe-modal__panel" role="dialog" aria-modal="true">
+        <button
+          class="recipe-modal__close"
+          id="recipeModalClose"
+          type="button"
+          aria-label="Cerrar detalle de receta"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="recipe-modal__media">
+          <img id="recipeModalImage" src="" alt="" loading="lazy" />
+        </div>
+
+        <div class="recipe-modal__content">
+          <div class="recipe-modal__header">
+            <span class="recipe-modal__badge" id="recipeModalCategory"></span>
+            <h2 id="recipeModalTitle"></h2>
+            <p id="recipeModalDescription"></p>
+          </div>
+
+          <div class="recipe-modal__meta" aria-label="Resumen de la receta">
+            <article class="recipe-modal__meta-item">
+              <span>Tiempo</span>
+              <strong id="recipeModalTime"></strong>
+            </article>
+            <article class="recipe-modal__meta-item">
+              <span>Dificultad</span>
+              <strong id="recipeModalDifficulty"></strong>
+            </article>
+            <article class="recipe-modal__meta-item">
+              <span>Rendimiento</span>
+              <strong id="recipeModalYield"></strong>
+            </article>
+          </div>
+
+          <div class="recipe-modal__blocks">
+            <section class="recipe-detail-block" aria-labelledby="recipeIngredientsTitle">
+              <div class="recipe-detail-block__head">
+                <span class="recipe-detail-block__eyebrow">Ingredientes</span>
+                <h3 id="recipeIngredientsTitle">Que lleva</h3>
+              </div>
+              <ul class="recipe-detail-list" id="recipeModalIngredients"></ul>
+            </section>
+
+            <section class="recipe-detail-block" aria-labelledby="recipePreparationTitle">
+              <div class="recipe-detail-block__head">
+                <span class="recipe-detail-block__eyebrow">Preparacion</span>
+                <h3 id="recipePreparationTitle">Paso a paso</h3>
+              </div>
+              <ol class="recipe-steps" id="recipeModalSteps"></ol>
+            </section>
+
+            <section class="recipe-detail-block recipe-detail-block--tips" aria-labelledby="recipeTipsTitle">
+              <div class="recipe-detail-block__head">
+                <span class="recipe-detail-block__eyebrow">Recomendaciones</span>
+                <h3 id="recipeTipsTitle">Tips y uso ideal</h3>
+              </div>
+              <div class="recipe-tips">
+                <div class="recipe-tips__box">
+                  <span>Perfil de sabor</span>
+                  <strong id="recipeModalFlavor"></strong>
+                </div>
+                <div class="recipe-tips__box">
+                  <span>Ideal para</span>
+                  <strong id="recipeModalIdealFor"></strong>
+                </div>
+              </div>
+              <ul class="recipe-detail-list recipe-detail-list--tips" id="recipeModalTips"></ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-white pb-4" role="contentinfo">
+      <div class="row pt-3 px-2 pt-1">
+        <div class="col-lg-4 col-12 pr-xl-4 mb-2">
+          <h5 class="text-warning text-uppercase">Contacto</h5>
+          <p class="mt-3">
+            Yellow Box - Servicios de vending y bebidas autom&aacute;ticas.
+            <br class="d-lg-block d-none" />
+            Atenci&oacute;n y soporte t&eacute;cnico.
+          </p>
+
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt text-danger">&nbsp;&nbsp;</i>Region Del
+            Bio-Bio , Chile
+          </p>
+
+          <p class="mb-1">
+            <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a
+              href="mailto:soporte@smkvending.cl"
+              class="text-light text-decoration-none"
+              >soporte@smkvending.cl</a
+            >
+          </p>
+        </div>
+
+        <div class="col-lg-8 col-12">
+          <div class="row">
+            <div class="col-lg-4 col-12 mb-3">
+              <h5 class="text-warning text-uppercase">Enlaces</h5>
+              <div class="row">
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="index.html"
+                  >Inicio</a
+                >
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="productos.html"
+                  >Tienda</a
+                >
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="contact.html"
+                  >Contacto</a
+                >
+                <a
+                  class="text-white col-xl-12 col-8 text-decoration-none d-lg-block d-none"
+                  href="politicasEmpresa.html"
+                  >Pol&iacute;ticas de la Empresa</a
+                >
+              </div>
+            </div>
+
+            <div class="col-lg-8 mb-xl-5">
+              <h5 class="text-warning text-uppercase mb-3">S&iacute;guenos</h5>
+              <p>Encu&eacute;ntranos en redes para novedades y promociones.</p>
+              <div class="row">
+                <div class="col-xl-6 col-3">
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a
+                    class="btn btn-warning btn-square mb-2"
+                    href="#"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+                <div class="col-xl-6 col-3">
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row border-top mx-xl-5 py-1"
+        style="border-color: rgba(256, 256, 256, 0.1) !important"
+      >
+        <div class="col-md-6">
+          <p class="text-center text-md-left text-white">
+            &copy; 2025 Yellow Box. Todos los derechos reservados.
+            <br />Dise&ntilde;ado por K&uuml;pan.
+          </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center">
+          <img
+            class="img-fluid"
+            src="img/payments.png"
+            alt="Metodos de pago aceptados"
+          />
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+    <a
+      href="#"
+      class="text-center back-to-top text-dark bg-warning rounded-bottom-circle"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/recetas.js"></script>
+  </body>
+</html>

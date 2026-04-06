@@ -31,95 +31,165 @@
   </head>
   <body class="catalog-page">
     <!-- Navbar Start -->
-          <nav class="navbar bg-navbar sticky-top">
-            <div class="nav-left">
-              <a href="index.html" style="color: rgb(80, 77, 77);" class="nav-3 text-decoration-none">Inicio</a>
+    <nav class="navbar bg-navbar sticky-top">
+      <div class="nav-left">
+        <a
+          href="index.html"
+          style="color: rgb(80, 77, 77)"
+          class="nav-3 text-decoration-none"
+          >Inicio</a
+        >
+      </div>
+
+      <div class="logo-container">
+        <a href="index.html" class="text-decoration-none">
+          <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="dropdown">
+          <a
+            href="#"
+            style="color: rgb(80, 77, 77)"
+            class="dropdown-toggle text-decoration-none nav-2"
+            data-toggle="dropdown"
+            >Mas</a
+          >
+
+          <div style="background-color: #bdb093" class="dropdown-menu">
+            <a href="productos.html" class="dropdown-item">Tienda Online</a>
+            <a href="formularios/formVentas.html" class="dropdown-item"
+              >Cotiza Ya !</a
+            >
+            <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
+            <a href="formularios/formReclamos.html" class="dropdown-item"
+              >Reclamos</a
+            >
+            <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item"
+              >Catalogo Laqtia</a
+            >
+            <div class="contact-mobile">
+              <a href="contact.html" class="dropdown-item">Contactanos</a>
             </div>
+          </div>
+        </div>
 
-            <div class="logo-container">
-              <a href="index.html" class="text-decoration-none">
-                <img src="img/logo.png" alt="Yellow Box" class="site-logo" />
-              </a>
-            </div>
-
-            <div class="nav-right">
-              <div class="dropdown ">
-                <a href="#" style="color: rgb(80, 77, 77);"  class="dropdown-toggle text-decoration-none nav-2 " data-toggle="dropdown">Mas</a>
-                
-                <div style="background-color: #bdb093;" class="dropdown-menu">
-                  <a href="productos.html" class="dropdown-item">Tienda Online</a>
-                  <a href="formularios/formVentas.html" class="dropdown-item">Cotiza Ya !</a>
-                  <a href="contrataciones.html" class="dropdown-item">Contrataciones</a>
-                  <a href="formularios/formReclamos.html" class="dropdown-item">Reclamos</a>
-                  <a href="https://publuu.com/flip-book/256983/617190" class="dropdown-item">Catalogo Laqtia</a>
-                  <div class="contact-mobile">
-                    <a href="contact.html" class="dropdown-item">Contactanos</a>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="d-none d-lg-block">
-                <a href="contact.html" class="navbar-brand text-decoration-none mx-xl-4"
-                  >Contactanos</a
-                >
-              </div>
-            </div>
-          </nav>
+        <div class="d-none d-lg-block">
+          <a
+            href="contact.html"
+            class="navbar-brand text-decoration-none mx-xl-4"
+            >Contactanos</a
+          >
+        </div>
+      </div>
+    </nav>
     <!-- Navbar End -->
 
-    <section class="category-buttons-container" aria-label="Filtros del catalogo">
-      <div class="category-buttons">
-        <button class="category-button" data-filter="all" type="button">
-          <span>Todos</span>
-        </button>
-        <button class="category-button mokador-btn" data-filter="mokador" type="button">
-          <img src="img/mokador.png" alt="Mokador" />
-        </button>
-        <button class="category-button" data-filter="leches" type="button">
-          <span>Leches</span>
-          <img src="img/caja-de-leche.png" alt="Leches" />
-        </button>
-        <button class="category-button" data-filter="capuchinos" type="button">
-          <span>Capuchinos</span>
-          <img src="img/capuchino.png" alt="Capuchinos" />
-        </button>
-        <button class="category-button" data-filter="chai" type="button">
-          <span>Chai</span>
-          <img src="img/chai-masala.png" alt="Chai" />
-        </button>
-        <button class="category-button" data-filter="chocolates" type="button">
-          <span>Chocolates</span>
-          <img src="img/chocolate.png" alt="Chocolates" />
-        </button>
+    <section class="catalog-filters" aria-label="Filtros del catalogo">
+      <div class="category-buttons-container">
+        <div class="category-buttons">
+          <button class="category-button" data-filter="all" type="button">
+            <span>Todos</span>
+          </button>
+          <button
+            class="category-button mokador-btn"
+            data-filter="mokador"
+            type="button"
+          >
+            <img src="img/mokador.png" alt="Mokador" />
+          </button>
+          <button class="category-button" data-filter="leches" type="button">
+            <span>Leches</span>
+            <img src="img/caja-de-leche.png" alt="Leches" />
+          </button>
+          <button class="category-button" data-filter="capuchinos" type="button">
+            <span>Capuchinos</span>
+            <img src="img/capuchino.png" alt="Capuchinos" />
+          </button>
+          <button class="category-button" data-filter="chai" type="button">
+            <span>Chai</span>
+            <img src="img/chai-masala.png" alt="Chai" />
+          </button>
+          <button class="category-button" data-filter="chocolates" type="button">
+            <span>Chocolates</span>
+            <img src="img/chocolate.png" alt="Chocolates" />
+          </button>
+        </div>
       </div>
     </section>
 
     <button
-      class="quote-mobile-trigger"
+      class="quote-fab"
       id="quoteMobileTrigger"
       type="button"
       aria-controls="quotePanel"
       aria-expanded="false"
+      aria-label="Abrir cotizacion"
     >
-      Ver cotizacion
-      <span class="quote-mobile-trigger__count" id="mobileQuoteCount">0</span>
+      <span class="quote-fab__icon">
+        <i class="fas fa-shopping-bag"></i>
+      </span>
+      <span class="quote-fab__badge" id="mobileQuoteCount">0</span>
     </button>
 
     <main class="catalog-shell">
       <section class="catalog-main" aria-labelledby="catalogSectionTitle">
-        <div class="catalog-section-heading">
-          <div>
-            <span class="catalog-section-heading__eyebrow">Productos</span>
+        <header class="catalog-hero d-none">
+          <div class="catalog-hero__copy">
+            <span class="catalog-hero__eyebrow" id="catalogSectionTitle"
+              >Yellow Box Store</span
+            >
+            <h1 class="catalog-hero__title">
+              Explora, mezcla y arma tu cotizacion como una experiencia ecommerce
+            </h1>
+            <p class="catalog-hero__text" id="catalogResultText">
+              Filtra por categoria, descubre productos destacados y agrega al
+              instante lo que quieras cotizar.
+            </p>
           </div>
-          <p id="catalogResultText">Mostrando todos los productos disponibles.</p>
-        </div>
-        <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+
+          <div class="catalog-hero__stats" aria-label="Resumen rapido del catalogo">
+            <article class="catalog-stat">
+              <span>Disponibles</span>
+              <strong id="heroProductCount">0</strong>
+            </article>
+            <article class="catalog-stat">
+              <span>Categorias</span>
+              <strong id="heroCategoryCount">5</strong>
+            </article>
+            <article class="catalog-stat">
+              <span>En cotizacion</span>
+              <strong id="heroCartCount">0</strong>
+            </article>
+          </div>
+        </header>
+
+        <section class="catalog-stage" aria-label="Zona de productos">
+          <div class="catalog-rows" id="productsGrid" aria-live="polite"></div>
+          <div class="catalog-empty-state" id="catalogEmptyState" hidden>
+            <div class="catalog-empty-state__icon">
+              <i class="fas fa-coffee"></i>
+            </div>
+            <h2>No encontramos productos para este filtro</h2>
+            <p>Prueba otra categoria para seguir armando tu cotizacion.</p>
+          </div>
+        </section>
       </section>
 
-      <aside class="quote-sidebar" id="quoteSidebar">
-        <div class="quote-panel" id="quotePanel">
+      <aside class="quote-sidebar" id="quoteSidebar" aria-labelledby="quotePanelTitle">
+        <button
+          class="quote-sidebar__backdrop"
+          id="quoteSidebarBackdrop"
+          type="button"
+          aria-hidden="true"
+          tabindex="-1"
+        ></button>
+
+        <div class="quote-panel" id="quotePanel" role="dialog" aria-labelledby="quotePanelTitle">
           <section class="quote-card">
+            <div class="quote-card__mobile-handle" aria-hidden="true"></div>
+
             <button
               class="quote-panel__close"
               id="quotePanelClose"
@@ -128,18 +198,19 @@
             >
               <i class="fas fa-times"></i>
             </button>
+
             <div class="quote-card__header">
               <span class="quote-card__eyebrow">Cotizacion</span>
-              <h2>Resumen de productos</h2>
+              <h2 id="quotePanelTitle">Resumen de productos y datos del cliente</h2>
               <p>
-                Elige productos, revisa el total referencial y envia tu
-                solicitud desde el mismo sidebar.
+                Revisa aqui lo que agregaste antes de enviar tu solicitud
+                comercial.
               </p>
             </div>
 
             <div class="quote-summary">
               <div class="quote-summary__row">
-                <span>Productos seleccionados</span>
+                <span>Productos agregados</span>
                 <strong id="cartItemsCount">0</strong>
               </div>
               <div class="quote-summary__row quote-summary__row--total">
@@ -148,24 +219,50 @@
               </div>
             </div>
 
-            <div class="cart-list" id="cartItems" aria-live="polite"></div>
-            <div class="cart-empty-state" id="cartEmptyState">
-              Agrega productos para construir una cotizacion personalizada.
-            </div>
+            <section class="quote-products" aria-labelledby="quoteProductsTitle">
+              <div class="quote-products__header">
+                <div>
+                  <span class="quote-products__eyebrow">Tu seleccion</span>
+                  <h3 id="quoteProductsTitle">Productos agregados</h3>
+                </div>
+                <p>Las cantidades y subtotales se ven aqui antes del formulario.</p>
+              </div>
+
+              <div class="cart-list" id="cartItems" aria-live="polite"></div>
+              <div class="cart-empty-state" id="cartEmptyState">
+                Agrega productos para comenzar una cotizacion personalizada.
+              </div>
+            </section>
 
             <form class="quote-form" id="quoteForm" novalidate>
-              <div class="quote-form__group">
-                <label for="quoteName">Nombre</label>
-                <input
-                  id="quoteName"
-                  name="name"
-                  type="text"
-                  class="form-control"
-                  autocomplete="name"
-                  placeholder="Tu nombre completo"
-                  required
-                />
+              <div class="quote-form__grid">
+                <div class="quote-form__group">
+                  <label for="quoteName">Nombre</label>
+                  <input
+                    id="quoteName"
+                    name="name"
+                    type="text"
+                    class="form-control"
+                    autocomplete="name"
+                    placeholder="Tu nombre completo"
+                    required
+                  />
+                </div>
+
+                <div class="quote-form__group">
+                  <label for="quotePhone">Telefono</label>
+                  <input
+                    id="quotePhone"
+                    name="phone"
+                    type="tel"
+                    class="form-control"
+                    autocomplete="tel"
+                    placeholder="+56 9 1234 5678"
+                    required
+                  />
+                </div>
               </div>
+
               <div class="quote-form__group">
                 <label for="quoteEmail">Correo</label>
                 <input
@@ -178,18 +275,7 @@
                   required
                 />
               </div>
-              <div class="quote-form__group">
-                <label for="quotePhone">Telefono</label>
-                <input
-                  id="quotePhone"
-                  name="phone"
-                  type="tel"
-                  class="form-control"
-                  autocomplete="tel"
-                  placeholder="+56 9 1234 5678"
-                  required
-                />
-              </div>
+
               <div class="quote-form__group">
                 <label for="quoteMessage">Mensaje</label>
                 <textarea
@@ -198,48 +284,111 @@
                   rows="4"
                   class="form-control"
                   required
-                  placeholder="Cuentanos que necesitas: instalacion, volumen estimado, ubicacion o tipo de servicio."
+                  placeholder="Cuentanos ubicacion, volumen estimado, instalacion o necesidades del servicio."
                 ></textarea>
               </div>
+
               <input id="quoteSummaryField" name="quoteSummary" type="hidden" />
+
               <button class="quote-submit btn btn-dark" id="quoteSubmit" type="submit">
                 Enviar cotizacion
               </button>
+
               <p class="quote-form__note">
-                La cotizacion se enviara a soporte@smkvending.cl.
+                Esta solicitud se enviara a
+                <a href="mailto:soporte@smkvending.cl">soporte@smkvending.cl</a>.
               </p>
             </form>
 
-            <section class="contact-card" aria-labelledby="contactCardTitle">
-              <div class="contact-card__copy">
-                <span class="contact-card__eyebrow">Contactanos</span>
-                <h3 id="contactCardTitle">Atencion comercial clara y profesional</h3>
-                <p>
-                  Si prefieres hablar con un ejecutivo antes de enviar la
-                  cotizacion, te orientamos sobre instalacion, volumen,
-                  reposicion y soporte segun tu necesidad.
-                </p>
-              </div>
-              <div class="contact-card__details">
-                <a href="mailto:soporte@smkvending.cl" class="contact-card__detail">
-                  <i class="fas fa-envelope"></i>
-                  <span>soporte@smkvending.cl</span>
-                </a>
-                <div class="contact-card__detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Respuesta comercial en horario habil</span>
-                </div>
-              </div>
-              <a href="contact.html" class="btn btn-warning contact-card__button">
-                Ir a Contactanos
-              </a>
-            </section>
+            <div class="quote-assist">
+              <i class="fas fa-headset" aria-hidden="true"></i>
+              <p>
+                Si necesitas apoyo antes de enviar, tambien puedes escribirnos
+                directo a soporte@smkvending.cl.
+              </p>
+            </div>
 
             <div class="quote-feedback" id="quoteFeedback" aria-live="polite"></div>
           </section>
         </div>
       </aside>
     </main>
+
+    <section
+      class="product-modal"
+      id="productModal"
+      hidden
+      aria-hidden="true"
+      aria-labelledby="productModalTitle"
+    >
+      <button
+        class="product-modal__backdrop"
+        id="productModalBackdrop"
+        type="button"
+        aria-hidden="true"
+        tabindex="-1"
+      ></button>
+
+      <div class="product-modal__dialog" role="dialog" aria-modal="true">
+        <button
+          class="product-modal__close"
+          id="productModalClose"
+          type="button"
+          aria-label="Cerrar detalle de producto"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="product-modal__media">
+          <img id="productModalImage" src="" alt="" loading="lazy" />
+        </div>
+
+        <div class="product-modal__content">
+          <span class="product-modal__badge" id="productModalCategory"></span>
+          <h2 id="productModalTitle"></h2>
+          <p class="product-modal__description" id="productModalDescription"></p>
+          <p class="product-modal__details" id="productModalDetails"></p>
+
+          <div class="product-modal__footer">
+            <div class="product-modal__price">
+              <span>Precio referencial</span>
+              <strong id="productModalPrice"></strong>
+            </div>
+
+            <div class="product-modal__actions">
+              <div
+                class="qty-stepper qty-stepper--modal"
+                role="group"
+                aria-label="Cantidad del producto"
+              >
+                <button
+                  class="qty-stepper__btn"
+                  id="productModalQtyMinus"
+                  type="button"
+                  aria-label="Restar cantidad"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="qty-stepper__value" id="productModalQty">1</span>
+                <button
+                  class="qty-stepper__btn"
+                  id="productModalQtyPlus"
+                  type="button"
+                  aria-label="Sumar cantidad"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+
+              <button class="btn-add-to-cart btn-add-to-cart--modal" id="productModalAdd" type="button">
+                <i class="fas fa-cart-plus"></i>
+                <span>Agregar a cotizacion</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
 
@@ -248,28 +397,44 @@
       <div class="row pt-3 px-2 pt-1">
         <div class="col-lg-4 col-12 pr-xl-4 mb-2">
           <h5 class="text-warning text-uppercase">Contacto</h5>
-          <p class="mt-3">Yellow Box - Servicios de vending y bebidas autom&aacute;ticas. <br class="d-lg-block d-none"> Atenci&oacute;n y soporte t&eacute;cnico.</p>
-          
-          <p class="mb-2"><i class="fa fa-map-marker-alt text-danger">&nbsp;&nbsp;</i>Region Del Bio-Bio , Chile</p>
-
-          <p class="mb-1"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:soporte@smkvending.cl" class="text-light text-decoration-none">soporte@smkvending.cl</a>
+          <p class="mt-3">
+            Yellow Box - Servicios de vending y bebidas autom&aacute;ticas.
+            <br class="d-lg-block d-none" />
+            Atenci&oacute;n y soporte t&eacute;cnico.
           </p>
 
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt text-danger">&nbsp;&nbsp;</i>Region Del
+            Bio-Bio , Chile
+          </p>
+
+          <p class="mb-1">
+            <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a
+              href="mailto:soporte@smkvending.cl"
+              class="text-light text-decoration-none"
+              >soporte@smkvending.cl</a
+            >
+          </p>
         </div>
-        
+
         <div class="col-lg-8 col-12">
           <div class="row">
-
             <div class="col-lg-4 col-12 mb-3">
               <h5 class="text-warning text-uppercase">Enlaces</h5>
               <div class="row">
-                <a class="text-white col-xl-12 col-4 text-decoration-none" href="index.html"
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="index.html"
                   >Inicio</a
                 >
-                <a class="text-white col-xl-12 col-4 text-decoration-none" href="productos.html"
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="productos.html"
                   >Tienda</a
                 >
-                <a class="text-white col-xl-12 col-4 text-decoration-none" href="contact.html"
+                <a
+                  class="text-white col-xl-12 col-4 text-decoration-none"
+                  href="contact.html"
                   >Contacto</a
                 >
                 <a
@@ -285,18 +450,12 @@
               <p>Encu&eacute;ntranos en redes para novedades y promociones.</p>
               <div class="row">
                 <div class="col-xl-6 col-3">
-                  <a
-                    class="btn btn-warning btn-square mb-2"
-                    href="#"
-                    aria-label="Twitter"
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Twitter"
                     ><i class="fab fa-twitter"></i
                   ></a>
                 </div>
                 <div class="col-xl-6 col-3">
-                  <a
-                    class="btn btn-warning btn-square mb-2"
-                    href="#"
-                    aria-label="Facebook"
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="Facebook"
                     ><i class="fab fa-facebook-f"></i
                   ></a>
                 </div>
@@ -309,16 +468,12 @@
                   ></a>
                 </div>
                 <div class="col-xl-6 col-3">
-                  <a
-                    class="btn btn-warning btn-square mb-2"
-                    href="#"
-                    aria-label="LinkedIn"
+                  <a class="btn btn-warning btn-square mb-2" href="#" aria-label="LinkedIn"
                     ><i class="fab fa-linkedin-in"></i
                   ></a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -343,7 +498,9 @@
     </footer>
     <!-- Footer End -->
 
-    <a href="#" class="text-center back-to-top text-dark bg-warning rounded-bottom-circle"
+    <a
+      href="#"
+      class="text-center back-to-top text-dark bg-warning rounded-bottom-circle"
       ><i class="fa fa-angle-double-up"></i
     ></a>
 

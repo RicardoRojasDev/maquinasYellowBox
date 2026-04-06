@@ -171,8 +171,8 @@ input[type="checkbox"] {
 }
 
 .btn {
-  width: 90%;
-  font-weight: 400;
+  width: 100%;
+  font-weight: 100;
   color: #6c757d;
   user-select: none;
   background-color: transparent;
@@ -203,8 +203,8 @@ input[type="checkbox"] {
 
 .product-offer {
   position: relative;
-  width: 100%;
-  height: 22dvh;
+  width: 98%;
+  height: 23dvh;
   border-radius: 10px;
 }
 .category-button.active {
@@ -246,8 +246,8 @@ input[type="checkbox"] {
   transition: 0.5s;
 }
 
-.product-offer:hover img {
-  transform: scale(1.2) rotate(5deg);
+.product-offer:hover , .product-offer:hover img {
+  transform: scale(0.96) rotate(0deg);
 }
 
 .back-to-top {
