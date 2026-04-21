@@ -290,6 +290,8 @@
   overflow-y: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  touch-action: pan-y;
   cursor: grab;
 }
 
@@ -323,6 +325,7 @@
     transform var(--transition),
     border-color var(--transition),
     box-shadow var(--transition);
+  scroll-snap-align: start;
 }
 
 .recipes-page .featured-card:hover,

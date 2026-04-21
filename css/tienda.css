@@ -62,11 +62,7 @@
   top: var(--catalog-navbar-height);
   padding: 10px 0 14px;
   margin-bottom: 16px;
-  background: linear-gradient(
-    180deg,
-    rgba(252, 249, 241, 0.97) 0%,
-    rgba(252, 249, 241, 0.82) 100%
-  );
+  background: transparent;
   border-bottom: 1px solid rgba(60, 46, 17, 0.08);
   backdrop-filter: blur(18px);
 }

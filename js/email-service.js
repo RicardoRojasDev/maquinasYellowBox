@@ -80,7 +80,7 @@ class EmailService {
         const camposEsperados = [
             'nombre', 'rut', 'telefono', 'medio_pago', 'tipo_billete', 'digitos_tarjeta',
             'tipo_tarjeta', 'hora_compra', 'fecha_compra', 'ciudad', 'recinto',
-            'numero_maquina', 'tipo_maquina', 'snack_problema', 'cafe_problema',
+             'tipo_maquina', 'snack_problema', 'cafe_problema',
             'descripcion', 'nombre_banco', 'rut_banco', 'banco', 'banco_otro',
             'numero_cuenta', 'tipo_cuenta', 'correo_devolucion'
         ];
